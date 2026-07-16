@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISEÑO DE ACTIVIDADES MULTINIVEL</title>
+    <!-- Librería para generar el pdf desde el navegador -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* Estilos institucionales basados en el portal de Castilla-La Mancha */
+        :root {
+            --primary-color: #3C5AD9; /* Azul oficial corporativo (Azulón de la Junta) */
+            --secondary-color: #555555; /* Gris oscuro para textos secundarios */
+            --bg-color: #F4F4F4; /* Fondo gris muy claro para el área exterior */
+            --text-color: #333333; /* Texto principal oscuro pero no negro puro */
+            --border-color: #767676; /* Bordes accesibles */
+            --border-radius: 4px; /* Bordes menos redondeados, más institucionales */
+            --focus-color: #005C9E; /* Azul para foco de accesibilidad */
+        }
+
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body { 
+            font-family: Arial, Helvetica, 'Segoe UI', sans-serif; 
+            font-size: 16px; 
+            color: var(--text-color); 
+            background: var(--bg-color); 
+            height: 100vh;
+            width: 100%; 
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container { 
+            width: 100%; 
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        h1 { 
+            font-size: clamp(16px, 3vw, 24px); 
+            margin: 0; 
+            text-transform: uppercase;
+        }
+        
+        h2 { 
+            font-size: 22px; 
+            margin-bottom: 1rem; 
+            border-bottom: 2px solid var(--primary-color); 
+            padding-bottom: 0.4rem; 
+            display: flex; 
+            align-items: center; 
+        }
+
+        /* Cabecera blanca para integrar el logotipo */
+        .header { 
+            background: #FFFFFF; 
+            padding: 0.5rem 1.5rem; 
+            color: var(--text-color);
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: center;
+            border-bottom: 4px solid var(--primary-color);
+            flex-shrink: 0; 
+            min-height: 70px;
+        }
+        
+        .header-logo-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .header-title-container {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        /* Botón de pantalla completa en la barra superior */
+        .fullscreen-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            justify-content: center;
+            text-align: right;
+            max-width: 140px;
+            margin-left: auto;
+        }
+
+        .fullscreen-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: var(--border-radius);
+            width: 32px;
+            height: 32px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--primary-color);
+            color: #FFFFFF;
+        }
+
+        .fullscreen-text {
+            font-size: 11px;
+            color: var(--secondary-color);
+            margin-top: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1.2;
+        }
+
+        /* Barra de progreso integrada en el banner */
+        .progress-container {
+            background-color: #EAEAEA;
+            width: 100%;
+            flex-shrink: 0;
+            position: relative;
+            border-bottom: 1px solid #DDDDDD;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #F8C300; 
+            width: 10%; 
+            transition: width 0.4s ease;
+            z-index: 1;
+        }
+
+        .progress-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0.5rem 0;
+            font-weight: bold;
+            color: #111111;
+            font-size: 13px;
+        }
+
+        /* Contenedor de pasos expandido */
+        .steps-wrapper {
+            flex: 1; 
+            padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 5vw, 3rem); 
+            position: relative;
+            overflow-y: auto; 
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+        }
+
+        .step {
+            display: none; 
+            flex-direction: column;
+            justify-content: flex-start; 
+            max-width: 1100px; 
+            width: 100%;
+            margin: 0 auto; 
+        }
+
+        .step.active {
+            display: flex; 
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Caja de introducción (Pantalla de inicio) */
+        .intro-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+            min-height: 60vh;
+        }
+
+        .intro-title {
+            color: var(--primary-color);
+            font-size: clamp(22px, 4vw, 28px);
+            margin-bottom: 1.5rem;
+            border: none;
+        }
+
+        .intro-box {
+            background-color: #F9F9F9;
+            border-left: 4px solid var(--primary-color);
+            padding: clamp(1rem, 3vw, 2rem);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            color: var(--text-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            max-width: 750px;
+            width: 100%;
+            text-align: left;
+            border-top: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        .intro-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .intro-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .intro-box strong {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        /* Botón de inicio central */
+        .btn-start {
+            margin-top: 2.5rem;
+            font-size: 18px;
+            padding: 1rem 3rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(60, 90, 217, 0.2);
+            transition: all 0.2s;
+        }
+
+        .btn-start:hover {
+            background-color: #2A4099;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 8px rgba(60, 90, 217, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            width: 100%;
+        }
+
+        .label-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.4rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: var(--text-color);
+            margin-right: 8px;
+            font-size: 15px;
+        }
+
+        select, input[type="text"], textarea {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--text-color);
+            background-color: #FFFFFF;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .rich-text-box {
+            width: 100%;
+            min-height: 120px;
+            padding: 0.6rem 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            background-color: #FFFFFF;
+            overflow-y: auto;
+            color: var(--text-color);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .rich-text-box:empty:before {
+            content: attr(data-placeholder);
+            color: #767676;
+            pointer-events: none;
+            display: block;
+        }
+
+        .rich-text-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+
+        .rich-text-box th, .rich-text-box td {
+            border: 1px solid var(--border-color);
+            padding: 6px;
+        }
+
+        select:focus, input[type="text"]:focus, textarea:focus, .rich-text-box:focus {
+            outline: none;
+            border-color: var(--focus-color);
+            box-shadow: 0 0 0 2px rgba(0, 92, 158, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            flex-grow: 1; 
+            min-height: 80px; 
+        }
+        
+        select:disabled {
+            background-color: #F4F4F4;
+            color: #767676;
+            cursor: not-allowed;
+            border-color: #CCCCCC;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                padding: 0.5rem;
+                gap: 5px;
+            }
+            .header-logo {
+                height: 36px; 
+            }
+            .fullscreen-wrapper {
+                max-width: 100px;
+            }
+            .fullscreen-text {
+                font-size: 9px; 
+            }
+            .header-title-container {
+                padding: 0 5px;
+            }
+        }
+
+        .curriculum-box {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            background-color: #FDFDFD;
+            overflow-y: auto;
+            max-height: 250px;
+        }
+
+        .curriculum-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        .curriculum-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .curriculum-item input[type="checkbox"] {
+            margin-top: 3px;
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .curriculum-item label {
+            font-size: 14px;
+            color: var(--text-color);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .empty-state {
+            color: var(--secondary-color);
+            font-style: italic;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 14px;
+        }
+
+        /* Bocadillos y enlaces */
+        .help-icon {
+            background: var(--secondary-color);
+            color: #FFFFFF;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        .help-icon:hover { background: #333333; }
+
+        .help-content {
+            display: none;
+            background-color: #F9F9F9;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 14px;
+            color: var(--text-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            border-top: 1px solid #EAEAEA;
+            border-right: 1px solid #EAEAEA;
+            border-bottom: 1px solid #EAEAEA;
+            text-align: left;
+        }
+
+        .help-content ul { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .help-content.active { display: block; animation: fadeIn 0.3s; }
+
+        .link-more {
+            color: var(--focus-color);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: normal;
+            font-size: 13px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .link-more:hover { color: #003D6B; }
+
+        /* Modales */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active { display: flex; animation: fadeIn 0.2s; }
+
+        .modal-box {
+            background: #FFFFFF;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .modal-close:hover { color: var(--primary-color); }
+
+        .modal-title { color: var(--primary-color); margin-bottom: 1rem; font-size: 20px; border-bottom: none; padding-bottom: 0; }
+
+        /* Sugerencias e IA */
+        .tip-box {
+            background-color: #F4F8FB;
+            border: 1px solid #B6D4EA;
+            border-radius: var(--border-radius);
+            padding: 0.8rem 1rem;
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .tip-box-icon { font-size: 20px; flex-shrink: 0; }
+        .tip-box-text p { font-size: 14px; color: var(--text-color); margin-bottom: 4px; }
+        .tip-box-text strong { color: var(--focus-color); }
+
+        .ai-placeholder {
+            background-color: #F9F9F9;
+            border: 1px dashed var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ai-placeholder strong {
+            color: var(--text-color);
+            font-size: 15px;
+        }
+
+        .ai-placeholder p {
+            color: var(--secondary-color);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .ai-instruction {
+            font-size: 12px !important;
+            color: var(--secondary-color) !important;
+            margin-top: 8px !important;
+            font-style: italic;
+        }
+
+        /* Navegación inferior */
+        .wizard-nav {
+            padding: 1rem 1.5rem;
+            background-color: #F9F9F9;
+            border-top: 1px solid #DDDDDD;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .wizard-nav-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .wizard-nav-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #FFFFFF;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            font-size: 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn:hover { 
+            background-color: var(--primary-color); 
+            color: #FFFFFF;
+        }
+        
+        #btn-next {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+        }
+        
+        #btn-next:hover {
+            background-color: #2A4099;
+        }
+
+        .btn:disabled { 
+            background-color: #EAEAEA; 
+            color: #A0A0A0;
+            cursor: not-allowed; 
+            border-color: #CCCCCC;
+        }
+
+        .btn-ai { 
+            background-color: #6A1B9A; 
+            color: #FFFFFF;
+            border-color: #6A1B9A;
+        }
+        
+        .btn-ai:hover { 
+            background-color: #4A148C; 
+            color: #FFFFFF;
+        }
+        
+        #btn-finish {
+            background-color: #007E33; /* Verde para finalizar PDF */
+            color: #FFFFFF;
+            border-color: #007E33;
+        }
+
+        #btn-finish:hover {
+            background-color: #005924;
+        }
+        
+        #btn-word {
+            background-color: #2B579A; /* Azul Word */
+            color: #FFFFFF;
+            border-color: #2B579A;
+        }
+
+        #btn-word:hover {
+            background-color: #1e3e6e;
+        }
+        
+        /* Contenedor del pdf oculto */
+        #pdf-template {
+            display: none;
+            background: white;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+            color: #000000;
+        }
+
+        #pdf-template .pdf-header {
+            border-bottom: 4px solid #3C5AD9;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        #pdf-template .pdf-header img {
+            max-width: 250px;
+            margin-bottom: 15px;
+        }
+
+        #pdf-template .pdf-header h1 {
+            color: #3C5AD9;
+            font-size: 24px;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+        }
+
+        #pdf-template .pdf-header p { 
+            margin: 0; 
+            font-size: 14px; 
+            color: #555555; 
+            font-weight: bold; 
+        }
+
+        #pdf-template .pdf-section { 
+            margin-bottom: 25px; 
+            page-break-inside: avoid; 
+        }
+        
+        #pdf-template .pdf-section h2 {
+            font-size: 18px;
+            color: #3C5AD9;
+            border-bottom: 2px solid #3C5AD9;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            background: transparent;
+        }
+
+        #pdf-template .pdf-text { 
+            font-size: 14px; 
+            line-height: 1.5; 
+            margin-bottom: 10px; 
+            white-space: pre-wrap; 
+            color: #000000; 
+            page-break-inside: avoid; 
+        }
+        
+        #pdf-template .pdf-list { 
+            margin-top: 5px; 
+            margin-bottom: 10px; 
+            padding-left: 20px; 
+            font-size: 14px; 
+            line-height: 1.5; 
+            color: #000000; 
+            page-break-inside: avoid;
+        }
+        
+        #pdf-template .pdf-list li { margin-bottom: 5px; }
+        
+        #pdf-template .pdf-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            page-break-inside: avoid; 
+        }
+
+        #pdf-template table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        #pdf-template th, #pdf-template td {
+            border: 1px solid #767676;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #pdf-template th {
+            background-color: #F4F8FB;
+            color: #3C5AD9;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="header-logo-container">
+            <img class="header-logo" src="https://i.postimg.cc/zByLdX0k/Logo-Altas-Capacidades-jpg.webp" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous">
+        </div>
+        <div class="header-title-container">
+            <h1>DISEÑO DE ACTIVIDADES MULTINIVEL</h1>
+        </div>
+        <div class="fullscreen-wrapper" onclick="toggleFullScreen()">
+            <button class="fullscreen-btn" title="Pantalla completa">⛶</button>
+            <span class="fullscreen-text">Pulsa para ver mejor en pantalla completa</span>
+        </div>
+    </div>
+
+    <div class="progress-container" id="progress-container" style="display: none;">
+        <div class="progress-bar" id="progress-bar"></div>
+        <div class="progress-text" id="progress-text" style="display: none;">Paso 1 de 9: Contexto inicial</div>
+    </div>
+
+    <div class="steps-wrapper">
+        
+        <!-- PASO 1: Inicio -->
+        <div class="step active" id="step-1">
+            <div class="intro-container">
+                <h2 class="intro-title">Bienvenido al asistente multinivel</h2>
+                <div class="intro-box">
+                    <p><strong>¿Qué es y para qué sirve?</strong><br>
+                    Es un planificador interactivo diseñado para facilitar la creación de situaciones de aprendizaje basadas en el diseño universal para el aprendizaje (DUA) y el modelo de enriquecimiento para toda la escuela (SEM). Te ayudará a diseñar una situación de aprendizaje basada en el aprendizaje multinivel, donde el alumnado parta de su nivel potenciando sus fortalezas, pudiendo avanzar hasta donde su potencial le permita, anticipando posibles barreras y generando herramientas de evaluación ágiles.</p>
+                    <p><strong>¿Cómo usarlo?</strong><br>
+                    Completa cada sección navegando con los botones de la parte inferior. En los apartados más creativos, utiliza los botones morados para pedir sugerencias a la inteligencia artificial. Al finalizar el proceso, obtendrás una planificación estructurada para llevar al aula, donde el alumnado será el protagonista de su propio aprendizaje a la hora de elegir lo que quiere hacer.</p>
+                </div>
+                <button class="btn-start" onclick="cambiarPaso(1)">Iniciar asistente</button>
+            </div>
+        </div>
+
+        <!-- PASO 2: Contexto inicial -->
+        <div class="step" id="step-2">
+            <h2>1. Contexto inicial</h2>
+            <div class="form-group">
+                <div class="label-wrapper"><label for="sel-etapa">Etapa educativa</label></div>
+                <select id="sel-etapa" onchange="actualizarMaterias()">
+                    <option value="">Seleccione una etapa...</option>
+                    <option value="infantil">Educación Infantil - Segundo ciclo</option>
+                    <option value="primaria_c1">Primaria - 1ᵉʳ ciclo (1º y 2º)</option>
+                    <option value="primaria_c2">Primaria - 2º ciclo (3º y 4º)</option>
+                    <option value="primaria_c3">Primaria - 3ᵉʳ ciclo (5º y 6º)</option>
+                    <option value="secundaria_1_3">Secundaria - 1º a 3º ESO</option>
+                    <option value="secundaria_4">Secundaria - 4º ESO</option>
+                    <option value="bachillerato">Bachillerato</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <div class="label-wrapper"><label for="sel-materia">Materia / área</label></div>
+                <select id="sel-materia" onchange="prepararCurriculo()">
+                    <option value="">Seleccione primero la etapa...</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- PASO 3: Eje central -->
+        <div class="step" id="step-3">
+            <h2>2. Contenido subyacente (Eje central o tema principal) <span class="help-icon" onclick="toggleHelp('help-tema')">?</span></h2>
+            <div id="help-tema" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Es el hilo conductor que da sentido a la situación de aprendizaje.</li>
+                    <li>Debe ser amplio, motivador y estar conectado con la vida real o los intereses del alumnado.</li>
+                    <li>Por ejemplo: "Misión rescate espacial", "El misterio de los océanos", "Reporteros del clima".</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('El eje central como motor de aprendizaje', 'En el modelo SEM en general y en el diseño multinivel en particular, partir de un tema motivador es clave para garantizar el compromiso.\n\nUn buen centro de interés no es solo el nombre de un tema del libro de texto, sino un escenario conectado con un problema real o un reto creativo. Para el alumnado en general, esto da sentido práctico a lo que aprenden. Para el alumnado con altas capacidades, un tema amplio e interdisciplinar resulta fundamental: les permite salir de la superficie, investigar de forma autónoma y establecer conexiones complejas entre diferentes áreas de conocimiento, evitando la repetición y el aburrimiento.')">Saber más sobre el eje central</span>
+            </div>
+            <div class="form-group">
+                <div class="label-wrapper">
+                    <label for="input-tema">Tema o contenido subyacente (Técnico)</label>
+                </div>
+                <input type="text" id="input-tema" placeholder="Por ejemplo: El ciclo del agua...">
+            </div>
+
+            <!-- Asistente IA Integrado -->
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Generador de Títulos Motivadores</strong>
+                    <p>Diseña un título motivador y con fantasía para el alumnado.</p>
+                    <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
+                </div>
+                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">✨ Generar título (IA)</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-titulo-alumnado">Título para el alumnado</label>
+                </div>
+                <input type="text" id="input-titulo-alumnado" placeholder="Por ejemplo: El misterio de las gotas viajeras...">
+            </div>
+        </div>
+
+        <!-- PASO 4: Competencia específica -->
+        <div class="step" id="step-4">
+            <h2>3. Competencia específica <span class="help-icon" onclick="toggleHelp('help-comp')">?</span></h2>
+            <div id="help-comp" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Son los desempeños que el alumnado debe poder desplegar.</li>
+                    <li>No se trata de memorizar, sino de saber aplicar el conocimiento en situaciones reales.</li>
+                    <li>Son la meta principal que va a guiar tu evaluación.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('Evaluar competencias, no solo memoria', 'La normativa educativa actual pone el foco en las competencias específicas. Esto significa que el objetivo no es únicamente que el alumnado repita saberes básicos (contenidos), sino que los utilice para resolver situaciones de su entorno.\n\nEn un aula diversa, plantear la actividad desde la competencia permite que todos trabajen con el mismo objetivo de fondo, pero alcanzando diferentes niveles de complejidad o abstracción. Esto asegura la inclusión de quienes necesitan más apoyo y proporciona el reto necesario para motivar al alumnado con altas capacidades.')">Saber más sobre competencias</span>
+            </div>
+            <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1rem;">
+                Selecciona la competencia o competencias que guiarán la actividad.
+            </p>
+            <div class="form-group">
+                <div class="label-wrapper">
+                    <label>Competencias a trabajar</label>
+                </div>
+                <div class="curriculum-box" id="box-competencias">
+                    <div class="empty-state">Seleccione materia en el paso anterior...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 5: Saberes y criterios -->
+        <div class="step" id="step-5">
+            <h2>4. Saberes y criterios <span class="help-icon" onclick="toggleHelp('help-saberes')">?</span></h2>
+            <div id="help-saberes" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Los <strong>saberes básicos</strong> son las herramientas para resolver el reto.</li>
+                    <li>Los <strong>criterios de evaluación</strong> indican si se ha alcanzado la competencia.</li>
+                    <li>Selecciona solo aquellos que realmente vayas a evaluar en esta tarea concreta.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('Saberes como medio, no como fin', 'En el enfoque competencial, los saberes básicos ya no son el objetivo final, sino el vehículo o la excusa para desarrollar competencias.\n\nAl diseñar una actividad multinivel, no todos los alumnos tienen que explorar los saberes con la misma intensidad. El diseño universal para el aprendizaje (DUA) permite que, mientras unos estudiantes acceden a los saberes fundamentales, aquellos con altas capacidades puedan investigar aspectos más complejos, abstractos o transversales del mismo tema. Los criterios de evaluación nos sirven de brújula para valorar el progreso real de cada estudiante desde su punto de partida.')">Saber más sobre saberes y criterios</span>
+            </div>
+            <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1rem;">
+                Selecciona los elementos asociados a las competencias elegidas.
+            </p>
+            <div id="contenedor-saberes-criterios">
+                <div class="empty-state">Selecciona al menos una competencia en el paso anterior.</div>
+            </div>
+            
+            <div class="tip-box" style="margin-top: 1.5rem;">
+                <div class="tip-box-icon">🧠</div>
+                <div class="tip-box-text">
+                    <p><strong>Para saber más sobre las habilidades cognitivas y metacognitivas:</strong></p>
+                    <p>Los verbos de los criterios de evaluación (analizar, diseñar, evaluar...) te indican el nivel de demanda cognitiva que requiere el reto <strong>según la taxonomía de Bloom</strong>. Para el alumnado con altas capacidades, es vital diseñar tareas que alcancen los niveles de pensamiento superior (evaluar y crear). Además, fomentar la metacognición implica ayudarles a reflexionar no solo sobre <em>qué</em> han aprendido, sino sobre <em>cómo</em> lo han aprendido y qué estrategias han usado, dándoles el control real de su aprendizaje.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 6: Disparador de pensamiento -->
+        <div class="step" id="step-6">
+            <h2>5. Disparador de pensamiento <span class="help-icon" onclick="toggleHelp('help-disparador')">?</span></h2>
+            <div id="help-disparador" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Sirve para despertar la curiosidad y detectar conocimientos previos.</li>
+                    <li>Utiliza preguntas abiertas (técnica 5W2H o espina de pez).</li>
+                    <li>Conecta el tema central con los intereses reales de tu aula.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('El poder de una buena pregunta', 'El aprendizaje significativo comienza con la curiosidad. Antes de explicar la teoría, es fundamental activar los conocimientos previos del alumnado y generar disonancia cognitiva. Herramientas como la técnica 5W2H (qué, quién, dónde, cuándo, por qué, cómo, cuánto) o el diagrama de espina de pez permiten plantear preguntas abiertas que no tienen una única respuesta correcta.\n\nPara el alumnado con altas capacidades, estas preguntas abiertas son la puerta de entrada al pensamiento divergente y la creatividad, permitiéndoles enfocar el reto desde ángulos originales. Además, usar herramientas institucionales como Lumio para recoger estas lluvias de ideas hace que el pensamiento de toda la clase sea visible y participativo.')">Saber más sobre el disparador</span>
+            </div>
+            
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Generador de preguntas iniciales (5W2H)</strong>
+                    <p>Inicia la clase conectando con los intereses del alumnado.</p>
+                    <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
+                </div>
+                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">🎲 Sugerir preguntas (IA)</button>
+            </div>
+            
+            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-disparador-pregunta-principal">Pregunta disparadora</label>
+                </div>
+                <textarea id="input-disparador-pregunta-principal" placeholder="Por ejemplo: ¿Qué pasaría si...?"></textarea>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-disparador-material">Material motivador o contexto</label>
+                </div>
+                <textarea id="input-disparador-material" placeholder="Por ejemplo: Mostrar la fotografía de un glaciar derritiéndose, escuchar un podcast, leer un recorte de prensa, un fragmento de una película, un objeto misterioso..."></textarea>
+            </div>
+            
+            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-disparador-preguntas">Preguntas abiertas</label>
+                </div>
+                <textarea id="input-disparador-preguntas" placeholder="Escribe aquí las preguntas y/o pega las que ha generado la IA para provocar el debate..."></textarea>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-box-icon">💡</div>
+                <div class="tip-box-text">
+                    <p><strong>Herramientas institucionales:</strong></p>
+                    <p>Utiliza <strong>Lumio</strong> en tu panel interactivo para recoger en directo la lluvia de ideas de la clase. Hacer visible lo que van contestando te ayudará a detectar rápidamente sus conocimientos previos. Además, si te conectas con tu cuenta corporativa, podrás consultar los resultados para analizarlos desde tu ordenador, sin necesidad de sacar fotos o descargar nada.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 7: El reto final -->
+        <div class="step" id="step-7">
+            <h2>6. El reto final <span class="help-icon" onclick="toggleHelp('help-reto')">?</span></h2>
+            <div id="help-reto" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Es el producto final o tarea auténtica que resolverá el alumnado.</li>
+                    <li>Debe ser abierto, permitiendo múltiples formas de expresión (por ejemplo: podcast, maqueta, ensayo).</li>
+                    <li>Asegura que todos participen desde su nivel, sin establecer un techo artificial.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('El reto: aprendizaje abierto y sin techos', 'Un buen reto huye de la estandarización (por ejemplo: todos hacen la misma ficha). En el enfoque multinivel, proponemos tareas auténticas que admiten diferentes vías de solución y niveles de profundidad. Al ofrecer opciones sobre el producto final, estamos aplicando el diseño universal para el aprendizaje (DUA).\n\nPara el alumnado con altas capacidades, un reto abierto es vital: elimina el techo de cristal de la clase tradicional y les permite investigar, crear y llegar tan lejos como su talento les lleve, desarrollando productos reales para audiencias reales (modelo SEM).')">Saber más sobre el reto</span>
+            </div>
+            
+            <div class="tip-box" style="margin-bottom: 1.5rem;">
+                <div class="tip-box-icon">🌱</div>
+                <div class="tip-box-text">
+                    <p><strong>Nota pedagógica:</strong></p>
+                    <p>Las sugerencias de retos generadas por la IA son ideas de andamiaje para el profesorado. El objetivo en este modelo es utilizarlas solo al principio, <strong>hasta que el alumnado coja soltura y sea capaz de sugerir y diseñar sus propios retos</strong> de forma autónoma.</p>
+                </div>
+            </div>
+
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Asistente de diseño de tareas</strong>
+                    <p>Diseña un reto abierto con múltiples opciones de producto final.</p>
+                    <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
+                </div>
+                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">🎯 Diseñar reto (IA)</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-reto">Tarea o producto tangible</label>
+                </div>
+                <textarea id="input-reto" placeholder="Escribe aquí las ideas de retos propuestas por tu alumnado y/o pega la propuesta de reto y los productos finales que ha generado la IA..."></textarea>
+            </div>
+        </div>
+
+        <!-- PASO 8: Feed forward -->
+        <div class="step" id="step-8">
+            <h2>7. Acompañamiento:&nbsp;<em>feedforward</em> <span class="help-icon" onclick="toggleHelp('help-feed')">?</span></h2>
+            <div id="help-feed" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Consiste en anticiparse a las barreras, orientando el <strong>antes</strong> y el <strong>durante</strong> del proceso de aprendizaje.</li>
+                    <li>Prepara herramientas y andamiajes para guiar el trabajo del alumnado.</li>
+                    <li>Garantiza que todos los estudiantes puedan comenzar y desarrollar el reto con seguridad.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('El valor de anticiparse: feedforward', 'A diferencia del <em>feedback</em>, que corrige algo que ya ha ocurrido, el <em>feedforward</em> orienta el antes y el durante. Al planificar una tarea multinivel, debes preguntarte: ¿Qué barreras van a encontrar mis alumnos y cómo puedo guiar su trabajo de forma anticipada?\n\nSi sabes que a algunos les cuesta organizar la información, dales una plantilla de estructura visual antes de empezar. Si hay vocabulario complejo, proporciona un glosario. Para el alumnado con altas capacidades, el <em>feedforward</em> puede consistir en proporcionarles rúbricas de autoevaluación previas o enlaces a recursos avanzados para que puedan gestionar su propio aprendizaje con autonomía.')">Saber más sobre <em>feedforward</em></span>
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-feedforward">Anticipación y ayudas previas</label>
+                </div>
+                <textarea id="input-feedforward" placeholder="Por ejemplo: Uso del libro de texto, apuntes del profesorado, bibliografía (¡visita a la biblioteca del centro!), webgrafía, creación de un glosario, mapas conceptuales mudos, instrucciones divididas paso a paso (checklist), plantillas de estructura para redactar, o enlaces a vídeos introductorios (flipped classroom)..."></textarea>
+            </div>
+        </div>
+
+        <!-- PASO 9: Feedback -->
+        <div class="step" id="step-9">
+            <h2>8. Retroalimentación:&nbsp;<em>feedback</em> <span class="help-icon" onclick="toggleHelp('help-feedback')">?</span></h2>
+            <div id="help-feedback" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Es el acompañamiento o guía que ofreces al estudiante <em>mientras</em> está trabajando, para orientarle y que pueda mejorar su tarea.</li>
+                    <li><strong>No es una nota final ni una calificación.</strong> Es una valoración formativa continua.</li>
+                    <li>Permite al alumnado volver a entregar la tarea tras haber aplicado las mejoras que se le han indicado.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('<em>Feedback</em> formativo: orientar para mejorar', 'La retroalimentación no busca calificar, sino guiar. Proporcionar retroalimentación constante durante la creación del reto permite al alumnado ajustar su rumbo antes de la entrega final y aprender de sus errores.\n\nRecuerda que no se trata de poner una nota, sino de acompañar. Por ejemplo, puedes hacer rondas de aula preguntando: ¿Qué tienes hasta ahora? Es muy útil señalar primero algo que funciona bien en su trabajo antes de sugerir una mejora, o guiarles mediante preguntas (como ¿Qué pasaría si añadieras un ejemplo?) en lugar de darles la respuesta directamente. Este proceso cobra sentido cuando el alumno puede reentregar la tarea mejorada.')">Saber más sobre retroalimentación</span>
+            </div>
+            <div class="form-group" style="display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-feedback">Mecanismos de retroalimentación</label>
+                </div>
+                <textarea id="input-feedback" placeholder="Por ejemplo: Hacer rondas de aula preguntando '¿Qué tienes hasta ahora?', señalar los puntos fuertes antes de indicar las áreas de mejora, hacer preguntas guía ('¿Cómo podrías profundizar en esto?') en lugar de dar respuestas directas, utilizar rúbricas de un solo punto para autoevaluación, y permitir la reentrega de la tarea para aplicar las mejoras..."></textarea>
+            </div>
+        </div>
+
+        <!-- PASO 10: Asistente de evaluación -->
+        <div class="step" id="step-10">
+            <h2>9. Asistente de evaluación</h2>
+            <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1.5rem;">
+                Utiliza la inteligencia artificial para crear los instrumentos de evaluación basándote en lo que has diseñado.
+            </p>
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Generador de rúbricas</strong>
+                    <p>Crea una rúbrica de un solo punto adaptada a la actividad.</p>
+                    <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
+                </div>
+                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">📝 Generar rúbrica (IA)</button>
+            </div>
+            
+            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
+                <div class="label-wrapper">
+                    <label for="input-rubrica">Rúbrica generada</label>
+                </div>
+                <div id="input-rubrica" class="rich-text-box" contenteditable="true" data-placeholder="Pega aquí la tabla generada por la IA."></div>
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn" id="btn-word" onclick="generarDocumentoWord()" style="background-color: #2B579A; color: #FFFFFF; border-color: #2B579A;">Exportar a Word</button>
+                <button class="btn" id="btn-finish" onclick="generarDocumentoPDF()" style="background-color: #007E33; color: #FFFFFF; border-color: #007E33;">Generar documento pdf</button>
+            </div>
+        </div>
+
+        <!-- PASO 11: Para saber más -->
+        <div class="step" id="step-11">
+            <h2>10. Para saber más</h2>
+            <div style="margin-bottom: 1.5rem;">
+                <p style="font-size: 14px; margin-bottom: 0.5rem;"><strong>¿Por dónde empezar? Herramientas prácticas</strong></p>
+                <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1.5rem;">Aplicar esta metodología y registrar las evidencias no tiene por qué suponer una sobrecarga de trabajo. Aquí tienes algunas opciones para llevarlo al aula de forma ágil:</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">📱</div>
+                        <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Paneles y Lumio</h3>
+                        <p style="font-size: 14px; margin-bottom: 0;">Si inicias sesión en el panel de tu aula con tu cuenta oficial (<em>@educastillalamancha.es</em>), cualquier pizarra blanca que crees (por ejemplo, la "espina de pez") se guardará automáticamente en la nube. Accederás al material desde tu ordenador sin digitalizar nada.</p>
+                    </div>
+                    
+                    <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">💻</div>
+                        <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Herramientas digitales</h3>
+                        <p style="font-size: 14px; margin-bottom: 0;">Plataformas accesibles e intuitivas como <a href="https://www.canva.com/" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Canva</a> son muy útiles tanto para ti (a la hora de crear los materiales y guías) como para que el alumnado diseñe sus propios retos finales de forma atractiva.</p>
+                    </div>
+                    
+                    <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">📝</div>
+                        <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Alternativas analógicas</h3>
+                        <p style="font-size: 14px; margin-bottom: 0;">No siempre hace falta software complejo. Usa un <a href="https://powerpoint.cloud.microsoft/es-es/" target="_blank" style="color: var(--primary-color); text-decoration: underline;">PowerPoint</a> básico, o trabaja de forma analógica sobre una mesa con un folio y notas adhesivas (post-its). Al terminar, sácale una foto con la tableta para conservar la información.</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-box-icon">🔗</div>
+                    <div class="tip-box-text">
+                        <p><strong>Enlaces de interés:</strong></p>
+                        <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem; font-size: 14px;">
+                            <li><a href="https://educacion.castillalamancha.es/inclusion-convivencia/altas-capacidades/unidad-para-la-atencion-al-alumnado-con-altas-capacidadestalento" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">Unidad para la atención al alumnado con altas capacidades/talento</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASO 12: Créditos -->
+        <div class="step" id="step-12">
+            <h2>11. Créditos</h2>
+            <div class="tip-box">
+                <div class="tip-box-icon">🎓</div>
+                <div class="tip-box-text">
+                    <p><strong>Créditos y referencias:</strong></p>
+                    <p>Este asistente ha sido diseñado basándose en los principios del Diseño Universal para el Aprendizaje (DUA) y el Modelo de Enriquecimiento para toda la Escuela (SEM).</p>
+                    <p style="margin-top: 1rem;"><strong>Autores:</strong></p>
+                    <ul style="list-style-type: none; margin-top: 0.2rem; margin-bottom: 0; padding-left: 0; font-size: 14px; line-height: 1.6;">
+                        <li>Lola Bonillo (ATD Altas Capacidades) - <a href="mailto:mbonillo@jccm.es" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">mbonillo@jccm.es</a></li>
+                        <li>Antonio Miñán (DTDR) - <a href="mailto:antonio.minan@jccm.es" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">antonio.minan@jccm.es</a></li>
+                        <li>Lucía Serrano (DTDR) - <a href="mailto:lucia.serrano@jccm.es" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">lucia.serrano@jccm.es</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controles del Wizard -->
+    <div class="wizard-nav" id="wizard-nav" style="display: none;">
+        <div class="wizard-nav-left">
+            <button class="btn" id="btn-prev" onclick="cambiarPaso(-1)">Anterior</button>
+        </div>
+        <div class="wizard-nav-right">
+            <button class="btn" id="btn-next" onclick="cambiarPaso(1)">Siguiente</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 'Para saber más' -->
+<div class="modal-overlay" id="info-modal">
+    <div class="modal-box">
+        <button class="modal-close" onclick="cerrarModal()">×</button>
+        <h3 class="modal-title" id="modal-title">Título</h3>
+        <p id="modal-body" style="font-size: 15px; color: var(--text-color); line-height: 1.6; white-space: pre-wrap; text-align: left;">Contenido...</p>
+    </div>
+</div>
+
+<!-- PLANTILLA OCULTA PARA EL PDF/WORD GENERADO -->
+<div id="pdf-template">
+    <div class="pdf-header">
+        <img src="https://i.postimg.cc/zByLdX0k/Logo-Altas-Capacidades-jpg.webp" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous">
+        <h1>Planificación de actividad multinivel</h1>
+        <p><strong>Modelo de Enriquecimiento para toda la Escuela (SEM)</strong></p>
+    </div>
+
+    <div class="pdf-section">
+        <h2>1. Contexto curricular</h2>
+        <div class="pdf-text">
+            <strong>Etapa y materia:</strong> <span id="pdf-etapa-materia"></span><br>
+            <strong>Contenido subyacente:</strong> <span id="pdf-tema"></span><br>
+            <strong>Título para el alumnado:</strong> <span id="pdf-titulo-alumnado"></span>
+        </div>
+        
+        <div class="pdf-text" style="margin-top: 15px;">
+            <strong>Competencias específicas seleccionadas:</strong><br>
+            <span id="pdf-competencia"></span>
+        </div>
+        
+    </div>
+
+    <div class="pdf-grid pdf-section">
+        <div>
+            <h2>Criterios&nbsp;de&nbsp;evaluación</h2>
+            <ul class="pdf-list" id="pdf-criterios-list">
+            </ul>
+        </div>
+        <div>
+            <h2>Saberes&nbsp;básicos</h2>
+            <ul class="pdf-list" id="pdf-saberes-list">
+            </ul>
+        </div>
+    </div>
+
+    <div class="pdf-section">
+        <h2>2. Disparador de pensamiento</h2>
+        <div class="pdf-text"><strong>Pregunta disparadora:</strong></div>
+        <div class="pdf-text" id="pdf-disparador-pregunta-principal"></div>
+        <div class="pdf-text" style="margin-top: 10px;"><strong>Material o contexto inicial:</strong></div>
+        <div class="pdf-text" id="pdf-disparador-material"></div>
+        <div class="pdf-text" style="margin-top: 10px;"><strong>Preguntas para el debate:</strong></div>
+        <div class="pdf-text" id="pdf-disparador-preguntas"></div>
+    </div>
+
+    <div class="pdf-section">
+        <h2>3. El reto</h2>
+        <div class="pdf-text" id="pdf-reto"></div>
+    </div>
+
+    <div class="pdf-section">
+        <h2>4. Acompañamiento: <em>feedforward</em></h2>
+        <div class="pdf-text"><em>Ayudas y andamiajes previos previstos para orientar el antes y el durante:</em></div>
+        <div class="pdf-text" id="pdf-feedforward"></div>
+    </div>
+
+    <div class="pdf-section">
+        <h2>5. Retroalimentación: <em>feedback</em></h2>
+        <div class="pdf-text"><em>Mecanismos de retroalimentación formativa y guía durante el proceso:</em></div>
+        <div class="pdf-text" id="pdf-feedback"></div>
+        
+        <div class="pdf-text" style="margin-top: 10px;" id="pdf-rubrica"></div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #555555; border-top: 1px solid #767676; padding-top: 10px;">
+        Documento generado automáticamente por el asistente multinivel.
+    </div>
+</div>
+
+<script>
+    // --- DATOS: MATERIAS Y ETAPAS ---
+    const materiasInfantil = [
+        "Crecimiento en Armonía", 
+        "Descubrimiento y Exploración del Entorno", 
+        "Comunicación y Representación de la Realidad"
+    ];
+
+    const materiasPrimaria = [
+        "Conocimiento del Medio Natural, Social y Cultural", "Educación Artística", 
+        "Educación Física", "Lengua Castellana y Literatura", "Lengua Extranjera (Inglés)",
+        "Lengua Extranjera (Francés)", "Matemáticas", "Educación en Valores Cívicos y Éticos", "Religión"
+    ];
+    
+    const materiasSecundaria = [
+        "Biología y Geología", "Geografía e Historia", "Lengua Castellana y Literatura", 
+        "Matemáticas", "Educación Física", "Lengua Extranjera (Inglés)", "Lengua Extranjera (Francés)",
+        "Tecnología y Digitalización", "Educación Plástica, Visual y Audiovisual", "Música", 
+        "Física y Química", "Educación en Valores Cívicos y Éticos", "Economía y Emprendimiento",
+        "Cultura Clásica", "Latín", "Filosofía", "Formación y Orientación Personal y Profesional", "Religión"
+    ];
+
+    const MATERIAS = {
+        infantil: materiasInfantil,
+        primaria_c1: materiasPrimaria,
+        primaria_c2: materiasPrimaria,
+        primaria_c3: materiasPrimaria,
+        secundaria_1_3: materiasSecundaria,
+        secundaria_4: materiasSecundaria,
+        bachillerato: [
+            "Lengua Castellana y Literatura", "Matemáticas", "Matemáticas Aplicadas a las Ciencias Sociales",
+            "Historia de España", "Historia de la Filosofía", "Lengua Extranjera (Inglés)", 
+            "Lengua Extranjera (Francés)", "Biología", "Geología y Ciencias Ambientales", "Física", 
+            "Química", "Economía", "Historia del Arte", "Geografía", "Latín", "Griego", "Dibujo Técnico",
+            "Análisis Musical", "Coro y Técnica Vocal", "Literatura Universal", "Psicología",
+            "Tecnología e Ingeniería", "Cultura Audiovisual"
+        ]
+    };
+
+    // --- CURRÍCULO CACHED EN MEMORIA ---
+    const CURRICULO_CLM = {};
+
+    function actualizarMaterias() {
+        const etapa = document.getElementById('sel-etapa').value;
+        const selectMateria = document.getElementById('sel-materia');
+        selectMateria.innerHTML = '<option value="">Seleccione materia...</option>';
+        if (MATERIAS[etapa]) {
+            MATERIAS[etapa].forEach(materia => {
+                const option = document.createElement('option');
+                option.value = materia;
+                option.textContent = materia;
+                selectMateria.appendChild(option);
+            });
+        }
+        prepararCurriculo(); 
+    }
+
+    // Función principal asíncrona para cargar el currículo
+    async function prepararCurriculo() {
+        const etapa = document.getElementById('sel-etapa').value;
+        const materia = document.getElementById('sel-materia').value;
+        const boxCompetencias = document.getElementById('box-competencias');
+        const contenedorSaberes = document.getElementById('contenedor-saberes-criterios');
+
+        boxCompetencias.innerHTML = '<div class="empty-state">Seleccione materia en el paso anterior...</div>';
+        contenedorSaberes.innerHTML = '<div class="empty-state">Selecciona al menos una competencia en el paso anterior.</div>';
+        
+        if (!etapa || !materia) return;
+
+        // Si ya lo tenemos en memoria, lo mostramos directo
+        if (CURRICULO_CLM[etapa] && CURRICULO_CLM[etapa][materia]) {
+            renderizarCheckboxCompetencias(etapa, materia);
+            return;
+        }
+
+        // Buscamos el archivo con la estructura: valorEtapa - materia.md
+        // Ejemplo: infantil - Crecimiento en Armonía.md
+        boxCompetencias.innerHTML = '<div class="empty-state">Buscando currículo automáticamente...</div>';
+        
+        try {
+            const nombreArchivo = `${etapa} - ${materia}.md`;
+            // Codificamos la URL para evitar problemas en servidores (como Github) con espacios y tildes
+            const urlSegura = encodeURI(`./${nombreArchivo}`);
+            const respuesta = await fetch(urlSegura);
+            
+            if (!respuesta.ok) {
+                throw new Error("No se pudo localizar el archivo localmente");
+            }
+            
+            const textoMarkdown = await respuesta.text();
+            const competenciasParseadas = parsearMarkdown(textoMarkdown);
+            
+            // Guardamos en memoria lo que hemos descargado
+            if (!CURRICULO_CLM[etapa]) CURRICULO_CLM[etapa] = {};
+            CURRICULO_CLM[etapa][materia] = competenciasParseadas;
+            
+            renderizarCheckboxCompetencias(etapa, materia);
+
+        } catch (error) {
+            console.log("No se ha encontrado el archivo local:", error);
+            
+            // Si hay un error, dejamos el contenedor vacío y con un mensaje neutro
+            boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
+            
+            if (!CURRICULO_CLM[etapa]) CURRICULO_CLM[etapa] = {};
+            CURRICULO_CLM[etapa][materia] = []; 
+        }
+    }
+
+    // Dibuja los checkboxes de la fase 3
+    function renderizarCheckboxCompetencias(etapa, materia) {
+        const boxCompetencias = document.getElementById('box-competencias');
+        boxCompetencias.innerHTML = '';
+        const competencias = CURRICULO_CLM[etapa][materia];
+
+        if (!competencias || competencias.length === 0) {
+             boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
+             return;
+        }
+        
+        competencias.forEach((comp, index) => {
+            boxCompetencias.innerHTML += `<div class="curriculum-item"><input type="checkbox" id="comp_${index}" value="${index}" onchange="cargarSaberesYCriterios()"><label for="comp_${index}">${comp.texto}</label></div>`;
+        });
+    }
+
+    // Dibuja los criterios y saberes en la fase 4
+    function cargarSaberesYCriterios() {
+        const etapa = document.getElementById('sel-etapa').value;
+        const materia = document.getElementById('sel-materia').value;
+        const contenedorSaberes = document.getElementById('contenedor-saberes-criterios');
+        const competenciasChecks = document.querySelectorAll('#box-competencias input[type="checkbox"]:checked');
+
+        if (competenciasChecks.length === 0) {
+            contenedorSaberes.innerHTML = '<div class="empty-state">Selecciona al menos una competencia en el paso anterior.</div>';
+            return;
+        }
+
+        contenedorSaberes.innerHTML = '';
+
+        competenciasChecks.forEach(chk => {
+            const indexComp = chk.value;
+            const data = CURRICULO_CLM[etapa][materia][indexComp];
+            
+            const textoTitulo = data.texto.length > 120 ? data.texto.substring(0, 120) + "..." : data.texto;
+
+            let htmlCriterios = '';
+            data.criterios.forEach((crit, i) => {
+                const uniqueId = `crit_${indexComp}_${i}`;
+                htmlCriterios += `<div class="curriculum-item"><input type="checkbox" id="${uniqueId}" class="chk-criterio"><label for="${uniqueId}">${crit}</label></div>`;
+            });
+
+            let htmlSaberes = '';
+            data.saberes.forEach((saber, i) => {
+                const uniqueId = `saber_${indexComp}_${i}`;
+                htmlSaberes += `<div class="curriculum-item"><input type="checkbox" id="${uniqueId}" class="chk-saber"><label for="${uniqueId}">${saber}</label></div>`;
+            });
+
+            contenedorSaberes.innerHTML += `
+                <div class="competencia-group" style="margin-bottom: 2rem;">
+                    <h3 style="font-size: 15px; color: var(--primary-color); margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.4rem;">
+                        ${textoTitulo}
+                    </h3>
+                    <div class="grid-2col">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <div class="label-wrapper"><label>Criterios de evaluación</label></div>
+                            <div class="curriculum-box">
+                                ${htmlCriterios}
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <div class="label-wrapper"><label>Saberes básicos</label></div>
+                            <div class="curriculum-box">
+                                ${htmlSaberes}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    // --- MOTOR DE LECTURA DE MARKDOWN ---
+    function parsearMarkdown(texto) {
+        const lineas = texto.split('\n');
+        let competencias = [];
+        let compActual = null;
+
+        lineas.forEach(linea => {
+            const limpia = linea.trim().replace(/\*\*/g, '');
+            if (limpia.startsWith('### ')) {
+                if (compActual) competencias.push(compActual);
+                compActual = {
+                    id: "CE_" + (competencias.length + 1),
+                    texto: limpia.substring(4).trim(),
+                    criterios: [],
+                    saberes: []
+                };
+            } else if (limpia.startsWith('#### ')) {
+                if (compActual) {
+                    compActual.criterios.push(limpia.substring(5).trim());
+                }
+            } else if (limpia.startsWith('##### ')) {
+                if (compActual) {
+                    compActual.saberes.push(limpia.substring(6).trim());
+                }
+            }
+        });
+        
+        if (compActual) competencias.push(compActual);
+        return competencias;
+    }
+
+    // Funciones vacías para evitar errores de consola
+    function actualizarPromptsIA() {}
+    function copiarPrompt(idTextArea) {}
+    function mostrarToast() {}
+
+    // Para vincular eventos de actualización a los textareas en tiempo real
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputDispPregPrinc = document.getElementById('input-disparador-pregunta-principal');
+        if (inputDispPregPrinc) inputDispPregPrinc.addEventListener('input', actualizarPromptsIA);
+
+        const inputDispMat = document.getElementById('input-disparador-material');
+        if (inputDispMat) inputDispMat.addEventListener('input', actualizarPromptsIA);
+        
+        const inputDispPreg = document.getElementById('input-disparador-preguntas');
+        if (inputDispPreg) inputDispPreg.addEventListener('input', actualizarPromptsIA);
+
+        const inputReto = document.getElementById('input-reto');
+        if (inputReto) inputReto.addEventListener('input', actualizarPromptsIA);
+    });
+
+    // --- LÓGICA DEL WIZARD ---
+    let pasoActual = 1;
+    const totalPasos = 12;
+    const nombresPasos = ["Inicio", "Contexto inicial", "Eje central", "Competencia específica", "Saberes y criterios", "Disparador de pensamiento", "El reto final", "Acompañamiento", "Retroalimentación", "Asistente de evaluación", "Para saber más", "Créditos"];
+
+    function cambiarPaso(direccion) {
+        document.getElementById(`step-${pasoActual}`).classList.remove('active');
+        pasoActual += direccion;
+        document.getElementById(`step-${pasoActual}`).classList.add('active');
+        actualizarInterfazWizard();
+    }
+
+    function actualizarInterfazWizard() {
+        const progressContainer = document.getElementById('progress-container');
+        const progressText = document.getElementById('progress-text');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const wizardNav = document.getElementById('wizard-nav');
+
+        if (pasoActual === 1) {
+            progressContainer.style.display = 'none';
+            progressText.style.display = 'none';
+            wizardNav.style.display = 'none';
+        } else {
+            progressContainer.style.display = 'block';
+            progressText.style.display = 'block';
+            wizardNav.style.display = 'flex';
+            
+            btnPrev.disabled = (pasoActual === 2);
+            
+            let pasoVisible = pasoActual - 1;
+            let porcentaje = 0;
+            
+            if (pasoActual <= 10) {
+                porcentaje = (pasoVisible / 9) * 100;
+                progressText.textContent = `Paso ${pasoVisible} de 9: ${nombresPasos[pasoActual-1]}`;
+            } else {
+                porcentaje = 100;
+                progressText.textContent = `Información adicional: ${nombresPasos[pasoActual-1]}`;
+            }
+            
+            document.getElementById('progress-bar').style.width = `${porcentaje}%`;
+        }
+        
+        if (pasoActual === totalPasos) {
+            btnNext.style.display = 'none';
+        } else {
+            btnNext.style.display = 'inline-block';
+            if (pasoActual === 10) {
+                btnNext.textContent = 'Para saber más';
+            } else if (pasoActual === 11) {
+                btnNext.textContent = 'Créditos';
+            } else {
+                btnNext.textContent = 'Siguiente';
+            }
+        }
+    }
+
+    // --- MODALES Y AYUDA ---
+    function toggleHelp(helpId) {
+        const helpElement = document.getElementById(helpId);
+        if (helpElement.classList.contains('active')) {
+            helpElement.classList.remove('active');
+        } else {
+            document.querySelectorAll('.help-content').forEach(el => el.classList.remove('active'));
+            helpElement.classList.add('active');
+        }
+    }
+
+    function abrirModal(titulo, texto) {
+        document.getElementById('modal-title').innerHTML = titulo;
+        document.getElementById('modal-body').innerHTML = texto;
+        document.getElementById('info-modal').classList.add('active');
+    }
+
+    function cerrarModal() {
+        document.getElementById('info-modal').classList.remove('active');
+    }
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error al intentar iniciar el modo pantalla completa: ${err.message}`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
+    // --- PREPARACIÓN Y EXPORTACIÓN ---
+    function prepararDatosDocumento() {
+        const etapaSel = document.getElementById('sel-etapa');
+        const materiaSel = document.getElementById('sel-materia');
+        
+        const etapa = etapaSel.options[etapaSel.selectedIndex]?.text || 'No definida';
+        const materia = materiaSel.options[materiaSel.selectedIndex]?.text || 'No definida';
+        const tema = document.getElementById('input-tema').value || 'Sin especificar';
+        const tituloAlumnado = document.getElementById('input-titulo-alumnado').value || 'Sin especificar';
+        
+        let competenciaTexto = 'No seleccionada';
+        const etapaVal = etapaSel.value;
+        const materiaVal = materiaSel.value;
+        const competenciasChecks = document.querySelectorAll('#box-competencias input[type="checkbox"]:checked');
+        
+        if (etapaVal && materiaVal && competenciasChecks.length > 0 && CURRICULO_CLM[etapaVal] && CURRICULO_CLM[etapaVal][materiaVal]) {
+            const selectedIndices = Array.from(competenciasChecks).map(chk => chk.value);
+            competenciaTexto = selectedIndices.map(index => CURRICULO_CLM[etapaVal][materiaVal][index].texto).join('<br><br>');
+        }
+        
+        const disparadorPregunta = document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.';
+        const disparadorMaterial = document.getElementById('input-disparador-material').value || 'No se ha definido material inicial.';
+        const disparadorPreguntas = document.getElementById('input-disparador-preguntas').value || 'No se han definido preguntas abiertas.';
+        const reto = document.getElementById('input-reto').value || 'No se ha definido el reto.';
+        const feedforward = document.getElementById('input-feedforward').value || 'No se han definido ayudas previas.';
+        const feedback = document.getElementById('input-feedback').value || 'No se ha definido retroalimentación.';
+        
+        let rubrica = document.getElementById('input-rubrica').innerHTML.trim();
+
+        if(rubrica !== '' && rubrica !== '<br>') {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = rubrica;
+            tempDiv.querySelectorAll('*').forEach(el => {
+                el.removeAttribute('style');
+                el.removeAttribute('class');
+                el.removeAttribute('width');
+                el.removeAttribute('height');
+                el.removeAttribute('bgcolor');
+            });
+            rubrica = tempDiv.innerHTML.trim();
+        }
+
+        const criteriosChecks = document.querySelectorAll('#contenedor-saberes-criterios .chk-criterio:checked');
+        const saberesChecks = document.querySelectorAll('#contenedor-saberes-criterios .chk-saber:checked');
+
+        document.getElementById('pdf-etapa-materia').textContent = `${etapa} - ${materia}`;
+        document.getElementById('pdf-tema').textContent = tema;
+        document.getElementById('pdf-titulo-alumnado').textContent = tituloAlumnado;
+        document.getElementById('pdf-competencia').innerHTML = competenciaTexto; 
+        document.getElementById('pdf-disparador-pregunta-principal').textContent = disparadorPregunta;
+        document.getElementById('pdf-disparador-material').textContent = disparadorMaterial;
+        document.getElementById('pdf-disparador-preguntas').textContent = disparadorPreguntas;
+        document.getElementById('pdf-reto').textContent = reto;
+        document.getElementById('pdf-feedforward').textContent = feedforward;
+        document.getElementById('pdf-feedback').textContent = feedback;
+        
+        const cajaRubrica = document.getElementById('pdf-rubrica');
+        if(rubrica !== '' && rubrica !== '<br>') {
+            cajaRubrica.innerHTML = `<strong>Rúbrica de un solo punto:</strong><br>${rubrica}`;
+        } else {
+            cajaRubrica.innerHTML = '';
+        }
+
+        const ulCriterios = document.getElementById('pdf-criterios-list');
+        ulCriterios.innerHTML = '';
+        if(criteriosChecks.length > 0) {
+            criteriosChecks.forEach(chk => {
+                const labelText = chk.nextElementSibling.textContent;
+                ulCriterios.innerHTML += `<li>${labelText}</li>`;
+            });
+        } else {
+            ulCriterios.innerHTML = '<li><em>Ninguno seleccionado</em></li>';
+        }
+
+        const ulSaberes = document.getElementById('pdf-saberes-list');
+        ulSaberes.innerHTML = '';
+        if(saberesChecks.length > 0) {
+            saberesChecks.forEach(chk => {
+                const labelText = chk.nextElementSibling.textContent;
+                ulSaberes.innerHTML += `<li>${labelText}</li>`;
+            });
+        } else {
+            ulSaberes.innerHTML = '<li><em>Ninguno seleccionado</em></li>';
+        }
+    }
+
+    function generarDocumentoPDF() {
+        const btnFinal = document.getElementById('btn-finish');
+        btnFinal.textContent = 'Generando...';
+        btnFinal.disabled = true;
+
+        prepararDatosDocumento();
+
+        const elementoPlantilla = document.getElementById('pdf-template');
+        elementoPlantilla.style.display = 'block'; 
+        
+        const tema = document.getElementById('input-tema').value || 'Actividad';
+
+        const opcionesPDF = {
+            margin:       15,
+            filename:     `Planificacion_${tema.replace(/\s+/g, '_')}.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak:    { mode: ['css', 'legacy'] }
+        };
+
+        html2pdf().set(opcionesPDF).from(elementoPlantilla).save().then(() => {
+            elementoPlantilla.style.display = 'none';
+            btnFinal.textContent = 'Generar documento pdf';
+            btnFinal.disabled = false;
+        }).catch(err => {
+            console.error('Error generando pdf:', err);
+            elementoPlantilla.style.display = 'none';
+            btnFinal.textContent = 'Error. Reintentar';
+            btnFinal.disabled = false;
+        });
+    }
+
+    function generarDocumentoWord() {
+        prepararDatosDocumento();
+        const elementoPlantilla = document.getElementById('pdf-template');
+        const clon = elementoPlantilla.cloneNode(true);
+        clon.style.display = 'block';
+
+        const imgPlantilla = elementoPlantilla.querySelector('img');
+        const imgClon = clon.querySelector('img');
+        if (imgPlantilla && imgPlantilla.complete) {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = imgPlantilla.naturalWidth;
+                canvas.height = imgPlantilla.naturalHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(imgPlantilla, 0, 0);
+                imgClon.src = canvas.toDataURL('image/jpeg');
+                imgClon.style.width = '15%';
+                imgClon.setAttribute('width', '150');
+            } catch (e) {
+                console.error('Error al incrustar la imagen en Word:', e);
+            }
+        }
+
+        const styles = `
+            <style>
+                body { font-family: Arial, sans-serif; color: #333333; }
+                h1 { color: #3C5AD9; font-size: 24px; margin-bottom: 5px; }
+                h2 { color: #3C5AD9; font-size: 18px; border-bottom: 2px solid #3C5AD9; padding-bottom: 4px; margin-bottom: 12px; margin-top: 25px; }
+                p { margin-bottom: 10px; line-height: 1.5; }
+                ul { margin-bottom: 10px; }
+                li { margin-bottom: 5px; }
+                table { border-collapse: collapse; width: 100%; margin-top: 10px; margin-bottom: 15px; font-size: 14px; }
+                th, td { border: 1px solid #767676; padding: 8px; text-align: left; }
+                th { background-color: #F4F8FB; color: #3C5AD9; font-weight: bold; }
+                .pdf-header { border-bottom: 4px solid #3C5AD9; padding-bottom: 15px; margin-bottom: 20px; }
+                .pdf-header img { width: 150px; }
+                .pdf-grid { display: block; }
+            </style>
+        `;
+
+        const htmlDocument = `
+            <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+            <head>
+                <meta charset='utf-8'>
+                <title>Actividad Multinivel</title>
+                ${styles}
+            </head>
+            <body>
+                ${clon.innerHTML}
+            </body>
+            </html>
+        `;
+
+        const blob = new Blob(['\ufeff', htmlDocument], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        
+        const tema = document.getElementById('input-tema').value || 'Actividad';
+        link.download = `Planificacion_${tema.replace(/\s+/g, '_')}.doc`;
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+</body>
+</html>
