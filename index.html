@@ -720,13 +720,6 @@
         }
         
         #pdf-template .pdf-list li { margin-bottom: 5px; }
-        
-        #pdf-template .pdf-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-            page-break-inside: avoid; 
-        }
 
         #pdf-template table {
             width: 100%;
@@ -1162,17 +1155,9 @@
         
     </div>
 
-    <div class="pdf-grid pdf-section">
-        <div>
-            <h2>Criterios&nbsp;de&nbsp;evaluación</h2>
-            <ul class="pdf-list" id="pdf-criterios-list">
-            </ul>
-        </div>
-        <div>
-            <h2>Saberes&nbsp;básicos</h2>
-            <ul class="pdf-list" id="pdf-saberes-list">
-            </ul>
-        </div>
+    <div class="pdf-section">
+        <h2>Criterios de evaluación y Saberes básicos</h2>
+        <div id="pdf-criterios-saberes-container"></div>
     </div>
 
     <div class="pdf-section">
@@ -1352,39 +1337,37 @@
             const indexComp = chk.value;
             const data = CURRICULO_CLM[etapa][materia][indexComp];
             
-            const textoTitulo = data.texto.length > 120 ? data.texto.substring(0, 120) + "..." : data.texto;
-
-            let htmlCriterios = '';
+            let htmlCriteriosSaberes = '';
+            
             data.criterios.forEach((crit, i) => {
-                const uniqueId = `crit_${indexComp}_${i}`;
-                htmlCriterios += `<div class="curriculum-item"><input type="checkbox" id="${uniqueId}" class="chk-criterio"><label for="${uniqueId}">${crit}</label></div>`;
-            });
+                const idCrit = `crit_${indexComp}_${i}`;
+                let htmlSaberes = '';
+                
+                crit.saberes.forEach((saber, j) => {
+                    const idSaber = `saber_${indexComp}_${i}_${j}`;
+                    htmlSaberes += `<div class="curriculum-item" style="padding-bottom: 0.3rem; margin-bottom: 0.3rem; border-bottom: 1px dashed #EAEAEA;"><input type="checkbox" id="${idSaber}" class="chk-saber"><label for="${idSaber}">${saber}</label></div>`;
+                });
 
-            let htmlSaberes = '';
-            data.saberes.forEach((saber, i) => {
-                const uniqueId = `saber_${indexComp}_${i}`;
-                htmlSaberes += `<div class="curriculum-item"><input type="checkbox" id="${uniqueId}" class="chk-saber"><label for="${uniqueId}">${saber}</label></div>`;
+                htmlCriteriosSaberes += `
+                    <div class="bloque-criterio-saber" style="margin-bottom: 1.5rem; background-color: #FDFDFD; border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 1rem;">
+                        <div class="curriculum-item" style="border-bottom: 2px solid #EAEAEA; padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+                            <input type="checkbox" id="${idCrit}" class="chk-criterio">
+                            <label for="${idCrit}" style="font-weight: bold; color: var(--primary-color); font-size: 15px;">${crit.texto}</label>
+                        </div>
+                        <div style="padding-left: 2rem;">
+                            <div class="label-wrapper"><label style="font-size: 13px; color: var(--secondary-color); font-style: italic;">Saberes básicos vinculados:</label></div>
+                            ${htmlSaberes || '<div class="empty-state" style="padding:0; text-align:left;">No hay saberes específicos vinculados.</div>'}
+                        </div>
+                    </div>
+                `;
             });
 
             contenedorSaberes.innerHTML += `
                 <div class="competencia-group" style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 15px; color: var(--primary-color); margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.4rem;">
-                        ${textoTitulo}
+                    <h3 style="font-size: 15px; color: var(--text-color); margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.4rem;">
+                        ${data.texto}
                     </h3>
-                    <div class="grid-2col">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <div class="label-wrapper"><label>Criterios de evaluación</label></div>
-                            <div class="curriculum-box">
-                                ${htmlCriterios}
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <div class="label-wrapper"><label>Saberes básicos</label></div>
-                            <div class="curriculum-box">
-                                ${htmlSaberes}
-                            </div>
-                        </div>
-                    </div>
+                    ${htmlCriteriosSaberes}
                 </div>
             `;
         });
@@ -1395,6 +1378,7 @@
         const lineas = texto.split('\n');
         let competencias = [];
         let compActual = null;
+        let critActual = null;
 
         lineas.forEach(linea => {
             const limpia = linea.trim().replace(/\*\*/g, '');
@@ -1403,16 +1387,20 @@
                 compActual = {
                     id: "CE_" + (competencias.length + 1),
                     texto: limpia.substring(4).trim(),
-                    criterios: [],
-                    saberes: []
+                    criterios: []
                 };
+                critActual = null; // Resetea el criterio al cambiar de competencia
             } else if (limpia.startsWith('#### ')) {
                 if (compActual) {
-                    compActual.criterios.push(limpia.substring(5).trim());
+                    critActual = {
+                        texto: limpia.substring(5).trim(),
+                        saberes: []
+                    };
+                    compActual.criterios.push(critActual);
                 }
             } else if (limpia.startsWith('##### ')) {
-                if (compActual) {
-                    compActual.saberes.push(limpia.substring(6).trim());
+                if (critActual) {
+                    critActual.saberes.push(limpia.substring(6).trim());
                 }
             }
         });
@@ -1574,9 +1562,6 @@
             rubrica = tempDiv.innerHTML.trim();
         }
 
-        const criteriosChecks = document.querySelectorAll('#contenedor-saberes-criterios .chk-criterio:checked');
-        const saberesChecks = document.querySelectorAll('#contenedor-saberes-criterios .chk-saber:checked');
-
         document.getElementById('pdf-etapa-materia').textContent = `${etapa} - ${materia}`;
         document.getElementById('pdf-tema').textContent = tema;
         document.getElementById('pdf-titulo-alumnado').textContent = tituloAlumnado;
@@ -1595,26 +1580,44 @@
             cajaRubrica.innerHTML = '';
         }
 
-        const ulCriterios = document.getElementById('pdf-criterios-list');
-        ulCriterios.innerHTML = '';
-        if(criteriosChecks.length > 0) {
-            criteriosChecks.forEach(chk => {
-                const labelText = chk.nextElementSibling.textContent;
-                ulCriterios.innerHTML += `<li>${labelText}</li>`;
+        // --- Generación anidada para el PDF ---
+        const pdfContenedor = document.getElementById('pdf-criterios-saberes-container');
+        pdfContenedor.innerHTML = '';
+        
+        const uiCompGroups = document.querySelectorAll('#contenedor-saberes-criterios .competencia-group');
+        uiCompGroups.forEach(uiComp => {
+            const tituloComp = uiComp.querySelector('h3').textContent;
+            let htmlInner = '';
+            
+            const bloquesCriterio = uiComp.querySelectorAll('.bloque-criterio-saber');
+            bloquesCriterio.forEach(bloque => {
+                const critCheck = bloque.querySelector('.chk-criterio');
+                const saberChecks = bloque.querySelectorAll('.chk-saber:checked');
+                
+                if (critCheck.checked || saberChecks.length > 0) {
+                    if (critCheck.checked) {
+                        htmlInner += `<div class="pdf-text"><strong>${critCheck.nextElementSibling.textContent}</strong></div>`;
+                    }
+                    if (saberChecks.length > 0) {
+                        htmlInner += `<ul class="pdf-list">`;
+                        saberChecks.forEach(s => {
+                            htmlInner += `<li>${s.nextElementSibling.textContent}</li>`;
+                        });
+                        htmlInner += `</ul>`;
+                    }
+                }
             });
-        } else {
-            ulCriterios.innerHTML = '<li><em>Ninguno seleccionado</em></li>';
-        }
-
-        const ulSaberes = document.getElementById('pdf-saberes-list');
-        ulSaberes.innerHTML = '';
-        if(saberesChecks.length > 0) {
-            saberesChecks.forEach(chk => {
-                const labelText = chk.nextElementSibling.textContent;
-                ulSaberes.innerHTML += `<li>${labelText}</li>`;
-            });
-        } else {
-            ulSaberes.innerHTML = '<li><em>Ninguno seleccionado</em></li>';
+            
+            if (htmlInner !== '') {
+                pdfContenedor.innerHTML += `<div style="margin-bottom: 15px;">
+                    <div style="color: #3C5AD9; font-weight: bold; margin-bottom: 8px;">${tituloComp}</div>
+                    ${htmlInner}
+                </div>`;
+            }
+        });
+        
+        if (pdfContenedor.innerHTML === '') {
+            pdfContenedor.innerHTML = '<div class="pdf-text"><em>Ninguno seleccionado</em></div>';
         }
     }
 
