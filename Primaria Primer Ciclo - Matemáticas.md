@@ -36,50 +36,50 @@
 #### 8.2 Aceptar la tarea y rol asignado en el trabajo en equipo, cumpliendo con las responsabilidades individuales y contribuyendo a la consecución de los objetivos del grupo.
 #### 8.3 Conocer y desarrollar de manera guiada el lenguaje interpersonal positivo, para favorecer la gestión de emociones y el control de impulsos.
 
-#### A. Sentido numérico
-##### A.1.1 (Conteo) − Estrategias variadas de conteo y recuento sistemático en situaciones de la vida cotidiana en cantidades hasta el 999.
-##### A.2.1 (Cantidad) − Estimaciones razonadas de cantidades en contextos de resolución de problemas.
-##### A.2.2 (Cantidad) − Lectura, representación (incluida la recta numérica y con materiales manipulativos), composición, descomposición y recomposición de números naturales hasta 999.
-##### A.2.3 (Cantidad) − Representación de una misma cantidad de distintas formas (manipulativa, gráfica o numérica) y estrategias de elección de la representación adecuada para cada situación o problema.
-##### A.3.1 (Sentido de las operaciones) − Estrategias de cálculo mental con números naturales hasta 999.
-##### A.3.2 (Sentido de las operaciones) − Suma y resta de números naturales resueltas con flexibilidad y sentido: utilidad en situaciones contextualizadas, estrategias y herramientas de resolución y propiedades.
-##### A.4.1 (Relaciones) − Sistema de numeración de base diez (hasta el 999): aplicación de las relaciones que genera en las operaciones.
-##### A.4.2 (Relaciones) − Números naturales en contextos de la vida cotidiana: comparación y ordenación.
-##### A.4.3 (Relaciones) − Relaciones entre la suma y la resta: aplicación en contextos cotidianos.
-##### A.5.1 (Educación financiera) − Sistema monetario europeo: monedas (1, 2 euros) y billetes de euro (5, 10, 20, 50 y 100), valor y equivalencia.
+##### A. Sentido numérico
+###### A.1.1 (Conteo) − Estrategias variadas de conteo y recuento sistemático en situaciones de la vida cotidiana en cantidades hasta el 999.
+###### A.2.1 (Cantidad) − Estimaciones razonadas de cantidades en contextos de resolución de problemas.
+###### A.2.2 (Cantidad) − Lectura, representación (incluida la recta numérica y con materiales manipulativos), composición, descomposición y recomposición de números naturales hasta 999.
+###### A.2.3 (Cantidad) − Representación de una misma cantidad de distintas formas (manipulativa, gráfica o numérica) y estrategias de elección de la representación adecuada para cada situación o problema.
+###### A.3.1 (Sentido de las operaciones) − Estrategias de cálculo mental con números naturales hasta 999.
+###### A.3.2 (Sentido de las operaciones) − Suma y resta de números naturales resueltas con flexibilidad y sentido: utilidad en situaciones contextualizadas, estrategias y herramientas de resolución y propiedades.
+###### A.4.1 (Relaciones) − Sistema de numeración de base diez (hasta el 999): aplicación de las relaciones que genera en las operaciones.
+###### A.4.2 (Relaciones) − Números naturales en contextos de la vida cotidiana: comparación y ordenación.
+###### A.4.3 (Relaciones) − Relaciones entre la suma y la resta: aplicación en contextos cotidianos.
+###### A.5.1 (Educación financiera) − Sistema monetario europeo: monedas (1, 2 euros) y billetes de euro (5, 10, 20, 50 y 100), valor y equivalencia.
 
-#### B. Sentido de la medida
-##### B.1.1 (Magnitud) − Atributos mensurables de los objetos (longitud, masa, capacidad), distancias y tiempos.
-##### B.1.2 (Magnitud) − Unidades convencionales (metro, kilo y litro) y no convencionales en situaciones de la vida cotidiana.
-##### B.1.3 (Magnitud) − Unidades de medida del tiempo (año, mes, semana, día y hora) en situaciones de la vida cotidiana.
-##### B.2.1 (Medición) − Procesos para medir mediante repetición de una unidad y mediante la utilización de instrumentos convencionales (reglas, cintas métricas, balanzas, calendarios...) y no convencionales en contextos familiares.
-##### B.3.1 (Estimación y relaciones) − Estrategias de comparación directa y ordenación de medidas de la misma magnitud.
-##### B.3.2 (Estimación y relaciones) − Estimación de medidas (distancias, tamaños, masas, capacidades...) por comparación directa con otras medidas.
+##### B. Sentido de la medida
+###### B.1.1 (Magnitud) − Atributos mensurables de los objetos (longitud, masa, capacidad), distancias y tiempos.
+###### B.1.2 (Magnitud) − Unidades convencionales (metro, kilo y litro) y no convencionales en situaciones de la vida cotidiana.
+###### B.1.3 (Magnitud) − Unidades de medida del tiempo (año, mes, semana, día y hora) en situaciones de la vida cotidiana.
+###### B.2.1 (Medición) − Procesos para medir mediante repetición de una unidad y mediante la utilización de instrumentos convencionales (reglas, cintas métricas, balanzas, calendarios...) y no convencionales en contextos familiares.
+###### B.3.1 (Estimación y relaciones) − Estrategias de comparación directa y ordenación de medidas de la misma magnitud.
+###### B.3.2 (Estimación y relaciones) − Estimación de medidas (distancias, tamaños, masas, capacidades...) por comparación directa con otras medidas.
 
-#### C. Sentido espacial
-##### C.1.1 (Figuras geométricas de dos y tres dimensiones) − Figuras geométricas sencillas de dos dimensiones en objetos de la vida cotidiana: identificación y clasificación atendiendo a sus elementos.
-##### C.1.2 (Figuras geométricas de dos y tres dimensiones) − Estrategias y técnicas de construcción de figuras geométricas sencillas de una, dos o tres dimensiones de forma manipulativa.
-##### C.1.3 (Figuras geométricas de dos y tres dimensiones) − Vocabulario geométrico básico: descripción verbal de los elementos y las propiedades de figuras geométricas sencillas.
-##### C.1.4 (Figuras geométricas de dos y tres dimensiones) − Propiedades de figuras geométricas de dos dimensiones: exploración mediante materiales manipulables y herramientas digitales.
-##### C.2.1 (Localización y sistemas de representación) − Posición relativa de objetos en el espacio e interpretación de movimientos: descripción en referencia a uno mismo a través de vocabulario adecuado (arriba, abajo, delante, detrás, entre, más cerca que, menos cerca que, más lejos que, menos lejos que…).
-##### C.3.1 (Visualización, razonamiento y modelización geométrica) − Modelos geométricos en la resolución de problemas relacionados con los otros sentidos.
-##### C.3.2 (Visualización, razonamiento y modelización geométrica) − Relaciones geométricas: reconocimiento en el entorno.
+##### C. Sentido espacial
+###### C.1.1 (Figuras geométricas de dos y tres dimensiones) − Figuras geométricas sencillas de dos dimensiones en objetos de la vida cotidiana: identificación y clasificación atendiendo a sus elementos.
+###### C.1.2 (Figuras geométricas de dos y tres dimensiones) − Estrategias y técnicas de construcción de figuras geométricas sencillas de una, dos o tres dimensiones de forma manipulativa.
+###### C.1.3 (Figuras geométricas de dos y tres dimensiones) − Vocabulario geométrico básico: descripción verbal de los elementos y las propiedades de figuras geométricas sencillas.
+###### C.1.4 (Figuras geométricas de dos y tres dimensiones) − Propiedades de figuras geométricas de dos dimensiones: exploración mediante materiales manipulables y herramientas digitales.
+###### C.2.1 (Localización y sistemas de representación) − Posición relativa de objetos en el espacio e interpretación de movimientos: descripción en referencia a uno mismo a través de vocabulario adecuado (arriba, abajo, delante, detrás, entre, más cerca que, menos cerca que, más lejos que, menos lejos que…).
+###### C.3.1 (Visualización, razonamiento y modelización geométrica) − Modelos geométricos en la resolución de problemas relacionados con los otros sentidos.
+###### C.3.2 (Visualización, razonamiento y modelización geométrica) − Relaciones geométricas: reconocimiento en el entorno.
 
-#### D. Sentido algebraico
-##### D.1.1 (Patrones) − Estrategias para la identificación, descripción oral, descubrimiento de elementos ocultos y extensión de secuencias a partir de las regularidades en una colección de números, figuras o imágenes.
-##### D.2.1 (Modelo matemático) − Proceso guiado de modelización (dibujos, esquemas, diagramas, objetos manipulables, dramatizaciones...) en la comprensión y resolución de problemas de la vida cotidiana.
-##### D.3.1 (Relaciones y funciones) − Expresión de relaciones de igualdad y desigualdad mediante los signos = y ≠ entre expresiones que incluyan operaciones.
-##### D.3.2 (Relaciones y funciones) − Representación de la igualdad como expresión de una relación de equivalencia entre dos elementos y obtención de datos sencillos desconocidos (representados por medio de un símbolo) en cualquiera de los dos elementos.
-##### D.4.1 (Pensamiento computacional) − Estrategias para la interpretación de algoritmos sencillos (rutinas, instrucciones con pasos ordenados…).
+##### D. Sentido algebraico
+###### D.1.1 (Patrones) − Estrategias para la identificación, descripción oral, descubrimiento de elementos ocultos y extensión de secuencias a partir de las regularidades en una colección de números, figuras o imágenes.
+###### D.2.1 (Modelo matemático) − Proceso guiado de modelización (dibujos, esquemas, diagramas, objetos manipulables, dramatizaciones...) en la comprensión y resolución de problemas de la vida cotidiana.
+###### D.3.1 (Relaciones y funciones) − Expresión de relaciones de igualdad y desigualdad mediante los signos = y ≠ entre expresiones que incluyan operaciones.
+###### D.3.2 (Relaciones y funciones) − Representación de la igualdad como expresión de una relación de equivalencia entre dos elementos y obtención de datos sencillos desconocidos (representados por medio de un símbolo) en cualquiera de los dos elementos.
+###### D.4.1 (Pensamiento computacional) − Estrategias para la interpretación de algoritmos sencillos (rutinas, instrucciones con pasos ordenados…).
 
-#### E. Sentido estocástico
-##### E.1.1 (Organización y análisis de datos) − Estrategias de reconocimiento de los principales elementos y extracción de la información relevante de gráficos estadísticos sencillos de la vida cotidiana (pictogramas, gráficas de barras...).
-##### E.1.2 (Organización y análisis de datos) − Estrategias sencillas para la recogida, clasificación y recuento de datos cualitativos y cuantitativos en muestras pequeñas.
-##### E.1.3 (Organización y análisis de datos) − Representación de datos obtenidos a través de recuentos mediante gráficos estadísticos sencillos y recursos manipulables y tecnológicos.
+##### E. Sentido estocástico
+###### E.1.1 (Organización y análisis de datos) − Estrategias de reconocimiento de los principales elementos y extracción de la información relevante de gráficos estadísticos sencillos de la vida cotidiana (pictogramas, gráficas de barras...).
+###### E.1.2 (Organización y análisis de datos) − Estrategias sencillas para la recogida, clasificación y recuento de datos cualitativos y cuantitativos en muestras pequeñas.
+###### E.1.3 (Organización y análisis de datos) − Representación de datos obtenidos a través de recuentos mediante gráficos estadísticos sencillos y recursos manipulables y tecnológicos.
 
-#### F. Sentido socioafectivo
-##### F.1.1 (Creencias, actitudes y emociones) − Gestión emocional: estrategias de identificación y expresión de las propias emociones ante las matemáticas. Curiosidad e iniciativa en el aprendizaje de las matemáticas. Interés por el lenguaje interpersonal positivo.
-##### F.2.1 (Trabajo en equipo, inclusión, respeto y diversidad) − Identificación y rechazo de actitudes discriminatorias ante las diferencias individuales presentes en el aula. Actitudes inclusivas y aceptación de la diversidad del grupo.
-##### F.2.2 (Trabajo en equipo, inclusión, respeto y diversidad) − Participación activa en el trabajo en equipo: interacción positiva y respeto por el trabajo de los demás.
-##### F.2.3 (Trabajo en equipo, inclusión, respeto y diversidad) − Contribución de las matemáticas a los distintos ámbitos del conocimiento humano desde una perspectiva de género.
+##### F. Sentido socioafectivo
+###### F.1.1 (Creencias, actitudes y emociones) − Gestión emocional: estrategias de identificación y expresión de las propias emociones ante las matemáticas. Curiosidad e iniciativa en el aprendizaje de las matemáticas. Interés por el lenguaje interpersonal positivo.
+###### F.2.1 (Trabajo en equipo, inclusión, respeto y diversidad) − Identificación y rechazo de actitudes discriminatorias ante las diferencias individuales presentes en el aula. Actitudes inclusivas y aceptación de la diversidad del grupo.
+###### F.2.2 (Trabajo en equipo, inclusión, respeto y diversidad) − Participación activa en el trabajo en equipo: interacción positiva y respeto por el trabajo de los demás.
+###### F.2.3 (Trabajo en equipo, inclusión, respeto y diversidad) − Contribución de las matemáticas a los distintos ámbitos del conocimiento humano desde una perspectiva de género.
 
