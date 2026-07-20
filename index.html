@@ -1179,7 +1179,7 @@
         <h2>4. Acompañamiento: <em>feedforward</em></h2>
         <div class="pdf-text"><em>Ayudas y andamiajes previos previstos para orientar el antes y el durante:</em></div>
         <div class="pdf-text" id="pdf-feedforward"></div>
-    </div>
+        </div>
 
     <div class="pdf-section">
         <h2>5. Retroalimentación: <em>feedback</em></h2>
@@ -1236,6 +1236,17 @@
     // --- CURRÍCULO CACHED EN MEMORIA ---
     const CURRICULO_CLM = {};
 
+    // Diccionario para traducir el valor del select al nombre físico de tu archivo .md
+    const MAPA_ARCHIVOS_ETAPA = {
+        "infantil": "Infantil",
+        "primaria_c1": "Primaria Primer Ciclo",
+        "primaria_c2": "Primaria Segundo Ciclo",
+        "primaria_c3": "Primaria Tercer Ciclo",
+        "secundaria_1_3": "Secundaria Primer a Tercer Curso", // Puedes ajustar este cuando crees los de la ESO
+        "secundaria_4": "Secundaria Cuarto Curso",           // Puedes ajustar este cuando crees los de la ESO
+        "bachillerato": "Bachillerato"
+    };
+
     function actualizarMaterias() {
         const etapa = document.getElementById('sel-etapa').value;
         const selectMateria = document.getElementById('sel-materia');
@@ -1274,7 +1285,9 @@
         boxCompetencias.innerHTML = '<div class="empty-state">Buscando currículo automáticamente...</div>';
         
         try {
-            const nombreArchivo = `${etapa} - ${materia}.md`;
+            const prefijoEtapa = MAPA_ARCHIVOS_ETAPA[etapa] || etapa;
+            const nombreArchivo = `${prefijoEtapa} - ${materia}.md`;
+            
             // Codificamos la URL para evitar problemas en servidores (como Github) con espacios y tildes
             const urlSegura = encodeURI(`./${nombreArchivo}`);
             const respuesta = await fetch(urlSegura);
