@@ -471,6 +471,18 @@
 
         .link-more:hover { color: #003D6B; }
 
+        /* Desplegables de saberes */
+        .saber-details summary::-webkit-details-marker {
+            display: none;
+        }
+        .saber-details[open] summary span.arrow {
+            transform: rotate(90deg);
+        }
+        .saber-details summary span.arrow {
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
         /* Modales */
         .modal-overlay {
             display: none;
@@ -1312,7 +1324,7 @@
             boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
             
             if (!CURRICULO_CLM[etapa]) CURRICULO_CLM[etapa] = {};
-            CURRICULO_CLM[etapa][materia] = []; 
+            CURRICULO_CLM[etapa][materia] = { competencias: [], bloquesSaberes: [] }; 
         }
     }
 
@@ -1320,14 +1332,14 @@
     function renderizarCheckboxCompetencias(etapa, materia) {
         const boxCompetencias = document.getElementById('box-competencias');
         boxCompetencias.innerHTML = '';
-        const competencias = CURRICULO_CLM[etapa][materia];
+        const data = CURRICULO_CLM[etapa][materia];
 
-        if (!competencias || competencias.length === 0) {
+        if (!data || !data.competencias || data.competencias.length === 0) {
              boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
              return;
         }
         
-        competencias.forEach((comp, index) => {
+        data.competencias.forEach((comp, index) => {
             boxCompetencias.innerHTML += `<div class="curriculum-item"><input type="checkbox" id="comp_${index}" value="${index}" onchange="cargarSaberesYCriterios()"><label for="comp_${index}">${comp.texto}</label></div>`;
         });
     }
@@ -1345,53 +1357,76 @@
         }
 
         contenedorSaberes.innerHTML = '';
+        const data = CURRICULO_CLM[etapa][materia];
 
+        // 1. Renderizar Criterios de las Competencias Seleccionadas
+        let htmlCriterios = '<h3 style="margin-bottom: 1rem; color: var(--primary-color);">Criterios de evaluación</h3>';
         competenciasChecks.forEach(chk => {
             const indexComp = chk.value;
-            const data = CURRICULO_CLM[etapa][materia][indexComp];
+            const comp = data.competencias[indexComp];
             
-            let htmlCriteriosSaberes = '';
-            
-            data.criterios.forEach((crit, i) => {
+            let criteriosHtml = '';
+            comp.criterios.forEach((crit, i) => {
                 const idCrit = `crit_${indexComp}_${i}`;
-                let htmlSaberes = '';
-                
-                crit.saberes.forEach((saber, j) => {
-                    const idSaber = `saber_${indexComp}_${i}_${j}`;
-                    htmlSaberes += `<div class="curriculum-item" style="padding-bottom: 0.3rem; margin-bottom: 0.3rem; border-bottom: 1px dashed #EAEAEA;"><input type="checkbox" id="${idSaber}" class="chk-saber"><label for="${idSaber}">${saber}</label></div>`;
-                });
-
-                htmlCriteriosSaberes += `
-                    <div class="bloque-criterio-saber" style="margin-bottom: 1.5rem; background-color: #FDFDFD; border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 1rem;">
-                        <div class="curriculum-item" style="border-bottom: 2px solid #EAEAEA; padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
-                            <input type="checkbox" id="${idCrit}" class="chk-criterio">
-                            <label for="${idCrit}" style="font-weight: bold; color: var(--primary-color); font-size: 15px;">${crit.texto}</label>
-                        </div>
-                        <div style="padding-left: 2rem;">
-                            <div class="label-wrapper"><label style="font-size: 13px; color: var(--secondary-color); font-style: italic;">Saberes básicos vinculados:</label></div>
-                            ${htmlSaberes || '<div class="empty-state" style="padding:0; text-align:left;">No hay saberes específicos vinculados.</div>'}
-                        </div>
+                criteriosHtml += `
+                    <div class="curriculum-item" style="padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
+                        <input type="checkbox" id="${idCrit}" class="chk-criterio">
+                        <label for="${idCrit}" style="font-weight: bold; color: var(--text-color); font-size: 15px;">${crit.texto}</label>
                     </div>
                 `;
             });
 
-            contenedorSaberes.innerHTML += `
-                <div class="competencia-group" style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 15px; color: var(--text-color); margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.4rem;">
-                        ${data.texto}
-                    </h3>
-                    ${htmlCriteriosSaberes}
+            htmlCriterios += `
+                <div class="competencia-group" style="margin-bottom: 1.5rem; background-color: #FDFDFD; border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 1rem;">
+                    <h4 style="font-size: 15px; color: var(--primary-color); margin-bottom: 1rem; border-bottom: 2px solid #EAEAEA; padding-bottom: 0.4rem;">
+                        ${comp.texto}
+                    </h4>
+                    ${criteriosHtml}
                 </div>
             `;
         });
+        
+        contenedorSaberes.innerHTML += htmlCriterios;
+
+        // 2. Renderizar TODOS los Saberes del área/ciclo (desvinculados) en Desplegables
+        if (data.bloquesSaberes && data.bloquesSaberes.length > 0) {
+            let htmlSaberes = '<h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: var(--primary-color);">Saberes básicos del ciclo</h3>';
+            
+            data.bloquesSaberes.forEach((bloque, bIdx) => {
+                let listaSaberes = '';
+                bloque.saberes.forEach((saber, sIdx) => {
+                    const idSaber = `saber_global_${bIdx}_${sIdx}`;
+                    listaSaberes += `
+                        <div class="curriculum-item" style="padding-bottom: 0.4rem; margin-bottom: 0.4rem; border-bottom: 1px dashed #EAEAEA; align-items: flex-start;">
+                            <input type="checkbox" id="${idSaber}" class="chk-saber" style="margin-top: 2px;">
+                            <label for="${idSaber}" style="flex: 1;"><h6 style="margin: 0; font-size: 14px; font-weight: normal; line-height: 1.4;">${saber}</h6></label>
+                        </div>
+                    `;
+                });
+
+                htmlSaberes += `
+                    <details class="saber-details" style="margin-bottom: 0.8rem; background-color: #F9F9F9; border: 1px solid var(--border-color); border-radius: var(--border-radius);">
+                        <summary style="padding: 1rem; font-weight: bold; cursor: pointer; color: var(--text-color); list-style: none; display: flex; align-items: center;">
+                            <span class="arrow" style="margin-right: 10px; color: var(--primary-color);">▶</span> ${bloque.titulo}
+                        </summary>
+                        <div style="padding: 0 1rem 1rem 1rem; background-color: #FFFFFF; border-top: 1px solid #EAEAEA; padding-top: 1rem;">
+                            ${listaSaberes}
+                        </div>
+                    </details>
+                `;
+            });
+            
+            contenedorSaberes.innerHTML += htmlSaberes;
+        }
     }
 
     // --- MOTOR DE LECTURA DE MARKDOWN ---
     function parsearMarkdown(texto) {
         const lineas = texto.split('\n');
         let competencias = [];
+        let bloquesSaberes = [];
         let compActual = null;
-        let critActual = null;
+        let bloqueActual = null;
 
         lineas.forEach(linea => {
             const limpia = linea.trim().replace(/\*\*/g, '');
@@ -1402,24 +1437,28 @@
                     texto: limpia.substring(4).trim(),
                     criterios: []
                 };
-                critActual = null; // Resetea el criterio al cambiar de competencia
             } else if (limpia.startsWith('#### ')) {
                 if (compActual) {
-                    critActual = {
-                        texto: limpia.substring(5).trim(),
-                        saberes: []
-                    };
-                    compActual.criterios.push(critActual);
+                    compActual.criterios.push({
+                        texto: limpia.substring(5).trim()
+                    });
                 }
             } else if (limpia.startsWith('##### ')) {
-                if (critActual) {
-                    critActual.saberes.push(limpia.substring(6).trim());
+                bloqueActual = {
+                    titulo: limpia.substring(6).trim(),
+                    saberes: []
+                };
+                bloquesSaberes.push(bloqueActual);
+            } else if (limpia.startsWith('###### ')) {
+                if (bloqueActual) {
+                    bloqueActual.saberes.push(limpia.substring(7).trim());
                 }
             }
         });
         
-        if (compActual) competencias.push(compActual);
-        return competencias;
+        if (compActual && !competencias.includes(compActual)) competencias.push(compActual);
+        
+        return { competencias, bloquesSaberes };
     }
 
     // Funciones vacías para evitar errores de consola
@@ -1550,7 +1589,7 @@
         
         if (etapaVal && materiaVal && competenciasChecks.length > 0 && CURRICULO_CLM[etapaVal] && CURRICULO_CLM[etapaVal][materiaVal]) {
             const selectedIndices = Array.from(competenciasChecks).map(chk => chk.value);
-            competenciaTexto = selectedIndices.map(index => CURRICULO_CLM[etapaVal][materiaVal][index].texto).join('<br><br>');
+            competenciaTexto = selectedIndices.map(index => CURRICULO_CLM[etapaVal][materiaVal].competencias[index].texto).join('<br><br>');
         }
         
         const disparadorPregunta = document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.';
@@ -1597,31 +1636,21 @@
         const pdfContenedor = document.getElementById('pdf-criterios-saberes-container');
         pdfContenedor.innerHTML = '';
         
+        // 1. Extraer competencias y criterios seleccionados
         const uiCompGroups = document.querySelectorAll('#contenedor-saberes-criterios .competencia-group');
+        let hasCriterios = false;
         uiCompGroups.forEach(uiComp => {
-            const tituloComp = uiComp.querySelector('h3').textContent;
-            let htmlInner = '';
+            const tituloComp = uiComp.querySelector('h4').textContent;
+            const critChecks = uiComp.querySelectorAll('.chk-criterio:checked');
             
-            const bloquesCriterio = uiComp.querySelectorAll('.bloque-criterio-saber');
-            bloquesCriterio.forEach(bloque => {
-                const critCheck = bloque.querySelector('.chk-criterio');
-                const saberChecks = bloque.querySelectorAll('.chk-saber:checked');
+            if (critChecks.length > 0) {
+                hasCriterios = true;
+                let htmlInner = '<ul class="pdf-list">';
+                critChecks.forEach(crit => {
+                    htmlInner += `<li>${crit.nextElementSibling.textContent}</li>`;
+                });
+                htmlInner += '</ul>';
                 
-                if (critCheck.checked || saberChecks.length > 0) {
-                    if (critCheck.checked) {
-                        htmlInner += `<div class="pdf-text"><strong>${critCheck.nextElementSibling.textContent}</strong></div>`;
-                    }
-                    if (saberChecks.length > 0) {
-                        htmlInner += `<ul class="pdf-list">`;
-                        saberChecks.forEach(s => {
-                            htmlInner += `<li>${s.nextElementSibling.textContent}</li>`;
-                        });
-                        htmlInner += `</ul>`;
-                    }
-                }
-            });
-            
-            if (htmlInner !== '') {
                 pdfContenedor.innerHTML += `<div style="margin-bottom: 15px;">
                     <div style="color: #3C5AD9; font-weight: bold; margin-bottom: 8px;">${tituloComp}</div>
                     ${htmlInner}
@@ -1629,7 +1658,36 @@
             }
         });
         
-        if (pdfContenedor.innerHTML === '') {
+        // 2. Extraer saberes seleccionados
+        const uiSaberDetails = document.querySelectorAll('#contenedor-saberes-criterios .saber-details');
+        let hasSaberes = false;
+        let htmlSaberes = '';
+        uiSaberDetails.forEach(details => {
+            const tituloBloque = details.querySelector('summary').textContent.replace('▶', '').trim();
+            const saberChecks = details.querySelectorAll('.chk-saber:checked');
+            
+            if (saberChecks.length > 0) {
+                hasSaberes = true;
+                htmlSaberes += `<div style="margin-bottom: 10px;">
+                    <div style="font-weight: bold; margin-bottom: 4px;">${tituloBloque}</div>
+                    <ul class="pdf-list">`;
+                saberChecks.forEach(saber => {
+                    htmlSaberes += `<li>${saber.nextElementSibling.textContent}</li>`;
+                });
+                htmlSaberes += `</ul></div>`;
+            }
+        });
+
+        if (hasSaberes) {
+            pdfContenedor.innerHTML += `
+                <div style="margin-top: 20px; border-top: 2px solid #EAEAEA; padding-top: 15px;">
+                    <h3 style="color: #3C5AD9; font-size: 16px; margin-bottom: 10px; font-weight: bold;">Saberes básicos aplicados</h3>
+                    ${htmlSaberes}
+                </div>
+            `;
+        }
+        
+        if (!hasCriterios && !hasSaberes) {
             pdfContenedor.innerHTML = '<div class="pdf-text"><em>Ninguno seleccionado</em></div>';
         }
     }
