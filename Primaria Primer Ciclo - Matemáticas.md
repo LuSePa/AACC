@@ -36,8 +36,6 @@
 #### 8.2 Aceptar la tarea y rol asignado en el trabajo en equipo, cumpliendo con las responsabilidades individuales y contribuyendo a la consecución de los objetivos del grupo.
 #### 8.3 Conocer y desarrollar de manera guiada el lenguaje interpersonal positivo, para favorecer la gestión de emociones y el control de impulsos.
 
-### Saberes básicos (Primer ciclo)
-
 #### A. Sentido numérico
 ##### A.1.1 (Conteo) − Estrategias variadas de conteo y recuento sistemático en situaciones de la vida cotidiana en cantidades hasta el 999.
 ##### A.2.1 (Cantidad) − Estimaciones razonadas de cantidades en contextos de resolución de problemas.
