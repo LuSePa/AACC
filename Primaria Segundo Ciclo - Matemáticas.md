@@ -36,8 +36,6 @@
 #### 8.2 Participar en el reparto de tareas, asumiendo y respetando las responsabilidades individuales asignadas y empleando estrategias sencillas de trabajo en equipo dirigidas a la consecución de objetivos compartidos.
 #### 8.3 Desarrollar y analizar de manera guiada el lenguaje interpersonal positivo para favorecer la gestión de las emociones, el control de impulsos, el ajuste de comportamientos, la planificación del trabajo y la motivación interna.
 
-### Saberes básicos (Segundo ciclo)
-
 #### A. Sentido numérico
 ##### A.1.1 (Conteo) − Estrategias variadas de conteo, recuento sistemático y adaptación del conteo al tamaño de los números en situaciones de la vida cotidiana en cantidades hasta el 9999.
 ##### A.2.1 (Cantidad) − Estrategias y técnicas de interpretación y manipulación del orden de magnitud de los números (unidades, decenas, centenas y millares).
