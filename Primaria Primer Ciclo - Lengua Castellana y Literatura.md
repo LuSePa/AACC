@@ -69,7 +69,7 @@
 ###### C.7 − Creación de textos de intención literaria a partir de modelos dados.
 ###### C.8 − Uso acompañado de la biblioteca de aula o de centro como escenario de actividades literarias compartidas.
 
-#### D. Reflexión sobre la lengua y sus usos en el marco de propuestas la producción y comprensión de textos orales, escritos o multimodales
+##### D. Reflexión sobre la lengua y sus usos en el marco de propuestas la producción y comprensión de textos orales, escritos o multimodales
 ###### D.1 − Establecimiento de generalizaciones sobre aspectos lingüísticos elementales a partir de la observación, comparación y transformación de palabras y enunciados, prestando especial atención a la existencia de distintos tipos de palabras y sus relaciones de concordancia.
 ###### D.2 − Diferencias elementales entre lengua oral y lengua escrita.
 ###### D.3 − Procedimientos elementales de adquisición de vocabulario. Reflexión contextualizada sobre la relación de significado entre unas palabras y otras.
