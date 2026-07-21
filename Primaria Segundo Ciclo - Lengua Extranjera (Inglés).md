@@ -1,0 +1,58 @@
+# Lengua Extranjera
+
+## Segundo ciclo
+
+### Competencia específica 1. Comprender el sentido general e información específica y predecible de textos breves y sencillos, expresados de forma clara y en la lengua estándar, haciendo uso de diversas estrategias y recurriendo, cuando sea necesario, al uso de distintos tipos de apoyo, para desarrollar el repertorio lingüístico y para responder a necesidades comunicativas cotidianas.
+#### 1.1 Reconocer e interpretar el sentido global, así como palabras y frases previamente indicadas, en textos orales, escritos y multimodales, breves y sencillos, sobre temas frecuentes y cotidianos de relevancia personal y próximos a su experiencia, así como de textos de ficción adecuados al nivel de desarrollo del alumnado, expresados de forma comprensible, clara y en lengua estándar a través de distintos soportes.
+#### 1.2 Seleccionar y aplicar, de forma guiada, estrategias adecuadas en situaciones comunicativas cotidianas y de relevancia para el alumnado, para captar el sentido global y procesar informaciones explícitas en textos breves y sencillos sobre temas familiares.
+
+### Competencia específica 2. Producir textos sencillos de manera comprensible y estructurada, mediante el empleo de estrategias como la planificación o la compensación, para expresar mensajes breves relacionados con necesidades inmediatas y responder a propósitos comunicativos cotidianos.
+#### 2.1 Expresar oralmente frases cortas, sencillas y textos breves con información básica sobre asuntos cotidianos y de relevancia para el alumnado delante del auditoria (grupo-aula) [sic], utilizando, de forma guiada, recursos verbales y no verbales, prestando atención al ritmo, la acentuación y la entonación.
+#### 2.2 Escribir palabras, expresiones y frases conocidas y redactar textos muy breves y sencillos, a partir de modelos, con adecuación a la situación comunicativa propuesta, y a través de herramientas analógicas y digitales, usando estructuras y léxico elemental sobre asuntos cotidianos y de relevancia personal para el alumnado.
+#### 2.3 Seleccionar y aplicar, de forma guiada, estrategias para producir mensajes breves y sencillos adecuados a las intenciones comunicativas, usando, con ayuda, recursos y apoyos físicos o digitales en función de las necesidades de cada momento.
+
+### Competencia específica 3. Interactuar con otras personas usando expresiones cotidianas, recurriendo a estrategias de cooperación y empleando recursos analógicos y digitales, para responder a necesidades inmediatas de su interés en intercambios comunicativos respetuosos con las normas de cortesía.
+#### 3.1 Participar de forma guiada en situaciones interactivas breves y sencillas sobre temas cercanos y significativos al entorno del alumno, de relevancia personal, y próximos a su experiencia, preparadas previamente, a través de diversos soportes, apoyándose en recursos tales como la repetición, el ritmo pausado o el lenguaje visual, verbal o no verbal, y mostrando empatía y respeto por la cortesía lingüística y la etiqueta digital.
+#### 3.2 Seleccionar y utilizar, de forma guiada y en situaciones cotidianas, estrategias y expresiones elementales para saludar, despedirse, presentarse y agradecer; expresar mensajes breves; y formular y contestar preguntas sencillas para la interacción comunicativa.
+
+### Competencia específica 4. Mediar en situaciones predecibles, usando estrategias y conocimientos para procesar y transmitir información básica y sencilla, con el fin de facilitar la comunicación.
+#### 4.1 Interpretar, explica o transmitir [sic] textos, conceptos y comunicaciones breves y sencillas, de forma guiada, en situaciones en las que se atienda a la diversidad, mostrando empatía e interés por los interlocutores e interlocutoras y por los problemas de entendimiento en su entorno más próximo, apoyándose en diversos recursos y soportes.
+#### 4.2 Seleccionar y aplicar, de forma guiada, estrategias elementales que se basen en los conocimientos precios [sic] y que ayuden a crear puentes y faciliten la comprensión y producción de información y la comunicación, usando, con ayuda, recursos y apoyos físicos o digitales en función de las necesidades de cada momento.
+
+### Competencia específica 5. Reconocer y usar los repertorios lingüísticos personales entre distintas lenguas, reflexionando sobre su funcionamiento e identificando las estrategias y conocimientos propios, para mejorar la respuesta a necesidades comunicativas concretas en situaciones conocidas.
+#### 5.1 Comparar y contrastar las similitudes y diferencias entre distintas lenguas reflexionando, de forma guiada, sobre aspectos básicos de su funcionamiento.
+#### 5.2 Utilizar y diferenciar, de forma guiada, los conocimientos y estrategias de mejora de su capacidad de comunicar y de aprender la lengua extranjera, con apoyo de otros participantes y de soportes analógicos y digitales.
+#### 5.3 Registrar y aplicar, de manera guiada, los progresos y dificultades elementales en el proceso de aprendizaje de la lengua extranjera, reconociendo los aspectos que ayudan a mejorar y participando en actividades de autoevaluación y coevaluación, como las propuestas en el Portfolio Europeo de las Lenguas (PEL), normalizando el error y valorándolo como una fuente de aprendizaje.
+
+### Competencia específica 6. Apreciar y respetar la diversidad lingüística, cultural y artística a partir de la lengua extranjera, identificando y valorando las diferencias y semejanzas entre lenguas y culturas, para aprender a gestionar situaciones interculturales.
+#### 6.1 Actuar con respeto en situaciones interculturales, identificando y comparando semejanzas y diferencias elementales entre lenguas y culturas, y mostrando rechazo frente a discriminaciones, prejuicios y estereotipos de cualquier tipo en contextos comunicativos cotidianos y habituales.
+#### 6.2 Reconocer y apreciar la diversidad lingüística, cultural y artística propia de países donde se habla la lengua extranjera como fuente de enriquecimiento personal, mostrando interés por comprender elementos culturales y lingüísticos elementales y habituales que fomenten la convivencia pacífica y el respeto por los demás.
+#### 6.3 Seleccionar y aplicar, de forma guiada, estrategias básicas para entender y apreciar los aspectos más relevantes de la diversidad lingüística, cultural y artística.
+
+##### A. Comunicación
+###### A.1 − Autoconfianza y reflexión sobre el aprendizaje. El error como parte integrante del proceso.
+###### A.2 − Estrategias básicas de uso común para la comprensión y la producción de textos orales, escritos y multimodales breves, sencillos y contextualizados.
+###### A.3 − Conocimientos, destrezas y actitudes elementales que permiten iniciarse en actividades de mediación en situaciones cotidianas básicas, tales como parafraseado y equivalencia.
+###### A.4 − Funciones comunicativas básicas de uso común adecuadas al ámbito y al contexto: saludar, despedirse, presentar y presentarse, dar las gracias; describir personas, objetos y lugares; pedir e intercambiar información sobre cuestiones cotidianas; describir y enumerar algunas rutinas; dar y seguir indicaciones e instrucciones; expresar el tiempo, la cantidad y el espacio.
+###### A.5 − Modelos contextuales y géneros discursivos básicos de uso común en la comprensión, producción y coproducción de textos orales, escritos y multimodales, breves y sencillos, literarios y no literarios tales como folletos, felicitaciones, instrucciones, normas, listas, avisos o conversaciones reguladoras de la convivencia.
+###### A.6 − Unidades lingüísticas básicas de uso común y significados asociados a dichas estructuras, tales como expresión de la entidad y sus propiedades, cantidad y número, espacio y las relaciones espaciales, afirmación, exclamación, negación, interrogación.
+###### A.7 − Léxico elemental y de interés para el alumnado relativo a la identificación personal, relaciones interpersonales próximas, vivienda, lugares y entornos cercanos.
+###### A.8 − Patrones sonoros, rítmicos, acentuales y de entonación básicos de uso común, y funciones comunicativas generales asociadas a dichos patrones.
+###### A.9 − Convenciones ortográficas básicas de uso común y significados asociados a los formatos y elementos gráficos.
+###### A.10 − Convenciones y estrategias conversacionales básicas de uso común, en formato síncrono o asíncrono, para iniciar, mantener y terminar la comunicación, tomar y ceder la palabra, pedir y dar indicaciones, etc.
+###### A.11 − Recursos para el aprendizaje y estrategias elementales de búsqueda guiada de información en medios analógicos y digitales.
+###### A.12 − Herramientas analógicas y digitales básicas de uso común para la comprensión, producción y coproducción oral, escrita y multimodal; y plataformas virtuales de interacción, cooperación y colaboración educativa.
+
+##### B. Plurilingüismo
+###### B.1 − Estrategias y técnicas de compensación de las carencias comunicativas para responder a una necesidad elemental, a pesar de las limitaciones derivadas del nivel de competencia en la lengua extranjera y en las demás lenguas del repertorio lingüístico propio.
+###### B.2 − Estrategias básicas de uso común para identificar, decodificar auditivamente, retener, recuperar y utilizar unidades lingüísticas (léxico, morfosintaxis, patrones sonoros, etc.) a partir de la comparación y el propio enriquecimiento del uso de varias lenguas y variedades que conforman el repertorio lingüístico personal.
+###### B.3 − Iniciación en estrategias y herramientas básicas de autoevaluación y coevaluación, analógicas y digitales, individuales y cooperativas.
+###### B.4 − Léxico y expresiones elementales para comprender enunciados sobre la comunicación, la lengua y el aprendizaje (metalenguaje).
+###### B.5 − Modelos comparativos básicos entre lenguas, a partir de distintos elementos para establecer semejanzas y diferencias, así como orígenes y parentescos entre ellos, que favorezcan y desarrollen la interlengua.
+
+##### C. Interculturalidad
+###### C.1 − La lengua extranjera como medio de comunicación y relación con personas de otros países, y como medio para conocer culturas y modos de vida diferentes.
+###### C.2 − Interés en la participación en intercambios comunicativos planificados, a través de diferentes medios, con estudiantes de la lengua extranjera.
+###### C.3 − Aspectos socioculturales y sociolingüísticos más significativos relativos a las costumbres, la vida cotidiana y las relaciones interpersonales básicas en países donde se habla la lengua extranjera.
+###### C.4 − Estrategias básicas de uso común para entender y apreciar la diversidad lingüística, cultural y artística, a partir de valores ecosociales y democráticos.
+###### C.5 − Estrategias básicas de uso común de detección de usos discriminatorios del lenguaje verbal y no verbal.
