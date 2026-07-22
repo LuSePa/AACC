@@ -1510,7 +1510,8 @@
             progressText.style.display = 'block';
             wizardNav.style.display = 'flex';
             
-            btnPrev.disabled = (pasoActual === 2);
+            btnPrev.disabled = false;
+            btnPrev.textContent = (pasoActual === 2) ? 'Introducción' : 'Anterior';
             
             let pasoVisible = pasoActual - 1;
             let porcentaje = 0;
