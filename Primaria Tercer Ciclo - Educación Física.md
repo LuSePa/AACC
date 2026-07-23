@@ -1,0 +1,68 @@
+# Educación Física
+
+## Tercer ciclo
+
+### Competencia específica 1. Adoptar un estilo de vida activo y saludable, practicando regularmente actividades físicas, lúdicas y deportivas, adoptando comportamientos que potencien la salud física, mental y social, así como medidas de responsabilidad individual y colectiva durante la práctica motriz, para interiorizar e integrar hábitos de actividad física sistemática que contribuyan al bienestar.
+#### 1.1 Reconocer y valorar los efectos beneficiosos a nivel físico y mental de la actividad física como paso previo para su integración en la vida diaria.
+#### 1.2 Integrar los procesos de activación corporal, dosificación del esfuerzo, relajación e higiene en la práctica de actividades motrices desarrolladas de acuerdo con las posibilidades personales de actuación e, interiorizando las rutinas propias de una práctica motriz saludable y responsable y de otras acciones vinculadas al correcto mantenimiento del estado de salud.
+#### 1.3 Adoptar medidas de seguridad antes, durante y después de la práctica de actividad físico-deportiva, reconociendo los contextos de riesgo y actuando con precaución ante ellos.
+#### 1.4 Identificar y abordar conductas vinculadas al ámbito corporal, la actividad física y el deporte que resultan perjudiciales para la salud o afectan negativamente a la convivencia, adoptando posturas de rechazo a la violencia, a la discriminación y a los estereotipos de género, y evitando activamente su reproducción.
+
+### Competencia específica 2. Adaptar los elementos propios del esquema corporal, las capacidades físicas, perceptivo-motrices y coordinativas, así como las habilidades y destrezas motrices, aplicando procesos de percepción, decisión y ejecución adecuados a la lógica interna y a los objetivos de diferentes situaciones, para dar respuesta a las demandas de proyectos motores y de prácticas motrices con distintas finalidades en contextos de la vida diaria.
+#### 2.1 Desarrollar proyectos motores de carácter más complejo: individual, cooperativo o colaborativo, definiendo metas, secuenciando acciones, introduciendo cambios, si es preciso, durante el proceso, y generando producciones motrices de calidad, analizando y valorando el grado de ajuste al proceso seguido y al resultado obtenido.
+#### 2.2 Aplicar principios básicos de toma de decisiones en situaciones lúdicas, juegos modificados y actividades físico-deportivas a partir de la anticipación, ajustándolos a las demandas derivadas de los objetivos motores y a la lógica interna de situaciones individuales, de cooperación, de oposición y de colaboración-oposición, en contextos reales o simulados de actuación, reflexionando sobre las soluciones obtenidas.
+#### 2.3 Adquirir un progresivo conocimiento, control, dominio y aceptación corporal, empleando los componentes cualitativos y cuantitativos de la motricidad de manera eficiente y creativa y haciendo frente a las demandas de resolución de problemas en situaciones motrices transferibles a su espacio vivencial.
+
+### Competencia específica 3. Desarrollar procesos de autorregulación e interacción en el marco de la práctica motriz, con actitud empática e inclusiva, haciendo uso de habilidades sociales y actitudes de cooperación, respeto, trabajo en equipo y deportividad, con independencia de las diferencias etnoculturales, sociales, de género, de habilidad o cualquier otra que pudiera existir entre los participantes para contribuir a la convivencia y al compromiso ético en los diferentes espacios en los que se participa.
+#### 3.1 Participar en actividades físico-deportivas, desde la autorregulación de su actuación, con predisposición, esfuerzo, perseverancia y mentalidad de crecimiento, controlando la impulsividad, gestionando las emociones y expresándolas de forma asertiva.
+#### 3.2 Respetar las normas consensuadas, así como las reglas de juego, y actuar desde los parámetros de la deportividad y el juego limpio, reconociendo las actuaciones de compañeros y rivales.
+#### 3.3 Convivir mostrando en el contexto de las prácticas motrices habilidades sociales, diálogo en la resolución de conflictos y respeto a la diversidad, ya sea de género, afectivo-sexual, de origen nacional, étnica, socio-económica o de competencia motriz, así como una actitud crítica y un compromiso activo frente a los estereotipos, las actuaciones discriminatorias y la violencia, haciendo especial hincapié en el fomento de la igualdad de género.
+
+### Competencia específica 4. Reconocer y practicar diferentes manifestaciones lúdicas, físico-deportivas y artístico-expresivas propias de la cultura motriz, valorando su influencia y sus aportaciones estéticas y creativas a la cultura tradicional y contemporánea, para integrarlas, desde un enfoque lúdico, en las situaciones motrices que se desarrollan regularmente en la vida cotidiana.
+#### 4.1 Participar activamente de manera autónoma en juegos motores y otras manifestaciones artístico-expresivas con arraigo en la cultura propia y ajena, tradicional o actual, así como otros procedentes de diversas culturas, reconociendo y transmitiendo su valor cultural y su potencial como espacio generador de interacciones constructivas entre personas con orígenes diferentes y entendiendo las ventajas de su conservación.
+#### 4.2 Valorar el deporte como fenómeno cultural, analizando los estereotipos de género o capacidad y los comportamientos sexistas que a veces suceden en su contexto, rechazándolos y adoptando actitudes que eviten su reproducción en el futuro.
+#### 4.3 Reproducir y crear composiciones con o sin soporte musical, y comunicar diferentes sensaciones, emociones e ideas, de forma estética y creativa, desde el uso de los recursos rítmicos y expresivos de la motricidad.
+
+### Competencia específica 5. Valorar positivamente diferentes medios naturales y urbanos como contextos de práctica motriz, interactuando constructivamente con ellos y comprendiendo la importancia de su conservación desde un enfoque sostenible, adoptando medidas de responsabilidad individual durante la práctica de juegos y actividades físico-deportivas, para realizar una práctica eficiente y respetuosa con el entorno y participar en su cuidado y mejora.
+#### 5.1 Adaptar las acciones motrices a la incertidumbre propia del medio natural y/o urbano en contextos terrestres o acuáticos de forma eficiente y segura, valorando sus posibilidades para la práctica de actividad física y actuando desde una perspectiva ecosostenible del entorno y comunitaria.
+
+##### A. Vida activa y saludable.
+###### A.1 (Salud física) − Salud física: efectos físicos, psicológicos y sociales beneficiosos del estilo de vida activo. Efectos nocivos del sedentarismo y otras prácticas insanas. Impacto de alimentos ultraprocesados, azúcar, bebidas energéticas o azucaradas y otros productos insanos. Concienciación sobre los peligros de la obesidad y otras enfermedades cardiovasculares. Educación postural en acciones motrices específicas. Responsabilidad personal en el cuidado del cuerpo, higiene corporal y descansos para la recuperación y mejora tras la práctica de actividad físico-deportivo.
+###### A.2 (Salud mental) − Salud mental: consolidación y ajuste realista del autoconcepto, teniendo en cuenta la perspectiva de género. Respeto y aceptación del propio cuerpo y del aspecto corporal de los demás.
+###### A.3 (Salud social) − Salud social: aproximación a los efectos de los malos hábitos relacionados con la salud e influencia en la práctica de actividad física. La exigencia del deporte profesional. Aceptación de distintas tipologías corporales, para practicar en igualdad, diversidad de actividades físico-deportivas. Estereotipos corporales, de género y competencia motriz. Amistad y relaciones entre iguales a través de la práctica de actividad física.
+
+##### B. Organización y gestión de la actividad física.
+###### B.1 (Usos y finalidades) − Usos y finalidades: catárticos, lúdico-recreativos, competitivos y agonísticos.
+###### B.2 (Equipamiento) − Actitudes consumistas en torno al equipamiento. Análisis de la adquisición de material para la práctica físicodeportiva.
+###### B.3 (Higiene corporal) − Hábitos autónomos de higiene corporal en acciones cotidianas.
+###### B.4 (Planificación y autorregulación) − Planificación y autorregulación de proyectos motores: seguimiento y valoración durante el proceso y del resultado partiendo de la percepción y toma de decisiones ajustada a las exigencias de la tarea y las estrategias en las que se basa.
+###### B.5 (Prevención de accidentes) − Prevención de accidentes en las prácticas motrices: calentamiento general y vuelta a la calma. Importancia de respetar las normas de seguridad. Compromiso de responsabilidad hacia la seguridad propia y de los demás.
+###### B.6 (Actuaciones básicas) − Actuaciones básicas ante accidentes durante la práctica de actividades físicas. Posición lateral de seguridad. Conducta PAS (proteger, avisar, socorrer). 112.
+
+##### C. Resolución de problemas en situaciones motrices.
+###### C.1 (Toma de decisiones) − Toma de decisiones: selección de acciones en función del entorno en situaciones motrices individuales. Selección de acciones para el ajuste espacio-temporal en la interacción con los compañeros en situaciones cooperativas. Selección de zonas de envío del móvil desde donde sea difícil devolverlo en situaciones motrices de persecución y de interacción con un móvil. Selección adecuada de las habilidades motrices en situaciones de oposición de contacto. Desmarque y ubicación en un lugar desde el que se constituya un apoyo para los demás en situaciones motrices de colaboración-oposición de persecución y de interacción con un móvil.
+###### C.2 (Capacidades perceptivo-motrices) − Capacidades perceptivo-motrices en contexto de práctica: integración del esquema corporal; equilibrio estático y dinámico en situaciones de complejidad creciente; organización espacial (percepción de distancias y trayectoria, orientación en el espacio), temporal (simultaneidad y sucesión de acciones) y espacio-temporal (ritmo, ajuste perceptivo en el envío y en la interceptación de trayectorias de móviles).
+###### C.3 (Condición física) − Condición física orientada a la salud desde el juego y, de manera no especifica a través del “fitness infusion” y mediante trabajo específico. Trabajo de alta intensidad desde propuestas jugadas. Especial consideración al fitness aeróbico y muscular. Valoración de la condición física orientadas a la salud. Batería ALPHA-Fitness.
+###### C.4 (Habilidades específicas) − Iniciación de las habilidades motrices específicas asociadas a la técnica en actividades físico-deportivas: aspectos principales.
+###### C.5 (Creatividad motriz) − Creatividad motriz: identificación de estímulos internos o externos que exijan un reajuste instantáneo de la acción motriz.
+
+##### D. Autorregulación emocional e interacción social en situaciones motrices.
+###### D.1 (Gestión emocional) − Gestión emocional: ansiedad y situaciones motrices. Estrategias de afrontamiento y gestión.
+###### D.2 (Habilidades sociales) − Habilidades sociales: expresión constructiva de emociones, pensamientos y necesidades de otros. Estrategias de trabajo en equipo para la resolución constructiva de conflictos en situaciones motrices colectivas.
+###### D.3 (Juego limpio) − Concepto de fairplay o «juego limpio».
+###### D.4 (Identificación conductas) − Identificación, abordaje y rechazo de conductas violentas o contrarias a la convivencia en situaciones motrices (discriminación por cuestiones de género, capacidad o competencia motriz; actitudes xenófobas, racistas o de índole sexista; abuso sexual o cualquier forma de violencia).
+
+##### E. Manifestaciones de la cultura motriz.
+###### E.1 (Herencia cultural) − Aportaciones de la cultura motriz a la herencia cultural. Los deportes como seña de identidad cultural. Los juegos y las danzas de Castilla-La Mancha, sus localidades y otros contextos.
+###### E.2 (Usos comunicativos) − Usos comunicativos de la corporalidad: juego dramático, mímica, representación, imitación y baile a través de gestos, movimientos, expresión facial, posturas, ritmo y otros. Comunicación y comprensión de sensaciones, sentimientos, emociones e ideas complejas.
+###### E.3 (Actividades rítmico-musicales) − Práctica de actividades rítmico-musicales con carácter expresivo. Coreografías adecuadas a características, posibilidades y limitación. Composición.
+###### E.4 (Deporte y género) − Deporte y perspectiva de género: sexismo en el deporte amateur y profesional.
+###### E.5 (Deportes olímpicos) − Deportes olímpicos y paralímpicos, historia e instituciones asociadas a los Juegos Olímpicos y Paralímpicos. Valores pasados y actuales.
+
+##### F. Interacción eficiente y sostenible con el entorno.
+###### F.1 (Normas de uso) − Normas de uso: la educación vial desde la actividad física y deportiva. Movilidad segura, saludable y sostenible incluyendo los desplazamientos activos.
+###### F.2 (Transporte activo) − Transporte activo, seguro y sostenible: bicicletas, patines, patinetes.
+###### F.3 (Previsión de riesgos) − Previsión de riesgos de accidente durante la práctica en el medio natural y urbano: valoración previa y actuación.
+###### F.4 (Consumo responsable) − Consumo responsable: construcción y reutilización de materiales para la práctica motriz.
+###### F.5 (Actividades físicas) − Práctica de actividades físicas en el medio natural y/o urbano.
+###### F.6 (Cuidado del entorno) − Cuidado del entorno próximo y de los animales y plantas que en él conviven, como servicio a la comunidad, durante la práctica de actividad física en el medio natural y urbano.
