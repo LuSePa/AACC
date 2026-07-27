@@ -942,7 +942,7 @@
                     <p>Inicia la clase conectando con los intereses del alumnado.</p>
                     <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
                 </div>
-                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">🎲 Sugerir preguntas (IA)</button>
+                <button class="btn btn-ai" onclick="window.open('https://m365.cloud.microsoft/chat/?titleId=T_75337bf5-64dd-d69e-4ad3-e447b09bafd0&source=embedded-builder', '_blank')">🎲 Sugerir preguntas (IA)</button>
             </div>
             
             <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
@@ -1002,7 +1002,7 @@
                     <p>Diseña un reto abierto con múltiples opciones de producto final.</p>
                     <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
                 </div>
-                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">🎯 Diseñar reto (IA)</button>
+                <button class="btn btn-ai" onclick="window.open('https://m365.cloud.microsoft/chat/?titleId=T_31e3ac0d-35b4-b5a7-f75f-b90d589bf632&source=embedded-builder', '_blank')">🎯 Diseñar reto (IA)</button>
             </div>
 
             <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
@@ -1065,7 +1065,7 @@
                     <p>Crea una rúbrica de un solo punto adaptada a la actividad.</p>
                     <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
                 </div>
-                <button class="btn btn-ai" onclick="window.open('https://copilot.microsoft.com/', '_blank')">📝 Generar rúbrica (IA)</button>
+                <button class="btn btn-ai" onclick="window.open('https://m365.cloud.microsoft/chat/?titleId=T_923039a2-8d71-35e7-853a-6ac7a00692d7&source=embedded-builder', '_blank')">📝 Generar rúbrica (IA)</button>
             </div>
             
             <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
@@ -1351,7 +1351,10 @@
 
         selectMateria.innerHTML = '<option value="">Seleccione materia...</option>';
         if (claveEtapa && MATERIAS[claveEtapa]) {
-            MATERIAS[claveEtapa].forEach(materia => {
+            // Ordenamos las materias alfabéticamente respetando las tildes del español
+            const materiasOrdenadas = [...MATERIAS[claveEtapa]].sort((a, b) => a.localeCompare(b, 'es'));
+            
+            materiasOrdenadas.forEach(materia => {
                 const option = document.createElement('option');
                 option.value = materia;
                 option.textContent = materia;
