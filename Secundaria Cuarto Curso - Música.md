@@ -1,76 +1,84 @@
-# Física y Química
+# Música
 
 ## Cuarto curso
 
-### 1. Comprender y explicar con rigor los fenómenos fisicoquímicos cotidianos a partir de los principios, teorías y leyes científicas adecuadas, expresándolos de manera argumentada, utilizando diversidad de soportes y medios de comunicación.
+### 1. Analizar obras de diferentes épocas y culturas, identificando sus principales rasgos estilísticos y estableciendo relaciones con su contexto, para valorar el patrimonio musical y dancístico como fuente de disfrute y enriquecimiento personal.
 
-#### 1.1. Comprender y explicar con rigor los fenómenos fisicoquímicos cotidianos a partir de los principios, teorías y leyes científicas adecuadas, expresándolos de manera argumentada, utilizando diversidad de soportes y medios de comunicación.
-#### 1.2. Resolver los problemas fisicoquímicos planteados mediante las leyes y teorías científicas adecuadas, razonando los procedimientos utilizados para encontrar las soluciones y expresando los resultados con corrección y precisión.
-#### 1.3. Reconocer y describir situaciones problemáticas reales de índole científica y emprender iniciativas colaborativas en las que la ciencia, y en particular la física y la química, pueden contribuir a su solución, analizando críticamente su impacto en la sociedad y en el medio ambiente.
+#### 1.1. Analizar obras musicales y dancísticas de diferentes épocas y culturas, identificando sus rasgos estilísticos, explicando su relación con el contexto y evidenciando una actitud de apertura, interés y respeto en la escucha o el visionado de las mismas.
 
-### 2. Expresar las observaciones realizadas por el alumnado en forma de preguntas, formulando hipótesis para explicarlas y demostrando dichas hipótesis a través de la experimentación científica, la indagación y la búsqueda de evidencias, para desarrollar los razonamientos propios del pensamiento científico y mejorar las destrezas en el uso de las metodologías científicas.
+#### 1.2. Valorar críticamente los hábitos, los gustos y los referentes musicales y dancísticos de diferentes épocas y culturas, reflexionando sobre su evolución y sobre su relación con los del presente.
 
-#### 2.1. Emplear las metodologías propias de la ciencia en la identificación y descripción de fenómenos científicos a partir de situaciones tanto observadas en el mundo natural como planteadas a través de enunciados con información textual, gráfica o numérica.
-#### 2.2. Predecir, para las cuestiones planteadas, respuestas que se puedan comprobar con las herramientas y conocimientos adquiridos, tanto de forma experimental como deductiva, aplicando el razonamiento lógico-matemático en su proceso de validación.
-#### 2.3. Aplicar las leyes y teorías científicas más importantes para validar hipótesis de manera informada y coherente con el conocimiento científico existente, diseñando los procedimientos experimentales o deductivos necesarios para resolverlas y analizando los resultados críticamente.
+#### 1.3. Seleccionar producciones musicales de calidad, a través del uso de herramientas digitales, utilizando un espíritu crítico y respetando los derechos de propiedad intelectual.
 
-### 3. Manejar con soltura las reglas y normas básicas de la física y la química en lo referente al lenguaje de la Iupac, al lenguaje matemático, al empleo de unidades de medida correctas, al uso seguro del laboratorio y a la interpretación y producción de datos e información en diferentes formatos y fuentes, para reconocer el carácter universal y transversal del lenguaje científico y la necesidad de una comunicación fiable en investigación y ciencia entre diferentes países y culturas.
+### 2. Explorar las posibilidades expresivas de diferentes técnicas musicales y dancísticas, a través de actividades de interpretación e improvisación, para incorporarlas al repertorio personal de recursos y desarrollar el criterio de selección de las técnicas más adecuadas a la intención expresiva.
 
-#### 3.1. Emplear fuentes variadas fiables y seguras para seleccionar, interpretar, organizar y comunicar información relativa a un proceso fisicoquímico concreto, relacionando entre sí lo que cada una de ellas contiene, extrayendo en cada caso lo más relevante para la resolución de un problema y desechando todo lo que sea irrelevante.
-#### 3.2. Utilizar adecuadamente las reglas básicas de la física y la química, incluyendo el uso correcto de varios sistemas de unidades, las herramientas matemáticas necesarias y las reglas de nomenclatura avanzadas, consiguiendo una comunicación efectiva con toda la comunidad científica.
-#### 3.3. Aplicar con rigor las normas de uso de los espacios específicos de la ciencia, como el laboratorio de física y química, asegurando la salud propia y colectiva, la conservación sostenible del medio ambiente y el cuidado por las instalaciones.
+#### 2.1. Participar, con iniciativa, confianza y creatividad, en la exploración de técnicas musicales y dancísticas de mayor complejidad, por medio de interpretaciones e improvisaciones libres y pautadas, individuales o grupales, en las que se empleen la voz, el cuerpo, instrumentos musicales o herramientas tecnológicas.
 
-### 4. Utilizar de forma crítica, eficiente y segura plataformas digitales y recursos variados, tanto para el trabajo individual como en equipo, para fomentar la creatividad, el desarrollo personal y el aprendizaje individual y social, mediante la consulta de información, la creación de materiales y la comunicación efectiva en los diferentes entornos de aprendizaje.
+#### 2.2. Elaborar piezas musicales o dancísticas estructuradas, a partir de actividades de improvisación, seleccionando las técnicas del repertorio personal de recursos más adecuadas a la intención expresiva.
 
-#### 4.1. Utilizar de forma eficiente recursos variados, tradicionales y digitales, mejorando el aprendizaje autónomo y la interacción con otros miembros de la comunidad educativa, de forma rigurosa y respetuosa y analizando críticamente las aportaciones de cada participante.
-#### 4.2. Trabajar de forma versátil con medios variados, tradicionales y digitales, en la consulta de información y la creación de contenidos, seleccionando y empleando con criterio las fuentes y herramientas más fiables, desechando las menos adecuadas y mejorando el aprendizaje propio y colectivo.
+### 3. Interpretar piezas musicales y dancísticas, gestionando adecuadamente las emociones y empleando diversas estrategias y técnicas vocales, corporales o instrumentales, para ampliar las posibilidades de expresión personal o grupal.
 
-### 5. Utilizar las estrategias propias del trabajo colaborativo, potenciando el crecimiento entre iguales como base emprendedora de una comunidad científica crítica, ética y eficiente, para comprender la importancia de la ciencia en la mejora de la sociedad, las aplicaciones y repercusiones de los avances científicos, la preservación de la salud y la conservación sostenible del medio ambiente.
+#### 3.1. Leer partituras sencillas, identificando los elementos básicos del lenguaje musical y analizando de forma guiada las estructuras de las piezas, con o sin apoyo de la audición.
 
-#### 5.1. Establecer interacciones constructivas y coeducativas, emprendiendo actividades de cooperación e iniciando el uso de las estrategias propias del trabajo colaborativo, como forma de construir un medio de trabajo eficiente en la ciencia.
-#### 5.2. Emprender, de forma autónoma y de acuerdo a la metodología adecuada, proyectos científicos que involucren al alumnado en la mejora de la sociedad y que creen valor para el individuo y para la comunidad.
+#### 3.2. Emplear diferentes técnicas de interpretación vocal, corporal o instrumental, aplicando estrategias de memorización y valorando los ensayos como espacios de escucha y aprendizaje.
 
-### 6. Comprender y valorar la ciencia como una construcción colectiva en continuo cambio y evolución, en la que no solo participan las personas dedicadas a ella, sino que también requiere de una interacción con el resto de la sociedad, para obtener resultados que repercutan en el avance tecnológico, económico, ambiental y social.
+#### 3.3. Interpretar con corrección y expresividad piezas musicales y dancísticas, individuales y grupales, dentro y fuera del aula, gestionando la ansiedad y el miedo escénico, y manteniendo la concentración.
 
-#### 6.1. Reconocer y valorar, a través del análisis histórico de los avances científicos logrados por mujeres y hombres, así como de situaciones y contextos actuales (líneas de investigación, instituciones científicas, etc.), que la ciencia es un proceso en permanente construcción y que esta tiene repercusiones e implicaciones importantes sobre la sociedad actual.
-#### 6.2. Detectar las necesidades tecnológicas, ambientales, económicas y sociales más importantes que demanda la sociedad, entendiendo la capacidad de la ciencia para darles solución sostenible a través de la implicación de la ciudadanía.
+### 4. Crear propuestas artístico-musicales, de forma individual o grupal, empleando la voz, el cuerpo, instrumentos musicales y herramientas tecnológicas, para potenciar la creatividad e identificar oportunidades de desarrollo personal, social, académico y profesional.
 
-##### A. Las destrezas científicas básicas.
+#### 4.1. Planificar y desarrollar, con creatividad, propuestas artístico-musicales, tanto individuales como colaborativas, seleccionando, de entre los disponibles, los medios musicales y dancísticos más oportunos, así como las herramientas analógicas o digitales más adecuadas.
 
-###### A.4.1. (Trabajo experimental y proyectos de investigación) − Trabajo experimental y proyectos de investigación: estrategias en la resolución de problemas y el tratamiento del error mediante la indagación, la deducción, la búsqueda de evidencias y el razonamiento lógico-matemático, haciendo inferencias válidas de las observaciones y obteniendo conclusiones que vayan más allá de las condiciones experimentales para aplicarlas a nuevos escenarios.
-###### A.4.2. (Diversos entornos y recursos de aprendizaje científico) − Diversos entornos y recursos de aprendizaje científico como el laboratorio o los entornos virtuales: materiales, sustancias y herramientas tecnológicas.
-###### A.4.3. (Normas de uso de cada espacio) − Normas de uso de cada espacio, asegurando y protegiendo así la salud propia y comunitaria, la seguridad en las redes y el respeto hacia el medio ambiente.
-###### A.4.4. (El lenguaje científico) − El lenguaje científico: manejo adecuado de distintos sistemas de unidades y sus símbolos. Herramientas matemáticas adecuadas en diferentes escenarios científicos y de aprendizaje.
-###### A.4.5. (Estrategias de interpretación y producción de información científica) − Estrategias de interpretación y producción de información científica en diferentes formatos y a partir de diferentes medios: desarrollo del criterio propio basado en lo que el pensamiento científico aporta a la mejora de la sociedad para hacerla más justa, equitativa e igualitaria.
-###### A.4.6. (Valoración de la cultura científica) − Valoración de la cultura científica y del papel de científicos y científicas en los principales hitos históricos y actuales de la física y la química para el avance y la mejora de la sociedad.
+#### 4.2. Participar activamente en la planificación y en la ejecución de propuestas artísticomusicales colaborativas, asumiendo diferentes funciones, valorando las aportaciones del resto de integrantes del grupo e identificando diversas oportunidades de desarrollo personal, social, académico y profesional.
 
-##### B. La materia.
+##### A. Escucha y percepción.
 
-###### B.4.1. (Sistemas materiales) − Sistemas materiales: resolución de problemas y situaciones de aprendizaje diversas sobre las disoluciones y los gases, entre otros sistemas materiales significativos.
-###### B.4.2. (Modelos atómicos) − Modelos atómicos: desarrollo histórico de los principales modelos atómicos clásicos y cuánticos y descripción de las partículas subatómicas, estableciendo su relación con los avances de la física y la química.
-###### B.4.3. (Estructura electrónica de los átomos) − Estructura electrónica de los átomos: configuración electrónica de un átomo y su relación con la posición del mismo en la tabla periódica y con sus propiedades fisicoquímicas.
-###### B.4.4. (Compuestos químicos) − Compuestos químicos: su formación, propiedades físicas y químicas y valoración de su utilidad e importancia en otros campos como la ingeniería o el deporte.
-###### B.4.5. (Cuantificación de la cantidad de materia) − Cuantificación de la cantidad de materia: cálculo del número de moles de sistemas materiales de diferente naturaleza, manejando con soltura las diferentes formas de medida y expresión de la misma en el entorno científico.
-###### B.4.6. (Nomenclatura inorgánica) − Nomenclatura inorgánica: denominación de sustancias simples, iones y compuestos químicos binarios y ternarios mediante las normas de la Iupac.
-###### B.4.7. (Introducción a la nomenclatura orgánica) − Introducción a la nomenclatura orgánica: denominación de compuestos orgánicos monofuncionales a partir de las normas de la Iupac como base para entender la gran variedad de compuestos del entorno basados en el carbono.
+###### A.4.1. (Escucha y percepción) − El silencio, el sonido, el ruido y la escucha activa. Sensibilización y actitud crítica ante la polución sonora y el consumo indiscriminado de música.
 
-##### C. La energía.
+###### A.4.2. (Escucha y percepción) − Obras musicales y dancísticas: análisis descriptivo de sus características más relevantes. Géneros musicales y dancísticos.
 
-###### C.4.1. (La energía) − La energía: formulación y comprobación de hipótesis sobre las distintas formas y aplicaciones de la energía, a partir de sus propiedades y del principio de conservación, como base para la experimentación y la resolución de problemas relacionados con la energía mecánica en situaciones cotidianas.
-###### C.4.2. (Transferencias de energía) − Transferencias de energía: el trabajo y el calor como formas de transferencia de energía entre sistemas relacionados con las fuerzas o la diferencia de temperatura. La luz y el sonido como ondas que transfieren energía.
-###### C.4.3. (La energía en nuestro mundo) − La energía en nuestro mundo: estimación de la energía consumida en la vida cotidiana mediante la búsqueda de información contrastada, la experimentación y el razonamiento científico, comprendiendo la importancia de la energía en la sociedad, su producción y su uso responsable.
+###### A.4.3. (Escucha y percepción) − Voces e instrumentos. Evolución y agrupaciones. Relevancia en las distintas etapas.
 
-##### D. La interacción.
+###### A.4.4. (Escucha y percepción) − Compositores y compositoras, artistas e intérpretes internacionales, nacionales, regionales y locales.
 
-###### D.4.1. (Predicción y comprobación del movimiento) − Predicción y comprobación, utilizando la experimentación y el razonamiento matemático, de las principales magnitudes, ecuaciones y gráficas que describen el movimiento de un cuerpo, relacionándolo con situaciones cotidianas y con la mejora de la calidad de vida.
-###### D.4.2. (La fuerza como agente de cambios) − La fuerza como agente de cambios en los cuerpos: principio fundamental de la Física que se aplica a otros campos como el diseño, el deporte o la ingeniería.
-###### D.4.3. (Carácter vectorial de las fuerzas) − Carácter vectorial de las fuerzas: uso del álgebra vectorial básica para la realización gráfica y numérica de operaciones con fuerzas y su aplicación a la resolución de problemas relacionados con sistemas sometidos a conjuntos de fuerzas, valorando su importancia en situaciones cotidianas.
-###### D.4.4. (Principales fuerzas del entorno cotidiano) − Principales fuerzas del entorno cotidiano: reconocimiento del peso, la normal, el rozamiento, la tensión o el empuje, y su uso en la explicación de fenómenos físicos en distintos escenarios.
-###### D.4.5. (Ley de la gravitación universal) − Ley de la gravitación universal: atracción entre los cuerpos que componen el universo. Concepto de peso.
-###### D.4.6. (Fuerzas y presión en los fluidos) − Fuerzas y presión en los fluidos: efectos de las fuerzas y la presión sobre los líquidos y los gases, estudiando los principios fundamentales que las describen.
+###### A.4.5. (Escucha y percepción) − Conciertos, actuaciones musicales y manifestaciones artístico-musicales en vivo y registradas.
 
-##### E. El cambio.
+###### A.4.6. (Escucha y percepción) − Mitos, estereotipos y roles de género trasmitidos a través de la música y la danza.
 
-###### E.4.1. (Ecuaciones químicas) − Ecuaciones químicas: ajuste de reacciones químicas y realización de predicciones cualitativas y cuantitativas basadas en la estequiometría, relacionándolas con procesos fisicoquímicos de la industria, el medioambiente y la sociedad.
-###### E.4.2. (Descripción cualitativa de reacciones químicas) − Descripción cualitativa de reacciones químicas de interés: reacciones de combustión, neutralización y procesos electroquímicos sencillos, valorando las implicaciones que tienen en la tecnología, la sociedad o el medioambiente.
-###### E.4.3. (Factores que influyen en la velocidad de las reacciones) − Factores que influyen en la velocidad de las reacciones químicas: comprensión de cómo ocurre la reordenación de los átomos aplicando modelos como la teoría de colisiones y realización de predicciones en los procesos químicos cotidianos más importantes.
+###### A.4.7. (Escucha y percepción) − Herramientas digitales para la recepción musical.
+
+###### A.4.8. (Escucha y percepción) − Estrategias de búsqueda, selección y reelaboración de información fiable, pertinente y de calidad.
+
+###### A.4.9. (Escucha y percepción) − Actitud de respeto y valoración en la recepción musical.
+
+##### B. Interpretación, improvisación y creación escénica.
+
+###### B.4.1. (Interpretación, improvisación y creación escénica) − La partitura: lectura y escritura musical.
+
+###### B.4.2. (Interpretación, improvisación y creación escénica) − Elementos del lenguaje musical. Tonalidad: modulación, funciones armónicas, progresiones armónicas. Formas musicales complejas.
+
+###### B.4.3. (Interpretación, improvisación y creación escénica) − Repertorio vocal, instrumental o corporal individual o grupal de distintos tipos de música del patrimonio musical histórico, actual y de otras culturas, particularmente de Castilla La Mancha.
+
+###### B.4.4. (Interpretación, improvisación y creación escénica) − Técnicas para la interpretación: técnicas vocales, instrumentales y corporales, técnicas de estudio y de control de emociones.
+
+###### B.4.5. (Interpretación, improvisación y creación escénica) − Técnicas de improvisación guiada y libre: melódicas y ritmos vocales, instrumentales o corporales.
+
+###### B.4.6. (Interpretación, improvisación y creación escénica) − Planificación y ejecución de proyectos musicales y audiovisuales: empleo de la voz, el cuerpo, los instrumentos musicales, los medios y las aplicaciones tecnológicas.
+
+###### B.4.7. (Interpretación, improvisación y creación escénica) − Valores y hábitos de consumo responsable en las plataformas digitales y las redes sociales musicales.
+
+###### B.4.8. (Interpretación, improvisación y creación escénica) − Recursos para la creación de productos musicales y audiovisuales. Herramientas digitales para la creación musical. Secuenciadores, editores de partituras y aplicaciones informáticas.
+
+###### B.4.9. (Interpretación, improvisación y creación escénica) − Actitudes de respeto y colaboración en la participación activa en actividades musicales.
+
+##### C. Contextos y culturas.
+
+###### C.4.1. (Contextos y culturas) − Historia de la música y la danza en España: periodos, características, géneros, voces, instrumentos y agrupaciones.
+
+###### C.4.2. (Contextos y culturas) − Tradiciones musicales y dancísticas de otras culturas del mundo: funciones, pervivencia e influencias en otros estilos musicales.
+
+###### C.4.3. (Contextos y culturas) − Sistemas de grabación y reproducción del sonido.
+
+###### C.4.4. (Contextos y culturas) − Músicas populares, urbanas y contemporáneas.
+
+###### C.4.5. (Contextos y culturas) − El sonido y la música en los medios audiovisuales y las tecnologías digitales. La música al servicio de otras artes y lenguajes.
+
