@@ -803,9 +803,24 @@
                     <option value="primaria_c1">Primaria - 1ᵉʳ ciclo (1º y 2º)</option>
                     <option value="primaria_c2">Primaria - 2º ciclo (3º y 4º)</option>
                     <option value="primaria_c3">Primaria - 3ᵉʳ ciclo (5º y 6º)</option>
-                    <option value="secundaria_1_3">Secundaria - 1º a 3º ESO</option>
+                    <option value="secundaria_1">Secundaria - 1º ESO</option>
+                    <option value="secundaria_2">Secundaria - 2º ESO</option>
+                    <option value="secundaria_3">Secundaria - 3º ESO</option>
                     <option value="secundaria_4">Secundaria - 4º ESO</option>
-                    <option value="bachillerato">Bachillerato</option>
+                    <option value="bachillerato_1">Bachillerato - 1º Curso</option>
+                    <option value="bachillerato_2">Bachillerato - 2º Curso</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="group-modalidad" style="display: none;">
+                <div class="label-wrapper"><label for="sel-modalidad">Modalidad</label></div>
+                <select id="sel-modalidad" onchange="actualizarMaterias()">
+                    <option value="">Seleccione modalidad...</option>
+                    <option value="artes_plasticas">Artes (Plásticas, Imagen y Diseño)</option>
+                    <option value="artes_musica">Artes (Música y Artes Escénicas)</option>
+                    <option value="ciencias">Ciencias y Tecnología</option>
+                    <option value="general">General</option>
+                    <option value="humanidades">Humanidades y Ciencias Sociales</option>
                 </select>
             </div>
             
@@ -1221,29 +1236,62 @@
         "Lengua Extranjera (Francés)", "Matemáticas", "Religión"
     ];
     
-    const materiasSecundaria = [
-        "Biología y Geología", "Geografía e Historia", "Lengua Castellana y Literatura", 
-        "Matemáticas", "Educación Física", "Lengua Extranjera (Inglés)", "Lengua Extranjera (Francés)",
-        "Tecnología y Digitalización", "Educación Plástica, Visual y Audiovisual", "Música", 
-        "Física y Química", "Educación en Valores Cívicos y Éticos", "Economía y Emprendimiento",
-        "Cultura Clásica", "Latín", "Filosofía", "Formación y Orientación Personal y Profesional", "Religión"
+    const materiasSecundaria_1_3 = [
+        "Biología y Geología", "Física y Química", "Educación Física", 
+        "Educación Plástica, Visual y Audiovisual", "Geografía e Historia", 
+        "Lengua Castellana y Literatura", "Lengua Extranjera (Inglés)", "Lengua Extranjera (Francés)",
+        "Matemáticas", "Música", "Tecnología y Digitalización", "Educación en Valores Cívicos y Éticos",
+        "Cultura Clásica", "Desarrollo Digital", "Taller de Emprendimiento y Finanzas Personales",
+        "Emprendimiento, Sostenibilidad y Consumo Responsable", "Proyectos de Artes Plásticas y Visuales",
+        "Música Activa, Movimiento y Folclore", "Lenguas de signos españolas"
     ];
+
+    const materiasSecundaria_4 = [
+        "Educación Física", "Geografía e Historia", "Lengua Castellana y Literatura", 
+        "Lengua Extranjera (Inglés)", "Lengua Extranjera (Francés)", "Matemáticas A", "Matemáticas B",
+        "Biología y Geología", "Digitalización", "Economía y Emprendimiento", "Expresión Artística",
+        "Física y Química", "Formación y Orientación Personal y Profesional", "Latín", "Música", 
+        "Tecnología", "Filosofía", "Cultura Clásica", "Cultura Científica", "Proyectos de Robótica", 
+        "Artes Escénicas, Danza y Folclore", "Lenguas de signos españolas"
+    ];
+
+    const matBachComunes1 = ["Educación Física", "Filosofía", "Lengua Castellana y Literatura I", "Lengua Extranjera I (Inglés)", "Lengua Extranjera I (Francés)", "Segunda Lengua Extranjera"];
+    const matBachComunes2 = ["Historia de España", "Historia de la Filosofía", "Lengua Castellana y Literatura II", "Lengua Extranjera II (Inglés)", "Lengua Extranjera II (Francés)", "Segunda Lengua Extranjera"];
+
+    const matBach1ArtesPlasticas = [...matBachComunes1, "Dibujo Artístico I", "Cultura Audiovisual", "Dibujo Técnico Aplicado a las Artes Plásticas y al Diseño I", "Proyectos Artísticos", "Volumen", "Historia del Mundo Contemporáneo", "Literatura Universal", "Desarrollo Digital", "Psicología"];
+    const matBach2ArtesPlasticas = [...matBachComunes2, "Dibujo Artístico II", "Dibujo Técnico Aplicado a las Artes Plásticas y al Diseño II", "Diseño", "Fundamentos Artísticos", "Técnicas de Expresión Gráfico-Plástica", "Fundamentos de Administración y Gestión", "Creación de Contenidos Artísticos y Audiovisuales"];
+
+    const matBach1ArtesMusica = [...matBachComunes1, "Análisis Musical I", "Artes Escénicas I", "Coro y Técnica Vocal I", "Cultura Audiovisual", "Lenguaje y Práctica Musical", "Historia del Mundo Contemporáneo", "Literatura Universal"];
+    const matBach2ArtesMusica = [...matBachComunes2, "Análisis Musical II", "Artes Escénicas II", "Coro y Técnica Vocal II", "Historia de la Música y de la Danza", "Literatura Dramática", "Proyectos Artísticos de Música, Danza y Arte Dramático"];
+
+    const matBach1Ciencias = [...matBachComunes1, "Matemáticas I", "Biología, Geología y Ciencias Ambientales", "Dibujo Técnico I", "Física y Química", "Tecnología e Ingeniería I", "Anatomía Aplicada", "Desarrollo Digital"];
+    const matBach2Ciencias = [...matBachComunes2, "Matemáticas II", "Matemáticas Aplicadas a las Ciencias Sociales II", "Biología", "Dibujo Técnico II", "Física", "Geología y Ciencias Ambientales", "Química", "Tecnología e Ingeniería II", "Investigación y Desarrollo Científico", "Creación de Contenidos Artísticos y Audiovisuales"];
+
+    const matBach1General = [...matBachComunes1, "Matemáticas Generales", "Economía, Emprendimiento y Actividad Empresarial"];
+    const matBach2General = [...matBachComunes2, "Ciencias Generales", "Movimientos Culturales y Artísticos"];
+
+    const matBach1Humanidades = [...matBachComunes1, "Latín I", "Matemáticas Aplicadas a las Ciencias Sociales I", "Economía", "Griego I", "Historia del Mundo Contemporáneo", "Literatura Universal", "Lenguaje y Práctica Musical", "Psicología"];
+    const matBach2Humanidades = [...matBachComunes2, "Latín II", "Matemáticas Aplicadas a las Ciencias Sociales II", "Empresa y Diseño de Modelos de Negocio", "Geografía", "Griego II", "Historia del Arte", "Historia de la Música y la Danza", "Fundamentos de Administración y Gestión"];
 
     const MATERIAS = {
         infantil: materiasInfantil,
         primaria_c1: materiasPrimaria,
         primaria_c2: materiasPrimaria,
         primaria_c3: [...materiasPrimaria, "Educación en Valores Cívicos y Éticos"],
-        secundaria_1_3: materiasSecundaria,
-        secundaria_4: materiasSecundaria,
-        bachillerato: [
-            "Lengua Castellana y Literatura", "Matemáticas", "Matemáticas Aplicadas a las Ciencias Sociales",
-            "Historia de España", "Historia de la Filosofía", "Lengua Extranjera (Inglés)", 
-            "Lengua Extranjera (Francés)", "Biología", "Geología y Ciencias Ambientales", "Física", 
-            "Química", "Economía", "Historia del Arte", "Geografía", "Latín", "Griego", "Dibujo Técnico",
-            "Análisis Musical", "Coro y Técnica Vocal", "Literatura Universal", "Psicología",
-            "Tecnología e Ingeniería", "Cultura Audiovisual"
-        ]
+        secundaria_1: materiasSecundaria_1_3,
+        secundaria_2: materiasSecundaria_1_3,
+        secundaria_3: materiasSecundaria_1_3,
+        secundaria_4: materiasSecundaria_4,
+        bachillerato_1_artes_plasticas: matBach1ArtesPlasticas,
+        bachillerato_2_artes_plasticas: matBach2ArtesPlasticas,
+        bachillerato_1_artes_musica: matBach1ArtesMusica,
+        bachillerato_2_artes_musica: matBach2ArtesMusica,
+        bachillerato_1_ciencias: matBach1Ciencias,
+        bachillerato_2_ciencias: matBach2Ciencias,
+        bachillerato_1_general: matBach1General,
+        bachillerato_2_general: matBach2General,
+        bachillerato_1_humanidades: matBach1Humanidades,
+        bachillerato_2_humanidades: matBach2Humanidades
     };
 
     // --- CURRÍCULO CACHED EN MEMORIA ---
@@ -1255,17 +1303,54 @@
         "primaria_c1": "Primaria Primer Ciclo",
         "primaria_c2": "Primaria Segundo Ciclo",
         "primaria_c3": "Primaria Tercer Ciclo",
-        "secundaria_1_3": "Secundaria Primer a Tercer Curso", // Puedes ajustar este cuando crees los de la ESO
-        "secundaria_4": "Secundaria Cuarto Curso",           // Puedes ajustar este cuando crees los de la ESO
-        "bachillerato": "Bachillerato"
+        "secundaria_1": "Secundaria Primer Curso",
+        "secundaria_2": "Secundaria Segundo Curso",
+        "secundaria_3": "Secundaria Tercer Curso",
+        "secundaria_4": "Secundaria Cuarto Curso",
+        "bachillerato_1_artes_plasticas": "Bachillerato",
+        "bachillerato_2_artes_plasticas": "Bachillerato",
+        "bachillerato_1_artes_musica": "Bachillerato",
+        "bachillerato_2_artes_musica": "Bachillerato",
+        "bachillerato_1_ciencias": "Bachillerato",
+        "bachillerato_2_ciencias": "Bachillerato",
+        "bachillerato_1_general": "Bachillerato",
+        "bachillerato_2_general": "Bachillerato",
+        "bachillerato_1_humanidades": "Bachillerato",
+        "bachillerato_2_humanidades": "Bachillerato"
     };
+
+    function obtenerClaveEtapa() {
+        const etapa = document.getElementById('sel-etapa').value;
+        if (etapa.startsWith('bachillerato')) {
+            const modalidad = document.getElementById('sel-modalidad').value;
+            return modalidad ? etapa + '_' + modalidad : null;
+        }
+        return etapa;
+    }
 
     function actualizarMaterias() {
         const etapa = document.getElementById('sel-etapa').value;
+        const modalidadGroup = document.getElementById('group-modalidad');
+        const modalidad = document.getElementById('sel-modalidad').value;
         const selectMateria = document.getElementById('sel-materia');
+
+        if (etapa.startsWith('bachillerato')) {
+            modalidadGroup.style.display = 'block';
+            if (!modalidad) {
+                selectMateria.innerHTML = '<option value="">Seleccione primero la modalidad...</option>';
+                prepararCurriculo(); 
+                return;
+            }
+        } else {
+            modalidadGroup.style.display = 'none';
+            document.getElementById('sel-modalidad').value = ""; 
+        }
+
+        const claveEtapa = obtenerClaveEtapa();
+
         selectMateria.innerHTML = '<option value="">Seleccione materia...</option>';
-        if (MATERIAS[etapa]) {
-            MATERIAS[etapa].forEach(materia => {
+        if (claveEtapa && MATERIAS[claveEtapa]) {
+            MATERIAS[claveEtapa].forEach(materia => {
                 const option = document.createElement('option');
                 option.value = materia;
                 option.textContent = materia;
@@ -1285,11 +1370,13 @@
         boxCompetencias.innerHTML = '<div class="empty-state">Seleccione materia en el paso anterior...</div>';
         contenedorSaberes.innerHTML = '<div class="empty-state">Selecciona al menos una competencia en el paso anterior.</div>';
         
-        if (!etapa || !materia) return;
+        const claveEtapa = obtenerClaveEtapa();
+        
+        if (!claveEtapa || !materia) return;
 
         // Si ya lo tenemos en memoria, lo mostramos directo
-        if (CURRICULO_CLM[etapa] && CURRICULO_CLM[etapa][materia]) {
-            renderizarCheckboxCompetencias(etapa, materia);
+        if (CURRICULO_CLM[claveEtapa] && CURRICULO_CLM[claveEtapa][materia]) {
+            renderizarCheckboxCompetencias(claveEtapa, materia);
             return;
         }
 
@@ -1298,7 +1385,7 @@
         boxCompetencias.innerHTML = '<div class="empty-state">Buscando currículo automáticamente...</div>';
         
         try {
-            const prefijoEtapa = MAPA_ARCHIVOS_ETAPA[etapa] || etapa;
+            const prefijoEtapa = MAPA_ARCHIVOS_ETAPA[claveEtapa] || claveEtapa;
             const nombreArchivo = `${prefijoEtapa} - ${materia}.md`;
             
             // Codificamos la URL para evitar problemas en servidores (como Github) con espacios y tildes
@@ -1313,10 +1400,10 @@
             const competenciasParseadas = parsearMarkdown(textoMarkdown);
             
             // Guardamos en memoria lo que hemos descargado
-            if (!CURRICULO_CLM[etapa]) CURRICULO_CLM[etapa] = {};
-            CURRICULO_CLM[etapa][materia] = competenciasParseadas;
+            if (!CURRICULO_CLM[claveEtapa]) CURRICULO_CLM[claveEtapa] = {};
+            CURRICULO_CLM[claveEtapa][materia] = competenciasParseadas;
             
-            renderizarCheckboxCompetencias(etapa, materia);
+            renderizarCheckboxCompetencias(claveEtapa, materia);
 
         } catch (error) {
             console.log("No se ha encontrado el archivo local:", error);
@@ -1324,16 +1411,16 @@
             // Si hay un error, dejamos el contenedor vacío y con un mensaje neutro
             boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
             
-            if (!CURRICULO_CLM[etapa]) CURRICULO_CLM[etapa] = {};
-            CURRICULO_CLM[etapa][materia] = { competencias: [], bloquesSaberes: [] }; 
+            if (!CURRICULO_CLM[claveEtapa]) CURRICULO_CLM[claveEtapa] = {};
+            CURRICULO_CLM[claveEtapa][materia] = { competencias: [], bloquesSaberes: [] }; 
         }
     }
 
     // Dibuja los checkboxes de la fase 3
-    function renderizarCheckboxCompetencias(etapa, materia) {
+    function renderizarCheckboxCompetencias(claveEtapa, materia) {
         const boxCompetencias = document.getElementById('box-competencias');
         boxCompetencias.innerHTML = '';
-        const data = CURRICULO_CLM[etapa][materia];
+        const data = CURRICULO_CLM[claveEtapa][materia];
 
         if (!data || !data.competencias || data.competencias.length === 0) {
              boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
@@ -1347,7 +1434,7 @@
 
     // Dibuja los criterios y saberes en la fase 4
     function cargarSaberesYCriterios() {
-        const etapa = document.getElementById('sel-etapa').value;
+        const claveEtapa = obtenerClaveEtapa();
         const materia = document.getElementById('sel-materia').value;
         const contenedorSaberes = document.getElementById('contenedor-saberes-criterios');
         const competenciasChecks = document.querySelectorAll('#box-competencias input[type="checkbox"]:checked');
@@ -1358,7 +1445,7 @@
         }
 
         contenedorSaberes.innerHTML = '';
-        const data = CURRICULO_CLM[etapa][materia];
+        const data = CURRICULO_CLM[claveEtapa][materia];
 
         // 1. Renderizar Criterios de las Competencias Seleccionadas
         let htmlCriterios = '<h3 style="margin-bottom: 1rem; color: var(--primary-color);">Criterios de evaluación</h3>';
@@ -1577,15 +1664,20 @@
     // --- PREPARACIÓN Y EXPORTACIÓN ---
     function prepararDatosDocumento() {
         const etapaSel = document.getElementById('sel-etapa');
+        const modalidadSel = document.getElementById('sel-modalidad');
         const materiaSel = document.getElementById('sel-materia');
         
-        const etapa = etapaSel.options[etapaSel.selectedIndex]?.text || 'No definida';
+        let etapaTexto = etapaSel.options[etapaSel.selectedIndex]?.text || 'No definida';
+        if (etapaSel.value.startsWith('bachillerato') && modalidadSel.value) {
+            etapaTexto += ' (' + modalidadSel.options[modalidadSel.selectedIndex].text + ')';
+        }
         const materia = materiaSel.options[materiaSel.selectedIndex]?.text || 'No definida';
+        
         const tema = document.getElementById('input-tema').value || 'Sin especificar';
         const tituloAlumnado = document.getElementById('input-titulo-alumnado').value || 'Sin especificar';
         
         let competenciaTexto = 'No seleccionada';
-        const etapaVal = etapaSel.value;
+        const etapaVal = obtenerClaveEtapa();
         const materiaVal = materiaSel.value;
         const competenciasChecks = document.querySelectorAll('#box-competencias input[type="checkbox"]:checked');
         
@@ -1616,7 +1708,7 @@
             rubrica = tempDiv.innerHTML.trim();
         }
 
-        document.getElementById('pdf-etapa-materia').textContent = `${etapa} - ${materia}`;
+        document.getElementById('pdf-etapa-materia').textContent = `${etapaTexto} - ${materia}`;
         document.getElementById('pdf-tema').textContent = tema;
         document.getElementById('pdf-titulo-alumnado').textContent = tituloAlumnado;
         document.getElementById('pdf-competencia').innerHTML = competenciaTexto; 
