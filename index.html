@@ -1296,6 +1296,7 @@
 
     // --- CURRÍCULO CACHED EN MEMORIA ---
     const CURRICULO_CLM = {};
+    const MATERIAS_DISPONIBLES = {}; // Nuevo objeto para cachear la disponibilidad de los archivos
 
     // Diccionario para traducir el valor del select al nombre físico de tu archivo .md
     const MAPA_ARCHIVOS_ETAPA = {
@@ -1307,16 +1308,16 @@
         "secundaria_2": "Secundaria Segundo Curso",
         "secundaria_3": "Secundaria Tercer Curso",
         "secundaria_4": "Secundaria Cuarto Curso",
-        "bachillerato_1_artes_plasticas": "Bachillerato",
-        "bachillerato_2_artes_plasticas": "Bachillerato",
-        "bachillerato_1_artes_musica": "Bachillerato",
-        "bachillerato_2_artes_musica": "Bachillerato",
-        "bachillerato_1_ciencias": "Bachillerato",
-        "bachillerato_2_ciencias": "Bachillerato",
-        "bachillerato_1_general": "Bachillerato",
-        "bachillerato_2_general": "Bachillerato",
-        "bachillerato_1_humanidades": "Bachillerato",
-        "bachillerato_2_humanidades": "Bachillerato"
+        "bachillerato_1_artes_plasticas": "Bachillerato Primer Curso",
+        "bachillerato_2_artes_plasticas": "Bachillerato Segundo Curso",
+        "bachillerato_1_artes_musica": "Bachillerato Primer Curso",
+        "bachillerato_2_artes_musica": "Bachillerato Segundo Curso",
+        "bachillerato_1_ciencias": "Bachillerato Primer Curso",
+        "bachillerato_2_ciencias": "Bachillerato Segundo Curso",
+        "bachillerato_1_general": "Bachillerato Primer Curso",
+        "bachillerato_2_general": "Bachillerato Segundo Curso",
+        "bachillerato_1_humanidades": "Bachillerato Primer Curso",
+        "bachillerato_2_humanidades": "Bachillerato Segundo Curso"
     };
 
     function obtenerClaveEtapa() {
@@ -1356,8 +1357,56 @@
                 option.textContent = materia;
                 selectMateria.appendChild(option);
             });
+            // Iniciamos la comprobación de archivos en segundo plano
+            verificarDisponibilidadMaterias(claveEtapa);
         }
         prepararCurriculo(); 
+    }
+
+    async function verificarDisponibilidadMaterias(claveEtapa) {
+        const selectMateria = document.getElementById('sel-materia');
+        const prefijoEtapa = MAPA_ARCHIVOS_ETAPA[claveEtapa] || claveEtapa;
+        
+        if (!MATERIAS_DISPONIBLES[claveEtapa]) {
+            MATERIAS_DISPONIBLES[claveEtapa] = {};
+        }
+
+        const options = selectMateria.options;
+        // Iteramos desde 1 para saltar la opción por defecto ("Seleccione materia...")
+        for (let i = 1; i < options.length; i++) {
+            const materia = options[i].value;
+            
+            if (MATERIAS_DISPONIBLES[claveEtapa][materia] !== undefined) {
+                // Ya la hemos comprobado antes en esta misma sesión
+                if (!MATERIAS_DISPONIBLES[claveEtapa][materia]) {
+                    options[i].disabled = true;
+                    options[i].style.color = '#A0A0A0';
+                    options[i].textContent = materia + ' (Próximamente)';
+                }
+            } else {
+                // Comprobamos si el archivo existe haciendo una petición HEAD muy ligera
+                const nombreArchivo = `${prefijoEtapa} - ${materia}.md`;
+                const urlSegura = encodeURI(`./${nombreArchivo}`);
+                
+                try {
+                    const response = await fetch(urlSegura, { method: 'HEAD' });
+                    const existe = response.ok;
+                    MATERIAS_DISPONIBLES[claveEtapa][materia] = existe;
+                    
+                    if (!existe) {
+                        options[i].disabled = true;
+                        options[i].style.color = '#A0A0A0';
+                        options[i].textContent = materia + ' (Próximamente)';
+                    }
+                } catch (error) {
+                    // En caso de error de red, asumimos que no está disponible
+                    MATERIAS_DISPONIBLES[claveEtapa][materia] = false;
+                    options[i].disabled = true;
+                    options[i].style.color = '#A0A0A0';
+                    options[i].textContent = materia + ' (Próximamente)';
+                }
+            }
+        }
     }
 
     // Función principal asíncrona para cargar el currículo
