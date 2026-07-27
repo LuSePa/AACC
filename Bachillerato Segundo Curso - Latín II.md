@@ -1,0 +1,162 @@
+# Latín
+
+## Latín II
+
+### 1. Traducir y comprender textos latinos de dificultad creciente y justificar la traducción, identificando y analizando los aspectos básicos de la lengua latina y sus unidades lingüísticas y reflexionando sobre ellas mediante la comparación con las lenguas de enseñanza y con otras lenguas del repertorio individual del alumnado, para realizar una lectura comprensiva, directa y eficaz y una interpretación razonada de su contenido.
+
+#### 1.1. Realizar traducciones directas o inversas de textos o fragmentos de dificultad adecuada y progresiva, con corrección ortográfica y expresiva, identificando y analizando unidades lingüísticas regulares de la lengua, y apreciando variantes y coincidencias con otras lenguas conocidas.
+
+#### 1.2. Seleccionar el significado apropiado de palabras polisémicas y justificar la decisión, teniendo en cuenta la información cotextual o contextual y utilizando herramientas de apoyo al proceso de traducción en distintos soportes, tales como listas de vocabulario, glosarios, diccionarios, mapas o atlas, correctores ortográficos, gramáticas y libros de estilo.
+
+#### 1.3. Revisar y subsanar las propias traducciones y las de los compañeros y las compañeras, realizando propuestas de mejora y argumentando los cambios con terminología especializada a partir de la reflexión lingüística.
+
+#### 1.4. Realizar la lectura directa de textos latinos de dificultad adecuada identificando las unidades lingüísticas más frecuentes de la lengua latina, comparándolas con las de las lenguas del repertorio lingüístico propio y asimilando los aspectos morfológicos, sintácticos y léxicos del latín.
+
+#### 1.5. Registrar los progresos y dificultades de aprendizaje de la lengua latina, seleccionando las estrategias más adecuadas y eficaces para superar esas dificultades y consolidar su aprendizaje, realizando actividades de planificación del propio aprendizaje, autoevaluación y coevaluación, como las propuestas en el Portfolio Europeo de las Lenguas (PEL) o en un diario de aprendizaje haciéndolos explícitos y compartiéndolos.
+
+### 2. Distinguir los formantes latinos y explicar los cambios que hayan tenido lugar a lo largo del tiempo, comparándolos con los de las lenguas de enseñanza y otras lenguas del repertorio individual del alumnado, para deducir el significado etimológico del léxico conocido y los significados de léxico nuevo o especializado.
+
+#### 2.1. Deducir el significado etimológico de un término de uso común e inferir el significado de términos de nueva aparición o procedentes de léxico especializado aplicando estrategias de reconocimiento de formantes latinos atendiendo a los cambios fonéticos, morfológicos o semánticos que hayan tenido lugar.
+
+#### 2.2. Explicar cambios fonéticos, morfológicos o semánticos de complejidad creciente que se han producido tanto desde el latín culto como desde el latín vulgar hasta las lenguas de enseñanza, sirviéndose cuando sea posible de la comparación con otras lenguas de su repertorio.
+
+#### 2.3. Explicar la relación del latín con las lenguas modernas, analizando los elementos lingüísticos comunes de origen latino y utilizando con iniciativa estrategias y conocimientos de las lenguas y lenguajes que conforman el repertorio propio.
+
+#### 2.4. Analizar críticamente prejuicios y estereotipos lingüísticos adoptando una actitud de respeto y valoración de la diversidad como riqueza cultural, lingüística y dialectal, a partir de criterios dados.
+
+### 3. Leer, interpretar y comentar textos latinos de diferentes géneros y épocas, asumiendo el proceso creativo como complejo e inseparable del contexto histórico, social y político y de sus influencias artísticas, para identificar su genealogía y su aportación a la literatura europea.
+
+#### 3.1. Interpretar y comentar textos y fragmentos literarios de diversa índole de creciente complejidad, aplicando estrategias de análisis y reflexión que impliquen movilizar la propia experiencia, comprender el mundo y la condición humana y desarrollar la sensibilidad estética y el hábito lector.
+
+#### 3.2. Analizar y explicar los géneros, temas, tópicos y valores éticos o estéticos de obras o fragmentos literarios latinos comparándolos con obras o fragmentos literarios posteriores, desde un enfoque intertextual.
+
+#### 3.3. Identificar y definir palabras latinas que designan conceptos fundamentales para el estudio y comprensión de la civilización latina y cuyo aprendizaje combina conocimientos léxicos y culturales, tales como imperium, natura, civis o paterfamilias, en textos de diferentes formatos.
+
+#### 3.4. Crear textos individuales o colectivos con intención literaria y conciencia de estilo, en distintos soportes y con ayuda de otros lenguajes artísticos y audiovisuales, a partir de la lectura de obras o fragmentos significativos en los que se haya partido de la civilización y la cultura latinas como fuente de inspiración.
+
+### 4. Analizar las características de la civilización latina en el ámbito personal, religioso y sociopolítico, adquiriendo conocimientos sobre el mundo romano y comparando críticamente el presente y el pasado, para valorar las aportaciones del mundo clásico latino a nuestro entorno como base de una ciudadanía democrática y comprometida.
+
+#### 4.1. Explicar los procesos históricos y políticos, las instituciones, los modos de vida y las costumbres de la sociedad romana, comparándolos con los de las sociedades actuales, valorando de manera crítica las adaptaciones y cambios experimentados a la luz de la evolución de las sociedades y los derechos humanos, y favoreciendo el desarrollo de una cultura compartida y una ciudadanía comprometida con la memoria colectiva y los valores democráticos.
+
+#### 4.2. Debatir acerca de la importancia, evolución, asimilación o cuestionamiento de diferentes aspectos del legado romano en nuestra sociedad, utilizando estrategias retóricas y oratorias, mediando entre posturas cuando sea necesario, seleccionando y contrastando información y experiencias veraces y mostrando interés, respeto y empatía por otras opiniones y argumentaciones.
+
+#### 4.3. Elaborar trabajos de investigación en diferentes soportes sobre aspectos del legado de la civilización latina en el ámbito personal, religioso y sociopolítico localizando, seleccionando, contrastando y reelaborando información procedente de diferentes fuentes, calibrando su fiabilidad y pertinencia y respetando los principios de rigor y propiedad intelectual.
+
+### 5. Valorar críticamente el patrimonio histórico, arqueológico, artístico y cultural heredado de la civilización latina, interesándose por su sostenibilidad y reconociéndolo como producto de la creación humana y como testimonio de la historia, para explicar el legado material e inmaterial latino como transmisor de conocimiento y fuente de inspiración de creaciones modernas y contemporáneas.
+
+#### 5.1. Identificar y explicar el legado material e inmaterial de la civilización latina como fuente de inspiración, analizando producciones culturales y artísticas posteriores.
+
+#### 5.2. Investigar el patrimonio histórico, arqueológico, artístico y cultural heredado de la civilización latina, actuando de forma adecuada, empática y respetuosa e interesándose por los procesos de construcción, preservación, conservación y restauración y por aquellas actitudes cívicas que aseguran su sostenibilidad.
+
+#### 5.3. Explorar las huellas de la romanización y el legado romano en el entorno del alumnado aplicando los conocimientos adquiridos y reflexionando sobre las implicaciones de sus distintos usos, dando ejemplos de la pervivencia de la Antigüedad clásica en su vida cotidiana y presentando sus resultados a través de diferentes soportes.
+
+##### I. El texto: comprensión y traducción.
+
+###### I.A.1. (Unidades lingüísticas de la lengua latina) − Concepto de lengua flexiva: flexión nominal y pronominal (sistema casual y declinaciones) y flexión verbal (el sistema de conjugaciones).
+
+###### I.A.2. (Unidades lingüísticas de la lengua latina) − Sintaxis oracional: funciones y sintaxis de los casos.
+
+###### I.A.3. (Unidades lingüísticas de la lengua latina) − Estructuras oracionales. La concordancia y el orden de palabras en oraciones simples y oraciones compuestas.
+
+###### I.A.4. (Unidades lingüísticas de la lengua latina) − Formas nominales del verbo.
+
+###### I.B.1. (La traducción: técnicas, procesos y herramientas) − El análisis morfosintáctico como herramienta de traducción.
+
+###### I.B.2. (La traducción: técnicas, procesos y herramientas) − Estrategias de traducción: formulación de expectativas a partir del entorno textual (título, obra, etc.) y del propio texto (campos temáticos, familias de palabras, etc.), así como a partir del contexto; conocimiento del tema; descripción de la estructura y género; peculiaridades lingüísticas de los textos traducidos (discurso directo / indirecto, uso de tiempos verbales, géneros verbales, pregunta retórica, etc.); errores frecuentes de traducción y técnicas para evitarlos (comprobar si la traducción está completa, control de acuerdo a criterios dados, delimitación de construcciones sintácticas, etc.).
+
+###### I.B.3. (La traducción: técnicas, procesos y herramientas) − Herramientas de traducción: glosarios, diccionarios, atlas o correctores ortográficos en soporte analógico o digital, etc.
+
+###### I.B.4. (La traducción: técnicas, procesos y herramientas) − Lectura comparada de diferentes traducciones y comentario de textos bilingües a partir de terminología metalingüística.
+
+###### I.B.5. (La traducción: técnicas, procesos y herramientas) − Recursos estilísticos frecuentes y su relación con el contenido del texto.
+
+###### I.B.6. (La traducción: técnicas, procesos y herramientas) − Estrategias de retroversión de textos breves.
+
+###### I.B.7. (La traducción: técnicas, procesos y herramientas) − La traducción como instrumento que favorece el razonamiento lógico, la constancia, la memoria, la resolución de problemas y la capacidad de análisis y síntesis.
+
+###### I.B.8. (La traducción: técnicas, procesos y herramientas) − Aceptación del error como parte del proceso de aprendizaje y actitud positiva de superación.
+
+###### I.B.9. (La traducción: técnicas, procesos y herramientas) − Estrategias y herramientas, analógicas y digitales, individuales y cooperativas, para la autoevaluación, la coevaluación y la autorreparación.
+
+##### II. Plurilingüismo.
+
+###### II.1. (Plurilingüismo) − Influencia del latín en la evolución de las lenguas de enseñanza y del resto de lenguas que conforman el repertorio lingüístico individual del alumnado.
+
+###### II.2. (Plurilingüismo) − Reglas fonéticas en la evolución del latín a las lenguas de enseñanza.
+
+###### II.3. (Plurilingüismo) − Léxico: lexemas, sufijos y prefijos de origen latino presentes en el léxico de uso común y en el específico de las ciencias y la técnica; significado y definición de palabras de uso común en las lenguas de enseñanza a partir de sus étimos de origen latino; expresiones latinas integradas en las lenguas modernas y su empleo en diferentes tipos de textos (literarios, periodísticos, publicitarios, etc.).
+
+###### II.4. (Plurilingüismo) − Interés por conocer el significado etimológico de las palabras y la importancia del uso adecuado del vocabulario como instrumento básico en la comunicación.
+
+###### II.5. (Plurilingüismo) − El latín como instrumento que permite un mejor conocimiento de las lenguas de estudio y un más fácil acercamiento a otras lenguas modernas, romances y no romances.
+
+###### II.6. (Plurilingüismo) − Respeto por todas las lenguas y aceptación de las diferencias culturales de las gentes que las hablan.
+
+###### II.7. (Plurilingüismo) − Herramientas analógicas y digitales para el aprendizaje, la comunicación y el desarrollo de proyectos con hablantes o estudiantes de latín a nivel transnacional.
+
+###### II.8. (Plurilingüismo) − Expresiones y léxico específico para reflexionar y compartir la reflexión sobre la comunicación, la lengua, el aprendizaje y las herramientas de comunicación y aprendizaje (metalenguaje).
+
+##### III. Educación literaria.
+
+###### III.1. (Educación literaria) − La lengua latina como principal vía de transmisión del mundo clásico.
+
+###### III.2. (Educación literaria) − Etapas y vías de transmisión de la literatura latina.
+
+###### III.3. (Educación literaria) − Principales géneros de la literatura latina: origen, tipología, cronología, temas, motivos, tradición, características y principales autores.
+
+###### III.4. (Educación literaria) − Técnicas para el comentario y análisis lingüístico y literario de los textos literarios latinos.
+
+###### III.5. (Educación literaria) − Recepción de la literatura latina: influencia en la producción cultural europea, nociones básicas de intertextualidad, imitatio, aemulatio, interpretatio, allusio.
+
+###### III.6. (Educación literaria) − Analogías y diferencias entre los géneros literarios latinos y los de la literatura actual.
+
+###### III.7. (Educación literaria) − Introducción a la crítica literaria.
+
+###### III.8. (Educación literaria) − Interés hacia la literatura como fuente de placer y de conocimiento del mundo.
+
+###### III.9. (Educación literaria) − Respeto de la propiedad intelectual y derechos de autor sobre las fuentes consultadas y contenidos utilizados: herramientas para el tratamiento de datos bibliográficos y recursos para evitar el plagio.
+
+##### IV. La antigua Roma.
+
+###### IV.1. (La antigua Roma) − Geografía del proceso de expansión de Roma desde su nacimiento hasta la desaparición del Imperio romano.
+
+###### IV.2. (La antigua Roma) − Topografía de la antigua Roma, nombre y función de los sitios centrales de la ciudad (por ejemplo, Foro Romano, basílicas, Coliseo, Circo Máximo).
+
+###### IV.3. (La antigua Roma) − Historia de la antigua Roma: etapas de la historia de Roma (monarquía, república, imperio); hitos de la historia del mundo romano entre los siglos VIII a.C. y V d.C.; leyendas y principales episodios de la historia de Roma; personalidades históricas relevantes de la historia de Roma, su biografía en contexto y su importancia para Europa (Aníbal, Cicerón, César, Augusto, Séneca, etc.).
+
+###### IV.4. (La antigua Roma) − Historia y organización política y social de Roma como parte esencial de la historia y cultura de la sociedad actual.
+
+###### IV.5. (La antigua Roma) − Instituciones, creencias y formas de vida de la civilización latina desde la perspectiva sociocultural actual.
+
+###### IV.6. (La antigua Roma) − Influencias de la cultura griega en la civilización latina: Graecia capta ferum victorem cepit.
+
+###### IV.7. (La antigua Roma) − La aportación de Roma a la cultura y al pensamiento de la sociedad occidental.
+
+###### IV.8. (La antigua Roma) − Relación de Roma con culturas extranjeras (Grecia, el cristianismo, etc.).
+
+###### IV.9. (La antigua Roma) − El mar Mediterráneo como encrucijada de culturas ayer y hoy.
+
+##### V. Legado y patrimonio.
+
+###### V.1. (Legado y patrimonio) − Conceptos de legado, herencia y patrimonio.
+
+###### V.2. (Legado y patrimonio) − La transmisión textual latina como patrimonio cultural y fuente de conocimiento a través de diferentes culturas y épocas. Soportes de escritura: tipos y preservación.
+
+###### V.3. (Legado y patrimonio) − La mitología clásica en manifestaciones literarias y artísticas.
+
+###### V.4. (Legado y patrimonio) − La romanización de Hispania y las huellas de su pervivencia.
+
+###### V.5. (Legado y patrimonio) − Obras públicas y urbanismo: construcción, conservación, preservación y restauración.
+
+###### V.6. (Legado y patrimonio) − El derecho romano y su importancia en el sistema jurídico actual.
+
+###### V.7. (Legado y patrimonio) − Las instituciones políticas romanas y su influencia y pervivencia en el sistema político actual.
+
+###### V.8. (Legado y patrimonio) − La importancia del discurso público para la vida política y social.
+
+###### V.9. (Legado y patrimonio) − Técnicas de debate y de exposición oral.
+
+###### V.10. (Legado y patrimonio) − Principales obras artísticas de la Antigüedad romana.
+
+###### V.11. (Legado y patrimonio) − Principales sitios arqueológicos, museos o festivales teatrales en España y en Castilla-La Mancha relacionados con la Antigüedad clásica.
+
