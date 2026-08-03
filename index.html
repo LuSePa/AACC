@@ -6,6 +6,8 @@
     <title>DISEÑO DE ACTIVIDADES MULTINIVEL</title>
     <!-- Librería para generar el pdf desde el navegador -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Librería para generar el docx real desde el navegador -->
+    <script src="https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js"></script>
     <style>
         /* Estilos institucionales basados en el portal de Castilla-La Mancha */
         :root {
@@ -177,7 +179,7 @@
         }
 
         .step {
-            display: none; 
+            display: none !important; 
             flex-direction: column;
             justify-content: flex-start; 
             max-width: 1100px; 
@@ -186,7 +188,7 @@
         }
 
         .step.active {
-            display: flex; 
+            display: flex !important; 
             animation: fadeIn 0.3s;
         }
 
@@ -660,9 +662,9 @@
             background-color: #1e3e6e;
         }
         
-        /* Contenedor del pdf oculto */
+        /* Contenedor del pdf oculto reforzado */
         #pdf-template {
-            display: none;
+            display: none !important;
             background: white;
             padding: 40px;
             font-family: Arial, sans-serif;
@@ -784,7 +786,8 @@
                 <h2 class="intro-title">Bienvenido al asistente multinivel</h2>
                 <div class="intro-box">
                     <p><strong>¿Qué es y para qué sirve?</strong><br>
-                    Es un planificador interactivo diseñado para facilitar la creación de situaciones de aprendizaje basado en el modelo de enriquecimiento para toda la escuela (SEM). Te ayudará a diseñar una situación de aprendizaje basada en el aprendizaje multinivel, donde el alumnado parta de su nivel potenciando sus fortalezas, pudiendo avanzar hasta donde su potencial le permita, anticipando posibles barreras y generando herramientas de evaluación ágiles.</p>
+                    Un planificador interactivo pensado para facilitar el diseño de situaciones de aprendizaje multinivel. Se apoya en dos pilares: el modelo de enseñanza multinivel de Jean Collicot y las investigaciones de John Hattie sobre los factores que más impactan en el rendimiento académico. No es una plantilla más: traduce evidencia científica en decisiones concretas de aula.</p>
+                    <p>Permite que, en una misma lección, cada estudiante trabaje con el nivel de complejidad y la forma de expresión que necesita, sin renunciar a un objetivo común de aula. Esto conecta directamente con los principios del Diseño Universal para el Aprendizaje (DUA) y sienta las bases para aplicar el modelo SEM de enriquecimiento. En la práctica: menos adaptaciones paralelas y desconectadas, más una única lección diseñada desde el principio para la diversidad real del aula.</p>
                     <p><strong>¿Cómo usarlo?</strong><br>
                     Completa cada sección navegando con los botones de la parte inferior. En los apartados más creativos, utiliza los botones morados para pedir sugerencias a la inteligencia artificial. Al finalizar el proceso, obtendrás una planificación estructurada para llevar al aula, donde el alumnado será el protagonista de su propio aprendizaje a la hora de elegir lo que quiere hacer.</p>
                 </div>
@@ -838,6 +841,7 @@
             <div id="help-tema" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
+                    <li>Es lo que quieres que tu alumnado aprenda.</li>
                     <li>Es el hilo conductor que da sentido a la situación de aprendizaje.</li>
                     <li>Debe ser amplio, motivador y estar conectado con la vida real o los intereses del alumnado.</li>
                     <li>Por ejemplo: "Misión rescate espacial", "El misterio de los océanos", "Reporteros del clima".</li>
@@ -949,6 +953,7 @@
                 <div class="label-wrapper">
                     <label for="input-disparador-pregunta-principal">Pregunta disparadora</label>
                 </div>
+                <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 8px;">Es una pregunta abierta y motivadora que sirve para despertar la curiosidad y activar los conocimientos previos.</p>
                 <textarea id="input-disparador-pregunta-principal" placeholder="Por ejemplo: ¿Qué pasaría si...?"></textarea>
             </div>
 
@@ -961,7 +966,7 @@
             
             <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
                 <div class="label-wrapper">
-                    <label for="input-disparador-preguntas">Preguntas abiertas</label>
+                    <label for="input-disparador-preguntas">Disparadores de pensamiento (preguntas abiertas)</label>
                 </div>
                 <textarea id="input-disparador-preguntas" placeholder="Escribe aquí las preguntas y/o pega las que ha generado la IA para provocar el debate..."></textarea>
             </div>
@@ -1128,6 +1133,12 @@
                 <div class="tip-box-text">
                     <p><strong>Créditos y referencias:</strong></p>
                     <p>Este asistente ha sido diseñado basándose en el Modelo de Enriquecimiento para toda la Escuela (SEM).</p>
+                    <p style="margin-top: 0.5rem;">Además, ha sido diseñado tomando como referencia las siguientes fuentes:</p>
+                    <ul style="margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 1.2rem; font-size: 14px; line-height: 1.6;">
+                        <li>Collicot, J. (1991). <em>Enseñanza multinivel</em>.</li>
+                        <li>Hattie, J. (2009). <em>Visible learning: A synthesis of over 800 meta-analyses relating to achievement</em>.</li>
+                        <li>Consejería de Educación, Cultura y Deportes de Castilla-La Mancha. <em><a href="https://educacion.castillalamancha.es/inclusion-convivencia/altas-capacidades/guia-aacc-recursos" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Guía de mejora de la respuesta educativa inclusiva para el alumnado con altas capacidades/talento</a></em>.</li>
+                    </ul>
                     <p style="margin-top: 1rem;"><strong>Autores:</strong></p>
                     <ul style="list-style-type: none; margin-top: 0.2rem; margin-bottom: 0; padding-left: 0; font-size: 14px; line-height: 1.6;">
                         <li>Lola Bonillo (ATD Altas Capacidades) - <a href="mailto:mbonillo@jccm.es" style="color: var(--primary-color); text-decoration: none; font-size: 14px;">mbonillo@jccm.es</a></li>
@@ -1619,6 +1630,9 @@
 
         const inputReto = document.getElementById('input-reto');
         if (inputReto) inputReto.addEventListener('input', actualizarPromptsIA);
+
+        // Forzar interfaz limpia inicial
+        actualizarInterfazWizard();
     });
 
     // --- LÓGICA DEL WIZARD ---
@@ -1846,7 +1860,8 @@
         prepararDatosDocumento();
 
         const elementoPlantilla = document.getElementById('pdf-template');
-        elementoPlantilla.style.display = 'block'; 
+        // Sobreescribimos el !important del CSS para forzar que se muestre antes de crear el PDF
+        elementoPlantilla.style.setProperty('display', 'block', 'important'); 
         
         const tema = document.getElementById('input-tema').value || 'Actividad';
 
@@ -1860,12 +1875,13 @@
         };
 
         html2pdf().set(opcionesPDF).from(elementoPlantilla).save().then(() => {
-            elementoPlantilla.style.display = 'none';
+            // Lo volvemos a ocultar con !important
+            elementoPlantilla.style.setProperty('display', 'none', 'important');
             btnFinal.textContent = 'Generar documento pdf';
             btnFinal.disabled = false;
         }).catch(err => {
             console.error('Error generando pdf:', err);
-            elementoPlantilla.style.display = 'none';
+            elementoPlantilla.style.setProperty('display', 'none', 'important');
             btnFinal.textContent = 'Error. Reintentar';
             btnFinal.disabled = false;
         });
@@ -1887,8 +1903,16 @@
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(imgPlantilla, 0, 0);
                 imgClon.src = canvas.toDataURL('image/jpeg');
-                imgClon.style.width = '15%';
-                imgClon.setAttribute('width', '150');
+                
+                // Calculamos el alto proporcional para evitar deformaciones en Word
+                const anchoDeseado = 150;
+                const proporcion = imgPlantilla.naturalHeight / imgPlantilla.naturalWidth;
+                const altoDeseado = Math.round(anchoDeseado * proporcion);
+                
+                imgClon.setAttribute('width', anchoDeseado);
+                imgClon.setAttribute('height', altoDeseado);
+                imgClon.style.width = anchoDeseado + 'px';
+                imgClon.style.height = altoDeseado + 'px';
             } catch (e) {
                 console.error('Error al incrustar la imagen en Word:', e);
             }
@@ -1896,7 +1920,7 @@
 
         const styles = `
             <style>
-                body { font-family: Arial, sans-serif; color: #333333; }
+                body { font-family: 'Arial', sans-serif; color: #333333; font-size: 14px; }
                 h1 { color: #3C5AD9; font-size: 24px; margin-bottom: 5px; }
                 h2 { color: #3C5AD9; font-size: 18px; border-bottom: 2px solid #3C5AD9; padding-bottom: 4px; margin-bottom: 12px; margin-top: 25px; }
                 p { margin-bottom: 10px; line-height: 1.5; }
@@ -1906,15 +1930,14 @@
                 th, td { border: 1px solid #767676; padding: 8px; text-align: left; }
                 th { background-color: #F4F8FB; color: #3C5AD9; font-weight: bold; }
                 .pdf-header { border-bottom: 4px solid #3C5AD9; padding-bottom: 15px; margin-bottom: 20px; }
-                .pdf-header img { width: 150px; }
-                .pdf-grid { display: block; }
             </style>
         `;
 
         const htmlDocument = `
-            <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+            <!DOCTYPE html>
+            <html>
             <head>
-                <meta charset='utf-8'>
+                <meta charset="utf-8">
                 <title>Actividad Multinivel</title>
                 ${styles}
             </head>
@@ -1924,13 +1947,15 @@
             </html>
         `;
 
-        const blob = new Blob(['\ufeff', htmlDocument], { type: 'application/msword' });
+        // Utilizamos html-docx-js para compilar el HTML en un .docx real
+        const blob = htmlDocx.asBlob(htmlDocument, { orientation: 'portrait' });
+        
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
         
         const tema = document.getElementById('input-tema').value || 'Actividad';
-        link.download = `Planificacion_${tema.replace(/\s+/g, '_')}.doc`;
+        link.download = `Planificacion_${tema.replace(/\s+/g, '_')}.docx`;
         
         document.body.appendChild(link);
         link.click();
