@@ -1188,8 +1188,7 @@
         </div>
         
         <div class="pdf-text" style="margin-top: 15px;">
-            <strong>Competencias específicas seleccionadas:</strong><br>
-            <span id="pdf-competencia"></span>
+            <strong>Competencias específicas seleccionadas:</strong><br><span id="pdf-competencia"></span>
         </div>
         
     </div>
@@ -1800,7 +1799,7 @@
         const uiCompGroups = document.querySelectorAll('#contenedor-saberes-criterios .competencia-group');
         let hasCriterios = false;
         uiCompGroups.forEach(uiComp => {
-            const tituloComp = uiComp.querySelector('h4').textContent;
+            const tituloComp = uiComp.querySelector('h4').textContent.trim();
             const critChecks = uiComp.querySelectorAll('.chk-criterio:checked');
             
             if (critChecks.length > 0) {
@@ -1812,7 +1811,7 @@
                 htmlInner += '</ul>';
                 
                 pdfContenedor.innerHTML += `<div style="margin-bottom: 15px;">
-                    <div style="color: #3C5AD9; font-weight: bold; margin-bottom: 8px;">${tituloComp}</div>
+                    <div style="color: #000000; font-weight: bold; margin-bottom: 8px;">${tituloComp}</div>
                     ${htmlInner}
                 </div>`;
             }
