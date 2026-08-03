@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DISEÑO DE ACTIVIDADES MULTINIVEL</title>
-    <!-- Librería para generar el pdf desde el navegador -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <!-- Librería para generar el docx real desde el navegador -->
     <script src="https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js"></script>
     <style>
@@ -755,6 +753,28 @@
             font-weight: bold;
         }
 
+        /* Estilos para la impresión nativa del PDF */
+        @media print {
+            body {
+                background: #FFFFFF !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            .container, .modal-overlay {
+                display: none !important;
+            }
+            #pdf-template {
+                display: block !important;
+                position: relative !important;
+                padding: 0 !important;
+                color: #000000 !important;
+            }
+            #pdf-template .pdf-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1186,11 +1206,9 @@
             <strong>Contenido subyacente:</strong> <span id="pdf-tema"></span><br>
             <strong>Título para el alumnado:</strong> <span id="pdf-titulo-alumnado"></span>
         </div>
-        
         <div class="pdf-text" style="margin-top: 15px;">
             <strong>Competencias específicas seleccionadas:</strong><br><span id="pdf-competencia"></span>
         </div>
-        
     </div>
 
     <div class="pdf-section">
@@ -1748,15 +1766,15 @@
         
         if (etapaVal && materiaVal && competenciasChecks.length > 0 && CURRICULO_CLM[etapaVal] && CURRICULO_CLM[etapaVal][materiaVal]) {
             const selectedIndices = Array.from(competenciasChecks).map(chk => chk.value);
-            competenciaTexto = selectedIndices.map(index => CURRICULO_CLM[etapaVal][materiaVal].competencias[index].texto).join('<br><br>');
+            competenciaTexto = selectedIndices.map(index => CURRICULO_CLM[etapaVal][materiaVal].competencias[index].texto.trim()).join('<br><br>');
         }
         
-        const disparadorPregunta = document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.';
-        const disparadorMaterial = document.getElementById('input-disparador-material').value || 'No se ha definido material inicial.';
-        const disparadorPreguntas = document.getElementById('input-disparador-preguntas').value || 'No se han definido preguntas abiertas.';
-        const reto = document.getElementById('input-reto').value || 'No se ha definido el reto.';
-        const feedforward = document.getElementById('input-feedforward').value || 'No se han definido ayudas previas.';
-        const feedback = document.getElementById('input-feedback').value || 'No se ha definido retroalimentación.';
+        const disparadorPregunta = (document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.').trim();
+        const disparadorMaterial = (document.getElementById('input-disparador-material').value || 'No se ha definido material inicial.').trim();
+        const disparadorPreguntas = (document.getElementById('input-disparador-preguntas').value || 'No se han definido preguntas abiertas.').trim();
+        const reto = (document.getElementById('input-reto').value || 'No se ha definido el reto.').trim();
+        const feedforward = (document.getElementById('input-feedforward').value || 'No se han definido ayudas previas.').trim();
+        const feedback = (document.getElementById('input-feedback').value || 'No se ha definido retroalimentación.').trim();
         
         let rubrica = document.getElementById('input-rubrica').innerHTML.trim();
 
@@ -1806,7 +1824,7 @@
                 hasCriterios = true;
                 let htmlInner = '<ul class="pdf-list">';
                 critChecks.forEach(crit => {
-                    htmlInner += `<li>${crit.nextElementSibling.textContent}</li>`;
+                    htmlInner += `<li style="color: #000000; font-weight: normal;">${crit.nextElementSibling.textContent}</li>`;
                 });
                 htmlInner += '</ul>';
                 
@@ -1828,10 +1846,10 @@
             if (saberChecks.length > 0) {
                 hasSaberes = true;
                 htmlSaberes += `<div style="margin-bottom: 10px;">
-                    <div style="font-weight: bold; margin-bottom: 4px;">${tituloBloque}</div>
+                    <div style="color: #000000; font-weight: bold; margin-bottom: 4px;">${tituloBloque}</div>
                     <ul class="pdf-list">`;
                 saberChecks.forEach(saber => {
-                    htmlSaberes += `<li>${saber.nextElementSibling.textContent}</li>`;
+                    htmlSaberes += `<li style="color: #000000; font-weight: normal;">${saber.nextElementSibling.textContent}</li>`;
                 });
                 htmlSaberes += `</ul></div>`;
             }
@@ -1853,37 +1871,18 @@
 
     function generarDocumentoPDF() {
         const btnFinal = document.getElementById('btn-finish');
-        btnFinal.textContent = 'Generando...';
+        btnFinal.textContent = 'Preparando...';
         btnFinal.disabled = true;
 
         prepararDatosDocumento();
-
-        const elementoPlantilla = document.getElementById('pdf-template');
-        // Sobreescribimos el !important del CSS para forzar que se muestre antes de crear el PDF
-        elementoPlantilla.style.setProperty('display', 'block', 'important'); 
         
-        const tema = document.getElementById('input-tema').value || 'Actividad';
-
-        const opcionesPDF = {
-            margin:       15,
-            filename:     `Planificacion_${tema.replace(/\s+/g, '_')}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak:    { mode: ['css', 'legacy'] }
-        };
-
-        html2pdf().set(opcionesPDF).from(elementoPlantilla).save().then(() => {
-            // Lo volvemos a ocultar con !important
-            elementoPlantilla.style.setProperty('display', 'none', 'important');
+        // Usamos la impresión nativa del navegador para generar un PDF real, vectorial y editable.
+        // El usuario solo tiene que seleccionar "Guardar como PDF" en la ventana de impresión.
+        setTimeout(() => {
+            window.print();
             btnFinal.textContent = 'Generar documento pdf';
             btnFinal.disabled = false;
-        }).catch(err => {
-            console.error('Error generando pdf:', err);
-            elementoPlantilla.style.setProperty('display', 'none', 'important');
-            btnFinal.textContent = 'Error. Reintentar';
-            btnFinal.disabled = false;
-        });
+        }, 300);
     }
 
     function generarDocumentoWord() {
