@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DISEÑO DE ACTIVIDADES MULTINIVEL</title>
+    
     <!-- Librería para generar el docx real desde el navegador -->
     <script src="https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js"></script>
+    
+    <!-- Librerías puras para generar el PDF nativo y vectorial (Opción A) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
     <style>
         /* Estilos institucionales basados en el portal de Castilla-La Mancha */
         :root {
@@ -660,7 +666,7 @@
             background-color: #1e3e6e;
         }
         
-        /* Contenedor del pdf oculto reforzado */
+        /* Contenedor del documento oculto para exportar a Word */
         #pdf-template {
             display: none !important;
             background: white;
@@ -716,11 +722,11 @@
             font-size: 14px; 
             line-height: 1.5; 
             margin-bottom: 10px; 
-            white-space: pre-wrap; 
             color: #000000; 
             page-break-inside: avoid; 
+            white-space: pre-wrap;
         }
-        
+
         #pdf-template .pdf-list { 
             margin-top: 5px; 
             margin-bottom: 10px; 
@@ -751,28 +757,6 @@
             background-color: #F4F8FB;
             color: #3C5AD9;
             font-weight: bold;
-        }
-
-        /* Estilos para la impresión nativa del PDF */
-        @media print {
-            body {
-                background: #FFFFFF !important;
-                height: auto !important;
-                overflow: visible !important;
-            }
-            .container, .modal-overlay {
-                display: none !important;
-            }
-            #pdf-template {
-                display: block !important;
-                position: relative !important;
-                padding: 0 !important;
-                color: #000000 !important;
-            }
-            #pdf-template .pdf-section {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
         }
 
     </style>
@@ -1040,7 +1024,7 @@
 
         <!-- PASO 8: Feed forward -->
         <div class="step" id="step-8">
-            <h2>7. Acompañamiento:&nbsp;<em>feedforward</em> <span class="help-icon" onclick="toggleHelp('help-feed')">?</span></h2>
+            <h2>7. Acompañamiento: <em>feedforward</em> <span class="help-icon" onclick="toggleHelp('help-feed')">?</span></h2>
             <div id="help-feed" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -1060,7 +1044,7 @@
 
         <!-- PASO 9: Feedback -->
         <div class="step" id="step-9">
-            <h2>8. Retroalimentación:&nbsp;<em>feedback</em> <span class="help-icon" onclick="toggleHelp('help-feedback')">?</span></h2>
+            <h2>8. Retroalimentación: <em>feedback</em> <span class="help-icon" onclick="toggleHelp('help-feedback')">?</span></h2>
             <div id="help-feedback" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -1122,7 +1106,7 @@
                     
                     <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
                         <div style="font-size: 24px; margin-bottom: 10px;">💻</div>
-                        <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Herramientas digitales</h3>
+                        <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Herramientas digital...</h3>
                         <p style="font-size: 14px; margin-bottom: 0;">Plataformas accesibles e intuitivas como <a href="https://www.canva.com/" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Canva</a> son muy útiles tanto para ti (a la hora de crear los materiales y guías) como para que el alumnado diseñe sus propios retos finales de forma atractiva.</p>
                     </div>
                     
@@ -1191,7 +1175,7 @@
     </div>
 </div>
 
-<!-- PLANTILLA OCULTA PARA EL PDF/WORD GENERADO -->
+<!-- PLANTILLA OCULTA ÚNICAMENTE PARA EL GENERADOR DE WORD -->
 <div id="pdf-template">
     <div class="pdf-header">
         <img src="https://i.postimg.cc/zByLdX0k/Logo-Altas-Capacidades-jpg.webp" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous">
@@ -1202,12 +1186,13 @@
     <div class="pdf-section">
         <h2>1. Contexto curricular</h2>
         <div class="pdf-text">
-            <strong>Etapa y materia:</strong> <span id="pdf-etapa-materia"></span><br>
-            <strong>Contenido subyacente:</strong> <span id="pdf-tema"></span><br>
-            <strong>Título para el alumnado:</strong> <span id="pdf-titulo-alumnado"></span>
+            <div><strong>Etapa y materia:</strong> <span id="pdf-etapa-materia"></span></div>
+            <div><strong>Contenido subyacente:</strong> <span id="pdf-tema"></span></div>
+            <div><strong>Título para el alumnado:</strong> <span id="pdf-titulo-alumnado"></span></div>
         </div>
         <div class="pdf-text" style="margin-top: 15px;">
-            <strong>Competencias específicas seleccionadas:</strong><br><span id="pdf-competencia"></span>
+            <div style="margin-bottom: 5px;"><strong>Competencias específicas seleccionadas:</strong></div>
+            <div id="pdf-competencia"></div>
         </div>
     </div>
 
@@ -1232,22 +1217,19 @@
     </div>
 
     <div class="pdf-section">
-        <h2>4. Acompañamiento: <em>feedforward</em></h2>
+        <h2>4. Acompañamiento: feedforward</h2>
         <div class="pdf-text"><em>Ayudas y andamiajes previos previstos para orientar el antes y el durante:</em></div>
         <div class="pdf-text" id="pdf-feedforward"></div>
-        </div>
+    </div>
 
     <div class="pdf-section">
-        <h2>5. Retroalimentación: <em>feedback</em></h2>
+        <h2>5. Retroalimentación: feedback</h2>
         <div class="pdf-text"><em>Mecanismos de retroalimentación formativa y guía durante el proceso:</em></div>
         <div class="pdf-text" id="pdf-feedback"></div>
-        
         <div class="pdf-text" style="margin-top: 10px;" id="pdf-rubrica"></div>
     </div>
     
-    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #555555; border-top: 1px solid #767676; padding-top: 10px;">
-        Documento generado automáticamente por el asistente multinivel.
-    </div>
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #555555; border-top: 1px solid #767676; padding-top: 10px;">Documento generado automáticamente por el asistente multinivel.</div>
 </div>
 
 <script>
@@ -1324,9 +1306,8 @@
 
     // --- CURRÍCULO CACHED EN MEMORIA ---
     const CURRICULO_CLM = {};
-    const MATERIAS_DISPONIBLES = {}; // Nuevo objeto para cachear la disponibilidad de los archivos
+    const MATERIAS_DISPONIBLES = {};
 
-    // Diccionario para traducir el valor del select al nombre físico de tu archivo .md
     const MAPA_ARCHIVOS_ETAPA = {
         "infantil": "Infantil",
         "primaria_c1": "Primaria Primer Ciclo",
@@ -1379,16 +1360,13 @@
 
         selectMateria.innerHTML = '<option value="">Seleccione materia...</option>';
         if (claveEtapa && MATERIAS[claveEtapa]) {
-            // Ordenamos las materias alfabéticamente respetando las tildes del español
             const materiasOrdenadas = [...MATERIAS[claveEtapa]].sort((a, b) => a.localeCompare(b, 'es'));
-            
             materiasOrdenadas.forEach(materia => {
                 const option = document.createElement('option');
                 option.value = materia;
                 option.textContent = materia;
                 selectMateria.appendChild(option);
             });
-            // Iniciamos la comprobación de archivos en segundo plano
             verificarDisponibilidadMaterias(claveEtapa);
         }
         prepararCurriculo(); 
@@ -1398,39 +1376,30 @@
         const selectMateria = document.getElementById('sel-materia');
         const prefijoEtapa = MAPA_ARCHIVOS_ETAPA[claveEtapa] || claveEtapa;
         
-        if (!MATERIAS_DISPONIBLES[claveEtapa]) {
-            MATERIAS_DISPONIBLES[claveEtapa] = {};
-        }
+        if (!MATERIAS_DISPONIBLES[claveEtapa]) MATERIAS_DISPONIBLES[claveEtapa] = {};
 
         const options = selectMateria.options;
-        // Iteramos desde 1 para saltar la opción por defecto ("Seleccione materia...")
         for (let i = 1; i < options.length; i++) {
             const materia = options[i].value;
-            
             if (MATERIAS_DISPONIBLES[claveEtapa][materia] !== undefined) {
-                // Ya la hemos comprobado antes en esta misma sesión
                 if (!MATERIAS_DISPONIBLES[claveEtapa][materia]) {
                     options[i].disabled = true;
                     options[i].style.color = '#A0A0A0';
                     options[i].textContent = materia + ' (Próximamente)';
                 }
             } else {
-                // Comprobamos si el archivo existe haciendo una petición HEAD muy ligera
                 const nombreArchivo = `${prefijoEtapa} - ${materia}.md`;
                 const urlSegura = encodeURI(`./${nombreArchivo}`);
-                
                 try {
                     const response = await fetch(urlSegura, { method: 'HEAD' });
                     const existe = response.ok;
                     MATERIAS_DISPONIBLES[claveEtapa][materia] = existe;
-                    
                     if (!existe) {
                         options[i].disabled = true;
                         options[i].style.color = '#A0A0A0';
                         options[i].textContent = materia + ' (Próximamente)';
                     }
                 } catch (error) {
-                    // En caso de error de red, asumimos que no está disponible
                     MATERIAS_DISPONIBLES[claveEtapa][materia] = false;
                     options[i].disabled = true;
                     options[i].style.color = '#A0A0A0';
@@ -1440,7 +1409,6 @@
         }
     }
 
-    // Función principal asíncrona para cargar el currículo
     async function prepararCurriculo() {
         const etapa = document.getElementById('sel-etapa').value;
         const materia = document.getElementById('sel-materia').value;
@@ -1451,52 +1419,37 @@
         contenedorSaberes.innerHTML = '<div class="empty-state">Selecciona al menos una competencia en el paso anterior.</div>';
         
         const claveEtapa = obtenerClaveEtapa();
-        
         if (!claveEtapa || !materia) return;
 
-        // Si ya lo tenemos en memoria, lo mostramos directo
         if (CURRICULO_CLM[claveEtapa] && CURRICULO_CLM[claveEtapa][materia]) {
             renderizarCheckboxCompetencias(claveEtapa, materia);
             return;
         }
 
-        // Buscamos el archivo con la estructura: valorEtapa - materia.md
-        // Ejemplo: infantil - Crecimiento en Armonía.md
         boxCompetencias.innerHTML = '<div class="empty-state">Buscando currículo automáticamente...</div>';
         
         try {
             const prefijoEtapa = MAPA_ARCHIVOS_ETAPA[claveEtapa] || claveEtapa;
             const nombreArchivo = `${prefijoEtapa} - ${materia}.md`;
-            
-            // Codificamos la URL para evitar problemas en servidores (como Github) con espacios y tildes
             const urlSegura = encodeURI(`./${nombreArchivo}`);
             const respuesta = await fetch(urlSegura);
             
-            if (!respuesta.ok) {
-                throw new Error("No se pudo localizar el archivo localmente");
-            }
+            if (!respuesta.ok) throw new Error("No se pudo localizar el archivo localmente");
             
             const textoMarkdown = await respuesta.text();
             const competenciasParseadas = parsearMarkdown(textoMarkdown);
             
-            // Guardamos en memoria lo que hemos descargado
             if (!CURRICULO_CLM[claveEtapa]) CURRICULO_CLM[claveEtapa] = {};
             CURRICULO_CLM[claveEtapa][materia] = competenciasParseadas;
-            
             renderizarCheckboxCompetencias(claveEtapa, materia);
-
         } catch (error) {
             console.log("No se ha encontrado el archivo local:", error);
-            
-            // Si hay un error, dejamos el contenedor vacío y con un mensaje neutro
             boxCompetencias.innerHTML = '<div class="empty-state">Base de datos curricular pendiente de cargar.</div>';
-            
             if (!CURRICULO_CLM[claveEtapa]) CURRICULO_CLM[claveEtapa] = {};
             CURRICULO_CLM[claveEtapa][materia] = { competencias: [], bloquesSaberes: [] }; 
         }
     }
 
-    // Dibuja los checkboxes de la fase 3
     function renderizarCheckboxCompetencias(claveEtapa, materia) {
         const boxCompetencias = document.getElementById('box-competencias');
         boxCompetencias.innerHTML = '';
@@ -1512,7 +1465,6 @@
         });
     }
 
-    // Dibuja los criterios y saberes en la fase 4
     function cargarSaberesYCriterios() {
         const claveEtapa = obtenerClaveEtapa();
         const materia = document.getElementById('sel-materia').value;
@@ -1527,7 +1479,6 @@
         contenedorSaberes.innerHTML = '';
         const data = CURRICULO_CLM[claveEtapa][materia];
 
-        // 1. Renderizar Criterios de las Competencias Seleccionadas
         let htmlCriterios = '<h3 style="margin-bottom: 1rem; color: var(--primary-color);">Criterios de evaluación</h3>';
         competenciasChecks.forEach(chk => {
             const indexComp = chk.value;
@@ -1556,7 +1507,6 @@
         
         contenedorSaberes.innerHTML += htmlCriterios;
 
-        // 2. Renderizar TODOS los Saberes del área/ciclo (desvinculados) en Desplegables
         if (data.bloquesSaberes && data.bloquesSaberes.length > 0) {
             let htmlSaberes = '<h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: var(--primary-color);">Saberes básicos del ciclo</h3>';
             
@@ -1583,12 +1533,10 @@
                     </details>
                 `;
             });
-            
             contenedorSaberes.innerHTML += htmlSaberes;
         }
     }
 
-    // --- MOTOR DE LECTURA DE MARKDOWN ---
     function parsearMarkdown(texto) {
         const lineas = texto.split('\n');
         let competencias = [];
@@ -1607,15 +1555,10 @@
                 };
             } else if (limpia.startsWith('#### ')) {
                 if (compActual) {
-                    compActual.criterios.push({
-                        texto: limpia.substring(5).trim()
-                    });
+                    compActual.criterios.push({ texto: limpia.substring(5).trim() });
                 }
             } else if (limpia.startsWith('##### ')) {
-                bloqueActual = {
-                    titulo: limpia.substring(6).trim(),
-                    saberes: []
-                };
+                bloqueActual = { titulo: limpia.substring(6).trim(), saberes: [] };
                 bloquesSaberes.push(bloqueActual);
             } else if (limpia.startsWith('###### ')) {
                 if (bloqueActual) {
@@ -1625,16 +1568,13 @@
         });
         
         if (compActual && !competencias.includes(compActual)) competencias.push(compActual);
-        
         return { competencias, bloquesSaberes };
     }
 
-    // Funciones vacías para evitar errores de consola
     function actualizarPromptsIA() {}
     function copiarPrompt(idTextArea) {}
     function mostrarToast() {}
 
-    // Para vincular eventos de actualización a los textareas en tiempo real
     document.addEventListener("DOMContentLoaded", function() {
         const inputDispPregPrinc = document.getElementById('input-disparador-pregunta-principal');
         if (inputDispPregPrinc) inputDispPregPrinc.addEventListener('input', actualizarPromptsIA);
@@ -1648,11 +1588,9 @@
         const inputReto = document.getElementById('input-reto');
         if (inputReto) inputReto.addEventListener('input', actualizarPromptsIA);
 
-        // Forzar interfaz limpia inicial
         actualizarInterfazWizard();
     });
 
-    // --- LÓGICA DEL WIZARD ---
     let pasoActual = 1;
     const totalPasos = 12;
     const nombresPasos = ["Inicio", "Contexto inicial", "Eje central", "Competencia específica", "Saberes y criterios", "Disparador de pensamiento", "El reto final", "Acompañamiento", "Retroalimentación", "Asistente de evaluación", "Para saber más", "Créditos"];
@@ -1711,7 +1649,6 @@
         }
     }
 
-    // --- MODALES Y AYUDA ---
     function toggleHelp(helpId) {
         const helpElement = document.getElementById(helpId);
         if (helpElement.classList.contains('active')) {
@@ -1744,8 +1681,204 @@
         }
     }
 
-    // --- PREPARACIÓN Y EXPORTACIÓN ---
-    function prepararDatosDocumento() {
+    // --- NUEVA LÓGICA DE EXPORTACIÓN PDF PURO (OPCIÓN A) ---
+    function generarDocumentoPDF() {
+        const btnFinal = document.getElementById('btn-finish');
+        btnFinal.textContent = 'Generando...';
+        btnFinal.disabled = true;
+
+        // 1. Conseguir el logotipo en base64 para poder inyectarlo en el documento vectorial
+        const img = document.querySelector('.header-logo');
+        let logoBase64 = null;
+        if (img && img.complete) {
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                logoBase64 = canvas.toDataURL('image/jpeg');
+            } catch (e) {
+                console.error("No se pudo procesar el logo para el PDF", e);
+            }
+        }
+
+        // 2. Extraer todos los valores de las cajas que ha introducido el profesor
+        const etapaSel = document.getElementById('sel-etapa');
+        const modalidadSel = document.getElementById('sel-modalidad');
+        let etapaTexto = etapaSel.options[etapaSel.selectedIndex]?.text || 'No definida';
+        if (etapaSel.value.startsWith('bachillerato') && modalidadSel.value) {
+            etapaTexto += ' (' + modalidadSel.options[modalidadSel.selectedIndex].text + ')';
+        }
+        const materiaSel = document.getElementById('sel-materia');
+        const materia = materiaSel.options[materiaSel.selectedIndex]?.text || 'No definida';
+        
+        const tema = document.getElementById('input-tema').value || 'Sin especificar';
+        const tituloAlumnado = document.getElementById('input-titulo-alumnado').value || 'Sin especificar';
+
+        // Lógica para rescatar competencias y saberes marcados
+        const etapaVal = obtenerClaveEtapa();
+        const materiaVal = materiaSel.value;
+        const data = (etapaVal && materiaVal && CURRICULO_CLM[etapaVal]) ? CURRICULO_CLM[etapaVal][materiaVal] : null;
+
+        const compSeleccionadas = [];
+        const critSeleccionados = []; 
+        if (data) {
+            const competenciasChecks = document.querySelectorAll('#box-competencias input[type="checkbox"]:checked');
+            competenciasChecks.forEach(chk => {
+                compSeleccionadas.push(data.competencias[chk.value].texto.trim());
+            });
+
+            const uiCompGroups = document.querySelectorAll('#contenedor-saberes-criterios .competencia-group');
+            uiCompGroups.forEach(group => {
+                const title = group.querySelector('h4').textContent.trim();
+                const checks = group.querySelectorAll('.chk-criterio:checked');
+                if (checks.length > 0) {
+                    const list = Array.from(checks).map(c => c.nextElementSibling.textContent.trim());
+                    critSeleccionados.push({ title, list });
+                }
+            });
+        }
+
+        const saberesSeleccionados = [];
+        const uiSaberDetails = document.querySelectorAll('#contenedor-saberes-criterios .saber-details');
+        uiSaberDetails.forEach(details => {
+            const title = details.querySelector('summary').textContent.replace('▶', '').trim();
+            const checks = details.querySelectorAll('.chk-saber:checked');
+            if (checks.length > 0) {
+                const list = Array.from(checks).map(c => c.nextElementSibling.textContent.trim());
+                saberesSeleccionados.push({ title, list });
+            }
+        });
+
+        const disparadorP = document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.';
+        const disparadorM = document.getElementById('input-disparador-material').value || 'No se ha definido material inicial.';
+        const disparadorQ = document.getElementById('input-disparador-preguntas').value || 'No se han definido preguntas abiertas.';
+        const reto = document.getElementById('input-reto').value || 'No se ha definido el reto.';
+        const feedfw = document.getElementById('input-feedforward').value || 'No se han definido ayudas previas.';
+        const feedbk = document.getElementById('input-feedback').value || 'No se ha definido retroalimentación.';
+
+        // Comprobar si hay rúbrica y convertirla para pdfMake
+        const rubricaEl = document.getElementById('input-rubrica');
+        let rubricaContent = [];
+        const tablaRubrica = rubricaEl.querySelector('table');
+        
+        if (tablaRubrica) {
+            const body = [];
+            tablaRubrica.querySelectorAll('tr').forEach(tr => {
+                const row = [];
+                tr.querySelectorAll('th, td').forEach(cell => {
+                    row.push({ 
+                        text: cell.textContent.trim(), 
+                        style: cell.tagName.toLowerCase() === 'th' ? 'tableHeader' : 'tableCell' 
+                    });
+                });
+                if (row.length > 0) body.push(row);
+            });
+            
+            // Iguala las columnas por si acaso la IA trajo celdas combinadas defectuosas
+            if (body.length > 0) {
+                const maxCols = Math.max(...body.map(r => r.length));
+                body.forEach(r => {
+                    while(r.length < maxCols) { r.push({ text: '', style: 'tableCell' }); }
+                });
+                rubricaContent.push({
+                    table: { headerRows: 1, body: body, widths: Array(maxCols).fill('*') },
+                    layout: 'lightHorizontalLines',
+                    margin: [0, 5, 0, 15]
+                });
+            }
+        } else if (rubricaEl.textContent.trim() !== '') {
+            rubricaContent.push({ text: rubricaEl.textContent.trim(), style: 'normalText', margin: [0, 5, 0, 15] });
+        }
+
+        // 3. Escribir el documento vectorial directamente desde cero
+        const cabeceraAzul = (texto) => {
+            return [
+                { text: texto, style: 'sectionTitle' },
+                { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 2, lineColor: '#3C5AD9' }], margin: [0, 0, 0, 10] }
+            ];
+        };
+
+        const definicionDoc = {
+            pageSize: 'A4',
+            pageMargins: [40, 40, 40, 40],
+            content: [
+                ...(logoBase64 ? [{ image: logoBase64, width: 150, margin: [0, 0, 0, 10] }] : []),
+                { text: 'Planificación de actividad multinivel', style: 'header' },
+                { text: 'Modelo de Enriquecimiento para toda la Escuela (SEM)', style: 'subheader' },
+                { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 2, lineColor: '#3C5AD9' }], margin: [0, 0, 0, 20] },
+
+                cabeceraAzul('1. Contexto curricular'),
+                { text: [{ text: 'Etapa y materia: ', bold: true }, etapaTexto + ' - ' + materia], style: 'normalText' },
+                { text: [{ text: 'Contenido subyacente: ', bold: true }, tema], style: 'normalText' },
+                { text: [{ text: 'Título para el alumnado: ', bold: true }, tituloAlumnado], style: 'normalText' },
+                { text: 'Competencias específicas seleccionadas:', bold: true, margin: [0, 10, 0, 5] },
+                ...(compSeleccionadas.length > 0 
+                    ? compSeleccionadas.map(c => ({ text: c, style: 'normalText', margin: [0, 0, 0, 5] }))
+                    : [{ text: 'No seleccionada', style: 'normalText', italics: true }]),
+
+                cabeceraAzul('Criterios de evaluación y Saberes básicos'),
+                ...(critSeleccionados.length === 0 && saberesSeleccionados.length === 0 ? [{text: 'Ninguno seleccionado', italics: true, style: 'normalText'}] : []),
+                
+                ...critSeleccionados.map(group => [
+                    { text: group.title, bold: true, margin: [0, 5, 0, 5] },
+                    { ul: group.list, margin: [15, 0, 0, 10], style: 'normalText' }
+                ]),
+                
+                ...(saberesSeleccionados.length > 0 ? [
+                    { text: 'Saberes básicos aplicados', bold: true, color: '#3C5AD9', fontSize: 14, margin: [0, 10, 0, 10] },
+                    ...saberesSeleccionados.map(group => [
+                        { text: group.title, bold: true, margin: [0, 5, 0, 5] },
+                        { ul: group.list, margin: [15, 0, 0, 10], style: 'normalText' }
+                    ])
+                ] : []),
+
+                cabeceraAzul('2. Disparador de pensamiento'),
+                { text: 'Pregunta disparadora:', bold: true, margin: [0, 0, 0, 5] },
+                { text: disparadorP, style: 'normalText' },
+                { text: 'Material o contexto inicial:', bold: true, margin: [0, 10, 0, 5] },
+                { text: disparadorM, style: 'normalText' },
+                { text: 'Preguntas para el debate:', bold: true, margin: [0, 10, 0, 5] },
+                { text: disparadorQ, style: 'normalText' },
+
+                cabeceraAzul('3. El reto'),
+                { text: reto, style: 'normalText' },
+
+                cabeceraAzul('4. Acompañamiento: feedforward'),
+                { text: 'Ayudas y andamiajes previos previstos para orientar el antes y el durante:', italics: true, margin: [0, 0, 0, 5] },
+                { text: feedfw, style: 'normalText' },
+
+                cabeceraAzul('5. Retroalimentación: feedback'),
+                { text: 'Mecanismos de retroalimentación formativa y guía durante el proceso:', italics: true, margin: [0, 0, 0, 5] },
+                { text: feedbk, style: 'normalText' },
+
+                ...(rubricaContent.length > 0 ? [
+                    { text: 'Rúbrica de un solo punto:', bold: true, margin: [0, 10, 0, 5] },
+                    ...rubricaContent
+                ] : []),
+
+                { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#767676' }], margin: [0, 30, 0, 10] },
+                { text: 'Documento generado automáticamente por el asistente multinivel.', fontSize: 10, color: '#555555', alignment: 'center' }
+            ],
+            styles: {
+                header: { fontSize: 20, bold: true, color: '#3C5AD9', margin: [0, 0, 0, 5] },
+                subheader: { fontSize: 12, bold: true, color: '#555555', margin: [0, 0, 0, 10] },
+                sectionTitle: { fontSize: 16, bold: true, color: '#3C5AD9', margin: [0, 20, 0, 5] },
+                normalText: { fontSize: 12, color: '#000000', margin: [0, 0, 0, 5] },
+                tableHeader: { bold: true, fontSize: 11, color: '#3C5AD9', fillColor: '#F4F8FB', margin: [0, 4, 0, 4] },
+                tableCell: { fontSize: 11, color: '#000000', margin: [0, 4, 0, 4] }
+            }
+        };
+
+        // Generar y descargar el PDF con pdfMake
+        pdfMake.createPdf(definicionDoc).download(`Planificacion_${tema.replace(/\s+/g, '_')}.pdf`);
+        btnFinal.textContent = 'Generar documento pdf';
+        btnFinal.disabled = false;
+    }
+
+    // --- PREPARACIÓN Y EXPORTACIÓN ORIGINAL A WORD ---
+    function prepararDatosDocumentoWord() {
         const etapaSel = document.getElementById('sel-etapa');
         const modalidadSel = document.getElementById('sel-modalidad');
         const materiaSel = document.getElementById('sel-materia');
@@ -1766,7 +1899,7 @@
         
         if (etapaVal && materiaVal && competenciasChecks.length > 0 && CURRICULO_CLM[etapaVal] && CURRICULO_CLM[etapaVal][materiaVal]) {
             const selectedIndices = Array.from(competenciasChecks).map(chk => chk.value);
-            competenciaTexto = selectedIndices.map(index => CURRICULO_CLM[etapaVal][materiaVal].competencias[index].texto.trim()).join('<br><br>');
+            competenciaTexto = selectedIndices.map(index => `<div style="margin-bottom: 8px;">${CURRICULO_CLM[etapaVal][materiaVal].competencias[index].texto.trim()}</div>`).join('');
         }
         
         const disparadorPregunta = (document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.').trim();
@@ -1804,16 +1937,14 @@
         
         const cajaRubrica = document.getElementById('pdf-rubrica');
         if(rubrica !== '' && rubrica !== '<br>') {
-            cajaRubrica.innerHTML = `<strong>Rúbrica de un solo punto:</strong><br>${rubrica}`;
+            cajaRubrica.innerHTML = `<div style="margin-bottom: 5px;"><strong>Rúbrica de un solo punto:</strong></div><div>${rubrica}</div>`;
         } else {
             cajaRubrica.innerHTML = '';
         }
 
-        // --- Generación anidada para el PDF ---
         const pdfContenedor = document.getElementById('pdf-criterios-saberes-container');
         pdfContenedor.innerHTML = '';
         
-        // 1. Extraer competencias y criterios seleccionados
         const uiCompGroups = document.querySelectorAll('#contenedor-saberes-criterios .competencia-group');
         let hasCriterios = false;
         uiCompGroups.forEach(uiComp => {
@@ -1824,7 +1955,7 @@
                 hasCriterios = true;
                 let htmlInner = '<ul class="pdf-list">';
                 critChecks.forEach(crit => {
-                    htmlInner += `<li style="color: #000000; font-weight: normal;">${crit.nextElementSibling.textContent}</li>`;
+                    htmlInner += `<li style="color: #000000; font-weight: normal;">${crit.nextElementSibling.textContent.trim()}</li>`;
                 });
                 htmlInner += '</ul>';
                 
@@ -1835,7 +1966,6 @@
             }
         });
         
-        // 2. Extraer saberes seleccionados
         const uiSaberDetails = document.querySelectorAll('#contenedor-saberes-criterios .saber-details');
         let hasSaberes = false;
         let htmlSaberes = '';
@@ -1849,7 +1979,7 @@
                     <div style="color: #000000; font-weight: bold; margin-bottom: 4px;">${tituloBloque}</div>
                     <ul class="pdf-list">`;
                 saberChecks.forEach(saber => {
-                    htmlSaberes += `<li style="color: #000000; font-weight: normal;">${saber.nextElementSibling.textContent}</li>`;
+                    htmlSaberes += `<li style="color: #000000; font-weight: normal;">${saber.nextElementSibling.textContent.trim()}</li>`;
                 });
                 htmlSaberes += `</ul></div>`;
             }
@@ -1869,24 +1999,8 @@
         }
     }
 
-    function generarDocumentoPDF() {
-        const btnFinal = document.getElementById('btn-finish');
-        btnFinal.textContent = 'Preparando...';
-        btnFinal.disabled = true;
-
-        prepararDatosDocumento();
-        
-        // Usamos la impresión nativa del navegador para generar un PDF real, vectorial y editable.
-        // El usuario solo tiene que seleccionar "Guardar como PDF" en la ventana de impresión.
-        setTimeout(() => {
-            window.print();
-            btnFinal.textContent = 'Generar documento pdf';
-            btnFinal.disabled = false;
-        }, 300);
-    }
-
     function generarDocumentoWord() {
-        prepararDatosDocumento();
+        prepararDatosDocumentoWord();
         const elementoPlantilla = document.getElementById('pdf-template');
         const clon = elementoPlantilla.cloneNode(true);
         clon.style.display = 'block';
@@ -1902,7 +2016,6 @@
                 ctx.drawImage(imgPlantilla, 0, 0);
                 imgClon.src = canvas.toDataURL('image/jpeg');
                 
-                // Calculamos el alto proporcional para evitar deformaciones en Word
                 const anchoDeseado = 150;
                 const proporcion = imgPlantilla.naturalHeight / imgPlantilla.naturalWidth;
                 const altoDeseado = Math.round(anchoDeseado * proporcion);
@@ -1945,9 +2058,7 @@
             </html>
         `;
 
-        // Utilizamos html-docx-js para compilar el HTML en un .docx real
         const blob = htmlDocx.asBlob(htmlDocument, { orientation: 'portrait' });
-        
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
