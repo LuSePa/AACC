@@ -780,7 +780,7 @@
 
     <div class="progress-container" id="progress-container" style="display: none;">
         <div class="progress-bar" id="progress-bar"></div>
-        <div class="progress-text" id="progress-text" style="display: none;">Paso 1 de 9: Contexto inicial</div>
+        <div class="progress-text" id="progress-text" style="display: none;">Paso 1 de 11: Contexto inicial</div>
     </div>
 
     <div class="steps-wrapper">
@@ -840,31 +840,53 @@
             </div>
         </div>
 
-        <!-- PASO 3: Eje central -->
+        <!-- PASO 3: Contenido subyacente -->
         <div class="step" id="step-3">
-            <h2>2. Contenido subyacente (Eje central o tema principal) <span class="help-icon" onclick="toggleHelp('help-tema')">?</span></h2>
+            <h2>2. Contenido subyacente <span class="help-icon" onclick="toggleHelp('help-tema')">?</span></h2>
             <div id="help-tema" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
-                    <li>Es lo que quieres que tu alumnado aprenda.</li>
-                    <li>Es el hilo conductor que da sentido a la situación de aprendizaje.</li>
-                    <li>Debe ser amplio, motivador y estar conectado con la vida real o los intereses del alumnado.</li>
-                    <li>Por ejemplo: "Misión rescate espacial", "El misterio de los océanos", "Reporteros del clima".</li>
+                    <li>Es la competencia general o el saber básico al que se quiere llegar.</li>
+                    <li>Es aquello que deben comprender independientemente del nivel de profundidad con el que trabajen.</li>
+                    <li>Antes de diseñar la actividad, ten claro a qué saber básico y a qué criterio de evaluación se hace referencia en el currículo de tu materia.</li>
                 </ul>
-                <span class="link-more" onclick="abrirModal('El eje central como motor de aprendizaje', 'En el modelo SEM en general y en el diseño multinivel en particular, partir de un tema motivador es clave para garantizar el compromiso.\n\nUn buen centro de interés no es solo el nombre de un tema del libro de texto, sino un escenario conectado con un problema real o un reto creativo. Para el alumnado en general, esto da sentido práctico a lo que aprenden. Para el alumnado con altas capacidades, un tema amplio e interdisciplinar resulta fundamental: les permite salir de la superficie, investigar de forma autónoma y establecer conexiones complejas entre diferentes áreas de conocimiento, evitando la repetición y el aburrimiento.')">Saber más sobre el eje central</span>
+                <span class="link-more" onclick="abrirModal('El contenido subyacente como motor de aprendizaje', 'Es el hilo conductor que da sentido a la situación de aprendizaje. Debe ser amplio, motivador y estar conectado con la vida real o los intereses del alumnado.\n\nEn la guía de mejora de la respuesta educativa inclusiva, el contenido subyacente es fundamental porque representa lo que es verdaderamente competencial al final del proceso, alejándose de la mera memorización de contenidos antiguos.')">Saber más sobre el contenido subyacente</span>
             </div>
-            <div class="form-group">
+            
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Generador de Contenido Subyacente</strong>
+                    <p>Ayuda a definir el contenido subyacente, la competencia y el saber básico principal.</p>
+                    <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
+                </div>
+                <button class="btn btn-ai" onclick="window.open('https://m365.cloud.microsoft/chat/?titleId=T_4f04780e-0bd0-a8d1-5840-0e5c537800bc&source=embedded-builder', '_blank')">💡 Contenido Subyacente (IA)</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
                 <div class="label-wrapper">
                     <label for="input-tema">Tema o contenido subyacente</label>
                 </div>
-                <input type="text" id="input-tema" placeholder="Por ejemplo: El ciclo del agua...">
+                <input type="text" id="input-tema" placeholder="Por ejemplo: El ciclo del agua o la competencia general a alcanzar...">
             </div>
+        </div>
 
-            <!-- Asistente IA Integrado -->
+        <!-- PASO 4: Título motivador -->
+        <div class="step" id="step-4">
+            <h2>3. Título motivador <span class="help-icon" onclick="toggleHelp('help-titulo')">?</span></h2>
+            <div id="help-titulo" class="help-content">
+                <p><strong>Puntos clave:</strong></p>
+                <ul>
+                    <li>Debe ser un título atractivo, con fantasía o misterio.</li>
+                    <li>Sirve para "enganchar" al alumnado desde el primer momento.</li>
+                    <li>Se presenta como un reto o aventura en lugar de un tema académico tradicional.</li>
+                </ul>
+                <span class="link-more" onclick="abrirModal('El poder de un título motivador', 'En el modelo SEM, transformar un tema curricular en un escenario estimulante es el primer paso para captar la atención. Un buen título genera anticipación y curiosidad.\n\nPor ejemplo, en lugar de decir \'Vamos a estudiar el ciclo del agua\', proponer \'El misterio de las gotas viajeras\' o \'El secreto escondido en las nubes\' cambia por completo la predisposición del alumnado hacia el aprendizaje, invitándoles a investigar y a preguntarse.')">Saber más sobre el título motivador</span>
+            </div>
+            
             <div class="ai-placeholder">
                 <div style="flex: 1; min-width: 250px;">
                     <strong>Generador de Títulos Motivadores</strong>
-                    <p>Diseña un título motivador y con fantasía para el alumnado.</p>
+                    <p>Diseña un título motivador y con fantasía para el alumnado (enfoque SEM).</p>
                     <p class="ai-instruction">Este enlace lleva a un agente entrenado para hacer esta tarea. Inicia sesión en Copilot con tu cuenta corporativa @educastillalamancha.es (Trabajo) para usarlo.</p>
                 </div>
                 <button class="btn btn-ai" onclick="window.open('https://m365.cloud.microsoft/chat/?titleId=T_f2d84ac3-4804-c06e-af33-eab8170d5d2c&source=embedded-builder', '_blank')">✨ Generar título (IA)</button>
@@ -874,13 +896,13 @@
                 <div class="label-wrapper">
                     <label for="input-titulo-alumnado">Título para el alumnado</label>
                 </div>
-                <input type="text" id="input-titulo-alumnado" placeholder="Por ejemplo: El misterio de las gotas viajeras...">
+                <input type="text" id="input-titulo-alumnado" placeholder="Por ejemplo: El secreto escondido en las nubes...">
             </div>
         </div>
 
-        <!-- PASO 4: Competencia específica -->
-        <div class="step" id="step-4">
-            <h2>3. Competencia específica <span class="help-icon" onclick="toggleHelp('help-comp')">?</span></h2>
+        <!-- PASO 5: Competencia específica -->
+        <div class="step" id="step-5">
+            <h2>4. Competencia específica <span class="help-icon" onclick="toggleHelp('help-comp')">?</span></h2>
             <div id="help-comp" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -903,9 +925,9 @@
             </div>
         </div>
 
-        <!-- PASO 5: Saberes y criterios -->
-        <div class="step" id="step-5">
-            <h2>4. Saberes y criterios <span class="help-icon" onclick="toggleHelp('help-saberes')">?</span></h2>
+        <!-- PASO 6: Saberes y criterios -->
+        <div class="step" id="step-6">
+            <h2>5. Saberes y criterios <span class="help-icon" onclick="toggleHelp('help-saberes')">?</span></h2>
             <div id="help-saberes" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -932,9 +954,9 @@
             </div>
         </div>
 
-        <!-- PASO 6: Disparador de pensamiento -->
-        <div class="step" id="step-6">
-            <h2>5. Disparador de pensamiento <span class="help-icon" onclick="toggleHelp('help-disparador')">?</span></h2>
+        <!-- PASO 7: Disparador de pensamiento -->
+        <div class="step" id="step-7">
+            <h2>6. Disparador de pensamiento <span class="help-icon" onclick="toggleHelp('help-disparador')">?</span></h2>
             <div id="help-disparador" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -985,9 +1007,9 @@
             </div>
         </div>
 
-        <!-- PASO 7: El reto final -->
-        <div class="step" id="step-7">
-            <h2>6. El reto final <span class="help-icon" onclick="toggleHelp('help-reto')">?</span></h2>
+        <!-- PASO 8: El reto final -->
+        <div class="step" id="step-8">
+            <h2>7. El reto final <span class="help-icon" onclick="toggleHelp('help-reto')">?</span></h2>
             <div id="help-reto" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -1023,9 +1045,9 @@
             </div>
         </div>
 
-        <!-- PASO 8: Feed forward -->
-        <div class="step" id="step-8">
-            <h2>7. Acompañamiento: <em>feedforward</em> <span class="help-icon" onclick="toggleHelp('help-feed')">?</span></h2>
+        <!-- PASO 9: Feed forward -->
+        <div class="step" id="step-9">
+            <h2>8. Acompañamiento: <em>feedforward</em> <span class="help-icon" onclick="toggleHelp('help-feed')">?</span></h2>
             <div id="help-feed" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -1043,9 +1065,9 @@
             </div>
         </div>
 
-        <!-- PASO 9: Feedback -->
-        <div class="step" id="step-9">
-            <h2>8. Retroalimentación: <em>feedback</em> <span class="help-icon" onclick="toggleHelp('help-feedback')">?</span></h2>
+        <!-- PASO 10: Feedback -->
+        <div class="step" id="step-10">
+            <h2>9. Retroalimentación: <em>feedback</em> <span class="help-icon" onclick="toggleHelp('help-feedback')">?</span></h2>
             <div id="help-feedback" class="help-content">
                 <p><strong>Puntos clave:</strong></p>
                 <ul>
@@ -1063,9 +1085,9 @@
             </div>
         </div>
 
-        <!-- PASO 10: Asistente de evaluación -->
-        <div class="step" id="step-10">
-            <h2>9. Asistente de evaluación</h2>
+        <!-- PASO 11: Asistente de evaluación -->
+        <div class="step" id="step-11">
+            <h2>10. Asistente de evaluación</h2>
             <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1.5rem;">
                 Utiliza la inteligencia artificial para crear los instrumentos de evaluación basándote en lo que has diseñado.
             </p>
@@ -1091,9 +1113,9 @@
             </div>
         </div>
 
-        <!-- PASO 11: Para saber más -->
-        <div class="step" id="step-11">
-            <h2>10. Para saber más</h2>
+        <!-- PASO 12: Para saber más -->
+        <div class="step" id="step-12">
+            <h2>11. Para saber más</h2>
             <div style="margin-bottom: 1.5rem;">
                 <p style="font-size: 14px; margin-bottom: 0.5rem;"><strong>¿Por dónde empezar? Herramientas prácticas</strong></p>
                 <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1.5rem;">Aplicar esta metodología y registrar las evidencias no tiene por qué suponer una sobrecarga de trabajo. Aquí tienes algunas opciones para llevarlo al aula de forma ágil:</p>
@@ -1130,9 +1152,9 @@
             </div>
         </div>
 
-        <!-- PASO 12: Créditos -->
-        <div class="step" id="step-12">
-            <h2>11. Créditos</h2>
+        <!-- PASO 13: Créditos -->
+        <div class="step" id="step-13">
+            <h2>12. Créditos</h2>
             <div class="tip-box">
                 <div class="tip-box-icon">🎓</div>
                 <div class="tip-box-text">
@@ -1176,7 +1198,7 @@
     </div>
 </div>
 
-<!-- PLANTILLA OCULTA ÚNICAMENTE PARA EL GENERADOR DE WORD -->
+<!-- PLANTILLA OCULTA ÚNICAMENTE PARA EL GENERADOR DE WORD/PDF -->
 <div id="pdf-template">
     <div class="pdf-header">
         <div style="margin-bottom: 15px;">
@@ -1596,8 +1618,13 @@
     });
 
     let pasoActual = 1;
-    const totalPasos = 12;
-    const nombresPasos = ["Inicio", "Contexto inicial", "Eje central", "Competencia específica", "Saberes y criterios", "Disparador de pensamiento", "El reto final", "Acompañamiento", "Retroalimentación", "Asistente de evaluación", "Para saber más", "Créditos"];
+    const totalPasos = 13;
+    const nombresPasos = [
+        "Inicio", "Contexto inicial", "Contenido subyacente", "Título motivador", 
+        "Competencia específica", "Saberes y criterios", "Disparador de pensamiento", 
+        "El reto final", "Acompañamiento", "Retroalimentación", "Asistente de evaluación", 
+        "Para saber más", "Créditos"
+    ];
 
     function cambiarPaso(direccion) {
         document.getElementById(`step-${pasoActual}`).classList.remove('active');
@@ -1628,9 +1655,9 @@
             let pasoVisible = pasoActual - 1;
             let porcentaje = 0;
             
-            if (pasoActual <= 10) {
-                porcentaje = (pasoVisible / 9) * 100;
-                progressText.textContent = `Paso ${pasoVisible} de 9: ${nombresPasos[pasoActual-1]}`;
+            if (pasoActual <= 11) {
+                porcentaje = (pasoVisible / 10) * 100;
+                progressText.textContent = `Paso ${pasoVisible} de 10: ${nombresPasos[pasoActual-1]}`;
             } else {
                 porcentaje = 100;
                 progressText.textContent = `Información adicional: ${nombresPasos[pasoActual-1]}`;
@@ -1643,9 +1670,9 @@
             btnNext.style.display = 'none';
         } else {
             btnNext.style.display = 'inline-block';
-            if (pasoActual === 10) {
+            if (pasoActual === 11) {
                 btnNext.textContent = 'Para saber más';
-            } else if (pasoActual === 11) {
+            } else if (pasoActual === 12) {
                 btnNext.textContent = 'Créditos';
             } else {
                 btnNext.textContent = 'Siguiente';
