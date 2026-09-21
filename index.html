@@ -766,7 +766,8 @@
 <div class="container">
     <div class="header">
         <div class="header-logo-container">
-            <img class="header-logo" src="https://i.postimg.cc/zByLdX0k/Logo-Altas-Capacidades-jpg.webp" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous">
+            <img class="header-logo" src="LOGO_JCCM.png" alt="Logo Junta de Comunidades de Castilla-La Mancha" crossorigin="anonymous" style="margin-right: 15px;">
+            <img class="header-logo" src="LogoAltasCapacidades.png" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous">
         </div>
         <div class="header-title-container">
             <h1>DISEÑO DE ACTIVIDADES MULTINIVEL</h1>
@@ -1178,7 +1179,10 @@
 <!-- PLANTILLA OCULTA ÚNICAMENTE PARA EL GENERADOR DE WORD -->
 <div id="pdf-template">
     <div class="pdf-header">
-        <img src="https://i.postimg.cc/zByLdX0k/Logo-Altas-Capacidades-jpg.webp" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous">
+        <div style="margin-bottom: 15px;">
+            <img src="LOGO_JCCM.png" alt="Logo Junta de Comunidades de Castilla-La Mancha" crossorigin="anonymous" style="margin-right: 15px; display: inline-block; vertical-align: middle;">
+            <img src="LogoAltasCapacidades.png" alt="Logo Educación Castilla-La Mancha" crossorigin="anonymous" style="display: inline-block; vertical-align: middle;">
+        </div>
         <h1>Planificación de actividad multinivel</h1>
         <p><strong>Modelo de Enriquecimiento para toda la Escuela (SEM)</strong></p>
     </div>
@@ -1688,20 +1692,22 @@
         btnFinal.disabled = true;
 
         // 1. Conseguir el logotipo en base64 para poder inyectarlo en el documento vectorial
-        const img = document.querySelector('.header-logo');
-        let logoBase64 = null;
-        if (img && img.complete) {
-            try {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                logoBase64 = canvas.toDataURL('image/jpeg');
-            } catch (e) {
-                console.error("No se pudo procesar el logo para el PDF", e);
+        const imgs = document.querySelectorAll('.header-logo');
+        let logosBase64 = [];
+        imgs.forEach(img => {
+            if (img && img.complete) {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    logosBase64.push(canvas.toDataURL('image/jpeg'));
+                } catch (e) {
+                    console.error("No se pudo procesar un logo para el PDF", e);
+                }
             }
-        }
+        });
 
         // 2. Extraer todos los valores de las cajas que ha introducido el profesor
         const etapaSel = document.getElementById('sel-etapa');
@@ -1804,7 +1810,10 @@
             pageSize: 'A4',
             pageMargins: [40, 40, 40, 40],
             content: [
-                ...(logoBase64 ? [{ image: logoBase64, width: 150, margin: [0, 0, 0, 10] }] : []),
+                ...(logosBase64.length > 0 ? [{
+                    columns: logosBase64.map(b64 => ({ image: b64, width: 120, margin: [0, 0, 15, 0] })),
+                    margin: [0, 0, 0, 10]
+                }] : []),
                 { text: 'Planificación de actividad multinivel', style: 'header' },
                 { text: 'Modelo de Enriquecimiento para toda la Escuela (SEM)', style: 'subheader' },
                 { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 2, lineColor: '#3C5AD9' }], margin: [0, 0, 0, 20] },
@@ -2005,29 +2014,33 @@
         const clon = elementoPlantilla.cloneNode(true);
         clon.style.display = 'block';
 
-        const imgPlantilla = elementoPlantilla.querySelector('img');
-        const imgClon = clon.querySelector('img');
-        if (imgPlantilla && imgPlantilla.complete) {
-            try {
-                const canvas = document.createElement('canvas');
-                canvas.width = imgPlantilla.naturalWidth;
-                canvas.height = imgPlantilla.naturalHeight;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(imgPlantilla, 0, 0);
-                imgClon.src = canvas.toDataURL('image/jpeg');
-                
-                const anchoDeseado = 150;
-                const proporcion = imgPlantilla.naturalHeight / imgPlantilla.naturalWidth;
-                const altoDeseado = Math.round(anchoDeseado * proporcion);
-                
-                imgClon.setAttribute('width', anchoDeseado);
-                imgClon.setAttribute('height', altoDeseado);
-                imgClon.style.width = anchoDeseado + 'px';
-                imgClon.style.height = altoDeseado + 'px';
-            } catch (e) {
-                console.error('Error al incrustar la imagen en Word:', e);
+        const imgsPlantilla = elementoPlantilla.querySelectorAll('img');
+        const imgsClon = clon.querySelectorAll('img');
+        
+        imgsPlantilla.forEach((imgPlantilla, index) => {
+            const imgClon = imgsClon[index];
+            if (imgPlantilla && imgPlantilla.complete) {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = imgPlantilla.naturalWidth;
+                    canvas.height = imgPlantilla.naturalHeight;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(imgPlantilla, 0, 0);
+                    imgClon.src = canvas.toDataURL('image/jpeg');
+                    
+                    const anchoDeseado = 150;
+                    const proporcion = imgPlantilla.naturalHeight / imgPlantilla.naturalWidth;
+                    const altoDeseado = Math.round(anchoDeseado * proporcion);
+                    
+                    imgClon.setAttribute('width', anchoDeseado);
+                    imgClon.setAttribute('height', altoDeseado);
+                    imgClon.style.width = anchoDeseado + 'px';
+                    imgClon.style.height = altoDeseado + 'px';
+                } catch (e) {
+                    console.error('Error al incrustar la imagen en Word:', e);
+                }
             }
-        }
+        });
 
         const styles = `
             <style>
