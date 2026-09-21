@@ -1693,7 +1693,7 @@
 
         // 1. Conseguir el logotipo en base64 para poder inyectarlo en el documento vectorial
         const imgs = document.querySelectorAll('.header-logo');
-        let logosBase64 = [];
+        let logosPDF = [];
         imgs.forEach(img => {
             if (img && img.complete) {
                 try {
@@ -1701,8 +1701,22 @@
                     canvas.width = img.naturalWidth;
                     canvas.height = img.naturalHeight;
                     const ctx = canvas.getContext('2d');
+                    
+                    // Rellenar de blanco para evitar el fondo negro en PNGs transparentes
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
                     ctx.drawImage(img, 0, 0);
-                    logosBase64.push(canvas.toDataURL('image/jpeg'));
+                    // Guardamos la imagen y calculamos un ancho proporcional basado en un alto fijo de 40
+                    const altoDeseado = 40;
+                    const proporcion = img.naturalWidth / img.naturalHeight;
+                    const anchoDeseado = Math.round(altoDeseado * proporcion);
+                    
+                    logosPDF.push({
+                        image: canvas.toDataURL('image/jpeg'),
+                        width: anchoDeseado,
+                        margin: [0, 0, 15, 0]
+                    });
                 } catch (e) {
                     console.error("No se pudo procesar un logo para el PDF", e);
                 }
@@ -1810,9 +1824,11 @@
             pageSize: 'A4',
             pageMargins: [40, 40, 40, 40],
             content: [
-                ...(logosBase64.length > 0 ? [{
-                    columns: logosBase64.map(b64 => ({ image: b64, width: 120, margin: [0, 0, 15, 0] })),
-                    margin: [0, 0, 0, 10]
+                ...(logosPDF.length > 0 ? [{
+                    columns: logosPDF,
+                    margin: [0, 0, 0, 10],
+                    // Alineación vertical al centro para que queden alineados si son de diferente tamaño
+                    columnGap: 10 
                 }] : []),
                 { text: 'Planificación de actividad multinivel', style: 'header' },
                 { text: 'Modelo de Enriquecimiento para toda la Escuela (SEM)', style: 'subheader' },
@@ -2025,12 +2041,18 @@
                     canvas.width = imgPlantilla.naturalWidth;
                     canvas.height = imgPlantilla.naturalHeight;
                     const ctx = canvas.getContext('2d');
+                    
+                    // Rellenar de blanco el fondo
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
                     ctx.drawImage(imgPlantilla, 0, 0);
                     imgClon.src = canvas.toDataURL('image/jpeg');
                     
-                    const anchoDeseado = 150;
-                    const proporcion = imgPlantilla.naturalHeight / imgPlantilla.naturalWidth;
-                    const altoDeseado = Math.round(anchoDeseado * proporcion);
+                    // Ajustar por alto para que queden parejos
+                    const altoDeseado = 45; 
+                    const proporcion = imgPlantilla.naturalWidth / imgPlantilla.naturalHeight;
+                    const anchoDeseado = Math.round(altoDeseado * proporcion);
                     
                     imgClon.setAttribute('width', anchoDeseado);
                     imgClon.setAttribute('height', altoDeseado);
