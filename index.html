@@ -120,9 +120,10 @@
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
             border-radius: var(--border-radius);
-            width: 32px;
-            height: 32px;
-            font-size: 18px;
+            min-height: 32px;
+            padding: 0.35rem 0.55rem;
+            font-size: 12px;
+            white-space: nowrap;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -253,6 +254,57 @@
             font-size: 16px;
         }
 
+        .copilot-help-accordion {
+            max-width: 750px;
+            width: 100%;
+            margin-top: 1rem;
+            background: #F9F9F9;
+            border: 1px solid #EAEAEA;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            color: var(--text-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .copilot-help-summary {
+            padding: 1rem clamp(1rem, 3vw, 2rem);
+            color: var(--primary-color);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .copilot-help-summary:hover {
+            background: #F1F4F7;
+        }
+
+        .copilot-help-summary:focus-visible {
+            outline: 2px solid var(--focus-color);
+            outline-offset: -2px;
+        }
+
+        .copilot-help-content {
+            padding: 0 clamp(1rem, 3vw, 2rem) 1.25rem;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .copilot-help-content p {
+            margin: 0 0 0.75rem;
+        }
+
+        .copilot-help-content ul,
+        .copilot-help-content ol {
+            margin: 0.35rem 0 1rem;
+            padding-left: 1.4rem;
+        }
+
+        .copilot-help-content li {
+            margin-bottom: 0.45rem;
+        }
+
         /* Botón de inicio central */
         .btn-start {
             margin-top: 2.5rem;
@@ -315,6 +367,61 @@
             overflow-y: auto;
             color: var(--text-color);
             transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .markdown-editor {
+            min-height: 80px;
+            white-space: pre-wrap;
+        }
+
+        .markdown-editor h2,
+        .markdown-editor h3 {
+            margin: 0.6rem 0 0.35rem;
+        }
+
+        .markdown-editor ul,
+        .markdown-editor ol {
+            padding-left: 1.5rem;
+            margin: 0.35rem 0;
+        }
+
+        .reto-card {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: #F9F9F9;
+        }
+
+        .reto-card + .reto-card {
+            margin-top: 1rem;
+        }
+
+        .reto-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reto-card-header label {
+            margin: 0;
+        }
+
+        .btn-remove-reto {
+            padding: 0.35rem 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: #FFFFFF;
+            color: var(--text-color);
+            cursor: pointer;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .btn-remove-reto:hover {
+            border-color: #9B1C1C;
+            color: #9B1C1C;
         }
 
         .rich-text-box:empty:before {
@@ -480,18 +587,6 @@
 
         .link-more:hover { color: #003D6B; }
 
-        /* Desplegables de saberes */
-        .saber-details summary::-webkit-details-marker {
-            display: none;
-        }
-        .saber-details[open] summary span.arrow {
-            transform: rotate(90deg);
-        }
-        .saber-details summary span.arrow {
-            transition: transform 0.2s;
-            display: inline-block;
-        }
-
         /* Modales */
         .modal-overlay {
             display: none;
@@ -524,10 +619,11 @@
             top: 10px; right: 15px;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 13px;
             cursor: pointer;
             color: var(--secondary-color);
-            font-weight: bold;
+            font-weight: 600;
+            padding: 4px 6px;
         }
         
         .modal-close:hover { color: var(--primary-color); }
@@ -541,12 +637,9 @@
             border-radius: var(--border-radius);
             padding: 0.8rem 1rem;
             margin-top: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            display: block;
         }
 
-        .tip-box-icon { font-size: 20px; flex-shrink: 0; }
         .tip-box-text p { font-size: 14px; color: var(--text-color); margin-bottom: 4px; }
         .tip-box-text strong { color: var(--focus-color); }
 
@@ -872,10 +965,11 @@
             right: 0.5rem;
             background: none;
             border: none;
-            font-size: 18px;
+            font-size: 12px;
             cursor: pointer;
             color: #888888;
             padding: 0.25rem 0.5rem;
+            white-space: nowrap;
         }
 
         .btn-toggle-pwd:hover {
@@ -910,7 +1004,6 @@
             color: var(--secondary-color);
             display: inline-flex;
             align-items: center;
-            gap: 4px;
             font-family: inherit;
         }
 
@@ -934,9 +1027,6 @@
             color: var(--primary-color);
             margin: 0 0 0.75rem 0;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .video-player-wrapper {
@@ -983,15 +1073,7 @@
             color: var(--primary-color);
             cursor: pointer;
             background: #F4F8FB;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             user-select: none;
-        }
-
-        .video-transcript-summary::-webkit-details-marker {
-            display: none;
         }
 
         .video-transcript-summary:hover {
@@ -1181,7 +1263,7 @@
                 <label for="access-password" class="access-label">Clave de acceso</label>
                 <div class="access-input-wrapper">
                     <input type="password" id="access-password" class="access-input" placeholder="Introduce la clave de acceso" autocomplete="current-password" required>
-                    <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility()" aria-label="Mostrar u ocultar clave" title="Mostrar u ocultar clave">👁</button>
+                    <button type="button" class="btn-toggle-pwd" onclick="togglePasswordVisibility()" aria-label="Mostrar clave" title="Mostrar clave">Mostrar</button>
                 </div>
             </div>
             <div id="access-error" class="access-error-msg" role="alert" style="display: none;"></div>
@@ -1201,16 +1283,16 @@
         </div>
         <div class="header-actions">
             <div class="fullscreen-wrapper" onclick="toggleFullScreen()">
-                <button class="fullscreen-btn" title="Pantalla completa" aria-label="Alternar modo pantalla completa">⛶</button>
+                <button class="fullscreen-btn" title="Pantalla completa" aria-label="Alternar modo pantalla completa">Pantalla completa</button>
                 <span class="fullscreen-text">Pulsa para ver mejor en pantalla completa</span>
             </div>
-            <button class="btn-lock" onclick="bloquearSesion()" title="Cerrar y bloquear sesión" aria-label="Bloquear sesión">🔒 Salir</button>
+            <button class="btn-lock" onclick="bloquearSesion()" title="Cerrar y bloquear sesión" aria-label="Bloquear sesión">Bloquear sesión</button>
         </div>
     </div>
 
     <div class="progress-container" id="progress-container" style="display: none;">
         <div class="progress-bar" id="progress-bar"></div>
-        <div class="progress-text" id="progress-text" style="display: none;">Paso 1 de 11: Contexto inicial</div>
+        <div class="progress-text" id="progress-text" style="display: none;">Paso 1 de 9: Contexto inicial</div>
     </div>
 
     <div class="steps-wrapper">
@@ -1227,8 +1309,34 @@
                     Completa cada sección navegando con los botones de la parte inferior. En los apartados más creativos, utiliza los botones morados para pedir sugerencias a la inteligencia artificial. Al finalizar el proceso, obtendrás una planificación estructurada para llevar al aula, donde el alumnado será el protagonista de su propio aprendizaje a la hora de elegir lo que quiere hacer.</p>
                 </div>
 
+                <details class="copilot-help-accordion">
+                        <summary class="copilot-help-summary">Ayuda: cómo usar los agentes de Copilot</summary>
+                        <div class="copilot-help-content" role="region" aria-label="Guía paso a paso para usar los agentes de Copilot">
+                            <p>El aplicativo prepara el contexto y la indicación para el agente y los copia al portapapeles; no envía el mensaje ni incorpora la respuesta automáticamente. La persona docente pega, envía, revisa y añade el resultado al plan.</p>
+                            <p><strong>Elige el agente según lo que necesites:</strong></p>
+                            <ul>
+                                <li><strong>Contenido subyacente:</strong> sintetiza una idea duradera y transferible.</li>
+                                <li><strong>Disparador:</strong> propone una pregunta esencial y preguntas para abrir el diálogo.</li>
+                                <li><strong>Retos:</strong> plantea opciones de trabajo auténtico independientes.</li>
+                                <li><strong>Feedforward:</strong> organiza estrategias y apoyos para abordar los retos.</li>
+                                <li><strong>Retroalimentación:</strong> propone comentarios vinculados al trabajo y próximos pasos.</li>
+                                <li><strong>Evaluación:</strong> elabora una rúbrica común para los retos seleccionados.</li>
+                            </ul>
+                            <p><strong>Uso paso a paso:</strong></p>
+                            <ol>
+                                <li><strong>Prepara la información.</strong> Selecciona etapa, curso, materia y criterios. Completa los campos relacionados con la ayuda que vas a pedir; para feedforward, retroalimentación y evaluación, revisa también los retos.</li>
+                                <li><strong>Accede con la cuenta oficial.</strong> Inicia sesión en Microsoft 365 Copilot con tu cuenta <strong>@educastillalamancha.es</strong>.</li>
+                                <li><strong>Copiar contexto.</strong> En la tarjeta elegida, pulsa «Copiar contexto». Se copia la indicación de trabajo y la información pertinente del aplicativo; este botón no abre Copilot.</li>
+                                <li><strong>Pulsar el enlace del agente.</strong> Pulsa el botón con el nombre del agente para abrir su chat en una pestaña nueva. Este botón también intenta copiar el contexto; si el portapapeles no se actualiza, vuelve al aplicativo y usa «Copiar contexto».</li>
+                                <li><strong>Usar el agente con el contexto copiado.</strong> En el chat abierto, pega el contexto con <strong>Ctrl+V</strong> y pulsa «Enviar». El enlace no envía el mensaje. No inicies la consulta desde un iniciador de conversación.</li>
+                                <li><strong>Incorpora la respuesta.</strong> Revisa la propuesta, cópiala y pégala en el campo correspondiente del aplicativo. Si recibes varios retos, coloca cada propuesta en su celda independiente.</li>
+                                <li><strong>Inicia otra consulta.</strong> Vuelve al aplicativo, actualiza los datos necesarios y copia un contexto nuevo para el agente y la consulta siguientes.</li>
+                            </ol>
+                        </div>
+                </details>
+
                 <div class="intro-video-section">
-                    <h3 class="intro-video-title">🎬 Vídeo de orientación inicial</h3>
+                    <h3 class="intro-video-title">Vídeo de orientación inicial</h3>
                     <div class="video-player-wrapper">
                         <video id="intro-video" class="intro-video" controls preload="metadata" poster="poster_video_demo.png">
                             <source src="video_demostrativo.mp4" type="video/mp4">
@@ -1239,14 +1347,14 @@
                     <div class="video-accessibility-note">
                         <details class="video-transcript-accordion">
                             <summary class="video-transcript-summary">
-                                <span>📝</span> Transcripción textual completa del vídeo
+                                Transcripción textual completa del vídeo
                             </summary>
                             <div class="video-transcript-content" role="region" aria-label="Transcripción textual del vídeo">
                                 <p><strong>Transcripción del vídeo demostrativo: «Diseño de Actividades Multinivel con el Modelo SEM y DUA»</strong></p>
                                 <p><strong>[00:00 - Introducción y propósito]:</strong> Bienvenidos al asistente para el diseño de situaciones de aprendizaje multinivel de Castilla-La Mancha. Esta herramienta ayuda a estructurar propuestas de aula donde todo el alumnado comparte un mismo contenido subyacente y un disparador esencial, permitiendo diferentes vías de acceso, niveles de complejidad y formas de expresión acordes con el Diseño Universal para el Aprendizaje (DUA v3.0) y el modelo de enriquecimiento SEM.</p>
                                 <p><strong>[00:45 - Conexión curricular inicial]:</strong> El primer paso consiste en seleccionar la etapa educativa, el curso y el área o materia. El sistema cargará automáticamente los saberes básicos, competencias específicas y criterios de evaluación oficiales del currículo autonómico LOMLOE, garantizando la alineación curricular desde el primer momento.</p>
                                 <p><strong>[01:30 - Contenido subyacente y disparador]:</strong> A continuación, formulamos la idea duradera y transferible (el contenido subyacente), superando la prueba de las tres señales para asegurar que va más allá de un dato memorístico. Con esa base, diseñamos el disparador del pensamiento: una pregunta abierta o situación provocadora común a toda el aula.</p>
-                                <p><strong>[02:15 - Multinivelación y agentes Copilot]:</strong> En los siguientes pasos, establecemos los niveles de andamiaje y profundización para el alumnado, acompañados de estrategias preventivas de <em>feedforward</em> y evaluación formativa. Para agilizar el trabajo docente, el asistente permite copiar todo el contexto curricular y pedagógico acumulado con un solo clic para dialogar directamente con los agentes especializados de Microsoft 365 Copilot.</p>
+                                <p><strong>[02:15 - Multinivelación y agentes Copilot]:</strong> En los siguientes pasos, establecemos los niveles de andamiaje y profundización para el alumnado, acompañados de estrategias preventivas de <em>feedforward</em> y evaluación formativa. El acceso a los agentes de Microsoft 365 Copilot requiere la cuenta oficial <em>@educastillalamancha.es</em>. La consulta se inicia pegando en el chat el contexto generado por el aplicativo con «Copiar contexto».</p>
                                 <p><strong>[03:00 - Exportación e implementación]:</strong> Al finalizar los pasos, podrás revisar la propuesta completa y descargarla como documento Word (.docx) editable o en formato PDF accesible listo para su aplicación en el centro.</p>
                             </div>
                         </details>
@@ -1342,7 +1450,6 @@
             </div>
             
             <div class="tip-box" style="margin-top: 1.5rem;">
-                <div class="tip-box-icon">🧠</div>
                 <div class="tip-box-text">
                     <p><strong>Para saber más sobre las habilidades cognitivas y metacognitivas:</strong></p>
                     <p id="texto-tip-saberes">Los verbos de los criterios de evaluación (analizar, diseñar, evaluar...) te indican el nivel de demanda cognitiva que requiere el reto <strong>según la taxonomía de Bloom</strong>. Para el alumnado con altas capacidades, es vital diseñar tareas que alcancen los niveles de pensamiento superior (evaluar y crear), en las actividades asociadas a su <b>dominio</b>. Además, fomentar la metacognición implica ayudarles a reflexionar no solo sobre <em>qué</em> han aprendido, sino sobre <em>cómo</em> lo han aprendido y qué estrategias han usado, dándoles el control real de su aprendizaje.</p>
@@ -1364,11 +1471,11 @@
                     <li><strong>Conexión curricular:</strong> Une los saberes básicos (herramientas) con las competencias específicas (lo que el alumnado sabe hacer).</li>
                     <li><strong>Inclusión multinivel:</strong> Es comprensible por todo el alumnado, permitiendo diferentes vías de acceso y niveles de profundidad.</li>
                 </ul>
-                <span class="link-more" role="button" tabindex="0" onclick="abrirModal('El contenido subyacente como motor de aprendizaje', '<p><strong>La imagen del idioma para entender el currículo:</strong></p><ul><li><strong>Las palabras son los saberes básicos:</strong> Son los contenidos concretos de la unidad (las reglas, las fechas, los conceptos aislados).</li><li><strong>La regla que las une es el contenido subyacente:</strong> Es la idea que da sentido a esos saberes y sirve en múltiples contextos.</li><li><strong>La conversación es la competencia:</strong> Es lo que el alumnado es capaz de hacer con esa idea en la vida real.</li></ul><p>Quien solo memoriza palabras no aprende a hablar. Quien solo memoriza saberes tampoco desarrolla competencias. El contenido subyacente es el puente duradero entre ambas cosas.</p><p><strong>La prueba de fuego:</strong> ¿Puede un estudiante que no recuerda las fechas o datos exactos explicar la idea con sus propias palabras y dar su opinión? Si es así, has encontrado la idea subyacente.</p>')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirModal('El contenido subyacente como motor de aprendizaje', '<p><strong>La imagen del idioma para entender el currículo:</strong></p><ul><li><strong>Las palabras son los saberes básicos:</strong> Son los contenidos concretos de la unidad (las reglas, las fechas, los conceptos aislados).</li><li><strong>La regla que las une es el contenido subyacente:</strong> Es la idea que da sentido a esos saberes y sirve en múltiples contextos.</li><li><strong>La conversación es la competencia:</strong> Es lo que el alumnado es capaz de hacer con esa idea en la vida real.</li></ul><p>Quien solo memoriza palabras no aprende a hablar. Quien solo memoriza saberes tampoco desarrolla competencias. El contenido subyacente es el puente duradero entre ambas cosas.</p><p><strong>La prueba de fuego:</strong> ¿Puede un estudiante que no recuerda las fechas o datos exactos explicar la idea con sus propias palabras y dar su opinión? Si es así, has encontrado la idea subyacente.</p>');}">Saber más sobre el contenido subyacente y la analogía del currículo</span>
+                <span class="link-more" role="button" tabindex="0" onclick="abrirModal('El contenido subyacente como motor de aprendizaje', '<p><strong>Anclaje curricular:</strong> En el currículo oficial, el criterio de evaluación es el elemento más afín al contenido subyacente, porque remite a aprendizajes que trascienden y permanecen más allá de los saberes básicos concretos. Están relacionados, pero no son equivalentes.</p><p><strong>Sustantivo frente a verbo:</strong> Formula el contenido subyacente como una idea sustantiva; el objetivo o criterio expresa una acción con un verbo en infinitivo. «Transformación de la energía» nombra una idea; «Explicar la transformación de la energía» formula una acción.</p><p><strong>La imagen del idioma para entender el currículo:</strong></p><ul><li><strong>Las palabras son los saberes básicos:</strong> Son los contenidos concretos de la unidad (las reglas, las fechas, los conceptos aislados).</li><li><strong>La regla que las une es el contenido subyacente:</strong> Es la idea que da sentido a esos saberes y sirve en múltiples contextos.</li><li><strong>La conversación es la competencia:</strong> Es lo que el alumnado es capaz de hacer con esa idea en la vida real.</li></ul><p>Quien solo memoriza palabras no aprende a hablar. Quien solo memoriza saberes tampoco desarrolla competencias. El contenido subyacente es el puente duradero entre ambas cosas.</p><p><strong>La prueba de fuego:</strong> ¿Puede un estudiante que no recuerda las fechas o datos exactos explicar la idea con sus propias palabras y dar su opinión? Si es así, has encontrado la idea subyacente.</p>')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirModal('El contenido subyacente como motor de aprendizaje', '<p><strong>Anclaje curricular:</strong> En el currículo oficial, el criterio de evaluación es el elemento más afín al contenido subyacente, porque remite a aprendizajes que trascienden y permanecen más allá de los saberes básicos concretos. Están relacionados, pero no son equivalentes.</p><p><strong>Sustantivo frente a verbo:</strong> Formula el contenido subyacente como una idea sustantiva; el objetivo o criterio expresa una acción con un verbo en infinitivo. «Transformación de la energía» nombra una idea; «Explicar la transformación de la energía» formula una acción.</p><p><strong>La imagen del idioma para entender el currículo:</strong></p><ul><li><strong>Las palabras son los saberes básicos:</strong> Son los contenidos concretos de la unidad (las reglas, las fechas, los conceptos aislados).</li><li><strong>La regla que las une es el contenido subyacente:</strong> Es la idea que da sentido a esos saberes y sirve en múltiples contextos.</li><li><strong>La conversación es la competencia:</strong> Es lo que el alumnado es capaz de hacer con esa idea en la vida real.</li></ul><p>Quien solo memoriza palabras no aprende a hablar. Quien solo memoriza saberes tampoco desarrolla competencias. El contenido subyacente es el puente duradero entre ambas cosas.</p><p><strong>La prueba de fuego:</strong> ¿Puede un estudiante que no recuerda las fechas o datos exactos explicar la idea con sus propias palabras y dar su opinión? Si es así, has encontrado la idea subyacente.</p>');}">Saber más sobre el contenido subyacente y la analogía del currículo</span>
             </div>
 
             <div class="distincion-grid" id="box-distincion-tema">
-                <strong>💡 Diferencias clave para no confundir la idea subyacente:</strong>
+                <strong> Diferencias clave para no confundir la idea subyacente:</strong>
                 <ul id="lista-distincion-tema">
                     <li><strong>No es el nombre del tema:</strong> «La descripción» o «El relieve» es el tema del libro, no la idea profunda.</li>
                     <li><strong>No es un objetivo ni un verbo:</strong> «Saber describir un paisaje» dice lo que hará el alumnado, no la idea que sostiene la tarea.</li>
@@ -1378,7 +1485,7 @@
             </div>
 
             <div style="margin: 1.25rem 0 0.5rem 0;">
-                <label style="font-weight: bold; color: var(--text-color); font-size: 14px;">🚦 La prueba de las tres señales (verificación pedagógica):</label>
+                <label style="font-weight: bold; color: var(--text-color); font-size: 14px;"> La prueba de las tres señales (verificación pedagógica):</label>
                 <div class="senales-container">
                     <div class="senal-card">
                         <strong>1. Frase sintetizable</strong>
@@ -1398,12 +1505,12 @@
             <div class="ai-placeholder">
                 <div style="flex: 1; min-width: 250px;">
                     <strong>Generador de Contenido Subyacente</strong>
-                    <p id="desc-ai-subyacente">Ayuda a formular la idea duradera a partir de la competencia y los saberes seleccionados superando las tres señales.</p>
-                    <p class="ai-instruction">Al pulsar el botón se copiará automáticamente al portapapeles todo el contexto curricular acumulado para que lo pegues (Ctrl+V) en el chat con tu cuenta @educastillalamancha.es.</p>
+                    <p id="desc-ai-subyacente">Ayuda a formular en una sola frase la idea duradera y transferible como contenido sustantivo, a partir de los criterios y saberes seleccionados.</p>
+                    <p class="ai-instruction">Accede con la cuenta oficial @educastillalamancha.es. El botón del agente abre el chat e intenta copiar el contexto; «Copiar contexto» lo copia sin abrirlo. En Copilot, pega el texto con Ctrl+V y pulsa «Enviar».</p>
                 </div>
                 <div class="ai-actions-wrapper">
-                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_4f04780e-0bd0-a8d1-5840-0e5c537800bc&source=embedded-builder', 'contenido_subyacente')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot">💡 Contenido Subyacente (IA)</button>
-                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('contenido_subyacente')" title="Copiar contexto curricular al portapapeles sin abrir enlace">📋 Copiar contexto</button>
+                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_4f04780e-0bd0-a8d1-5840-0e5c537800bc&source=embedded-builder', 'contenido_subyacente')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot"> Contenido Subyacente (IA)</button>
+                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('contenido_subyacente')" title="Copiar contexto curricular al portapapeles sin abrir enlace"> Copiar contexto</button>
                 </div>
             </div>
 
@@ -1411,47 +1518,14 @@
                 <div class="label-wrapper">
                     <label for="input-tema">Idea subyacente duradera (formulación para el docente)</label>
                 </div>
-                <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Escribe la idea de fondo que conecta los saberes y criterios seleccionados. Comprueba que supere la prueba de las tres señales.</p>
+                <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Escribe la idea de fondo como contenido sustantivo, no como una acción en infinitivo. Comprueba que conecte los saberes y criterios y supere la prueba de las tres señales.</p>
                 <input type="text" id="input-tema" placeholder="Por ejemplo: Describir es elegir qué mirar y qué dejar fuera / La energía no se crea ni se destruye, solo se transforma...">
             </div>
         </div>
 
-        <!-- PASO 6: Título motivador (diseñado tras clarificar el contenido) -->
+        <!-- PASO 6: Disparador de pensamiento -->
         <div class="step" id="step-6">
-            <h2>5. Título motivador <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-titulo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-titulo');}">?</span></h2>
-            <div id="help-titulo" class="help-content">
-                <p><strong>Puntos clave:</strong></p>
-                <ul id="lista-puntos-clave-titulo">
-                    <li>Debe ser un título atractivo, con fantasía o misterio.</li>
-                    <li>Sirve para captar el interés del alumnado desde el primer momento.</li>
-                    <li>Se presenta como un reto o aventura en lugar de un tema académico tradicional.</li>
-                </ul>
-                <span class="link-more" id="link-modal-titulo" role="button" tabindex="0" onclick="abrirModalTituloEtapa()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirModalTituloEtapa();}">Saber más sobre el título motivador</span>
-            </div>
-            
-            <div class="ai-placeholder">
-                <div style="flex: 1; min-width: 250px;">
-                    <strong>Generador de Títulos Motivadores</strong>
-                    <p id="desc-ai-titulo">Diseña un título motivador y con fantasía para el alumnado (enfoque SEM).</p>
-                    <p class="ai-instruction">Al pulsar el botón se copiará automáticamente al portapapeles todo el contexto curricular acumulado para que lo pegues (Ctrl+V) en el chat con tu cuenta @educastillalamancha.es.</p>
-                </div>
-                <div class="ai-actions-wrapper">
-                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_f2d84ac3-4804-c06e-af33-eab8170d5d2c&source=embedded-builder', 'titulo_motivador')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot">✨ Generar título (IA)</button>
-                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('titulo_motivador')" title="Copiar contexto curricular al portapapeles sin abrir enlace">📋 Copiar contexto</button>
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
-                <div class="label-wrapper">
-                    <label for="input-titulo-alumnado">Título para el alumnado</label>
-                </div>
-                <input type="text" id="input-titulo-alumnado" placeholder="Por ejemplo: El secreto escondido en las nubes...">
-            </div>
-        </div>
-
-        <!-- PASO 7: Disparador de pensamiento -->
-        <div class="step" id="step-7">
-            <h2>6. Disparador de pensamiento <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-disparador')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-disparador');}">?</span></h2>
+            <h2>5. Disparador de pensamiento <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-disparador')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-disparador');}">?</span></h2>
             <p class="step-desc">
                 El disparador del pensamiento es la <strong>puerta de entrada para el alumnado</strong>: una pregunta abierta, común y provocadora que despierta la curiosidad, activa conocimientos previos y genera debate sin requerir datos memorísticos previos. Todo el alumnado puede opinar y razonar sobre ella desde su experiencia.
             </p>
@@ -1467,9 +1541,9 @@
             </div>
 
             <div class="distincion-grid" id="box-distincion-disparador">
-                <strong>💡 Contenido subyacente frente a Pregunta disparadora (no son lo mismo):</strong>
+                <strong> Contenido subyacente frente a Pregunta disparadora (no son lo mismo):</strong>
                 <p id="texto-comparativa-disparador" style="margin: 0.4rem 0 0.6rem 0;">
-                    El <strong>contenido subyacente</strong> (paso 4) es la idea de fondo que orienta al <em>docente</em> al programar y evaluar (ej.: «La perspectiva condiciona lo que sabemos de una historia»). La <strong>pregunta disparadora</strong> es la puerta de entrada para el <em>alumnado</em> (ej.: «Caperucita Roja contada por el lobo: ¿cambia la historia?»).
+                    El <strong>contenido subyacente</strong> (paso 4) es la idea de fondo que orienta al <em>docente</em> al programar y evaluar (como «La perspectiva condiciona lo que sabemos de una historia»). La <strong>pregunta disparadora</strong> es la puerta de entrada para el <em>alumnado</em> (como «Caperucita Roja contada por el lobo: ¿cambia la historia?»).
                 </p>
                 <ul>
                     <li><strong>Una misma idea admite varias preguntas:</strong> Elige la que mejor conecte con el contexto e intereses reales de tu aula.</li>
@@ -1478,7 +1552,7 @@
             </div>
 
             <div style="margin: 1.25rem 0 0.5rem 0;">
-                <label id="label-formulas-disparador" style="font-weight: bold; color: var(--text-color); font-size: 14px;">🎯 Fórmulas de arranque recomendadas:</label>
+                <label id="label-formulas-disparador" style="font-weight: bold; color: var(--text-color); font-size: 14px;"> Fórmulas de arranque recomendadas:</label>
                 <div id="contenedor-formulas-disparador" class="senales-container">
                     <div class="senal-card">
                         <strong>¿Qué pasaría si...?</strong>
@@ -1496,7 +1570,6 @@
             </div>
 
             <div class="tip-box" style="margin: 1rem 0; border-left: 4px solid var(--primary-color); background-color: #F8FAFC;">
-                <div class="tip-box-icon">🌈</div>
                 <div class="tip-box-text">
                     <p><strong>Multinivelación bajo DUA v3.0 (Una única pregunta para toda la clase):</strong></p>
                     <p style="margin-bottom: 6px;">No prepares preguntas diferentes por niveles. Plantea la <strong>misma pregunta para todo el grupo</strong> y diversifica los andamiajes y formas de expresión:</p>
@@ -1512,11 +1585,11 @@
                 <div style="flex: 1; min-width: 250px;">
                     <strong>Generador de preguntas iniciales (5W2H)</strong>
                     <p id="desc-ai-disparador">Inicia la clase conectando con los intereses del alumnado.</p>
-                    <p class="ai-instruction">Al pulsar el botón se copiará automáticamente al portapapeles todo el contexto curricular acumulado para que lo pegues (Ctrl+V) en el chat con tu cuenta @educastillalamancha.es.</p>
+                    <p class="ai-instruction">Accede con la cuenta oficial @educastillalamancha.es. El botón del agente abre el chat e intenta copiar el contexto; «Copiar contexto» lo copia sin abrirlo. En Copilot, pega el texto con Ctrl+V y pulsa «Enviar».</p>
                 </div>
                 <div class="ai-actions-wrapper">
-                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_75337bf5-64dd-d69e-4ad3-e447b09bafd0&source=embedded-builder', 'disparador')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot">🎲 Sugerir preguntas (IA)</button>
-                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('disparador')" title="Copiar contexto curricular al portapapeles sin abrir enlace">📋 Copiar contexto</button>
+                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_75337bf5-64dd-d69e-4ad3-e447b09bafd0&source=embedded-builder', 'disparador')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot"> Sugerir preguntas (IA)</button>
+                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('disparador')" title="Copiar contexto curricular al portapapeles sin abrir enlace"> Copiar contexto</button>
                 </div>
             </div>
 
@@ -1525,25 +1598,24 @@
                     <label for="input-disparador-pregunta-principal">Pregunta disparadora esencial</label>
                 </div>
                 <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 8px;">Es una pregunta abierta y motivadora que sirve para despertar la curiosidad y activar los conocimientos previos de toda la clase.</p>
-                <textarea id="input-disparador-pregunta-principal" placeholder="Por ejemplo: ¿Qué pasaría si todos los narradores contaran exactamente la misma historia? / ¿El agua que bebemos hoy es la misma de los dinosaurios?"></textarea>
+                <div id="input-disparador-pregunta-principal" class="rich-text-box markdown-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Pregunta disparadora esencial" data-placeholder="Por ejemplo: ¿Qué pasaría si todos los narradores contaran exactamente la misma historia? / ¿El agua que bebemos hoy es la misma de los dinosaurios?"></div>
             </div>
 
             <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
                 <div class="label-wrapper">
                     <label for="input-disparador-material">Material motivador o contexto provocador</label>
                 </div>
-                <textarea id="input-disparador-material" placeholder="Por ejemplo: Mostrar la fotografía de un glaciar derritiéndose, escuchar un podcast, leer un recorte de prensa, un fragmento audiovisual, un objeto enigmático..."></textarea>
+                <div id="input-disparador-material" class="rich-text-box markdown-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Material motivador o contexto provocador" data-placeholder="Por ejemplo: Mostrar la fotografía de un glaciar derritiéndose, escuchar un podcast, leer un recorte de prensa, un fragmento audiovisual, un objeto enigmático..."></div>
             </div>
 
             <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
                 <div class="label-wrapper">
                     <label for="input-disparador-preguntas">Disparadores complementarios de pensamiento (preguntas abiertas 5W2H)</label>
                 </div>
-                <textarea id="input-disparador-preguntas" placeholder="Escribe aquí las preguntas guiadas y/o pega las sugeridas por la IA para profundizar en el debate..."></textarea>
+                <div id="input-disparador-preguntas" class="rich-text-box markdown-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Disparadores complementarios de pensamiento" data-placeholder="Escribe aquí las preguntas guiadas y/o pega las sugeridas por la IA para profundizar en el debate..."></div>
             </div>
 
             <div class="tip-box">
-                <div class="tip-box-icon">💡</div>
                 <div class="tip-box-text">
                     <p><strong>Herramientas institucionales:</strong></p>
                     <p>Utiliza <strong>Lumio</strong> en tu panel interactivo para recoger en directo la lluvia de ideas de la clase. Hacer visible lo que van contestando te ayudará a detectar rápidamente sus conocimientos previos. Además, si te conectas con tu cuenta corporativa, podrás consultar los resultados para analizarlos desde tu ordenador, sin necesidad de sacar fotos o descargar nada.</p>
@@ -1551,11 +1623,11 @@
             </div>
         </div>
 
-        <!-- PASO 8: El reto final (Diversificación DUA v3.0 y Enriquecimiento SEM) -->
-        <div class="step" id="step-8">
-            <h2>7. El reto final <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-reto')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-reto');}">?</span></h2>
+        <!-- PASO 7: El reto final (Diversificación DUA v3.0 y Enriquecimiento SEM) -->
+        <div class="step" id="step-7">
+            <h2>6. Retos y desafíos <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-reto')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-reto');}">?</span></h2>
             <p class="step-desc">
-                El reto final es la <strong>tarea auténtica y abierta</strong> que resuelve el alumnado: una propuesta donde todo el grupo persigue el mismo contenido subyacente pero puede elegir entre diferentes vías de acceso, formatos de expresión y niveles de reto (DUA v3.0 y enriquecimiento SEM), eliminando techos que limiten el talento.
+                Los retos finales son propuestas auténticas y abiertas que permiten trabajar el mismo contenido subyacente por distintas vías de acceso, formatos de expresión y niveles de profundización (DUA v3.0 y enriquecimiento SEM).
             </p>
 
             <div id="help-reto" class="help-content">
@@ -1569,25 +1641,24 @@
             </div>
 
             <div style="margin: 1.25rem 0 0.5rem 0;">
-                <label id="label-niveles-reto" style="font-weight: bold; color: var(--text-color); font-size: 14px;">📊 Niveles de andamiaje y reto (DUA v3.0 / SEM):</label>
+                <label id="label-niveles-reto" style="font-weight: bold; color: var(--text-color); font-size: 14px;"> Niveles de andamiaje y reto (DUA v3.0 / SEM):</label>
                 <div id="contenedor-niveles-reto" class="senales-container">
                     <div class="senal-card">
                         <strong>Nivel 1: Acceso y fundamentación</strong>
-                        Aplicación guiada de los saberes con plantillas de estructura, organizadores gráficos y formatos cercanos (ej.: infografía, audio breve, mapa conceptual comentado).
+                        Aplicación guiada de los saberes con plantillas de estructura y formatos cercanos, como un gráfico sencillo, un fanzine de una hoja, un audio breve o un mapa comentado.
                     </div>
                     <div class="senal-card">
                         <strong>Nivel 2: Profundización y análisis</strong>
-                        Contraste autónomo de fuentes, argumentación crítica y formatos elaborados (ej.: artículo de divulgación, podcast de debate, presentación interactiva).
+                        Contraste autónomo de fuentes, argumentación crítica y formatos elaborados, como un artículo de divulgación, un pódcast breve, una encuesta con gráficos o una presentación interactiva.
                     </div>
                     <div class="senal-card">
                         <strong>Nivel 3: Enriquecimiento (Tipo III)</strong>
-                        Investigación abierta de un problema real, creación divergente y difusión a una audiencia real (ej.: prototipo funcional, campaña escolar, documental).
+                        Investigación abierta de un problema real y difusión a una audiencia real, mediante una campaña escolar, una guía práctica, una publicación o un prototipo cuando sea necesario.
                     </div>
                 </div>
             </div>
 
             <div class="tip-box" style="margin: 1rem 0;">
-                <div class="tip-box-icon">🌱</div>
                 <div class="tip-box-text">
                     <p><strong>Autonomía en la elección del producto:</strong></p>
                     <p style="font-size: 13px; line-height: 1.5; margin: 0;">
@@ -1598,28 +1669,32 @@
 
             <div class="ai-placeholder">
                 <div style="flex: 1; min-width: 250px;">
-                    <strong>Asistente de diseño de tareas y retos</strong>
-                    <p>Diseña un reto abierto multinivel con opciones diversificadas de producto final (DUA v3.0 y SEM).</p>
-                    <p class="ai-instruction">Al pulsar el botón se copiará automáticamente al portapapeles todo el contexto curricular acumulado para que lo pegues (Ctrl+V) en el chat con tu cuenta @educastillalamancha.es.</p>
+                    <strong>Asistente para diseñar retos finales</strong>
+                    <p>Propón retos finales independientes y viables, con opciones de producto variadas (DUA v3.0 y SEM).</p>
+                    <p class="ai-instruction">Accede con la cuenta oficial @educastillalamancha.es. El botón del agente abre el chat e intenta copiar el contexto; «Copiar contexto» lo copia sin abrirlo. En Copilot, pega el texto con Ctrl+V y pulsa «Enviar».</p>
                 </div>
                 <div class="ai-actions-wrapper">
-                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_31e3ac0d-35b4-b5a7-f75f-b90d589bf632&source=embedded-builder', 'reto')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot">🎯 Diseñar reto (IA)</button>
-                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('reto')" title="Copiar contexto curricular al portapapeles sin abrir enlace">📋 Copiar contexto</button>
+                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_31e3ac0d-35b4-b5a7-f75f-b90d589bf632&source=embedded-builder', 'reto')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot"> Diseñar retos (IA)</button>
+                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('reto')" title="Copiar contexto curricular al portapapeles sin abrir enlace"> Copiar contexto</button>
                 </div>
             </div>
 
-            <div class="form-group" style="margin-top: 1rem; display: flex; flex-direction: column;">
-                <div class="label-wrapper">
-                    <label for="input-reto">Propuesta de reto y opciones de producto final</label>
+            <p style="font-size: 13px; color: var(--secondary-color); margin: 1rem 0 0.5rem;">Introduce cada reto final en una celda independiente. Usa «+ Añadir reto final» para incorporar propuestas que puedan convivir en el aula.</p>
+            <div id="retos-container" style="margin-top: 1rem;">
+                <div class="reto-card" data-reto-card role="group" aria-labelledby="reto-label-1">
+                    <div class="reto-card-header">
+                        <label id="reto-label-1" for="input-reto">Reto final 1</label>
+                        <button type="button" class="btn-remove-reto" onclick="eliminarReto(this)" aria-label="Eliminar reto final 1" hidden>Eliminar</button>
+                    </div>
+                    <div id="input-reto" class="rich-text-box markdown-editor reto-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Reto final 1" data-placeholder="Escribe aquí el reto y sus opciones de producto final."></div>
                 </div>
-                <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Describe el reto planteado a la clase y las opciones diversificadas de producto que podrán elegir los estudiantes.</p>
-                <textarea id="input-reto" placeholder="Escribe aquí el reto y las opciones diversificadas de producto (por ejemplo: opción A - campaña visual; opción B - podcast de entrevistas; opción C - investigación libre y prototipo)..."></textarea>
             </div>
+            <button type="button" class="btn" id="btn-add-reto" aria-controls="retos-container" onclick="agregarReto()" style="margin-top: 0.75rem;">+ Añadir reto final</button>
         </div>
 
-        <!-- PASO 9: Feed forward (Acompañamiento preventivo) -->
-        <div class="step" id="step-9">
-            <h2>8. Acompañamiento: <em>feedforward</em> <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-feed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-feed');}">?</span></h2>
+        <!-- PASO 8: Feed forward (Acompañamiento preventivo) -->
+        <div class="step" id="step-8">
+            <h2>7. Acompañamiento: <em>feedforward</em> <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-feed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-feed');}">?</span></h2>
             <p class="step-desc">
                 El <em>feedforward</em> es la <strong>orientación anticipatoria</strong>: preparar las ayudas, andamiajes y recursos antes y durante la tarea para eliminar barreras y reducir la carga cognitiva extraña (Ruíz Martín, 2020), asegurando que todo el alumnado pueda arrancar con confianza y avanzar con autonomía.
             </p>
@@ -1635,14 +1710,26 @@
             </div>
 
             <div class="distincion-grid">
-                <strong>💡 ¿En qué se diferencia el <em>feedforward</em> del <em>feedback</em>?</strong>
+                <strong> ¿En qué se diferencia el <em>feedforward</em> del <em>feedback</em>?</strong>
                 <p style="margin: 0.4rem 0 0.4rem 0;">
                     El <em>feedback</em> llega cuando la tarea ya se ha realizado para evaluar aciertos y áreas de mejora. En cambio, el <em>feedforward</em> <strong>orienta el antes y el durante</strong>: entrega al alumnado las claves y herramientas de éxito antes de que tropiecen con la barrera, dotándoles de seguridad y criterio propio.
                 </p>
             </div>
 
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Asistente para el feedforward en Actividades Tipo II</strong>
+                    <p>Prepara una secuencia de pasos, estrategias de pensamiento y andamiajes vinculados a los retos finales.</p>
+                    <p class="ai-instruction">Accede con la cuenta oficial @educastillalamancha.es. El botón del agente abre el chat e intenta copiar el contexto; «Copiar contexto» lo copia sin abrirlo. En Copilot, pega el texto con Ctrl+V y pulsa «Enviar».</p>
+                </div>
+                <div class="ai-actions-wrapper">
+                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_d00317d3-13ce-94bc-aab8-f942bb683ecb&source=embedded-builder', 'feedforward')" title="Copiar contexto y abrir el agente de feedforward">Diseñar feedforward (IA)</button>
+                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('feedforward')" title="Copiar contexto curricular al portapapeles sin abrir enlace">Copiar contexto</button>
+                </div>
+            </div>
+
             <div style="margin: 1.25rem 0 0.5rem 0;">
-                <label id="label-feedforward-etapa" style="font-weight: bold; color: var(--text-color); font-size: 14px;">🛠️ Estrategias de <em>feedforward</em> por etapas educativas:</label>
+                <label id="label-feedforward-etapa" style="font-weight: bold; color: var(--text-color); font-size: 14px;"> Estrategias de <em>feedforward</em> por etapas educativas:</label>
                 <div id="contenedor-feedforward-etapa" class="senales-container">
                     <div class="senal-card">
                         <strong>Educación Infantil</strong>
@@ -1664,13 +1751,13 @@
                     <label for="input-feedforward">Anticipación, andamiajes y ayudas previas</label>
                 </div>
                 <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Indica las herramientas, materiales de apoyo, listas de comprobación o guías que facilitarás antes de iniciar el reto.</p>
-                <textarea id="input-feedforward" placeholder="Por ejemplo: Lista de comprobación (checklist) de pasos de la tarea, plantilla de estructura para redactar, glosario con conceptos clave, organizador gráfico mudo, modelo de producto resuelto de cursos anteriores, acceso a biblioteca y webgrafía seleccionada, o enlaces a vídeos introductorios para aula invertida..."></textarea>
+                <div id="input-feedforward" class="rich-text-box markdown-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Anticipación, andamiajes y ayudas previas" data-placeholder="Por ejemplo: Lista de comprobación (checklist) de pasos de la tarea, plantilla de estructura para redactar, glosario con conceptos clave, organizador gráfico mudo, modelo de producto resuelto de cursos anteriores, acceso a biblioteca y webgrafía seleccionada, o enlaces a vídeos introductorios para aula invertida..."></div>
             </div>
         </div>
 
-        <!-- PASO 10: Feedback (Retroalimentación formativa) -->
-        <div class="step" id="step-10">
-            <h2>9. Retroalimentación: <em>feedback</em> <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-feedback')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-feedback');}">?</span></h2>
+        <!-- PASO 9: Feedback (Retroalimentación formativa) -->
+        <div class="step" id="step-9">
+            <h2>8. Retroalimentación: <em>feedback</em> <span class="help-icon" role="button" tabindex="0" aria-label="Mostrar ayuda de este apartado" title="Mostrar ayuda" onclick="toggleHelp('help-feedback')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleHelp('help-feedback');}">?</span></h2>
             <p class="step-desc">
                 El <em>feedback</em> formativo es el <strong>acompañamiento dialógico mientras el alumnado trabaja</strong> para orientar su mejora continua. No es una calificación numérica ni un juicio sancionador al final; es información útil centrada en el proceso con oportunidad real de reentrega (Hattie y Timperley, 2007).
             </p>
@@ -1686,28 +1773,39 @@
             </div>
 
             <div style="margin: 1.25rem 0 0.5rem 0;">
-                <label id="label-feedback-niveles" style="font-weight: bold; color: var(--text-color); font-size: 14px;">🎯 Los niveles de retroalimentación efectiva (Hattie y Timperley, 2007):</label>
+                <label id="label-feedback-niveles" style="font-weight: bold; color: var(--text-color); font-size: 14px;"> Los niveles de retroalimentación efectiva (Hattie y Timperley, 2007):</label>
                 <div id="contenedor-feedback-niveles" class="senales-container">
                     <div class="senal-card">
-                        <strong>1. De tarea (FT)</strong>
-                        Aclara si el producto o respuesta concreta es correcta o incompleta (requisito básico de partida).
+                        <strong>1. Qué muestra el trabajo</strong>
+                        Señala qué parte responde al criterio y qué hace falta revisar.
                     </div>
                     <div class="senal-card">
-                        <strong>2. De proceso (FP)</strong>
-                        Profundiza en las estrategias empleadas: «¿Por qué has elegido este enfoque?», «¿Cómo se relaciona esto con la idea subyacente?».
+                        <strong>2. Qué estrategia puede ayudar</strong>
+                        Pregunta qué decisión ha tomado el alumnado y cómo le ha servido para avanzar.
                     </div>
                     <div class="senal-card">
-                        <strong>3. De autorregulación (FR)</strong>
-                        Estimula la metacognición y autonomía: «¿Qué parte crees que cumple mejor la rúbrica?», «¿Qué paso vas a revisar ahora?».
+                        <strong>3. Qué revisar a continuación</strong>
+                        Ayuda al alumnado a comprobar su trabajo y elegir un siguiente paso concreto.
                     </div>
                 </div>
             </div>
 
             <div class="tip-box" style="margin: 1rem 0; border-left: 4px solid #F59E0B; background-color: #FFFBEB;">
-                <div class="tip-box-icon">⚠️</div>
                 <div class="tip-box-text">
-                    <p><strong>Cuidado con el elogio personal genérico (Nivel sobre el «yo» / FS):</strong></p>
-                    <p id="texto-tip-elogio" style="font-size: 13px; line-height: 1.5; margin: 0;">Decir «¡Eres muy inteligente!» o «¡Buen trabajo!» tiene un impacto pedagógico nulo o perjudicial, ya que fomenta mentalidad fija y temor al fracaso (Dweck). En su lugar, elogia siempre el <strong>esfuerzo específico, la perseverancia y la estrategia aplicada</strong>: «Has contrastado muy bien las fuentes», «Me gusta cómo has justificado este argumento con la rúbrica».</p>
+                    <p><strong>Elogio centrado en el trabajo y las estrategias:</strong></p>
+                    <p id="texto-tip-elogio" style="font-size: 13px; line-height: 1.5; margin: 0;">Describe un acierto observable del trabajo o una estrategia concreta que haya ayudado a avanzar. Añade un paso claro para revisarlo y mejorarlo. Evita valorar las capacidades o la personalidad del alumnado.</p>
+                </div>
+            </div>
+
+            <div class="ai-placeholder">
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>Asistente de retroalimentación formativa</strong>
+                    <p>Propone comentarios concretos, momentos de revisión y oportunidades para aplicar las sugerencias.</p>
+                    <p class="ai-instruction">Accede con la cuenta oficial @educastillalamancha.es. El botón del agente abre el chat e intenta copiar el contexto; «Copiar contexto» lo copia sin abrirlo. En Copilot, pega el texto con Ctrl+V y pulsa «Enviar».</p>
+                </div>
+                <div class="ai-actions-wrapper">
+                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_3081f75a-2523-9b44-a3b5-9df155fc4a3f&source=embedded-builder', 'feedback')" title="Copiar contexto y abrir el agente de retroalimentación">Diseñar retroalimentación (IA)</button>
+                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('feedback')" title="Copiar contexto curricular al portapapeles sin abrir enlace">Copiar contexto</button>
                 </div>
             </div>
 
@@ -1716,32 +1814,32 @@
                     <label for="input-feedback">Mecanismos de retroalimentación formativa y reentrega</label>
                 </div>
                 <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Describe cómo acompañarás el proceso (rondas de aula, preguntas guía, coevaluación con rúbrica) y cómo se organizará la reentrega de la tarea.</p>
-                <textarea id="input-feedback" placeholder="Por ejemplo: Rondas de aula preguntando '¿Qué llevas hasta ahora y qué dudas te han surgido?', destacar fortalezas antes de señalar mejoras, preguntas socráticas ('¿Cómo podrías verificar esta hipótesis?'), coevaluación entre pares con rúbrica de un solo punto y plazo establecido para aplicar las mejoras y reentregar la tarea antes de la calificación final..."></textarea>
+                <div id="input-feedback" class="rich-text-box markdown-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Mecanismos de retroalimentación formativa y reentrega" data-placeholder="Por ejemplo: Rondas de aula preguntando '¿Qué llevas hasta ahora y qué dudas te han surgido?', señalar un acierto concreto antes de proponer una mejora, preguntas guía ('¿Qué dato respalda esta hipótesis?'), coevaluación con criterios claros y tiempo para aplicar las sugerencias y volver a entregar..."></div>
             </div>
         </div>
 
-        <!-- PASO 11: Asistente de evaluación (Rúbrica formativa de un solo punto) -->
-        <div class="step" id="step-11">
-            <h2>10. Asistente de evaluación</h2>
+        <!-- PASO 10: Asistente de evaluación (Rúbrica formativa de un solo punto) -->
+        <div class="step" id="step-10">
+            <h2>9. Asistente de evaluación</h2>
             <p class="step-desc">
-                La evaluación formativa auténtica valora el desempeño real sobre las competencias y criterios oficiales seleccionados. Se apoya en la <strong>rúbrica de un solo punto</strong>, que define con claridad el estándar de éxito esperado, reservando espacio cualitativo para registrar tanto los andamiajes de apoyo como las evidencias de enriquecimiento avanzado.
+                La <strong>rúbrica de un solo punto</strong> mantiene un estándar central vinculado al criterio y dos espacios para apoyos o evidencias de profundización. Evalúa el aprendizaje, no el formato del producto. Si hay varios retos, se valoran juntos con una sola rúbrica.
             </p>
 
             <div class="distincion-grid">
-                <strong>💡 La rúbrica de un solo punto (evaluación cualitativa y flexible):</strong>
-                <p style="margin: 0.4rem 0 0.6rem 0;">A diferencia de las rúbricas tradicionales de 4 o 5 columnas sobrecargadas de texto, la rúbrica de un solo punto se centra en lo verdaderamente esencial:</p>
+                <strong>Columnas de la rúbrica de un solo punto:</strong>
+                <p style="margin: 0.4rem 0 0.6rem 0;">El criterio central se mantiene común a todos los retos; a ambos lados se registran las necesidades de apoyo y las evidencias de profundización.</p>
                 <div id="grid-ejemplo-rubrica" style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 8px; font-size: 12px; background: #FFFFFF; border: 1px solid #D0D7DE; padding: 0.75rem; border-radius: var(--border-radius);">
                     <div id="rubrica-col-apoyo" style="border-right: 1px solid #EAEAEA; padding-right: 6px;">
-                        <strong style="color: #4A5568;">⬅️ En proceso / Apoyo</strong><br>
-                        <span>Observaciones y orientaciones de <em>feedforward</em> para alcanzar el criterio.</span>
+                        <strong style="color: #4A5568;">Apoyos / necesidades</strong><br>
+                        <span>Observaciones y orientaciones de <em>feedforward</em> para avanzar hacia el criterio.</span>
                     </div>
                     <div id="rubrica-col-estandar" style="border-right: 1px solid #EAEAEA; padding: 0 6px; text-align: center;">
-                        <strong style="color: var(--primary-color);">🎯 Estándar de éxito oficial</strong><br>
-                        <span>Criterio de evaluación de Castilla-La Mancha redactado con claridad observable.</span>
+                        <strong style="color: var(--primary-color);">Estándar central</strong><br>
+                        <span>Desempeño observable vinculado al criterio de evaluación y común a los retos.</span>
                     </div>
                     <div id="rubrica-col-enriquecimiento" style="padding-left: 6px;">
-                        <strong style="color: #059669;">➡️ Enriquecimiento / SEM</strong><br>
-                        <span>Evidencias de transferencia autónoma, creatividad y profundización Tipo III.</span>
+                        <strong style="color: #059669;">Evidencias de profundización</strong><br>
+                        <span>Transferencia, autonomía y profundización que amplían el criterio sin depender del producto elegido.</span>
                     </div>
                 </div>
             </div>
@@ -1749,12 +1847,12 @@
             <div class="ai-placeholder">
                 <div style="flex: 1; min-width: 250px;">
                     <strong>Generador de rúbricas formativas</strong>
-                    <p>Crea una rúbrica de un solo punto alineada con los criterios oficiales de Castilla-La Mancha y andamiajes DUA.</p>
-                    <p class="ai-instruction">Al pulsar el botón se copiará automáticamente al portapapeles todo el contexto curricular acumulado para que lo pegues (Ctrl+V) en el chat con tu cuenta @educastillalamancha.es.</p>
+                    <p>Crea una única rúbrica de tres columnas para todos los retos, vinculada a los criterios seleccionados y válida para distintos formatos de producto.</p>
+                    <p class="ai-instruction">Accede con la cuenta oficial @educastillalamancha.es. El botón del agente abre el chat e intenta copiar el contexto; «Copiar contexto» lo copia sin abrirlo. En Copilot, pega el texto con Ctrl+V y pulsa «Enviar».</p>
                 </div>
                 <div class="ai-actions-wrapper">
-                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_923039a2-8d71-35e7-853a-6ac7a00692d7&source=embedded-builder', 'evaluacion')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot">📝 Generar rúbrica (IA)</button>
-                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('evaluacion')" title="Copiar contexto curricular al portapapeles sin abrir enlace">📋 Copiar contexto</button>
+                    <button type="button" class="btn btn-ai" onclick="abrirCopilotConContexto('https://m365.cloud.microsoft/chat/?titleId=T_923039a2-8d71-35e7-853a-6ac7a00692d7&source=embedded-builder', 'evaluacion')" title="Copiar contexto y abrir agente en Microsoft 365 Copilot"> Generar rúbrica (IA)</button>
+                    <button type="button" class="btn btn-copy-ctx" onclick="copiarContextoDirecto('evaluacion')" title="Copiar contexto curricular al portapapeles sin abrir enlace"> Copiar contexto</button>
                 </div>
             </div>
 
@@ -1762,8 +1860,8 @@
                 <div class="label-wrapper">
                     <label for="input-rubrica">Rúbrica formativa de evaluación</label>
                 </div>
-                <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Pega aquí la tabla de la rúbrica generada por el agente o redacta tus indicadores de logro:</p>
-                <div id="input-rubrica" class="rich-text-box" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Rúbrica de evaluación formativa" data-placeholder="Pega aquí la tabla de la rúbrica generada por la IA o escribe los criterios de éxito esperados..."></div>
+                <p style="font-size: 13px; color: var(--secondary-color); margin-bottom: 6px;">Pega aquí una sola tabla con las tres columnas de la rúbrica, común a todos los retos:</p>
+                <div id="input-rubrica" class="rich-text-box" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Rúbrica de evaluación formativa" data-placeholder="Pega aquí una única rúbrica de tres columnas: apoyos y necesidades, estándar central vinculado al criterio y evidencias de profundización."></div>
             </div>
 
             <div style="margin-top: 2rem; display: flex; gap: 10px; justify-content: flex-end;">
@@ -1772,35 +1870,31 @@
             </div>
         </div>
 
-        <!-- PASO 12: Para saber más -->
-        <div class="step" id="step-12">
-            <h2>11. Para saber más</h2>
+        <!-- PASO 11: Para saber más -->
+        <div class="step" id="step-11">
+            <h2>10. Para saber más</h2>
             <div style="margin-bottom: 1.5rem;">
                 <p style="font-size: 14px; margin-bottom: 0.5rem;"><strong>¿Por dónde empezar? Herramientas prácticas</strong></p>
                 <p style="font-size: 14px; color: var(--secondary-color); margin-bottom: 1.5rem;">Aplicar esta metodología y registrar las evidencias no tiene por qué suponer una sobrecarga de trabajo. Aquí tienes algunas opciones para llevarlo al aula de forma ágil:</p>
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
                     <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">📱</div>
                         <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Paneles y Lumio</h3>
                         <p style="font-size: 14px; margin-bottom: 0;">Si inicias sesión en el panel de tu aula con tu cuenta oficial (<em>@educastillalamancha.es</em>), cualquier pizarra blanca que crees (por ejemplo, la "espina de pez") se guardará automáticamente en la nube. Accederás al material desde tu ordenador sin digitalizar nada.</p>
                     </div>
                     
                     <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">💻</div>
                         <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Herramientas digital...</h3>
                         <p style="font-size: 14px; margin-bottom: 0;">Plataformas accesibles e intuitivas como <a href="https://www.canva.com/" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Canva</a> son muy útiles tanto para ti (a la hora de crear los materiales y guías) como para que el alumnado diseñe sus propios retos finales de forma atractiva.</p>
                     </div>
                     
                     <div class="intro-box" style="border-radius: var(--border-radius); border-left: none; border-top: 4px solid var(--primary-color); padding: 1.5rem; margin: 0; max-width: 100%;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">📝</div>
                         <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--text-color);">Alternativas analógicas</h3>
                         <p style="font-size: 14px; margin-bottom: 0;">No siempre hace falta software complejo. Usa un <a href="https://powerpoint.cloud.microsoft/es-es/" target="_blank" style="color: var(--primary-color); text-decoration: underline;">PowerPoint</a> básico, o trabaja de forma analógica sobre una mesa con un folio y notas adhesivas (post-its). Al terminar, sácale una foto con la tableta para conservar la información.</p>
                     </div>
                 </div>
 
                 <div class="tip-box">
-                    <div class="tip-box-icon">🔗</div>
                     <div class="tip-box-text">
                         <p><strong>Enlaces de interés:</strong></p>
                         <ul style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem; font-size: 14px;">
@@ -1811,12 +1905,10 @@
             </div>
         </div>
 
-        <!-- PASO 13: Créditos -->
-        <!-- PASO 13: Créditos y referencias canónicas -->
-        <div class="step" id="step-13">
-            <h2>12. Créditos y marco de referencia</h2>
+        <!-- PASO 12: Créditos y referencias canónicas -->
+        <div class="step" id="step-12">
+            <h2>11. Créditos y marco de referencia</h2>
             <div class="tip-box" style="margin-bottom: 1.5rem;">
-                <div class="tip-box-icon">🎓</div>
                 <div class="tip-box-text">
                     <p><strong>Fundamentación teórica y pedagógica:</strong></p>
                     <p>
@@ -1847,11 +1939,11 @@
                         <li>Decreto 83/2022 (Currículo de Bachillerato en Castilla-La Mancha).</li>
                     </ul>
 
-                    <p style="margin-top: 1rem; font-weight: bold; color: var(--text-color);">Equipo de autoría y desarrollo:</p>
+                    <p style="margin-top: 1rem; font-weight: bold; color: var(--text-color);">Autoría colegiada y desarrollo:</p>
                     <ul style="list-style-type: none; margin-top: 0.4rem; margin-bottom: 0; padding-left: 0; font-size: 14px; line-height: 1.6;">
-                        <li><strong>Lola Bonillo</strong> (ATD Altas Capacidades) — <a href="mailto:mbonillo@jccm.es" style="color: var(--primary-color); text-decoration: none;">mbonillo@jccm.es</a></li>
-                        <li><strong>Antonio Miñán</strong> (DTDR) — <a href="mailto:antonio.minan@jccm.es" style="color: var(--primary-color); text-decoration: none;">antonio.minan@jccm.es</a></li>
                         <li><strong>Lucía Serrano</strong> (DTDR) — <a href="mailto:lucia.serrano@jccm.es" style="color: var(--primary-color); text-decoration: none;">lucia.serrano@jccm.es</a></li>
+                        <li><strong>Antonio Miñán</strong> (DTDR) — <a href="mailto:antonio.minan@jccm.es" style="color: var(--primary-color); text-decoration: none;">antonio.minan@jccm.es</a></li>
+                        <li><strong>Lola Bonillo</strong> (ATD Altas Capacidades) — <a href="mailto:mbonillo@jccm.es" style="color: var(--primary-color); text-decoration: none;">mbonillo@jccm.es</a></li>
                     </ul>
                 </div>
             </div>
@@ -1873,7 +1965,7 @@
 <!-- Modal 'Para saber más' -->
 <div class="modal-overlay" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-box">
-        <button class="modal-close" onclick="cerrarModal()" aria-label="Cerrar ventana emergente de ayuda" title="Cerrar">×</button>
+        <button class="modal-close" onclick="cerrarModal()" aria-label="Cerrar ventana emergente de ayuda" title="Cerrar">Cerrar</button>
         <h3 class="modal-title" id="modal-title">Título</h3>
         <p id="modal-body" style="font-size: 15px; color: var(--text-color); line-height: 1.6; white-space: pre-wrap; text-align: left;">Contenido...</p>
     </div>
@@ -1895,7 +1987,6 @@
         <div class="pdf-text">
             <div><strong>Etapa y materia:</strong> <span id="pdf-etapa-materia"></span></div>
             <div><strong>Contenido subyacente:</strong> <span id="pdf-tema"></span></div>
-            <div><strong>Título para el alumnado:</strong> <span id="pdf-titulo-alumnado"></span></div>
         </div>
         <div class="pdf-text" style="margin-top: 15px;">
             <div style="margin-bottom: 5px;"><strong>Competencias específicas seleccionadas:</strong></div>
@@ -1919,7 +2010,7 @@
     </div>
 
     <div class="pdf-section">
-        <h2>3. El reto</h2>
+        <h2>3. Retos y desafíos</h2>
         <div class="pdf-text" id="pdf-reto"></div>
     </div>
 
@@ -1936,7 +2027,10 @@
         <div class="pdf-text" style="margin-top: 10px;" id="pdf-rubrica"></div>
     </div>
     
-    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #555555; border-top: 1px solid #767676; padding-top: 10px;">Documento generado automáticamente por el asistente multinivel.</div>
+    <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #555555; border-top: 1px solid #767676; padding-top: 10px;">
+        <p style="margin: 0 0 4px;"><strong>Autoría colegiada:</strong> Lucía Serrano, Antonio Miñán y Lola Bonillo.</p>
+        <p style="margin: 0;">Documento generado automáticamente por el asistente multinivel.</p>
+    </div>
 </div>
 
 <script>
@@ -2062,7 +2156,7 @@
     // --- ADAPTACIÓN DINÁMICA POR ETAPA Y MATERIA ---
     const NIVELES_RETO_POR_ETAPA = {
         infantil: {
-            etiqueta: "📊 Niveles de andamiaje y reto adaptados a Educación Infantil (DUA v3.0 / SEM):",
+            etiqueta: " Niveles de andamiaje y reto adaptados a Educación Infantil (DUA v3.0 / SEM):",
             cards: [
                 {
                     titulo: "Nivel 1: Exploración guiada y modelado",
@@ -2079,53 +2173,53 @@
             ]
         },
         primaria: {
-            etiqueta: "📊 Niveles de andamiaje y reto adaptados a Educación Primaria (DUA v3.0 / SEM):",
+            etiqueta: " Niveles de andamiaje y reto adaptados a Educación Primaria (DUA v3.0 / SEM):",
             cards: [
                 {
                     titulo: "Nivel 1: Acceso guiado y andamiaje estructurado",
-                    desc: "Aplicación guiada de los saberes con plantillas paso a paso, organizadores visuales y formatos cercanos (ej.: lapbook ilustrado, audio-relato con guion, ficha visual)."
+                    desc: "Aplicación guiada de los saberes con plantillas paso a paso, organizadores visuales y formatos cercanos, como un lapbook ilustrado, un audio-relato con guion o una ficha visual."
                 },
                 {
                     titulo: "Nivel 2: Profundización, análisis y contraste",
-                    desc: "Búsqueda y contraste autónomo de 2-3 fuentes, resolución de retos en equipo y argumentación (ej.: podcast divulgativo, periódico escolar, maqueta interactiva)."
+                    desc: "Búsqueda y contraste autónomo de dos o tres fuentes, resolución de retos en equipo y argumentación, con productos como un pódcast divulgativo, un periódico escolar o una maqueta interactiva."
                 },
                 {
                     titulo: "Nivel 3: Enriquecimiento real (Tipo III)",
-                    desc: "Investigación abierta de un problema del colegio o localidad con producto original para una audiencia real (ej.: campaña de sensibilización, guía para otros cursos)."
+                    desc: "Investigación abierta de un problema del colegio o la localidad, con un producto original para una audiencia real, como una campaña de sensibilización o una guía para otros cursos."
                 }
             ]
         },
         secundaria: {
-            etiqueta: "📊 Niveles de andamiaje y reto adaptados a Educación Secundaria Obligatoria (DUA v3.0 / SEM):",
+            etiqueta: " Niveles de andamiaje y reto adaptados a Educación Secundaria Obligatoria (DUA v3.0 / SEM):",
             cards: [
                 {
                     titulo: "Nivel 1: Aplicación y fundamentación guiada",
-                    desc: "Aplicación estructurada de saberes con guías de análisis, rúbrica previa y organizadores conceptuales (ej.: infografía técnica comentada, presentación digital guiada)."
+                    desc: "Aplicación estructurada de saberes con guías de análisis, rúbrica previa y organizadores conceptuales, mediante una infografía técnica comentada o una presentación digital guiada."
                 },
                 {
                     titulo: "Nivel 2: Pensamiento crítico y contraste metodológico",
-                    desc: "Análisis crítico de fuentes contrapuestas, debate formal y argumentación sólida (ej.: reportaje audiovisual de investigación, debate formal estructurado)."
+                    desc: "Análisis crítico de fuentes contrapuestas, debate formal y argumentación sólida, con productos como un reportaje audiovisual de investigación o un debate estructurado."
                 },
                 {
                     titulo: "Nivel 3: Enriquecimiento aplicado (Tipo III)",
-                    desc: "Proyecto de investigación autónomo sobre un reto real del entorno, con producto original difundido fuera del aula (ej.: propuesta formal al ayuntamiento, app funcional, campaña social)."
+                    desc: "Proyecto de investigación autónomo sobre un reto real del entorno, con un producto original difundido fuera del aula, como una propuesta al ayuntamiento, una aplicación o una campaña social."
                 }
             ]
         },
         bachillerato: {
-            etiqueta: "📊 Niveles de andamiaje y reto adaptados a Bachillerato (DUA v3.0 / SEM):",
+            etiqueta: " Niveles de andamiaje y reto adaptados a Bachillerato (DUA v3.0 / SEM):",
             cards: [
                 {
                     titulo: "Nivel 1: Rigor conceptual y marco metodológico guiado",
-                    desc: "Análisis conceptual riguroso y aplicación de fuentes académicas con guías metodológicas y rúbrica de un solo punto (ej.: estudio de caso guiado, síntesis crítica comentada)."
+                    desc: "Análisis conceptual riguroso y uso de fuentes académicas con guías metodológicas y rúbrica de un solo punto, mediante un estudio de caso guiado o una síntesis crítica comentada."
                 },
                 {
                     titulo: "Nivel 2: Investigación autónoma y argumentación crítica",
-                    desc: "Investigación autónoma con contraste epistemológico, discusión metodológica y defensa argumentativa sólida (ej.: artículo científico escolar, simulación académica, ensayo formal)."
+                    desc: "Investigación autónoma con contraste de ideas, discusión del método y defensa argumentada, mediante un artículo científico escolar, una simulación académica o un ensayo."
                 },
                 {
                     titulo: "Nivel 3: Enriquecimiento e impacto real (Tipo III)",
-                    desc: "Investigación original o desarrollo técnico de impacto académico o social para audiencia cualificada externa (ej.: monografía preuniversitaria, código abierto/algoritmo, informe técnico para entidad colaboradora)."
+                    desc: "Investigación original o desarrollo técnico con impacto académico o social para una audiencia externa, como una monografía, un programa de código abierto o un informe para una entidad colaboradora."
                 }
             ]
         }
@@ -2133,7 +2227,7 @@
 
     const ESTRATEGIAS_FEEDFORWARD_POR_ETAPA = {
         infantil: {
-            etiqueta: "🛠️ Estrategias de feedforward recomendadas para Educación Infantil:",
+            etiqueta: " Estrategias de feedforward recomendadas para Educación Infantil:",
             cards: [
                 {
                     titulo: "Modelado verbal y gestual en asamblea",
@@ -2150,7 +2244,7 @@
             ]
         },
         primaria: {
-            etiqueta: "🛠️ Estrategias de feedforward recomendadas para Educación Primaria:",
+            etiqueta: " Estrategias de feedforward recomendadas para Educación Primaria:",
             cards: [
                 {
                     titulo: "Listas de comprobación paso a paso (checklists)",
@@ -2167,7 +2261,7 @@
             ]
         },
         secundaria: {
-            etiqueta: "🛠️ Estrategias de feedforward recomendadas para Educación Secundaria (ESO):",
+            etiqueta: " Estrategias de feedforward recomendadas para Educación Secundaria (ESO):",
             cards: [
                 {
                     titulo: "Rúbrica de un solo punto desde el primer día",
@@ -2184,7 +2278,7 @@
             ]
         },
         bachillerato: {
-            etiqueta: "🛠️ Estrategias de feedforward recomendadas para Bachillerato:",
+            etiqueta: " Estrategias de feedforward recomendadas para Bachillerato:",
             cards: [
                 {
                     titulo: "Guías de rigor metodológico y citación académica",
@@ -2231,7 +2325,7 @@
                         "material": "Un terrario cerrado con condensación visible en las paredes y una animación breve del ciclo hidrológico en la Tierra.",
                         "reto": "Opción 1: Esquema visual guiado del ciclo del agua con etiquetas móviles. Opción 2: Experimento casero de evaporación y condensación grabado en vídeo corto. Opción 3 (SEM Tipo III): Campaña escolar con propuesta de auditoría y ahorro de agua en los grifos del centro.",
                         "feedforward": "Glosario visual con términos clave (evaporación, condensación, precipitación), plantilla de registro del experimento y checklist de fases.",
-                        "feedback": "Preguntas socráticas en el rincón experimental («¿Por qué crees que aparecen gotas en el cristal?»), rúbrica de un solo punto y reentrega del informe tras feedback."
+                        "feedback": "Preguntas abiertas en el rincón experimental («¿Por qué crees que aparecen gotas en el cristal?»), revisión de los criterios y tiempo para mejorar el informe."
                 },
                 "matematicas": {
                         "tema": "Medir no es solo obtener un número, sino comparar con una unidad para tomar decisiones justas y exactas.",
@@ -2240,7 +2334,7 @@
                         "material": "Cintas métricas, cuerdas de diferentes colores, fotos aéreas del patio impresas y conos de señalización.",
                         "reto": "Opción 1: Medición guiada de perímetros conocidos con plantilla de apoyo y calculadora. Opción 2: Plano a escala del patio con distribución de zonas de juego. Opción 3 (SEM Tipo III): Propuesta técnica fundamentada al equipo directivo para rediseñar los espacios de recreo.",
                         "feedforward": "Plantilla de estimación previa frente a medida real, tabla de conversión de unidades ilustrada y recordatorio visual de cómo situar la cinta métrica.",
-                        "feedback": "Revisión dialógica de medidas dudosas («¿Tiene sentido que el banco mida 12 metros o 12 decímetros?»), verificación por pares y reajuste del plano."
+                        "feedback": "Revisión en pareja de medidas que no parecen correctas («¿Tiene sentido que el banco mida 12 metros o 12 decímetros?»), comprobación y ajuste del plano."
                 },
                 "sociales": {
                         "tema": "El relieve y el clima condicionan cómo vivimos, y las actividades humanas transforman los paisajes con el tiempo.",
@@ -2296,7 +2390,7 @@
                         "material": "Comparativa de titulares periodísticos y publicaciones en redes sociales sobre un mismo suceso de impacto juvenil.",
                         "reto": "Opción 1: Análisis retórico guiado de discursos persuasivos con plantilla analítica. Opción 2: Creación de una campaña o podcast contra la desinformación con argumentación sólida. Opción 3 (SEM Tipo III): Manifiesto y guía crítica de alfabetización mediática para familias y comunidad educativa.",
                         "feedforward": "Glosario de figuras retóricas y falacias argumentativas, modelo de ensayo comentado al margen y rúbrica de un solo punto previa.",
-                        "feedback": "Rondas socráticas de retroalimentación sobre la consistencia de argumentos, rúbrica de proceso y ventana de 48 horas para reentregar el texto corregido."
+                        "feedback": "Revisión de los argumentos con preguntas guía, criterios claros y tiempo para corregir y volver a entregar el texto."
                 },
                 "ciencias": {
                         "tema": "La materia y la energía en los sistemas vivos y físicos se rigen por principios de conservación e interdependencia constante.",
@@ -2323,7 +2417,7 @@
                         "material": "Cartas auténticas de soldados en el frente de 1914, mapas de alianzas geopolíticas y carteles de propaganda bélica.",
                         "reto": "Opción 1: Eje cronológico analítico con causas profundas y consecuencias guiadas. Opción 2: Documental corto o debate formal simulando una conferencia de paz histórica. Opción 3 (SEM Tipo III): Proyecto de memoria democrática o investigación sobre patrimonio local en conflicto presentado al archivo municipal.",
                         "feedforward": "Organizador multicausal (causas políticas, económicas, sociales, ideológicas), matriz de contraste de fuentes y rúbrica de debate.",
-                        "feedback": "Cuestionamiento socrático sobre determinismo histórico, feedback dialógico sobre neutralidad y rigor historiográfico con opción de reentrega."
+                        "feedback": "Preguntas sobre las causas históricas y revisión de cómo se presentan las distintas fuentes, con tiempo para corregir y volver a entregar."
                 },
                 "artistica": {
                         "tema": "El arte y la música son lenguajes universales que reflejan la identidad cultural y actúan como vehículo de denuncia social.",
@@ -2388,7 +2482,7 @@
                         "material": "Modelos SIR de epidemiología computacional y datos reales de series temporales económicas de los últimos 20 años.",
                         "reto": "Opción 1: Aplicación estructurada de métodos analíticos y matriciales con verificación de soluciones. Opción 2: Simulación y parametrización de un modelo dinámico mediante software matemático (GeoGebra, Python o R). Opción 3 (SEM Tipo III): Proyecto de modelización matemática aplicada a un problema logístico o demográfico comarcal.",
                         "feedforward": "Compendio de demostraciones clave, guía de sintaxis para herramientas de cálculo numérico y simbólico, y rúbrica de rigor formal.",
-                        "feedback": "Revisión formativa paso a paso de demostraciones, feedback dialógico sobre justificación teórica y corrección de pasos analíticos."
+                        "feedback": "Revisión guiada de la demostración: comprobar cada paso, pedir que se explique cómo se llega al resultado y dejar tiempo para corregirlo."
                 },
                 "sociales": {
                         "tema": "Las estructuras institucionales, la economía global y el pensamiento filosófico determinan la evolución de los derechos y la justicia.",
@@ -2433,7 +2527,7 @@
                         "material": "Metanálisis científicos contrastados con campañas de desinformación climática o médica, y análisis de conflictos de interés.",
                         "reto": "Opción 1: Revisión bibliográfica sistemática guiada sobre un debate científico o social actual. Opción 2: Ensayo de investigación académica con contraste riguroso de fuentes primarias y secundarias. Opción 3 (SEM Tipo III): Ponencia en un congreso escolar preuniversitario con póster científico y defensa oral ante tribunal docente.",
                         "feedforward": "Plantilla de protocolo de investigación, guía de normas de citación académica (APA/IEEE/Vancouver) y rúbrica analítica previa.",
-                        "feedback": "Defensa previa de anteproyecto, feedback dialógico del docente tutor sobre solvencia metodológica y plazo para incorporar correcciones."
+                        "feedback": "Presentación del plan antes de empezar; comentarios sobre si el método permite responder la pregunta y tiempo para ajustar el planteamiento."
                 }
         }
 };
@@ -2609,52 +2703,9 @@
         }
 };
 
-    const TITULO_ORIENTACIONES_POR_ETAPA = {
-        infantil: {
-            puntos_clave: [
-                "Debe ser un título lleno de fantasía, juego y magia.",
-                "Conecta con la imaginación, la emoción y los personajes del aula.",
-                "Se presenta como una aventura vivencial o descubrimiento compartido."
-            ],
-            desc_ai: "Diseña un título motivador y con fantasía para el alumnado de Infantil (enfoque SEM).",
-            modal_titulo: "El poder de un título motivador en Educación Infantil",
-            modal_texto: "<p>En Educación Infantil, el título es la puerta mágica a la experiencia del aula. Despierta el asombro y las ganas de explorar en la asamblea.</p><p><strong>Ejemplos de transformación didáctica:</strong></p><ul><li>En lugar de <em>«El otoño y las hojas»</em>: <strong>«El secreto del árbol de las maravillas»</strong> o <strong>«El viaje de la hoja bailarina»</strong>.</li><li>En lugar de <em>«Los animales de la granja»</em>: <strong>«Misterio en el corral: ¿quién se ha llevado la pluma dorada?»</strong>.</li><li>En lugar de <em>«Las estaciones del año»</em>: <strong>«El viaje mágico de la gota Chispa»</strong>.</li></ul><p>Genera anticipación y emoción desde el primer momento en los rincones de actividad.</p>"
-        },
-        primaria: {
-            puntos_clave: [
-                "Debe ser un título atractivo, con aventura o misterio.",
-                "Sirve para captar el interés y la curiosidad desde el primer momento.",
-                "Se presenta como un reto o misión en lugar de un tema académico tradicional."
-            ],
-            desc_ai: "Diseña un título motivador y con aventura para el alumnado de Primaria (enfoque SEM).",
-            modal_titulo: "El poder de un título motivador en Educación Primaria",
-            modal_texto: "<p>En el modelo SEM, transformar un tema curricular en un escenario estimulante es el primer paso para captar la atención. Un buen título genera anticipación y curiosidad.</p><p><strong>Ejemplos de transformación didáctica:</strong></p><ul><li>En lugar de <em>«El ciclo del agua»</em>: <strong>«Misión planeta azul: el secreto que esconden las nubes»</strong>.</li><li>En lugar de <em>«La descripción y el adjetivo»</em>: <strong>«Cazadores de palabras invisibles»</strong>.</li><li>En lugar de <em>«El relieve y los paisajes»</em>: <strong>«Cronistas del paisaje olvidado»</strong>.</li></ul><p>Cambia por completo la predisposición del alumnado, invitándoles a investigar y a preguntarse.</p>"
-        },
-        secundaria: {
-            puntos_clave: [
-                "Debe ser un título sugerente, con intriga o conexión con el mundo real.",
-                "Despierta la curiosidad adolescente y desafía ideas preconcebidas.",
-                "Se presenta como un enigma, caso abierto o reto de investigación."
-            ],
-            desc_ai: "Diseña un título sugerente y con intriga para Educación Secundaria (enfoque SEM).",
-            modal_titulo: "El poder de un título motivador en Educación Secundaria (ESO)",
-            modal_texto: "<p>En Secundaria, un título motivador conecta con intrigas, controversias o dilemas reales que tocan de cerca los intereses y la curiosidad juvenil.</p><p><strong>Ejemplos de transformación didáctica:</strong></p><ul><li>En lugar de <em>«Los medios de comunicación y las redes»</em>: <strong>«Desmontando el algoritmo de las palabras»</strong> o <strong>«Cazadores de fake news»</strong>.</li><li>En lugar de <em>«La energía y la termodinámica»</em>: <strong>«El enigma de la energía invisible»</strong>.</li><li>En lugar de <em>«La Primera Guerra Mundial»</em>: <strong>«Voces desde las trincheras del tiempo»</strong>.</li><li>En lugar de <em>«Probabilidad y estadística»</em>: <strong>«Descifrando los patrones del azar»</strong>.</li></ul><p>Invita al debate de aula y a la investigación rigurosa sin infantilizar el contenido.</p>"
-        },
-        bachillerato: {
-            puntos_clave: [
-                "Debe ser un título sugerente, provocador o enigmático que plantee un dilema intelectual.",
-                "Conecta con debates éticos, científicos, artísticos o sociales de impacto contemporáneo.",
-                "Se formula como un desafío reflexivo o conflicto teórico (lejos de fórmulas infantiles)."
-            ],
-            desc_ai: "Diseña un título sugerente, con controversia o dilema intelectual para Bachillerato (enfoque SEM).",
-            modal_titulo: "El título motivador en Bachillerato: dilema y desafío intelectual",
-            modal_texto: "<p>En Bachillerato, motivar al alumnado no consiste en utilizar fórmulas de fantasía infantil, sino en interpelar su madurez crítica mediante controversias intelectuales, enigmas teóricos o dilemas éticos y epistemológicos de primer orden.</p><p><strong>Ejemplos de transformación didáctica:</strong></p><ul><li>En lugar de <em>«El discurso argumentativo»</em>: <strong>«La arquitectura del discurso: retórica, poder y verdad»</strong>.</li><li>En lugar de <em>«El equilibrio químico y la termodinámica»</em>: <strong>«En las fronteras de la materia y la vida»</strong> o <strong>«El fuego de Prometeo: entropía y límites del cosmos»</strong>.</li><li>En lugar de <em>«La crisis del Antiguo Régimen y el Liberalismo»</em>: <strong>«La disputa por la legitimidad: orden, estado y libertad»</strong>.</li><li>En lugar de <em>«Modelización matemática»</em>: <strong>«El tejido invisible de los modelos matemáticos»</strong>.</li></ul><p>Sitúa al estudiante ante un reto preuniversitario auténtico que exige posicionamiento fundamentado.</p>"
-        }
-    };
-
     const FORMULAS_DISPARADOR_POR_ETAPA = {
         infantil: {
-            etiqueta: "🎯 Fórmulas de arranque recomendadas para Educación Infantil:",
+            etiqueta: " Fórmulas de arranque recomendadas para Educación Infantil:",
             cards: [
                 {
                     titulo: "¿Qué pasará si abrimos / tocamos...?",
@@ -2671,7 +2722,7 @@
             ]
         },
         primaria: {
-            etiqueta: "🎯 Fórmulas de arranque recomendadas para Educación Primaria:",
+            etiqueta: " Fórmulas de arranque recomendadas para Educación Primaria:",
             cards: [
                 {
                     titulo: "¿Qué pasaría si de repente...?",
@@ -2688,7 +2739,7 @@
             ]
         },
         secundaria: {
-            etiqueta: "🎯 Fórmulas de arranque recomendadas para Educación Secundaria (ESO):",
+            etiqueta: " Fórmulas de arranque recomendadas para Educación Secundaria (ESO):",
             cards: [
                 {
                     titulo: "¿Qué pasaría si...?",
@@ -2705,7 +2756,7 @@
             ]
         },
         bachillerato: {
-            etiqueta: "🎯 Fórmulas de arranque recomendadas para Bachillerato:",
+            etiqueta: " Fórmulas de arranque recomendadas para Bachillerato:",
             cards: [
                 {
                     titulo: "¿Hasta qué punto...? / ¿Bajo qué condiciones...?",
@@ -2746,20 +2797,13 @@
         ]
     };
 
-    function abrirModalTituloEtapa() {
-        const claveEtapa = obtenerClaveEtapa();
-        const tipoEtapa = detectarTipoEtapa(claveEtapa) || 'primaria';
-        const data = TITULO_ORIENTACIONES_POR_ETAPA[tipoEtapa] || TITULO_ORIENTACIONES_POR_ETAPA['primaria'];
-        abrirModal(data.modal_titulo, data.modal_texto);
-    }
-
     // --- MAPA DE CONTEXTO DISCIPLINAR TRANSVERSAL (TODOS LOS PASOS) ---
     const DISCIPLINA_DATA = {
         "educacion_fisica": {
                 "nombre": "Educación Física",
                 "bloom_tip": "En Educación Física, los criterios de evaluación articulan los dominios psicomotor, cognitivo y socioafectivo (desde la ejecución y ajuste postural hasta la toma de decisiones táctica y el diseño autónomo de planes saludables). Para el alumnado con altas capacidades motrices o cognitivas, plantea retos de diseño estratégico, arbitraje comprensivo y proyectos de dinamización motriz activa (enriquecimiento SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Educación Física (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Educación Física (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Acceso motriz guiado",
@@ -2776,7 +2820,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Educación Física:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Educación Física:",
                         "cards": [
                                 {
                                         "titulo": "Tarjetas visuales de patrones y roles tácticos",
@@ -2795,19 +2839,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Aclara si el gesto motor, la posición espacial o el uso del implemento responde al objetivo básico de la acción."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Comprueba si la postura, la posición y el uso del material ayudan a cumplir el objetivo del movimiento."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Estimula la conciencia cinestésica: «¿Qué notas en tu apoyo al cambiar de dirección?», «¿Cómo influye la distancia de tu pase en la presión defensiva?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta qué nota al cambiar de dirección o al modificar la distancia del pase y acuerda qué probar después."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Fomenta la metacognición motriz: «¿Cómo podrías dosificar mejor tu energía en la siguiente serie?», «¿Qué ajuste táctico vas a probar ahora?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Ayuda a elegir un ajuste para la siguiente serie o jugada y a comprobar si funciona."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre el <strong>esfuerzo específico, la perseverancia y la decisión táctica</strong>: «Me gusta cómo has corregido la postura para no forzar la rodilla», «Gran decisión al pasar el balón desmarcado en vez de arriesgar individualmente»."
+                        "elogio": "Por ejemplo: «Al cambiar la postura, redujiste la presión en la rodilla» o «Al pasar a quien estaba libre, el equipo mantuvo la posesión»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Plantilla visual con secuencia de apoyos y recordatorio de mantener el centro de gravedad bajo.",
@@ -2819,7 +2863,7 @@
                 "nombre": "Matemáticas y Economía",
                 "bloom_tip": "En Matemáticas, los criterios de evaluación superan el mero cálculo reproductivo para demandar modelización, razonamiento lógico, conjetura y comunicación formal. Para el alumnado con talento matemático o altas capacidades, evita dar más ejercicios mecánicos repetitivos; propón problemas abiertos, búsqueda de contraejemplos, optimización y proyectos de modelización real (enriquecimiento SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Matemáticas (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Matemáticas (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Aplicación guiada y soporte analítico",
@@ -2836,7 +2880,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Matemáticas:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Matemáticas:",
                         "cards": [
                                 {
                                         "titulo": "Compendio de fórmulas comentadas (¿cuándo usar cuál?)",
@@ -2855,19 +2899,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Verifica si el planteamiento inicial, las operaciones y las unidades del resultado son algebraicamente correctas."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Revisa si el planteamiento, las operaciones y las unidades dan una respuesta que encaja con el problema."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Profundiza en la estrategia deductiva: «¿Por qué has elegido este método en lugar de...?», «¿Qué relación geométrica observas en la pendiente?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta por qué eligió ese método y qué relación geométrica observa en la pendiente."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Estimula la metacognición formal: «¿Cómo podrías comprobar este resultado sin rehacer toda la cuenta?», «¿Qué método alternativo verificaría tu conjetura?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Propón comprobar el resultado con una estimación o un método alternativo y decidir qué cambiar si no coincide."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre el <strong>razonamiento lógico, la perseverancia y la estrategia elegida</strong>: «Me gusta cómo has descompuesto este problema complejo en pasos manejables», «Has justificado con rigor analítico por qué descartaste la solución negativa»."
+                        "elogio": "Por ejemplo: «Separaste el problema en pasos y así encontraste por dónde empezar» o «Descartaste el resultado negativo porque no encaja con la situación»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Esquema visual de traducción del lenguaje verbal al algebraico y calculadora para verificar operaciones.",
@@ -2879,7 +2923,7 @@
                 "nombre": "Ciencias Experimentales (Biología, Geología, Física y Química)",
                 "bloom_tip": "En Ciencias Experimentales, los criterios articulan la indagación científica: planteamiento de preguntas investigables, diseño de experimentos controlados, análisis de incertidumbres y argumentación basada en evidencias. Para el alumnado con altas capacidades, promueve el diseño de proyectos de investigación de impacto socioambiental (SEM Tipo III) con tratamiento de datos riguroso.",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Ciencias (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Ciencias (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Indagación guiada y laboratorio pautado",
@@ -2896,7 +2940,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Ciencias:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Ciencias:",
                         "cards": [
                                 {
                                         "titulo": "Protocolos de seguridad y guía de calibración de instrumental",
@@ -2915,19 +2959,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Verifica si las mediciones experimentales, las unidades y los cálculos de incertidumbre están correctamente registrados."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Comprueba que las mediciones, las unidades y los cálculos estén registrados con claridad."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Profundiza en la lógica investigadora: «¿Cómo demuestras que el efecto observado se debe solo a esta variable?», «¿Qué explica la desviación en este punto de la gráfica?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta qué datos muestran que la variable observada produjo el cambio y qué explica el punto que se aparta en la gráfica."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Estimula el rigor científico: «¿Tus conclusiones se derivan estrictamente de los datos o estás asumiendo algo no probado?», «¿Qué control adicional introducirías?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Compara la conclusión con los datos y decide qué comprobación falta antes de cerrar el informe."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre el <strong>rigor experimental, el control metodológico y la honestidad con los datos</strong>: «Has controlado de forma ejemplar las variables extrañas», «Me gusta cómo has justificado la discrepancia experimental sin falsear los datos»."
+                        "elogio": "Por ejemplo: «Mantuviste constantes las demás condiciones y pudiste comparar los resultados» o «Explicaste la diferencia a partir de los datos registrados»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Plantilla guiada para el registro de variables y simulador interactivo previo al ensayo real.",
@@ -2939,7 +2983,7 @@
                 "nombre": "Lengua Castellana y Literatura (y Lenguas)",
                 "bloom_tip": "En Lengua y Literatura, los criterios valoran la competencia comunicativa auténtica: la comprensión crítica del discurso, la expresión multimodal coherente, la apreciación estética y la alfabetización mediática. Para el alumnado con talento lingüístico o altas capacidades, potencia la creación literaria original, el análisis retórico de discursos persuasivos y la publicación en medios reales (SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Lengua y Literatura (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Lengua y Literatura (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Producción guiada y andamiaje retórico",
@@ -2956,7 +3000,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Lengua y Literatura:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Lengua y Literatura:",
                         "cards": [
                                 {
                                         "titulo": "Bancos de conectores argumentativos y matizadores de voz",
@@ -2975,19 +3019,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Aclara si el texto cumple las propiedades textuales básicas: adecuación al registro, coherencia global y corrección ortotipográfica."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Revisa si el texto se entiende, se ajusta al destinatario y está escrito con cuidado."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Profundiza en las decisiones de autor: «¿Por qué has elegido esta metáfora en la conclusión?», «¿Cómo refuerza este conector la fuerza de tu argumento?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta por qué eligió esa metáfora y cómo el conector ayuda a sostener el argumento."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Estimula la mirada crítica del propio escritor: «¿Qué párrafo crees que transmite con más fuerza tu tesis?», «¿Qué vas a revisar en la siguiente relectura en voz alta?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Invita a elegir el párrafo que expresa mejor la tesis y a decidir qué revisar al leer el texto en voz alta."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre la <strong>elección retórica, la sutileza argumentativa y la revisión perseverante</strong>: «Has cohesionado los párrafos con una fluidez excelente», «Me gusta cómo has matizado el contraargumento sin caer en falacias fáciles»."
+                        "elogio": "Por ejemplo: «El conector deja clara la relación entre estos párrafos» o «Incluiste el contraargumento y explicaste por qué no cambia tu postura»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Plantilla de estructura en 4 párrafos (introducción, tesis, argumentos, conclusión) y glosario de sinónimos.",
@@ -2999,7 +3043,7 @@
                 "nombre": "Geografía, Historia y Filosofía",
                 "bloom_tip": "En Ciencias Sociales y Humanidades, los criterios demandan pensamiento histórico y filosófico: análisis multicausal, contextualización temporal no anacrónica, crítica de fuentes documentales y deliberación ética fundada. Para el alumnado con altas capacidades, orienta hacia la investigación con fuentes primarias en archivos locales, debates éticos contemporáneos y memoria comunitaria (SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Geografía, Historia y Filosofía (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Geografía, Historia y Filosofía (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Análisis guiado y contextualización",
@@ -3016,7 +3060,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Ciencias Sociales y Filosofía:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Ciencias Sociales y Filosofía:",
                         "cards": [
                                 {
                                         "titulo": "Matriz de contraste crítico de fuentes (autor, intención, contexto)",
@@ -3035,19 +3079,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Verifica la exactitud cronológica, la correcta localización espacial y la identificación formal de los actores históricos o doctrinas."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Comprueba que las fechas, los lugares y las personas o ideas citadas estén bien identificados."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Profundiza en la interpretación hermenéutica: «¿Qué sesgo ideológico detectas en el autor de este manifiesto?», «¿Cómo se conecta este hecho con la estructura económica?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta quién escribió el texto y con qué propósito, y qué otros factores ayudan a explicar el hecho."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Estimula la vigilancia epistemológica: «¿Estás juzgando este acontecimiento con la mentalidad del siglo XXI?», «¿Qué pruebas históricas sostienen tu afirmación?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Invita a situar el hecho en su época y a comprobar qué pruebas respaldan cada afirmación."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre el <strong>análisis multicausal, la contextualización empática y la honradez historiográfica</strong>: «Has desarmado un anacronismo con mucha lucidez», «Me gusta cómo has confrontado dos testimonios opuestos sin tomar partido ingenuo»."
+                        "elogio": "Por ejemplo: «Situaste el hecho en su época antes de valorarlo» o «Comparaste los dos testimonios y citaste las pruebas de cada uno»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Línea de tiempo anotada con hitos clave y matriz de análisis de fuentes con 4 preguntas guía.",
@@ -3059,7 +3103,7 @@
                 "nombre": "Educación Artística, Plástica y Música",
                 "bloom_tip": "En Artes y Música, los criterios evalúan la percepción crítica, la alfabetización visual y sonora, la experimentación técnica y la expresión poética y estética. Para el alumnado con talento artístico o altas capacidades, potencia la concepción de proyectos multidisciplinares de autor, el comisariado de exposiciones y la composición sonora original orientada a una audiencia real (SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Educación Artística y Música (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Educación Artística y Música (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Exploración guiada de técnicas y lenguajes",
@@ -3076,7 +3120,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Artes y Música:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Artes y Música:",
                         "cards": [
                                 {
                                         "titulo": "Guías visuales de recursos compositivos y teoría del color/armonía",
@@ -3095,19 +3139,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Aclara si la técnica plástica empleada o la afinación/ritmo responde al boceto previo o partitura acordada."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Revisa si la técnica, el ritmo o la afinación siguen el boceto o la partitura acordados."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Profundiza en la poética creativa: «¿Qué emoción buscas evocar con este contraste de texturas?», «¿Cómo dialoga el silencio con la masa orquestal en este compás?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta qué sensación busca crear con las texturas o qué aporta el silencio a ese compás."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Estimula el criterio estético autónomo: «¿Qué zona de la obra crees que transmite con mayor pureza tu idea?», «¿Qué detalle vas a retocar antes de la muestra final?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Ayuda a elegir qué parte comunica mejor la idea y qué detalle conviene ajustar antes de mostrar la obra."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre la <strong>audacia expresiva, la sensibilidad perceptiva y la perseverancia técnica</strong>: «Has logrado un equilibrio visual muy sugerente», «Me gusta cómo has modulado la intensidad tímbrica para crear un clima de intriga»."
+                        "elogio": "Por ejemplo: «El contraste de colores ayuda a distinguir las dos partes» o «Al bajar el volumen, la voz se entiende mejor»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Plantilla con boceto pautado de proporciones o partitura reducida con digitación anotada.",
@@ -3119,7 +3163,7 @@
                 "nombre": "Tecnología, Digitalización e Ingeniería",
                 "bloom_tip": "En Tecnología e Ingeniería, los criterios articulan el proceso de diseño tecnológico: análisis de necesidades, diseño de prototipos, programación lógica, montaje seguro, testeo iterativo y evaluación de impacto ambiental. Para el alumnado con talento computacional o altas capacidades, fomenta el desarrollo de proyectos de robótica social, soluciones asistivas y software libre documentado (SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Tecnología y Digitalización (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Tecnología y Digitalización (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Montaje guiado y depuración estructurada",
@@ -3136,7 +3180,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Tecnología e Ingeniería:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Tecnología e Ingeniería:",
                         "cards": [
                                 {
                                         "titulo": "Esquemas de conexión de circuitos y protocolos de taller",
@@ -3155,19 +3199,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Verifica si el circuito funciona conforme a las especificaciones y si el código compila sin errores de sintaxis."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Comprueba si el circuito y el código cumplen lo acordado y si se ejecutan sin errores."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Profundiza en la arquitectura del sistema: «¿Por qué has optado por este sensor en vez de un divisor resistivo?», «¿Cómo podrías optimizar el consumo energético del bucle?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta por qué eligió ese sensor y qué cambio podría reducir el consumo de energía."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Fomenta la resiliencia en ingeniería: «Si el motor no gira al recibir la señal, ¿en qué punto del flujo lógico vas a medir tensión primero?», «¿Qué prueba de estrés falta?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Si el motor no gira, ayuda a decidir dónde comprobar primero la señal y qué prueba falta."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre el <strong>método de depuración, la resiliencia ante el fallo técnico y el diseño eficiente</strong>: «Has aislado la avería con una lógica impecable», «Me gusta cómo has rediseñado la estructura para que gaste menos material sin perder rigidez»."
+                        "elogio": "Por ejemplo: «Separaste la conexión del código y localizaste el fallo en el sensor» o «Cambiaste el diseño para usar menos material sin perder estabilidad»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Diagrama de conexionado ilustrado y bloque de código base comentado para la lectura de sensores.",
@@ -3179,7 +3223,7 @@
                 "nombre": "Educación Infantil",
                 "bloom_tip": "En Educación Infantil, el currículo promueve el desarrollo integral, la construcción de la identidad, la convivencia armónica, la exploración del entorno y la expresión multilingüe a través del juego, la manipulación sensorial y la asamblea. Para el alumnado con altas capacidades, no aceleres fichas escolares; diseña propuestas abiertas de investigación lúdica en rincones, formulación de hipótesis vivenciales y liderazgo de proyectos creativos de aula (SEM Tipo III).",
                 "reto_niveles": {
-                        "etiqueta": "📊 Niveles de andamiaje y reto adaptados a Educación Infantil (DUA v3.0 / SEM):",
+                        "etiqueta": " Niveles de andamiaje y reto adaptados a Educación Infantil (DUA v3.0 / SEM):",
                         "cards": [
                                 {
                                         "titulo": "Nivel 1: Exploración sensorial guiada",
@@ -3196,7 +3240,7 @@
                         ]
                 },
                 "feedforward": {
-                        "etiqueta": "🛠️ Estrategias de feedforward preventivo en Educación Infantil:",
+                        "etiqueta": " Estrategias de feedforward preventivo en Educación Infantil:",
                         "cards": [
                                 {
                                         "titulo": "Modelado verbal y gestual en asamblea",
@@ -3215,19 +3259,19 @@
                 "feedback": {
                         "cards": [
                                 {
-                                        "titulo": "1. De tarea (FT)",
-                                        "desc": "Acompaña con cercanía verbal para verificar que el niño comprende el juego y se siente seguro en el rincón."
+                                        "titulo": "1. Qué muestra el trabajo",
+                                        "desc": "Comprueba que el alumnado entiende el juego y cuenta con apoyo para participar con seguridad."
                                 },
                                 {
-                                        "titulo": "2. De proceso (FP)",
-                                        "desc": "Estimula la observación infantil: «¿Por qué crees que esta pieza flota y esta se hunde?», «¿Qué sientes al tocar esta masa con los dedos?»."
+                                        "titulo": "2. Qué estrategia está utilizando",
+                                        "desc": "Pregunta qué observa al probar los materiales y qué nota al tocarlos."
                                 },
                                 {
-                                        "titulo": "3. De autorregulación (FR)",
-                                        "desc": "Fomenta la autonomía emocional: «¿Qué material necesitas ahora para continuar tu construcción?», «¿Cómo podemos resolver este problema entre los dos?»."
+                                        "titulo": "3. Qué revisar después",
+                                        "desc": "Ayuda a elegir el material que necesita para continuar o a acordar cómo resolver un problema."
                                 }
                         ],
-                        "elogio": "En su lugar, elogia siempre el <strong>descubrimiento, la perseverancia y la cooperación en el aula</strong>: «Me gusta cómo has seguido intentándolo hasta encajar la pieza», «Qué bien has compartido las lupas con tu compañero en el rincón de ciencias»."
+                        "elogio": "Por ejemplo: «Probaste otra forma hasta encajar la pieza» o «Compartiste las lupas y acordaste un turno con tu compañero»."
                 },
                 "rubrica_ejemplo": {
                         "apoyo": "Acompañamiento verbal directo de la docente y materiales con texturas y colores contrastados.",
@@ -3246,20 +3290,36 @@
         return null;
     }
 
-    function detectarFamiliaDidactica(materia, claveEtapa) {
-        if (!claveEtapa) return 'general';
-        if (claveEtapa.startsWith('infantil')) return 'general';
-        if (!materia) return 'general';
+    const AJUSTES_CURSO = {
+        infantil: "Prioriza el juego, la manipulación, la conversación, el modelado y los apoyos visuales, sin exigir lectoescritura formal.",
+        primaria_c1: "Usa consignas breves, pasos visibles y modelado. Permite mostrar lo aprendido de forma oral, gráfica o manipulativa.",
+        primaria_c2: "Combina modelos y apoyos visuales con planificación guiada, registros breves y revisión en parejas.",
+        primaria_c3: "Favorece una planificación más autónoma, el contraste de información accesible y la justificación de decisiones.",
+        secundaria_1: "Acompaña la transición a la ESO con criterios visibles, organizadores y autonomía gradual.",
+        secundaria_2: "Favorece la planificación, la comparación de fuentes y la justificación de decisiones con apoyos disponibles.",
+        secundaria_3: "Promueve mayor autonomía en la indagación y la argumentación, con puntos de revisión durante el trabajo.",
+        secundaria_4: "Pide más independencia al seleccionar fuentes, organizar evidencias y defender decisiones, manteniendo los apoyos necesarios.",
+        bachillerato_1: "Guía la planificación de investigaciones y el análisis de fuentes diversas; pide justificar decisiones y revisar conclusiones.",
+        bachillerato_2: "Favorece mayor autonomía metodológica, rigor al valorar evidencias y comunicación argumentada de conclusiones."
+    };
 
-        const m = materia.toLowerCase();
-        if (m.includes('educación física')) return 'educacion_fisica';
-        if (['lengua', 'literatura', 'clásica', 'latín', 'griego', 'francés', 'inglés', 'signos'].some(k => m.includes(k))) return 'lengua';
-        if (['matemática', 'economía', 'finanzas', 'empresa', 'administración'].some(k => m.includes(k))) return 'matematicas';
-        if (['biología', 'geología', 'física', 'química', 'ciencias', 'medio natural', 'científica', 'ambiental', 'anatomía'].some(k => m.includes(k))) return 'ciencias';
-        if (['geografía', 'historia', 'filosofía', 'valores', 'sociales', 'ciudadanía', 'psicología', 'personal y profesional', 'sostenibilidad', 'religión'].some(k => m.includes(k))) return 'sociales';
-        if (['artística', 'plástica', 'visual', 'música', 'dibujo', 'volumen', 'diseño', 'danza', 'escénicas', 'coro', 'audiovisual', 'folclore'].some(k => m.includes(k))) return 'artistica';
-        if (['tecnología', 'digitalización', 'digital', 'robótica', 'ingeniería'].some(k => m.includes(k))) return 'tecnologia';
-        return 'general';
+    function obtenerNombreCurso(claveEtapa) {
+        const selectEtapa = document.getElementById('sel-etapa');
+        if (!selectEtapa || selectEtapa.selectedIndex <= 0) return 'curso no seleccionado';
+
+        const nombre = selectEtapa.options[selectEtapa.selectedIndex].textContent.trim();
+        const selectModalidad = document.getElementById('sel-modalidad');
+        const modalidad = claveEtapa && claveEtapa.startsWith('bachillerato') && selectModalidad && selectModalidad.value
+            ? ` · ${selectModalidad.options[selectModalidad.selectedIndex].textContent.trim()}`
+            : '';
+        return `${nombre}${modalidad}`;
+    }
+
+    function obtenerAjusteCurso(claveEtapa) {
+        let clavePerfil = claveEtapa;
+        if (claveEtapa && claveEtapa.startsWith('bachillerato_1_')) clavePerfil = 'bachillerato_1';
+        else if (claveEtapa && claveEtapa.startsWith('bachillerato_2_')) clavePerfil = 'bachillerato_2';
+        return AJUSTES_CURSO[clavePerfil] || "Ajusta el vocabulario, los apoyos, la autonomía y la complejidad al curso seleccionado.";
     }
 
     function adaptarInterfazPorEtapaYMateria() {
@@ -3267,83 +3327,50 @@
         const tipoEtapa = detectarTipoEtapa(claveEtapa);
         const selMateria = document.getElementById('sel-materia');
         const materia = (selMateria && selMateria.selectedIndex > 0) ? selMateria.value : '';
-        const familia = detectarFamiliaDidactica(materia, claveEtapa);
-        const dataDisc = (typeof DISCIPLINA_DATA !== 'undefined' && DISCIPLINA_DATA[familia]) ? DISCIPLINA_DATA[familia] : (typeof DISCIPLINA_DATA !== 'undefined' ? DISCIPLINA_DATA['general'] : null);
-        const nombreMateriaActivo = materia || (dataDisc ? dataDisc.nombre : 'tu materia');
-        let ejemplos = null;
-        if (tipoEtapa && typeof EJEMPLOS_POR_MATERIA !== 'undefined' && EJEMPLOS_POR_MATERIA[tipoEtapa] && materia && EJEMPLOS_POR_MATERIA[tipoEtapa][materia]) {
-            ejemplos = EJEMPLOS_POR_MATERIA[tipoEtapa][materia];
-        } else if (tipoEtapa && EJEMPLOS_DIDACTICOS[tipoEtapa]) {
-            ejemplos = EJEMPLOS_DIDACTICOS[tipoEtapa][familia] || EJEMPLOS_DIDACTICOS[tipoEtapa]['general'] || EJEMPLOS_DIDACTICOS[tipoEtapa]['lengua'];
-        }
+        const curso = obtenerNombreCurso(claveEtapa);
+        const ajusteCurso = obtenerAjusteCurso(claveEtapa);
+        const contextoSeleccionado = materia && claveEtapa ? `${materia} · ${curso}` : 'la materia y el curso seleccionados';
+        const ejemplos = tipoEtapa && materia && typeof EJEMPLOS_POR_MATERIA !== 'undefined'
+            ? EJEMPLOS_POR_MATERIA[tipoEtapa] && EJEMPLOS_POR_MATERIA[tipoEtapa][materia]
+            : null;
+        const mensajeSinEjemplo = `Selecciona una referencia propia de ${contextoSeleccionado}; no se mostrará un ejemplo de otra materia.`;
+        const criteriosSeleccionados = Array.from(document.querySelectorAll('#contenedor-saberes-criterios input.chk-criterio:checked'))
+            .map(input => {
+                const label = document.querySelector(`label[for="${input.id}"]`);
+                return label ? label.textContent.trim() : '';
+            })
+            .filter(Boolean);
 
         // A. Paso 3 de UI / step-4 (Saberes y criterios: tip metacognitivo y Bloom de la disciplina)
         const tipSaberes = document.getElementById('texto-tip-saberes');
-        if (tipSaberes && dataDisc && dataDisc.bloom_tip) {
-            tipSaberes.innerHTML = dataDisc.bloom_tip;
-        } else if (tipSaberes) {
-            tipSaberes.innerHTML = (tipoEtapa && TIP_SABERES_POR_ETAPA[tipoEtapa]) 
-                ? TIP_SABERES_POR_ETAPA[tipoEtapa] 
-                : TIP_SABERES_POR_ETAPA['primaria'];
+        if (tipSaberes) {
+            const orientacionEtapa = tipoEtapa && TIP_SABERES_POR_ETAPA[tipoEtapa]
+                ? TIP_SABERES_POR_ETAPA[tipoEtapa]
+                : 'Selecciona los criterios de evaluación y saberes básicos que orientarán la actividad.';
+            const referenciaMateria = ejemplos ? `<p><strong>Referencia de ${materia}:</strong> ${ejemplos.tema}</p>` : '';
+            tipSaberes.innerHTML = `${orientacionEtapa}<p><strong>Ajuste para ${contextoSeleccionado}:</strong> ${ajusteCurso}</p>${referenciaMateria}`;
         }
 
         // B. Paso 4 de UI / step-5 (Contenido subyacente: distinciones y descripción IA)
         const listaDistincionTema = document.getElementById('lista-distincion-tema');
         const descAiSubyacente = document.getElementById('desc-ai-subyacente');
         if (listaDistincionTema) {
-            let dataDist = null;
             if (ejemplos && ejemplos.no_tema && ejemplos.no_objetivo && ejemplos.no_dato) {
-                dataDist = {
-                    no_tema: ejemplos.no_tema,
-                    no_objetivo: ejemplos.no_objetivo,
-                    no_dato: ejemplos.no_dato,
-                    si_idea: ejemplos.tema
-                };
-            } else if (tipoEtapa && DISTINCIONES_TEMA_POR_ETAPA[tipoEtapa]) {
-                dataDist = DISTINCIONES_TEMA_POR_ETAPA[tipoEtapa][familia] || DISTINCIONES_TEMA_POR_ETAPA[tipoEtapa]['general'] || DISTINCIONES_TEMA_POR_ETAPA[tipoEtapa]['lengua'];
-            }
-            if (dataDist) {
                 listaDistincionTema.innerHTML = `
-                    <li><strong>No es el nombre del tema:</strong> ${dataDist.no_tema}</li>
-                    <li><strong>No es un objetivo ni un verbo:</strong> ${dataDist.no_objetivo}</li>
-                    <li><strong>No es un dato memorístico:</strong> ${dataDist.no_dato}</li>
-                    <li><strong>Sí es la idea duradera:</strong> «${dataDist.si_idea}»</li>
+                    <li><strong>No es el nombre del tema:</strong> ${ejemplos.no_tema}</li>
+                    <li><strong>No es un objetivo ni un verbo:</strong> ${ejemplos.no_objetivo}</li>
+                    <li><strong>No es un dato memorístico:</strong> ${ejemplos.no_dato}</li>
+                    <li><strong>Sí es la idea duradera para ${contextoSeleccionado}:</strong> «${ejemplos.tema}»</li>
                 `;
             } else {
-                listaDistincionTema.innerHTML = `
-                    <li><strong>No es el nombre del tema:</strong> «La descripción» o «El relieve» es el tema del libro, no la idea profunda.</li>
-                    <li><strong>No es un objetivo ni un verbo:</strong> «Saber describir un paisaje» dice lo que hará el alumnado, no la idea que sostiene la tarea.</li>
-                    <li><strong>No es un dato memorístico:</strong> «El agua hierve a 100 ºC» es un saber concreto; no genera transferencia por sí solo.</li>
-                    <li><strong>Sí es la idea duradera:</strong> «Describir es elegir qué mirar y qué dejar fuera», o «El relieve condiciona cómo viven las personas y las actividades humanas transforman el paisaje».</li>
-                `;
+                listaDistincionTema.innerHTML = `<li>${mensajeSinEjemplo}</li>`;
             }
         }
-        if (descAiSubyacente && dataDisc) {
-            if (tipoEtapa === 'infantil') descAiSubyacente.textContent = "Ayuda a formular la idea duradera para Infantil (enfoque vivencial y comprensible en asamblea).";
-            else if (tipoEtapa === 'bachillerato') descAiSubyacente.textContent = `Ayuda a formular la idea duradera para Bachillerato en ${nombreMateriaActivo} con alto rigor conceptual y epistemológico.`;
-            else if (tipoEtapa === 'secundaria') descAiSubyacente.textContent = `Ayuda a formular la idea duradera para Secundaria en ${nombreMateriaActivo} con rigor competencial.`;
-            else descAiSubyacente.textContent = `Ayuda a formular la idea duradera en ${nombreMateriaActivo} superando las tres señales.`;
+        if (descAiSubyacente) {
+            descAiSubyacente.textContent = `Formula una sola frase sustantiva y transferible para ${contextoSeleccionado}. ${ajusteCurso}`;
         }
 
-        // C. Paso 5 de UI / step-6 (Título motivador: puntos clave, desc IA y modal)
-        const listaPuntosTitulo = document.getElementById('lista-puntos-clave-titulo');
-        const descAiTitulo = document.getElementById('desc-ai-titulo');
-        if (listaPuntosTitulo && tipoEtapa && TITULO_ORIENTACIONES_POR_ETAPA[tipoEtapa]) {
-            const dataTit = TITULO_ORIENTACIONES_POR_ETAPA[tipoEtapa];
-            let htmlPuntos = '';
-            dataTit.puntos_clave.forEach(p => { htmlPuntos += `<li>${p}</li>`; });
-            listaPuntosTitulo.innerHTML = htmlPuntos;
-            if (descAiTitulo && dataDisc) descAiTitulo.textContent = `Diseña un título motivador y sugerente para ${dataDisc.nombre} (${tipoEtapa}, enfoque SEM).`;
-        } else if (listaPuntosTitulo) {
-            listaPuntosTitulo.innerHTML = `
-                <li>Debe ser un título atractivo, con fantasía o misterio.</li>
-                <li>Sirve para captar el interés del alumnado desde el primer momento.</li>
-                <li>Se presenta como un reto o aventura en lugar de un tema académico tradicional.</li>
-            `;
-            if (descAiTitulo) descAiTitulo.textContent = "Diseña un título motivador y con fantasía para el alumnado (enfoque SEM).";
-        }
-
-        // D. Paso 6 de UI / step-7 (Disparador de pensamiento: comparativa, fórmulas, DUA y desc IA)
+        // C. Paso 5 de UI / step-6 (Disparador de pensamiento: comparativa, fórmulas, DUA y desc IA)
         const textoCompDisparador = document.getElementById('texto-comparativa-disparador');
         const labelFormulas = document.getElementById('label-formulas-disparador');
         const contFormulas = document.getElementById('contenedor-formulas-disparador');
@@ -3351,107 +3378,126 @@
         const descAiDisp = document.getElementById('desc-ai-disparador');
 
         if (textoCompDisparador && ejemplos) {
-            textoCompDisparador.innerHTML = `El <strong>contenido subyacente</strong> (paso 4) es la idea de fondo que orienta al <em>docente</em> al programar y evaluar (ej.: «${ejemplos.tema}»). La <strong>pregunta disparadora</strong> es la puerta de entrada para el <em>alumnado</em> (ej.: «${ejemplos.pregunta}»).`;
+            textoCompDisparador.innerHTML = `Para <strong>${contextoSeleccionado}</strong>, el <strong>contenido subyacente</strong> (paso 4) es la idea que orienta al <em>docente</em> al programar y evaluar (como «${ejemplos.tema}»). La <strong>pregunta disparadora</strong> abre la indagación para el <em>alumnado</em> (como «${ejemplos.pregunta}»).`;
         } else if (textoCompDisparador) {
-            textoCompDisparador.innerHTML = `El <strong>contenido subyacente</strong> (paso 4) es la idea de fondo que orienta al <em>docente</em> al programar y evaluar (ej.: «La perspectiva condiciona lo que sabemos de una historia»). La <strong>pregunta disparadora</strong> es la puerta de entrada para el <em>alumnado</em> (ej.: «Caperucita Roja contada por el lobo: ¿cambia la historia?»).`;
+            textoCompDisparador.textContent = mensajeSinEjemplo;
         }
 
-        if (labelFormulas && contFormulas && tipoEtapa && FORMULAS_DISPARADOR_POR_ETAPA[tipoEtapa]) {
-            const dataForm = FORMULAS_DISPARADOR_POR_ETAPA[tipoEtapa];
-            labelFormulas.textContent = dataForm.etiqueta;
-            let htmlForm = '';
-            dataForm.cards.forEach(c => {
-                htmlForm += `<div class="senal-card"><strong>${c.titulo}</strong>${c.desc}</div>`;
-            });
-            contFormulas.innerHTML = htmlForm;
+        if (labelFormulas && contFormulas) {
+            if (tipoEtapa && FORMULAS_DISPARADOR_POR_ETAPA[tipoEtapa]) {
+                const dataForm = FORMULAS_DISPARADOR_POR_ETAPA[tipoEtapa];
+                labelFormulas.textContent = `Preguntas para ${contextoSeleccionado}:`;
+                let htmlForm = '';
+                dataForm.cards.forEach(c => {
+                    htmlForm += `<div class="senal-card"><strong>${c.titulo}</strong>${c.desc}</div>`;
+                });
+                if (ejemplos && ejemplos.pregunta) {
+                    htmlForm += `<div class="senal-card"><strong>Referencia de ${materia}</strong>${ejemplos.pregunta}</div>`;
+                }
+                contFormulas.innerHTML = htmlForm;
+            } else {
+                labelFormulas.textContent = 'Preguntas para la materia y el curso seleccionados:';
+                contFormulas.innerHTML = `<div class="senal-card">${mensajeSinEjemplo}</div>`;
+            }
         }
 
-        if (listaDuaDisp && tipoEtapa && DUA_DISPARADOR_POR_ETAPA[tipoEtapa]) {
-            let htmlDua = '';
-            DUA_DISPARADOR_POR_ETAPA[tipoEtapa].forEach(item => {
-                htmlDua += `<li><strong>${item.titulo}</strong> ${item.desc}</li>`;
-            });
-            listaDuaDisp.innerHTML = htmlDua;
+        if (listaDuaDisp) {
+            if (tipoEtapa && DUA_DISPARADOR_POR_ETAPA[tipoEtapa]) {
+                let htmlDua = '';
+                DUA_DISPARADOR_POR_ETAPA[tipoEtapa].forEach(item => {
+                    htmlDua += `<li><strong>${item.titulo}</strong> ${item.desc}</li>`;
+                });
+                htmlDua += `<li><strong>Ajuste para ${contextoSeleccionado}:</strong> ${ajusteCurso}${ejemplos ? ` Material de referencia: ${ejemplos.material}` : ''}</li>`;
+                listaDuaDisp.innerHTML = htmlDua;
+            } else {
+                listaDuaDisp.innerHTML = `<li>${mensajeSinEjemplo}</li>`;
+            }
         }
 
-        if (descAiDisp && dataDisc) {
-            descAiDisp.textContent = `Genera preguntas abiertas y dilemas esenciales (5W2H) para ${nombreMateriaActivo}.`;
+        if (descAiDisp) {
+            descAiDisp.textContent = `Genera preguntas abiertas y dilemas esenciales (5W2H) para ${contextoSeleccionado}. ${ajusteCurso}`;
         }
 
-        // E. Paso 7 de UI / step-8 (Niveles de andamiaje y reto adaptados a la materia)
+        // D. Paso 6 de UI / step-7 (Niveles de andamiaje y reto adaptados a la materia)
         const labelReto = document.getElementById('label-niveles-reto');
         const contenedorReto = document.getElementById('contenedor-niveles-reto');
         if (contenedorReto && labelReto) {
-            const retoData = (dataDisc && dataDisc.reto_niveles) ? dataDisc.reto_niveles : ((tipoEtapa && NIVELES_RETO_POR_ETAPA[tipoEtapa]) ? NIVELES_RETO_POR_ETAPA[tipoEtapa] : null);
-            if (retoData) {
-                labelReto.innerHTML = retoData.etiqueta;
-                let htmlReto = '';
-                retoData.cards.forEach(c => {
-                    htmlReto += `<div class="senal-card"><strong>${c.titulo}</strong>${c.desc}</div>`;
-                });
-                contenedorReto.innerHTML = htmlReto;
-            }
+            labelReto.textContent = `Retos y productos para ${contextoSeleccionado}:`;
+            contenedorReto.innerHTML = ejemplos
+                ? `<div class="senal-card"><strong>Propuestas de ${materia}</strong><p>${ejemplos.reto}</p><p><strong>Ajuste para este curso:</strong> ${ajusteCurso}</p></div>`
+                : `<div class="senal-card">${mensajeSinEjemplo}</div>`;
         }
 
-        // F. Paso 8 de UI / step-9 (Estrategias de feedforward preventivo de la materia)
+        // E. Paso 7 de UI / step-8 (Estrategias de feedforward preventivo de la materia)
         const labelFeed = document.getElementById('label-feedforward-etapa');
         const contenedorFeed = document.getElementById('contenedor-feedforward-etapa');
         if (contenedorFeed && labelFeed) {
-            const feedData = (dataDisc && dataDisc.feedforward) ? dataDisc.feedforward : ((tipoEtapa && ESTRATEGIAS_FEEDFORWARD_POR_ETAPA[tipoEtapa]) ? ESTRATEGIAS_FEEDFORWARD_POR_ETAPA[tipoEtapa] : null);
-            if (feedData) {
-                labelFeed.innerHTML = feedData.etiqueta;
-                let htmlFeed = '';
-                feedData.cards.forEach(c => {
-                    htmlFeed += `<div class="senal-card"><strong>${c.titulo}</strong>${c.desc}</div>`;
-                });
-                contenedorFeed.innerHTML = htmlFeed;
-            }
+            labelFeed.textContent = `Acompañamiento para ${contextoSeleccionado}:`;
+            contenedorFeed.innerHTML = ejemplos
+                ? `<div class="senal-card"><strong>Apoyos para ${materia}</strong><p>${ejemplos.feedforward}</p><p><strong>Ajuste para este curso:</strong> ${ajusteCurso}</p></div>`
+                : `<div class="senal-card">${mensajeSinEjemplo}</div>`;
         }
 
-        // G. Paso 9 de UI / step-10 (Niveles de feedback formativo de Hattie adaptados a la materia)
+        // F. Paso 8 de UI / step-9 (Niveles de feedback formativo de Hattie adaptados a la materia)
         const labelFeedbackNiveles = document.getElementById('label-feedback-niveles');
         const contFeedbackNiveles = document.getElementById('contenedor-feedback-niveles');
         const textoTipElogio = document.getElementById('texto-tip-elogio');
-        if (contFeedbackNiveles && dataDisc && dataDisc.feedback) {
-            if (labelFeedbackNiveles) labelFeedbackNiveles.textContent = `🎯 Niveles de retroalimentación efectiva adaptados a ${nombreMateriaActivo} (Hattie y Timperley, 2007):`;
-            let htmlFb = '';
-            dataDisc.feedback.cards.forEach(c => {
-                htmlFb += `<div class="senal-card"><strong>${c.titulo}</strong>${c.desc}</div>`;
-            });
-            contFeedbackNiveles.innerHTML = htmlFb;
-            if (textoTipElogio && dataDisc.feedback.elogio) {
-                textoTipElogio.innerHTML = `Decir «¡Eres muy inteligente!» o «¡Buen trabajo!» tiene un impacto pedagógico nulo o perjudicial, ya que fomenta mentalidad fija y temor al fracaso (Dweck). ${dataDisc.feedback.elogio}`;
+        if (contFeedbackNiveles) {
+            if (labelFeedbackNiveles) labelFeedbackNiveles.textContent = `Retroalimentación formativa para ${contextoSeleccionado}:`;
+            contFeedbackNiveles.innerHTML = ejemplos
+                ? `<div class="senal-card"><strong>Referencia de ${materia}</strong><p>${ejemplos.feedback}</p><p><strong>Ajuste para este curso:</strong> ${ajusteCurso}</p></div>`
+                : `<div class="senal-card">${mensajeSinEjemplo}</div>`;
+            if (textoTipElogio) {
+                textoTipElogio.textContent = `Describe un acierto observable del trabajo o de una estrategia, e indica un paso realizable para revisarlo y mejorarlo. Ajusta el lenguaje y el apoyo a ${contextoSeleccionado}.`;
             }
         }
 
-        // H. Paso 10 de UI / step-11 (Rúbrica formativa de un solo punto con ejemplo de la materia)
+        // G. Paso 9 de UI / step-10 (Rúbrica formativa de un solo punto con ejemplo de la materia)
         const colApoyo = document.getElementById('rubrica-col-apoyo');
         const colEstandar = document.getElementById('rubrica-col-estandar');
         const colEnriquecimiento = document.getElementById('rubrica-col-enriquecimiento');
-        const rubricaData = (ejemplos && ejemplos.rubrica) ? ejemplos.rubrica : (dataDisc && dataDisc.rubrica_ejemplo ? dataDisc.rubrica_ejemplo : null);
-        if (colApoyo && colEstandar && colEnriquecimiento && rubricaData) {
-            colApoyo.innerHTML = `<strong style="color: #4A5568;">⬅️ En proceso / Apoyo</strong><br><span style="display: block; margin-top: 4px; line-height: 1.4;">${rubricaData.apoyo}</span>`;
-            colEstandar.innerHTML = `<strong style="color: var(--primary-color);">🎯 Estándar de éxito oficial (${nombreMateriaActivo})</strong><br><span style="display: block; margin-top: 4px; line-height: 1.4;">${rubricaData.estandar}</span>`;
-            colEnriquecimiento.innerHTML = `<strong style="color: #059669;">➡️ Enriquecimiento / SEM</strong><br><span style="display: block; margin-top: 4px; line-height: 1.4;">${rubricaData.enriquecimiento}</span>`;
+        const rubricaData = ejemplos && ejemplos.rubrica ? ejemplos.rubrica : null;
+        if (colApoyo && colEstandar && colEnriquecimiento) {
+            if (rubricaData) {
+                colApoyo.innerHTML = `<strong style="color: #4A5568;">Apoyos / necesidades · ${curso}</strong><br><span style="display: block; margin-top: 4px; line-height: 1.4;">${rubricaData.apoyo}<br><strong>Ajuste para el curso:</strong> ${ajusteCurso}</span>`;
+                const estandarCurso = criteriosSeleccionados.length
+                    ? criteriosSeleccionados.map(criterio => `<span style="display: block; margin-top: 4px; line-height: 1.4;">${criterio}</span>`).join('')
+                    : `<span style="display: block; margin-top: 4px; line-height: 1.4;">Selecciona criterios de evaluación de este curso. Referencia de ejemplo por etapa y materia: ${rubricaData.estandar}</span>`;
+                colEstandar.innerHTML = `<strong style="color: var(--primary-color);">Estándar central · ${materia} · ${curso}</strong>${estandarCurso}<span style="display: block; margin-top: 8px; line-height: 1.4;"><strong>Ajuste para el curso:</strong> ${ajusteCurso}</span>`;
+                colEnriquecimiento.innerHTML = `<strong style="color: #059669;">Evidencias de profundización · ${curso}</strong><br><span style="display: block; margin-top: 4px; line-height: 1.4;">${rubricaData.enriquecimiento}<br><strong>Ajuste para el curso:</strong> ${ajusteCurso}</span>`;
+            } else {
+                colApoyo.textContent = mensajeSinEjemplo;
+                colEstandar.textContent = mensajeSinEjemplo;
+                colEnriquecimiento.textContent = mensajeSinEjemplo;
+            }
         }
 
         // I. Adaptar Placeholders y Ejemplos de los Campos
         const inputTema = document.getElementById('input-tema');
-        const inputTitulo = document.getElementById('input-titulo-alumnado');
         const inputDispPreg = document.getElementById('input-disparador-pregunta-principal');
         const inputDispMat = document.getElementById('input-disparador-material');
-        const inputReto = document.getElementById('input-reto');
+        const editoresReto = document.querySelectorAll('#retos-container .reto-editor');
         const inputFeed = document.getElementById('input-feedforward');
         const inputFeedback = document.getElementById('input-feedback');
 
         if (ejemplos) {
-            if (inputTema) inputTema.placeholder = `Por ejemplo: ${ejemplos.tema}`;
-            if (inputTitulo) inputTitulo.placeholder = `Por ejemplo: ${ejemplos.titulo}...`;
-            if (inputDispPreg) inputDispPreg.placeholder = `Por ejemplo: ${ejemplos.pregunta}`;
-            if (inputDispMat) inputDispMat.placeholder = `Por ejemplo: ${ejemplos.material}`;
-            if (inputReto) inputReto.placeholder = `Escribe aquí el reto y las opciones diversificadas de producto (por ejemplo: ${ejemplos.reto})...`;
-            if (inputFeed) inputFeed.placeholder = `Por ejemplo: ${ejemplos.feedforward}...`;
-            if (inputFeedback) inputFeedback.placeholder = `Por ejemplo: ${ejemplos.feedback}...`;
+            if (inputTema) inputTema.placeholder = `Ejemplo de ${contextoSeleccionado}: ${ejemplos.tema} ${ajusteCurso}`;
+            if (inputDispPreg) inputDispPreg.dataset.placeholder = `Ejemplo de ${contextoSeleccionado}: ${ejemplos.pregunta} ${ajusteCurso}`;
+            if (inputDispMat) inputDispMat.dataset.placeholder = `Ejemplo de ${contextoSeleccionado}: ${ejemplos.material} ${ajusteCurso}`;
+            editoresReto.forEach(editor => {
+                editor.dataset.placeholder = `Diseña un reto de ${contextoSeleccionado}. ${ejemplos.reto} ${ajusteCurso}`;
+            });
+            if (inputFeed) inputFeed.dataset.placeholder = `Apoyos para ${contextoSeleccionado}: ${ejemplos.feedforward} ${ajusteCurso}`;
+            if (inputFeedback) inputFeedback.dataset.placeholder = `Retroalimentación para ${contextoSeleccionado}: ${ejemplos.feedback} ${ajusteCurso}`;
+        } else {
+            if (inputTema) inputTema.placeholder = mensajeSinEjemplo;
+            if (inputDispPreg) inputDispPreg.dataset.placeholder = mensajeSinEjemplo;
+            if (inputDispMat) inputDispMat.dataset.placeholder = mensajeSinEjemplo;
+            editoresReto.forEach(editor => {
+                editor.dataset.placeholder = mensajeSinEjemplo;
+            });
+            if (inputFeed) inputFeed.dataset.placeholder = mensajeSinEjemplo;
+            if (inputFeedback) inputFeedback.dataset.placeholder = mensajeSinEjemplo;
         }
     }
 
@@ -3553,6 +3599,7 @@
 
         if (competenciasChecks.length === 0) {
             contenedorSaberes.innerHTML = '<div class="empty-state">Selecciona al menos una competencia en el paso anterior.</div>';
+            adaptarInterfazPorEtapaYMateria();
             return;
         }
 
@@ -3569,7 +3616,7 @@
                 const idCrit = `crit_${indexComp}_${i}`;
                 criteriosHtml += `
                     <div class="curriculum-item" style="padding-bottom: 0.8rem; margin-bottom: 0.8rem;">
-                        <input type="checkbox" id="${idCrit}" class="chk-criterio">
+                    <input type="checkbox" id="${idCrit}" class="chk-criterio" onchange="adaptarInterfazPorEtapaYMateria()">
                         <label for="${idCrit}" style="font-weight: bold; color: var(--text-color); font-size: 15px;">${crit.texto}</label>
                     </div>
                 `;
@@ -3604,8 +3651,8 @@
 
                 htmlSaberes += `
                     <details class="saber-details" style="margin-bottom: 0.8rem; background-color: #F9F9F9; border: 1px solid var(--border-color); border-radius: var(--border-radius);">
-                        <summary style="padding: 1rem; font-weight: bold; cursor: pointer; color: var(--text-color); list-style: none; display: flex; align-items: center;">
-                            <span class="arrow" style="margin-right: 10px; color: var(--primary-color);">▶</span> ${bloque.titulo}
+                        <summary style="padding: 1rem; font-weight: bold; cursor: pointer; color: var(--text-color);">
+                            ${bloque.titulo}
                         </summary>
                         <div style="padding: 0 1rem 1rem 1rem; background-color: #FFFFFF; border-top: 1px solid #EAEAEA; padding-top: 1rem;">
                             ${listaSaberes}
@@ -3617,7 +3664,212 @@
         }
 
         contenedorSaberes.innerHTML = htmlContenidoTotal;
+        adaptarInterfazPorEtapaYMateria();
     }
+
+    function leerTextoCampo(id) {
+        const elemento = document.getElementById(id);
+        if (!elemento) return '';
+        return (elemento.isContentEditable ? textoPlanoDesdeHtml(elemento) : elemento.value).replace(/\u00a0/g, ' ').trim();
+    }
+
+    let numeroRetoFinal = document.querySelectorAll('.reto-editor').length;
+
+    function obtenerRetosFinales() {
+        return Array.from(document.querySelectorAll('#retos-container .reto-editor'))
+            .map((editor, indice) => ({
+                numero: indice + 1,
+                texto: textoPlanoDesdeHtml(editor),
+                html: sanitizarHtmlRubrica(editor.innerHTML)
+            }))
+            .filter(reto => reto.texto);
+    }
+
+    function actualizarEtiquetasRetos() {
+        document.querySelectorAll('#retos-container [data-reto-card]').forEach((tarjeta, indice) => {
+            const numero = indice + 1;
+            const etiqueta = tarjeta.querySelector('.reto-card-header label');
+            const editor = tarjeta.querySelector('.reto-editor');
+            const botonEliminar = tarjeta.querySelector('.btn-remove-reto');
+            etiqueta.id = `reto-label-${numero}`;
+            etiqueta.htmlFor = editor.id;
+            etiqueta.textContent = `Reto final ${numero}`;
+            tarjeta.setAttribute('aria-labelledby', etiqueta.id);
+            editor.setAttribute('aria-label', etiqueta.textContent);
+            botonEliminar.hidden = numero === 1;
+            botonEliminar.setAttribute('aria-label', `Eliminar reto final ${numero}`);
+        });
+    }
+
+    function conectarEditorMarkdown(editor) {
+        editor.addEventListener('paste', procesarPegadoMarkdown);
+    }
+
+    function agregarReto() {
+        const contenedor = document.getElementById('retos-container');
+        const tarjetaInicial = contenedor.querySelector('[data-reto-card]');
+        const nuevaTarjeta = tarjetaInicial.cloneNode(true);
+        const editor = nuevaTarjeta.querySelector('.reto-editor');
+        editor.id = `input-reto-${++numeroRetoFinal}`;
+        editor.innerHTML = '';
+        nuevaTarjeta.querySelector('.btn-remove-reto').hidden = false;
+        contenedor.appendChild(nuevaTarjeta);
+        conectarEditorMarkdown(editor);
+        actualizarEtiquetasRetos();
+        editor.focus();
+    }
+
+    function eliminarReto(boton) {
+        const tarjeta = boton.closest('[data-reto-card]');
+        const tarjetas = document.querySelectorAll('#retos-container [data-reto-card]');
+        if (!tarjeta || tarjeta === tarjetas[0] || tarjetas.length < 2) return;
+
+        const tarjetaEnfocada = tarjeta.previousElementSibling || tarjeta.nextElementSibling;
+        tarjeta.remove();
+        actualizarEtiquetasRetos();
+        const editor = tarjetaEnfocada && tarjetaEnfocada.querySelector('.reto-editor');
+        if (editor) editor.focus();
+    }
+
+    function textoPlanoDesdeHtml(elemento) {
+        return Array.from(elemento.childNodes).map(nodo => {
+            if (nodo.nodeType === Node.TEXT_NODE) return nodo.nodeValue;
+            if (nodo.nodeType !== Node.ELEMENT_NODE) return '';
+            if (nodo.tagName === 'BR') return '\n';
+
+            const texto = textoPlanoDesdeHtml(nodo);
+            if (nodo.tagName === 'LI') return `- ${texto.trim()}\n`;
+            return ['DIV', 'H2', 'H3', 'P', 'UL', 'OL'].includes(nodo.tagName) ? `${texto}\n` : texto;
+        }).join('').replace(/\n{3,}/g, '\n\n').trim();
+    }
+
+    function escaparHtml(texto) {
+        return texto.replace(/[&<>"]/g, caracter => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;'
+        })[caracter]);
+    }
+
+    function markdownEnLineaAHtml(texto) {
+        return escaparHtml(texto).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function markdownAHtml(texto) {
+        const salida = [];
+        const parrafo = [];
+        let tipoLista = '';
+        const lineas = texto.split(/\r?\n/);
+        const separarCeldas = linea => linea.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map(celda => celda.trim());
+        const esSeparadorTabla = linea => /^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(linea);
+
+        const cerrarParrafo = () => {
+            if (parrafo.length) {
+                salida.push(`<p>${parrafo.map(markdownEnLineaAHtml).join('<br>')}</p>`);
+                parrafo.length = 0;
+            }
+        };
+        const cerrarLista = () => {
+            if (tipoLista) {
+                salida.push(`</${tipoLista}>`);
+                tipoLista = '';
+            }
+        };
+
+        for (let indice = 0; indice < lineas.length; indice++) {
+            const linea = lineas[indice];
+            const encabezado = linea.match(/^\s{0,3}#{1,6}\s+(.+?)\s*#*\s*$/);
+            const listaConGuion = linea.match(/^\s*[-*+]\s+(.+)$/);
+            const numerada = linea.match(/^\s*\d+[.)]\s+(.+)$/);
+            const siguienteLinea = lineas[indice + 1] || '';
+
+            if (linea.includes('|') && siguienteLinea.includes('|') && esSeparadorTabla(siguienteLinea)) {
+                cerrarParrafo();
+                cerrarLista();
+                const encabezados = separarCeldas(linea);
+                salida.push('<table><thead><tr>');
+                encabezados.forEach(celda => salida.push(`<th>${markdownEnLineaAHtml(celda)}</th>`));
+                salida.push('</tr></thead><tbody>');
+
+                indice += 2;
+                while (indice < lineas.length && lineas[indice].includes('|') && lineas[indice].trim()) {
+                    const celdas = separarCeldas(lineas[indice]);
+                    salida.push('<tr>');
+                    encabezados.forEach((_, columna) => {
+                        salida.push(`<td>${markdownEnLineaAHtml(celdas[columna] || '')}</td>`);
+                    });
+                    salida.push('</tr>');
+                    indice++;
+                }
+                salida.push('</tbody></table>');
+                indice--;
+            } else if (!linea.trim()) {
+                cerrarParrafo();
+                cerrarLista();
+            } else if (encabezado) {
+                cerrarParrafo();
+                cerrarLista();
+                const nivel = linea.match(/^\s{0,3}(#+)/)[1].length;
+                const etiqueta = nivel <= 2 ? 'h2' : 'h3';
+                salida.push(`<${etiqueta}>${markdownEnLineaAHtml(encabezado[1])}</${etiqueta}>`);
+            } else if (listaConGuion || numerada) {
+                cerrarParrafo();
+                const nuevoTipo = listaConGuion ? 'ul' : 'ol';
+                if (tipoLista !== nuevoTipo) {
+                    cerrarLista();
+                    salida.push(`<${nuevoTipo}>`);
+                    tipoLista = nuevoTipo;
+                }
+                salida.push(`<li>${markdownEnLineaAHtml((listaConGuion || numerada)[1])}</li>`);
+            } else {
+                cerrarLista();
+                parrafo.push(linea);
+            }
+        }
+
+        cerrarParrafo();
+        cerrarLista();
+        return salida.join('');
+    }
+
+    function insertarHtmlEnEditor(editor, html) {
+        editor.focus();
+        const seleccion = window.getSelection();
+        if (!seleccion || !seleccion.rangeCount || !editor.contains(seleccion.anchorNode)) {
+            editor.insertAdjacentHTML('beforeend', html);
+            return;
+        }
+
+        const rango = seleccion.getRangeAt(0);
+        rango.deleteContents();
+        const fragmento = rango.createContextualFragment(html);
+        const ultimoNodo = fragmento.lastChild;
+        rango.insertNode(fragmento);
+        if (ultimoNodo) {
+            rango.setStartAfter(ultimoNodo);
+            rango.collapse(true);
+            seleccion.removeAllRanges();
+            seleccion.addRange(rango);
+        }
+    }
+
+    function procesarPegadoMarkdown(evento) {
+        const texto = evento.clipboardData ? evento.clipboardData.getData('text/plain') : '';
+        const html = evento.clipboardData ? evento.clipboardData.getData('text/html') : '';
+        const contieneTablaMarkdown = /(^|\n)\s*\|?[^\n]*\|[^\n]*\|?\s*\r?\n\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?\s*(?:\r?\n|$)/.test(texto);
+        const contieneMarkdown = contieneTablaMarkdown || /(^|\n)\s{0,3}(?:#{1,6}\s+|[-*+]\s+|\d+[.)]\s+)|\*\*[^*\n]+\*\*/.test(texto);
+        if (contieneMarkdown) {
+            evento.preventDefault();
+            insertarHtmlEnEditor(evento.currentTarget, markdownAHtml(texto));
+        } else if (html) {
+            evento.preventDefault();
+            const contenidoSeguro = sanitizarHtmlRubrica(html);
+            if (contenidoSeguro) insertarHtmlEnEditor(evento.currentTarget, contenidoSeguro);
+        }
+    }
+
+    document.querySelectorAll('.markdown-editor, #input-rubrica').forEach(conectarEditorMarkdown);
 
     function parsearMarkdown(texto) {
         const lineas = texto.split('\n');
@@ -3681,7 +3933,7 @@
         const modTexto = (selMod && selMod.value) ? selMod.options[selMod.selectedIndex].text : '';
         
         const selMat = document.getElementById('sel-materia');
-        const materiaTexto = (selMat && selMat.selectedIndex > 0) ? selMat.options[selMat.selectedIndex].text : 'Sin especificar';
+        const materiaTexto = (selMat && selMat.selectedIndex > 0) ? selMat.value : 'Sin especificar';
 
         const comps = [];
         document.querySelectorAll('#box-competencias input[type="checkbox"]:checked').forEach(chk => {
@@ -3702,32 +3954,35 @@
         });
 
         const tema = document.getElementById('input-tema') ? document.getElementById('input-tema').value.trim() : '';
-        const tituloAlumnado = document.getElementById('input-titulo-alumnado') ? document.getElementById('input-titulo-alumnado').value.trim() : '';
-        const preguntaDisp = document.getElementById('input-disparador-pregunta-principal') ? document.getElementById('input-disparador-pregunta-principal').value.trim() : '';
-        const reto = document.getElementById('input-reto') ? document.getElementById('input-reto').value.trim() : '';
+        const preguntaDisp = leerTextoCampo('input-disparador-pregunta-principal');
+        const retos = obtenerRetosFinales();
 
         let peticionObjetivo = '';
         if (tipoAgente === 'contenido_subyacente') {
-            peticionObjetivo = 'A partir del currículo oficial seleccionado, propón una formulación rigurosa del contenido subyacente (idea duradera y transferible para el docente), verificando que supera la prueba de las tres señales (trasciende el dato puntual, perdura en el tiempo y transfiere a otros contextos).';
-        } else if (tipoAgente === 'titulo_motivador') {
-            peticionObjetivo = 'Proponme 3 o 4 opciones de títulos motivadores con un toque de intriga o fantasía (enfoque SEM) para presentar la situación de aprendizaje al alumnado de esta etapa.';
+            peticionObjetivo = 'A partir de los criterios de evaluación y saberes básicos seleccionados, formula el contenido subyacente como una sola frase clara, sustantiva y transferible. El criterio de evaluación es el elemento curricular más afín, pero no lo copies como objetivo: expresa una idea duradera que trascienda los saberes concretos, no una acción con verbo en infinitivo. Verifica que supere las tres señales. Devuelve únicamente esa frase, sin explicaciones, alternativas ni desarrollo.';
         } else if (tipoAgente === 'disparador') {
             peticionObjetivo = 'Diseña la pregunta disparadora esencial y 3 o 4 preguntas abiertas guiadas (técnica 5W2H) que despierten la curiosidad y activen conocimientos previos de todo el grupo-aula, asegurando multinivelación bajo DUA v3.0.';
         } else if (tipoAgente === 'reto') {
-            peticionObjetivo = 'Diseña un reto abierto multinivel con opciones de producto final diversificadas (acceso fundamental, profundización y reto de enriquecimiento SEM para alumnado que domine el contenido) con andamiaje DUA v3.0.';
+            peticionObjetivo = 'Propón varios retos finales abiertos, independientes y viables que puedan convivir en el aula, vinculados al mismo contenido subyacente y criterio de evaluación. Para cada reto, plantea vías de acceso, profundización y enriquecimiento SEM con opciones de producto asequibles y variadas (por ejemplo, fanzine, pódcast breve, encuesta con gráficos, infografía, guía o artículo). Evita repetir maquetas o dramatizaciones salvo que sean propias de la materia y no denomines «tarea» a los retos. Devuelve cada propuesta en un bloque numerado separado para introducirla en una celda independiente.';
+        } else if (tipoAgente === 'feedforward') {
+            peticionObjetivo = 'Diseña una guía de feedforward procedimental y metacognitiva para los retos finales incluidos. Mantén cada reto independiente y crea una secuencia específica para cada uno. Prioriza aprender a pensar y selecciona solo las estrategias pertinentes, como «Veo, pienso, me pregunto», KWL, contraste crítico de fuentes o modelado de tablas y gráficos; no las fuerces ni las acumules. Organiza las acciones antes y durante el trabajo e indica qué hará el alumnado, qué modelará o facilitará el docente, qué apoyos concretos utilizará el alumnado y qué preguntas breves le ayudarán a planificar y revisar. Incluye una comprobación final y adapta el lenguaje y los apoyos a la etapa y materia. No resuelvas ni reformules los retos. Si falta etapa, materia o reto final, pide solo el primer dato que falte y espera la respuesta antes de continuar. Devuelve solo la guía en Markdown, lista para pegar en el campo Feedforward, sin explicaciones, citas ni referencias bibliográficas.';
+        } else if (tipoAgente === 'feedback') {
+            peticionObjetivo = 'Diseña una propuesta de retroalimentación formativa para los retos finales incluidos. Mantén cada reto independiente. Propón momentos concretos para revisar el trabajo durante su desarrollo y comentarios vinculados a evidencias del producto, a las estrategias empleadas y a un siguiente paso realizable. Cuando incluyas elogios, céntralos exclusivamente en una decisión, acción o estrategia observable del trabajo; no elogies a la persona ni uses elogios genéricos. Formula preguntas guía solo cuando ayuden a avanzar, sin convertir cada comentario en una pregunta ni dar la solución hecha. Incluye tiempo y una forma concreta de aplicar las sugerencias y volver a entregar el trabajo. Adapta el lenguaje a la etapa y materia; no añadas notas, juicios finales, siglas, nombres propios, citas ni referencias. Si falta información imprescindible, pide solo un dato cada vez. Devuelve únicamente una guía breve en Markdown, lista para pegar en el campo de retroalimentación formativa y reentrega.';
         } else if (tipoAgente === 'evaluacion') {
-            peticionObjetivo = 'Elabora una rúbrica formativa de un solo punto alineada con los criterios de evaluación seleccionados, incluyendo indicadores observables de éxito y recomendaciones de feedforward preventivo y feedback autorregulador.';
+            peticionObjetivo = 'Elabora una sola rúbrica formativa de un solo punto para todos los retos finales incluidos, como opciones de trabajo del mismo aprendizaje. Devuelve únicamente una tabla Markdown con exactamente estas tres columnas y en este orden: «Apoyos / necesidades», «Estándar central vinculado al criterio» y «Evidencias de profundización». Formula el estándar central como desempeño observable vinculado a los criterios seleccionados; incluye una fila por cada criterio común a los retos. Las necesidades de apoyo y las evidencias de profundización deben ser útiles para cualquiera de las opciones, sin exigir un formato de producto. Evalúa el aprendizaje demostrado frente al criterio, no la calidad estética, el formato, la complejidad técnica ni el tipo de producto. No crees una rúbrica separada para cada reto, no añadas columnas, puntuaciones ni texto fuera de la tabla. Si no hay retos finales o criterios seleccionados, pide únicamente el primer dato que falte y espera. Si los criterios seleccionados no son comunes a todos los retos, pide que se indique un criterio común y espera antes de generar la rúbrica.';
         } else {
             peticionObjetivo = 'Ayúdame a estructurar esta propuesta docente asegurando rigor curricular oficial de Castilla-La Mancha y diseño multinivel SEM y DUA v3.0.';
         }
 
         let texto = `Actúa como asesor experto en diseño de situaciones de aprendizaje multinivel fundamentadas en el Modelo de Enriquecimiento para Toda la Escuela (SEM) y el Diseño Universal para el Aprendizaje (DUA v3.0), articuladas con el currículo oficial LOMLOE de Castilla-La Mancha.\n\n`;
 
-        const tipoEtapa = detectarTipoEtapa(document.getElementById('sel-etapa') ? document.getElementById('sel-etapa').value : null);
-        const materiaVal = document.getElementById('sel-materia') ? document.getElementById('sel-materia').value : '';
         const claveEtapaVal = obtenerClaveEtapa();
-        const famVal = detectarFamiliaDidactica(materiaVal, claveEtapaVal);
-        const dataDiscGtc = (typeof DISCIPLINA_DATA !== 'undefined' && DISCIPLINA_DATA[famVal]) ? DISCIPLINA_DATA[famVal] : null;
+        const tipoEtapa = detectarTipoEtapa(claveEtapaVal);
+        const materiaVal = selMat && selMat.selectedIndex > 0 ? selMat.value : '';
+        const ajusteCurso = obtenerAjusteCurso(claveEtapaVal);
+        const ejemplosAgente = tipoEtapa && materiaVal && typeof EJEMPLOS_POR_MATERIA !== 'undefined'
+            ? EJEMPLOS_POR_MATERIA[tipoEtapa] && EJEMPLOS_POR_MATERIA[tipoEtapa][materiaVal]
+            : null;
         if (tipoEtapa === 'infantil') {
             texto += `[DIRECTRIZ DE ETAPA - EDUCACIÓN INFANTIL]\nAdapta todo el vocabulario, dinámicas y propuestas al segundo ciclo de educación infantil. Prioriza el juego libre y guiado, la asamblea, la estimulación multisensorial, el modelado directo y la participación activa sin exigencias lectoescritoras formales.\n\n`;
         } else if (tipoEtapa === 'primaria') {
@@ -3738,8 +3993,12 @@
             texto += `[DIRECTRIZ DE ETAPA - BACHILLERATO]\nAdapta las propuestas al nivel de madurez y rigor preuniversitario de bachillerato. Emplea un registro formal académico, promueve la investigación formal, la argumentación epistemológica, el análisis crítico de fuentes complejas y la autonomía en el diseño de productos de enriquecimiento con impacto real externo.\n\n`;
         }
 
-        if (dataDiscGtc) {
-            texto += `[DIRECTRIZ DISCIPLINAR - ${dataDiscGtc.nombre.toUpperCase()}]\nEnfoca todo el diseño didáctico desde la epistemología y metodología específica de ${dataDiscGtc.nombre}. Utiliza vocabulario técnico propio de la materia, plantea retos auténticos de este campo del saber y evita terminología genérica o desvinculada de la disciplina.\n\n`;
+        if (etapaTexto !== 'Sin especificar') {
+            texto += `[AJUSTE DEL CURSO SELECCIONADO]\n${etapaTexto}. ${ajusteCurso}\n\n`;
+        }
+
+        if (materiaVal) {
+            texto += `[DIRECTRIZ DE ASIGNATURA - ${materiaVal}]\nDesarrolla la propuesta para esta asignatura concreta y para el curso seleccionado. Usa el currículo marcado y las referencias específicas que aparecen más abajo; no sustituyas esos datos por ejemplos de otra materia o de otro curso.\n\n`;
         }
 
         texto += `[MARCO CURRICULAR SELECCIONADO]\n`;
@@ -3771,10 +4030,29 @@
         }
         texto += `\n`;
 
+        if (ejemplosAgente) {
+            texto += `[REFERENCIAS DE ${materiaVal.toUpperCase()} EN ESTA ETAPA]\n`;
+            texto += `Contenido subyacente de referencia: ${ejemplosAgente.tema}\n`;
+            texto += `Pregunta disparadora de referencia: ${ejemplosAgente.pregunta}\n`;
+            texto += `Reto de referencia: ${ejemplosAgente.reto}\n`;
+            texto += `Apoyo previo de referencia: ${ejemplosAgente.feedforward}\n`;
+            texto += `Retroalimentación de referencia: ${ejemplosAgente.feedback}\n`;
+            texto += `Aplica el ajuste del curso seleccionado y adapta estas referencias a los criterios y saberes marcados; no las copies si no encajan.\n\n`;
+        } else if (materiaVal) {
+            texto += `[REFERENCIAS DE ${materiaVal.toUpperCase()}]\nNo hay un ejemplo precargado para esta combinación. Parte del currículo y de los datos seleccionados, sin reutilizar ejemplos de otra materia.\n\n`;
+        }
+
         if (tema) texto += `[CONTENIDO SUBYACENTE / IDEA DURADERA]\n${tema}\n\n`;
-        if (tituloAlumnado) texto += `[TÍTULO PARA EL ALUMNADO]\n${tituloAlumnado}\n\n`;
         if (preguntaDisp) texto += `[PREGUNTA DISPARADORA / DISPARADOR]\n${preguntaDisp}\n\n`;
-        if (reto) texto += `[RETO O TAREA MULTINIVEL]\n${reto}\n\n`;
+        if (retos.length) {
+            texto += `[RETOS FINALES / PROPUESTAS DE TRABAJO AUTÉNTICO]\n`;
+            if (tipoAgente === 'evaluacion') {
+                texto += `Considera todos los retos siguientes como opciones para demostrar el mismo aprendizaje y elabora una sola rúbrica común, sin separar la evaluación por reto ni por formato de producto.\n`;
+            }
+            retos.forEach(reto => {
+                texto += `Reto final ${reto.numero}:\n${reto.texto}\n\n`;
+            });
+        }
 
         texto += `[OBJETIVO DE ESTA CONSULTA]\n${peticionObjetivo}`;
         return texto;
@@ -3783,20 +4061,21 @@
     function copiarContextoDirecto(tipoAgente) {
         const texto = generarTextoContexto(tipoAgente);
         navigator.clipboard.writeText(texto).then(() => {
-            mostrarToast('<strong>📋 Contexto curricular copiado</strong><br>El marco curricular y pedagógico se ha copiado al portapapeles. Puedes pegarlo (Ctrl+V) en cualquier documento o chat.');
+            mostrarToast('<strong>Contexto copiado</strong><br>Pégalo con Ctrl+V en el chat del agente y pulsa «Enviar». Este botón no abre Copilot.');
         }).catch(err => {
             console.error('Error al copiar al portapapeles:', err);
-            mostrarToast('⚠️ No se pudo copiar automáticamente. Por favor, revisa los permisos de portapapeles del navegador.');
+            mostrarToast(' No se pudo copiar automáticamente. Por favor, revisa los permisos de portapapeles del navegador.');
         });
     }
 
     function abrirCopilotConContexto(url, tipoAgente) {
         const texto = generarTextoContexto(tipoAgente);
         navigator.clipboard.writeText(texto).then(() => {
-            mostrarToast('<strong>📋 ¡Contexto copiado al portapapeles!</strong><br>Se ha abierto Microsoft 365 Copilot en una nueva pestaña. Pulsa <b>Ctrl+V</b> en el chat para enviar directamente todo el contexto curricular acumulado sin reescribirlo.', 6000);
+            mostrarToast('<strong>Contexto copiado</strong><br>Se ha abierto Microsoft 365 Copilot en una pestaña nueva. Pega el contexto con Ctrl+V y pulsa «Enviar»; el mensaje no se envía automáticamente.', 6000);
             window.open(url, '_blank');
         }).catch(err => {
             console.error('Error al copiar contexto previo a abrir:', err);
+            mostrarToast('No se pudo copiar el contexto automáticamente. Copilot se abrirá; vuelve al aplicativo, pulsa «Copiar contexto» y comprueba los permisos del portapapeles.', 6000);
             window.open(url, '_blank');
         });
     }
@@ -3856,7 +4135,14 @@
     function togglePasswordVisibility() {
         const input = document.getElementById('access-password');
         if (!input) return;
-        input.type = (input.type === 'password') ? 'text' : 'password';
+        const mostrar = input.type === 'password';
+        input.type = mostrar ? 'text' : 'password';
+        const boton = document.querySelector('.btn-toggle-pwd');
+        if (boton) {
+            boton.textContent = mostrar ? 'Ocultar' : 'Mostrar';
+            boton.setAttribute('aria-label', mostrar ? 'Ocultar clave' : 'Mostrar clave');
+            boton.title = mostrar ? 'Ocultar clave' : 'Mostrar clave';
+        }
     }
 
     function bloquearSesion() {
@@ -3873,10 +4159,10 @@
     });
 
     let pasoActual = 1;
-    const totalPasos = 13;
+    const totalPasos = 12;
     const nombresPasos = [
         "Inicio", "Contexto inicial", "Competencia específica", "Saberes y criterios", 
-        "Contenido subyacente", "Título motivador", "Disparador de pensamiento", 
+        "Contenido subyacente", "Disparador de pensamiento",
         "El reto final", "Acompañamiento", "Retroalimentación", "Asistente de evaluación", 
         "Para saber más", "Créditos"
     ];
@@ -3920,9 +4206,9 @@
             let pasoVisible = pasoActual - 1;
             let porcentaje = 0;
             
-            if (pasoActual <= 11) {
-                porcentaje = (pasoVisible / 10) * 100;
-                progressText.textContent = `Paso ${pasoVisible} de 10: ${nombresPasos[pasoActual-1]}`;
+            if (pasoActual <= 10) {
+                porcentaje = (pasoVisible / 9) * 100;
+                progressText.textContent = `Paso ${pasoVisible} de 9: ${nombresPasos[pasoActual-1]}`;
             } else {
                 porcentaje = 100;
                 progressText.textContent = `Información adicional: ${nombresPasos[pasoActual-1]}`;
@@ -3935,9 +4221,9 @@
             btnNext.style.display = 'none';
         } else {
             btnNext.style.display = 'inline-block';
-            if (pasoActual === 11) {
+            if (pasoActual === 10) {
                 btnNext.textContent = 'Para saber más';
-            } else if (pasoActual === 12) {
+            } else if (pasoActual === 11) {
                 btnNext.textContent = 'Créditos';
             } else {
                 btnNext.textContent = 'Siguiente';
@@ -4040,7 +4326,6 @@
         const materia = materiaSel.options[materiaSel.selectedIndex]?.text || 'No definida';
         
         const tema = document.getElementById('input-tema').value || 'Sin especificar';
-        const tituloAlumnado = document.getElementById('input-titulo-alumnado').value || 'Sin especificar';
 
         // Lógica para rescatar competencias y saberes marcados
         const etapaVal = obtenerClaveEtapa();
@@ -4069,7 +4354,7 @@
         const saberesSeleccionados = [];
         const uiSaberDetails = document.querySelectorAll('#contenedor-saberes-criterios .saber-details');
         uiSaberDetails.forEach(details => {
-            const title = details.querySelector('summary').textContent.replace('▶', '').trim();
+            const title = details.querySelector('summary').textContent.trim();
             const checks = details.querySelectorAll('.chk-saber:checked');
             if (checks.length > 0) {
                 const list = Array.from(checks).map(c => c.nextElementSibling.textContent.trim());
@@ -4077,12 +4362,12 @@
             }
         });
 
-        const disparadorP = document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.';
-        const disparadorM = document.getElementById('input-disparador-material').value || 'No se ha definido material inicial.';
-        const disparadorQ = document.getElementById('input-disparador-preguntas').value || 'No se han definido preguntas abiertas.';
-        const reto = document.getElementById('input-reto').value || 'No se ha definido el reto.';
-        const feedfw = document.getElementById('input-feedforward').value || 'No se han definido ayudas previas.';
-        const feedbk = document.getElementById('input-feedback').value || 'No se ha definido retroalimentación.';
+        const disparadorP = leerTextoCampo('input-disparador-pregunta-principal') || 'No se ha definido una pregunta disparadora.';
+        const disparadorM = leerTextoCampo('input-disparador-material') || 'No se ha definido material inicial.';
+        const disparadorQ = leerTextoCampo('input-disparador-preguntas') || 'No se han definido preguntas abiertas.';
+        const retos = obtenerRetosFinales();
+        const feedfw = leerTextoCampo('input-feedforward') || 'No se han definido ayudas previas.';
+        const feedbk = leerTextoCampo('input-feedback') || 'No se ha definido retroalimentación.';
 
         // Comprobar si hay rúbrica y convertirla para pdfMake
         const rubricaEl = document.getElementById('input-rubrica');
@@ -4143,7 +4428,6 @@
                 cabeceraAzul('1. Contexto curricular'),
                 { text: [{ text: 'Etapa y materia: ', bold: true }, etapaTexto + ' - ' + materia], style: 'normalText' },
                 { text: [{ text: 'Contenido subyacente: ', bold: true }, tema], style: 'normalText' },
-                { text: [{ text: 'Título para el alumnado: ', bold: true }, tituloAlumnado], style: 'normalText' },
                 { text: 'Competencias específicas seleccionadas:', bold: true, margin: [0, 10, 0, 5] },
                 ...(compSeleccionadas.length > 0 
                     ? compSeleccionadas.map(c => ({ text: c, style: 'normalText', margin: [0, 0, 0, 5] }))
@@ -4173,8 +4457,11 @@
                 { text: 'Preguntas para el debate:', bold: true, margin: [0, 10, 0, 5] },
                 { text: disparadorQ, style: 'normalText' },
 
-                cabeceraAzul('3. El reto'),
-                { text: reto, style: 'normalText' },
+                cabeceraAzul('3. Retos y desafíos'),
+                ...(retos.length ? retos.flatMap(reto => [
+                    { text: `Reto final ${reto.numero}`, bold: true, margin: [0, 5, 0, 4] },
+                    { text: reto.texto, style: 'normalText' }
+                ]) : [{ text: 'No se han definido retos finales.', style: 'normalText', italics: true }]),
 
                 cabeceraAzul('4. Acompañamiento: feedforward'),
                 { text: 'Ayudas y andamiajes previos previstos para orientar el antes y el durante:', italics: true, margin: [0, 0, 0, 5] },
@@ -4190,6 +4477,7 @@
                 ] : []),
 
                 { canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1, lineColor: '#767676' }], margin: [0, 30, 0, 10] },
+                { text: 'Autoría colegiada: Lucía Serrano, Antonio Miñán y Lola Bonillo.', fontSize: 10, color: '#555555', alignment: 'center', margin: [0, 0, 0, 4] },
                 { text: 'Documento generado automáticamente por el asistente multinivel.', fontSize: 10, color: '#555555', alignment: 'center' }
             ],
             styles: {
@@ -4219,7 +4507,7 @@
         elementosPeligrosos.forEach(el => el.remove());
 
         // Lista blanca de etiquetas de tabla y texto enriquecido seguro
-        const etiquetasPermitidas = new Set(['TABLE', 'THEAD', 'TBODY', 'TFOOT', 'TR', 'TH', 'TD', 'P', 'DIV', 'SPAN', 'B', 'STRONG', 'I', 'EM', 'U', 'UL', 'OL', 'LI', 'BR']);
+        const etiquetasPermitidas = new Set(['TABLE', 'THEAD', 'TBODY', 'TFOOT', 'TR', 'TH', 'TD', 'H2', 'H3', 'P', 'DIV', 'SPAN', 'B', 'STRONG', 'I', 'EM', 'U', 'UL', 'OL', 'LI', 'BR']);
         const todos = tempDiv.querySelectorAll('*');
 
         todos.forEach(el => {
@@ -4257,7 +4545,6 @@
         const materia = materiaSel.options[materiaSel.selectedIndex]?.text || 'No definida';
         
         const tema = document.getElementById('input-tema').value || 'Sin especificar';
-        const tituloAlumnado = document.getElementById('input-titulo-alumnado').value || 'Sin especificar';
         
         let competenciaTexto = 'No seleccionada';
         const etapaVal = obtenerClaveEtapa();
@@ -4269,25 +4556,49 @@
             competenciaTexto = selectedIndices.map(index => `<div style="margin-bottom: 8px;">${CURRICULO_CLM[etapaVal][materiaVal].competencias[index].texto.trim()}</div>`).join('');
         }
         
-        const disparadorPregunta = (document.getElementById('input-disparador-pregunta-principal').value || 'No se ha definido una pregunta disparadora.').trim();
-        const disparadorMaterial = (document.getElementById('input-disparador-material').value || 'No se ha definido material inicial.').trim();
-        const disparadorPreguntas = (document.getElementById('input-disparador-preguntas').value || 'No se han definido preguntas abiertas.').trim();
-        const reto = (document.getElementById('input-reto').value || 'No se ha definido el reto.').trim();
-        const feedforward = (document.getElementById('input-feedforward').value || 'No se han definido ayudas previas.').trim();
-        const feedback = (document.getElementById('input-feedback').value || 'No se ha definido retroalimentación.').trim();
+        const disparadorPregunta = leerTextoCampo('input-disparador-pregunta-principal') || 'No se ha definido una pregunta disparadora.';
+        const disparadorMaterial = leerTextoCampo('input-disparador-material') || 'No se ha definido material inicial.';
+        const disparadorPreguntas = leerTextoCampo('input-disparador-preguntas') || 'No se han definido preguntas abiertas.';
+        const feedforward = leerTextoCampo('input-feedforward') || 'No se han definido ayudas previas.';
+        const feedback = leerTextoCampo('input-feedback') || 'No se ha definido retroalimentación.';
         
         let rubrica = sanitizarHtmlRubrica(document.getElementById('input-rubrica').innerHTML);
 
         document.getElementById('pdf-etapa-materia').textContent = `${etapaTexto} - ${materia}`;
         document.getElementById('pdf-tema').textContent = tema;
-        document.getElementById('pdf-titulo-alumnado').textContent = tituloAlumnado;
         document.getElementById('pdf-competencia').innerHTML = competenciaTexto; 
-        document.getElementById('pdf-disparador-pregunta-principal').textContent = disparadorPregunta;
-        document.getElementById('pdf-disparador-material').textContent = disparadorMaterial;
-        document.getElementById('pdf-disparador-preguntas').textContent = disparadorPreguntas;
-        document.getElementById('pdf-reto').textContent = reto;
-        document.getElementById('pdf-feedforward').textContent = feedforward;
-        document.getElementById('pdf-feedback').textContent = feedback;
+        const camposDocumento = [
+            ['pdf-disparador-pregunta-principal', 'input-disparador-pregunta-principal', disparadorPregunta],
+            ['pdf-disparador-material', 'input-disparador-material', disparadorMaterial],
+            ['pdf-disparador-preguntas', 'input-disparador-preguntas', disparadorPreguntas],
+            ['pdf-feedforward', 'input-feedforward', feedforward],
+            ['pdf-feedback', 'input-feedback', feedback]
+        ];
+        camposDocumento.forEach(([destinoId, origenId, alternativa]) => {
+            const destino = document.getElementById(destinoId);
+            const origen = document.getElementById(origenId);
+            destino.innerHTML = origen.innerHTML.trim()
+                ? sanitizarHtmlRubrica(origen.innerHTML)
+                : escaparHtml(alternativa);
+        });
+
+        const destinoRetos = document.getElementById('pdf-reto');
+        const retos = obtenerRetosFinales();
+        destinoRetos.innerHTML = '';
+        if (retos.length) {
+            retos.forEach(reto => {
+                const bloque = document.createElement('div');
+                const titulo = document.createElement('h3');
+                const contenido = document.createElement('div');
+                titulo.textContent = `Reto final ${reto.numero}`;
+                contenido.innerHTML = reto.html;
+                bloque.appendChild(titulo);
+                bloque.appendChild(contenido);
+                destinoRetos.appendChild(bloque);
+            });
+        } else {
+            destinoRetos.textContent = 'No se han definido retos finales.';
+        }
         
         const cajaRubrica = document.getElementById('pdf-rubrica');
         if(rubrica !== '' && rubrica !== '<br>') {
@@ -4324,7 +4635,7 @@
         let hasSaberes = false;
         let htmlSaberes = '';
         uiSaberDetails.forEach(details => {
-            const tituloBloque = details.querySelector('summary').textContent.replace('▶', '').trim();
+            const tituloBloque = details.querySelector('summary').textContent.trim();
             const saberChecks = details.querySelectorAll('.chk-saber:checked');
             
             if (saberChecks.length > 0) {
@@ -4403,9 +4714,10 @@
             <style>
                 body { font-family: 'Arial', sans-serif; color: #333333; font-size: 14px; }
                 h1 { color: #3C5AD9; font-size: 24px; margin-bottom: 5px; }
-                h2 { color: #3C5AD9; font-size: 18px; border-bottom: 2px solid #3C5AD9; padding-bottom: 4px; margin-bottom: 12px; margin-top: 25px; }
+                h2 { mso-style-name: "Heading 2"; mso-outline-level: 1; color: #3C5AD9; font-size: 18px; border-bottom: 2px solid #3C5AD9; padding-bottom: 4px; margin: 25px 0 12px; }
+                h3 { mso-style-name: "Heading 3"; mso-outline-level: 2; color: #3C5AD9; font-size: 16px; margin: 18px 0 8px; }
                 p { margin-bottom: 10px; line-height: 1.5; }
-                ul { margin-bottom: 10px; }
+                ul, ol { margin-bottom: 10px; }
                 li { margin-bottom: 5px; }
                 table { border-collapse: collapse; width: 100%; margin-top: 10px; margin-bottom: 15px; font-size: 14px; }
                 th, td { border: 1px solid #767676; padding: 8px; text-align: left; }
